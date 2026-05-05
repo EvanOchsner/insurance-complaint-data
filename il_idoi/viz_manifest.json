@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "il_idoi",
+      "name": "IL IDOI — per-company complaint ratio, by line",
+      "short_name": "IL IDOI",
+      "category": "regulator_complaint_index",
+      "jurisdiction": ["IL"],
+      "year_field_label": "Data year",
+      "y_axis_label": "Illinois complaint ratio",
+      "caveat_short": "IL changed ratio definitions between 2018 (NAIC share-of-share, ~1.0 = parity) and 2019+ (per $1M EP for P&C, per 10k policies for Life, per 10k members for HMO). Cross-year ratio comparisons within IL must respect the type change. 2021 and 2022 ratio reports are missing.",
+      "provenance_url": "il_idoi/PROVENANCE.md",
+      "parquet": "il_idoi/output/il_complaints_yearly.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "median_ratio", "label": "Median complaint ratio", "column": "median_ratio"},
+        {"id": "total_complaints", "label": "Total complaints", "column": "total_complaints"},
+        {"id": "n_companies", "label": "Number of companies in report", "column": "n_companies"},
+        {"id": "total_premium", "label": "Total premium / policies / members", "column": "total_premium"}
+      ],
+      "default_metric": "total_complaints",
+      "default_groups": ["auto", "homeowners", "life", "health"],
+      "group_presets": [
+        {"label": "All lines", "all": true}
+      ]
+    }
+  ]
+}

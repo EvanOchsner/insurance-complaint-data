@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "wi_oci",
+      "name": "WI OCI — complaints by type of insurance",
+      "short_name": "WI OCI",
+      "category": "regulator_finding",
+      "jurisdiction": ["WI"],
+      "year_field_label": "Data year",
+      "y_axis_label": "Complaints filed (WI OCI)",
+      "caveat_short": "WI OCI Table II annual complaint counts by line. WORKLOAD signal — counts of complaints filed, not regulator findings or per-company indexes. A complaint may involve more than one line of insurance, so sub-line totals don't sum to the per-section totals (use the published `total_*` rows). Per-company data lives in OCI's interactive lookup tool, not here.",
+      "provenance_url": "wi_oci/PROVENANCE.md",
+      "parquet": "wi_oci/output/wi_complaints_yearly.parquet",
+      "x_field": "data_year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "complaints", "label": "Complaints filed", "column": "complaints"}
+      ],
+      "default_metric": "complaints",
+      "default_groups": ["grand_total"],
+      "group_presets": [
+        {"label": "Grand total", "groups": ["grand_total"]},
+        {"label": "Section totals", "groups": ["total_property_casualty", "total_accident_health", "life_credit_annuities"]},
+        {"label": "P&C sub-lines", "groups": ["auto", "homeowners_tenants_farmowners", "fire_allied_other_property", "general_liability", "workers_comp", "other_pc"]},
+        {"label": "A&H sub-lines", "groups": ["group_health", "individual_health", "medicare_supplement", "long_term_care"]},
+        {"label": "All", "all": true}
+      ]
+    }
+  ]
+}

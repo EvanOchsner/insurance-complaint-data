@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "fjc_idb",
+      "name": "FJC IDB — federal civil insurance lawsuits (NoS=110)",
+      "short_name": "FJC IDB",
+      "category": "federal_lawsuit",
+      "jurisdiction": ["US"],
+      "year_field_label": "Filing year (calendar)",
+      "y_axis_label": "Filings (NoS=110)",
+      "caveat_short": "Federal civil filings under Nature-of-Suit code 110 (Insurance). A lawsuit being filed, not a regulator finding. NoS=110 covers contract disputes, tort, ERISA-adjacent — broader than 'bad faith'.",
+      "provenance_url": "fjc_idb/PROVENANCE.md",
+      "parquet": "fjc_idb/output/insurance_filings_by_state_year.parquet",
+      "x_field": "year",
+      "group_field": "state",
+      "group_field_label": "State / jurisdiction",
+      "metrics": [
+        {"id": "count", "label": "Filings count", "column": "count"}
+      ],
+      "default_metric": "count",
+      "default_groups": ["LA", "TX", "CA", "FL", "PA", "NY", "MS", "IL", "AL", "GA"],
+      "group_presets": [
+        {"label": "Top 10 by total", "groups": ["LA", "TX", "CA", "FL", "PA", "NY", "MS", "IL", "AL", "GA"]},
+        {"label": "All 50 + DC", "exclude_groups": ["PR", "VI", "GU", "MP"]},
+        {"label": "All + territories", "all": true},
+        {"label": "None", "groups": []}
+      ],
+      "partial_year": 2025,
+      "notes": "Per-state federal civil filings. Use this with the standalone single-state FJC viz at fjc_idb/viz/index.html for the richer state-only view."
+    }
+  ]
+}

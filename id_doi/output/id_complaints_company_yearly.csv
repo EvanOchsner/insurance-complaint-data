@@ -1,0 +1,241 @@
+year,line,company_name,premium,market_share,complaints,complaint_index
+2018,auto,Allstate Fire & Cas Ins Co,63074478.0,0.06,0,0.0
+2018,auto,American Family Ins Co,15436975.0,0.015,0,0.0
+2018,auto,American Family Mut Ins Co SI,12345381.0,0.012,0,0.0
+2018,auto,Auto Owners Ins Co,17824032.0,0.017,0,0.0
+2018,auto,Farm Bureau Mut Ins Co Of ID,111964098.0,0.107,1,0.93
+2018,auto,Farmers Ins Co Of ID,74753282.0,0.07200000000000001,0,0.0
+2018,auto,GEICO Advantage Ins Co,42358099.0,0.040999999999999995,0,0.0
+2018,auto,GEICO Choice Ins Co,27828153.0,0.027000000000000003,0,0.0
+2018,auto,Geico Gen Ins Co,17656811.0,0.017,1,5.92
+2018,auto,LM Gen Ins Co,20868399.0,0.02,1,5.01
+2018,auto,Progressive Direct Ins Co,46153854.0,0.044000000000000004,0,0.0
+2018,auto,Progressive Northwestern Ins Co,56533418.0,0.054000000000000006,0,0.0
+2018,auto,Safeco Ins Co Of IL,81136546.0,0.078,3,3.86
+2018,auto,Standard Fire Ins Co,17968966.0,0.017,0,0.0
+2018,auto,State Farm Fire & Cas Co,15434401.0,0.015,0,0.0
+2018,auto,State Farm Mut Auto Ins Co,133831110.0,0.128,0,0.0
+2018,auto,USAA Cas Ins Co,18550606.0,0.018000000000000002,0,0.0
+2018,auto,USAA Gen Ind Co,15713167.0,0.015,0,0.0
+2018,auto,United Serv Automobile Assn,19891204.0,0.019,0,0.0
+2018,auto,Viking Ins Co Of WI,18376115.0,0.018000000000000002,0,0.0
+2018,group_health,Aetna Life Ins Co,52966854.0,0.031,0,0.0
+2018,group_health,Blue Cross of ID Hlth Serv Inc,750985758.0,0.436,0,0.0
+2018,group_health,Cigna Hlth & Life Ins Co,38737839.0,0.023,0,0.0
+2018,group_health,Delta Dental Plan of ID Inc,58535109.0,0.034,0,0.0
+2018,group_health,Hartford Life & Accident Ins Co,5927337.0,0.003,0,0.0
+2018,group_health,Humana Ins Co,27211251.0,0.016,0,0.0
+2018,group_health,Life Ins Co Of N Amer,11575169.0,0.006999999999999999,0,0.0
+2018,group_health,Medco Containment Life Ins Co,7389478.0,0.004,0,0.0
+2018,group_health,Metropolitan Life Ins Co,16402411.0,0.01,0,0.0
+2018,group_health,Pacificsource Hlth Plans,56848785.0,0.033,0,0.0
+2018,group_health,Principal Life Ins Co,7816698.0,0.005,0,0.0
+2018,group_health,Regence Blueshield Of ID Inc,315782810.0,0.183,2,2.18
+2018,group_health,Reliance Standard Life Ins Co,5815966.0,0.003,0,0.0
+2018,group_health,SelectHealth Inc,95120658.0,0.055,0,0.0
+2018,group_health,SilverScript Ins Co,14908536.0,0.009000000000000001,0,0.0
+2018,group_health,Standard Ins Co,13559071.0,0.008,0,0.0
+2018,group_health,Timber Products Manufacturers Trust,6977361.0,0.004,0,0.0
+2018,group_health,UnitedHealthcare Ins Co,85208499.0,0.049,0,0.0
+2018,group_health,Unum Life Ins Co Of Amer,8457936.0,0.005,0,0.0
+2018,group_health,Willamette Dental of ID Inc,11685291.0,0.006999999999999999,0,0.0
+2018,homeowners,Allstate Ind Co,5302358.0,0.013999999999999999,0,0.0
+2018,homeowners,Allstate Prop & Cas Ins Co,6113994.0,0.016,0,0.0
+2018,homeowners,Allstate Vehicle & Prop Ins Co,14840544.0,0.038,0,0.0
+2018,homeowners,American Family Mut Ins Co SI,7320071.0,0.019,0,0.0
+2018,homeowners,Auto Owners Ins Co,9707664.0,0.025,0,0.0
+2018,homeowners,Enumclaw Prop & Cas Ins Co,4941360.0,0.013000000000000001,0,0.0
+2018,homeowners,Farm Bureau Mut Ins Co Of ID,37996722.0,0.098,0,0.0
+2018,homeowners,Farmers Ins Co Of ID,12010502.0,0.031,0,0.0
+2018,homeowners,Farmers Ins Exch,22152578.0,0.057,0,0.0
+2018,homeowners,Foremost Ins Co Grand Rapids MI,7835576.0,0.02,0,0.0
+2018,homeowners,Liberty Ins Corp,10584241.0,0.027000000000000003,0,0.0
+2018,homeowners,Metropolitan Prop & Cas Ins Co,5789718.0,0.015,0,0.0
+2018,homeowners,Mutual Of Enumclaw Ins Co,5625037.0,0.015,1,68.79
+2018,homeowners,Safeco Ins Co Of IL,38557487.0,0.1,0,0.0
+2018,homeowners,State Farm Fire & Cas Co,58272243.0,0.151,0,0.0
+2018,homeowners,Travelers Home & Marine Ins Co,11319697.0,0.028999999999999998,0,0.0
+2018,homeowners,USAA Cas Ins Co,7785635.0,0.02,0,0.0
+2018,homeowners,USAA Gen Ind Co,5112435.0,0.013000000000000001,0,0.0
+2018,homeowners,United Heritage Prop & Cas Co,12791222.0,0.033,0,0.0
+2018,homeowners,United Serv Automobile Assn,12335569.0,0.032,0,0.0
+2018,individual_health,Aetna Hlth & Life Ins Co,8032992.0,0.006999999999999999,0,0.0
+2018,individual_health,American Family Life Assur Co of Col,32461128.0,0.027999999999999997,0,0.0
+2018,individual_health,American Fidelity Assur Co,6222734.0,0.005,0,0.0
+2018,individual_health,Bankers Life & Cas Co,6812031.0,0.006,0,0.0
+2018,individual_health,Blue Cross of ID Hlth Serv Inc,383893900.0,0.33,2,0.33703
+2018,individual_health,Continental Life Ins Co Brentwood,24304614.0,0.021,1,2.66166
+2018,individual_health,Delta Dental Plan of ID Inc,58535109.0,0.05,0,0.0
+2018,individual_health,Genworth Life Ins Co,8007532.0,0.006999999999999999,0,0.0
+2018,individual_health,Humana Ins Co,27211251.0,0.023,0,0.0
+2018,individual_health,Medco Containment Life Ins Co,7389478.0,0.006,0,0.0
+2018,individual_health,Montana Hlth Cooperative,151350698.0,0.13,8,3.41938
+2018,individual_health,Mutual Of Omaha Ins Co,19075930.0,0.016,0,0.0
+2018,individual_health,Northwestern Mut Life Ins Co,7686958.0,0.006999999999999999,0,0.0
+2018,individual_health,Pacificsource Hlth Plans,10939280.0,0.009000000000000001,0,0.0
+2018,individual_health,Regence Blueshield Of ID Inc,69487149.0,0.06,1,0.93098
+2018,individual_health,SelectHealth Inc,175185570.0,0.151,1,0.36927
+2018,individual_health,SilverScript Ins Co,14908536.0,0.013000000000000001,0,0.0
+2018,individual_health,Transamerica Premier Life Ins Co,9220360.0,0.008,0,0.0
+2018,individual_health,United Of Omaha Life Ins Co,11530759.0,0.01,0,0.0
+2018,individual_health,Willamette Dental of ID Inc,11685291.0,0.01,0,0.0
+2019,auto,Allstate Fire & Cas Ins Co,70146014.0,0.063,0,0.0
+2019,auto,American Family Ins Co,17350596.0,0.016,0,0.0
+2019,auto,Auto Owners Ins Co,20445022.0,0.019,0,0.0
+2019,auto,Farm Bureau Mut Ins Co Of ID,116424524.0,0.105,2,3.17
+2019,auto,Farmers Ins Co Of ID,76630039.0,0.069,0,0.0
+2019,auto,GEICO Advantage Ins Co,49792232.0,0.045,2,7.42
+2019,auto,GEICO Choice Ins Co,31018057.0,0.027999999999999997,0,0.0
+2019,auto,GEICO Secure Ins Co,11480121.0,0.01,0,0.0
+2019,auto,Geico Gen Ins Co,15885943.0,0.013999999999999999,0,0.0
+2019,auto,LM Gen Ins Co,22519013.0,0.02,0,0.0
+2019,auto,Progressive Direct Ins Co,52756251.0,0.048,0,0.0
+2019,auto,Progressive Northwestern Ins Co,65281866.0,0.059000000000000004,0,0.0
+2019,auto,Safeco Ins Co Of IL,90942360.0,0.08199999999999999,0,0.0
+2019,auto,Standard Fire Ins Co,20012242.0,0.018000000000000002,0,0.0
+2019,auto,State Farm Fire & Cas Co,14917235.0,0.013999999999999999,0,0.0
+2019,auto,State Farm Mut Auto Ins Co,137190877.0,0.124,0,0.0
+2019,auto,USAA Cas Ins Co,20422083.0,0.018000000000000002,0,0.0
+2019,auto,USAA Gen Ind Co,16836928.0,0.015,0,0.0
+2019,auto,United Serv Automobile Assn,21137358.0,0.019,0,0.0
+2019,auto,Viking Ins Co Of WI,19523689.0,0.018000000000000002,0,0.0
+2019,group_health,Aetna Life Ins Co,29810313.0,0.016,0,0.0
+2019,group_health,Blue Cross of ID Hlth Serv Inc,833481528.0,0.45899999999999996,5,1.56
+2019,group_health,Cigna Hlth & Life Ins Co,44133604.0,0.024,0,0.0
+2019,group_health,Delta Dental Plan of ID Inc,64052510.0,0.035,0,0.0
+2019,group_health,Hartford Life & Accident Ins Co,7119000.0,0.004,0,0.0
+2019,group_health,Humana Ins Co,23781643.0,0.013000000000000001,0,0.0
+2019,group_health,Life Ins Co Of N Amer,12636643.0,0.006999999999999999,0,0.0
+2019,group_health,Medco Containment Life Ins Co,6670879.0,0.004,0,0.0
+2019,group_health,Metropolitan Life Ins Co,16957844.0,0.009000000000000001,0,0.0
+2019,group_health,Pacificsource Hlth Plans,75061067.0,0.040999999999999995,0,0.0
+2019,group_health,Principal Life Ins Co,8804926.0,0.005,0,0.0
+2019,group_health,Regence Blueshield Of ID Inc,280486106.0,0.155,1,0.92
+2019,group_health,SelectHealth Inc,107483157.0,0.059000000000000004,1,2.41
+2019,group_health,SilverScript Ins Co,14583553.0,0.008,0,0.0
+2019,group_health,Standard Ins Co,8427103.0,0.005,0,0.0
+2019,group_health,Timber Products Manufacturers Trust,6661911.0,0.004,0,0.0
+2019,group_health,UnitedHealthcare Ins Co,92716335.0,0.051,0,0.0
+2019,group_health,Unum Life Ins Co Of Amer,8983919.0,0.005,0,0.0
+2019,group_health,WellCare Prescription Ins Inc,16324941.0,0.009000000000000001,0,0.0
+2019,group_health,Willamette Dental of ID Inc,13617834.0,0.008,0,0.0
+2019,homeowners,Allstate Ind Co,5229681.0,0.012,0,0.0
+2019,homeowners,Allstate Prop & Cas Ins Co,5514699.0,0.013000000000000001,0,0.0
+2019,homeowners,Allstate Vehicle & Prop Ins Co,18323132.0,0.043,0,0.0
+2019,homeowners,American Family Mut Ins Co SI,7015690.0,0.017,1,20.19
+2019,homeowners,Auto Owners Ins Co,11689241.0,0.027999999999999997,0,0.0
+2019,homeowners,Farm Bureau Mut Ins Co Of ID,41141423.0,0.09699999999999999,1,3.44
+2019,homeowners,Farmers Ins Co Of ID,11371940.0,0.027000000000000003,0,0.0
+2019,homeowners,Farmers Ins Exch,24172495.0,0.057,0,0.0
+2019,homeowners,Foremost Ins Co Grand Rapids MI,8398230.0,0.02,0,0.0
+2019,homeowners,Liberty Ins Corp,12220558.0,0.028999999999999998,0,0.0
+2019,homeowners,Metropolitan Prop & Cas Ins Co,5457000.0,0.013000000000000001,1,25.96
+2019,homeowners,Mutual Of Enumclaw Ins Co,6130129.0,0.013999999999999999,0,0.0
+2019,homeowners,Safeco Ins Co Of IL,43066928.0,0.10099999999999999,0,0.0
+2019,homeowners,State Farm Fire & Cas Co,63003354.0,0.14800000000000002,0,0.0
+2019,homeowners,Travco Ins Co,5994090.0,0.013999999999999999,0,0.0
+2019,homeowners,Travelers Home & Marine Ins Co,10252731.0,0.024,0,0.0
+2019,homeowners,USAA Cas Ins Co,9545691.0,0.023,0,0.0
+2019,homeowners,USAA Gen Ind Co,6616156.0,0.016,0,0.0
+2019,homeowners,United Heritage Prop & Cas Co,12593302.0,0.03,0,0.0
+2019,homeowners,United Serv Automobile Assn,15052764.0,0.035,0,0.0
+2019,individual_health,Aetna Hlth & Life Ins Co,15783053.0,0.013000000000000001,0,0.0
+2019,individual_health,American Family Life Assur Co of Col,32491858.0,0.027000000000000003,0,0.0
+2019,individual_health,Bankers Life & Cas Co,6393031.0,0.005,0,0.0
+2019,individual_health,Blue Cross of ID Hlth Serv Inc,350865937.0,0.295,1,0.18
+2019,individual_health,Continental Life Ins Co Brentwood,23944142.0,0.02,0,0.0
+2019,individual_health,Delta Dental Plan of ID Inc,64052510.0,0.054000000000000006,0,0.0
+2019,individual_health,Genworth Life Ins Co,7787996.0,0.006999999999999999,0,0.0
+2019,individual_health,Humana Ins Co,23781643.0,0.02,1,2.63
+2019,individual_health,Medco Containment Life Ins Co,6670879.0,0.006,0,0.0
+2019,individual_health,Montana Hlth Cooperative,92384297.0,0.078,8,5.41
+2019,individual_health,Mutual Of Omaha Ins Co,18697875.0,0.016,0,0.0
+2019,individual_health,Northwestern Mut Life Ins Co,8027142.0,0.006999999999999999,0,0.0
+2019,individual_health,Pacificsource Hlth Plans,10677281.0,0.009000000000000001,0,0.0
+2019,individual_health,Regence Blueshield Of ID Inc,65403558.0,0.055,1,0.96
+2019,individual_health,SelectHealth Inc,262952354.0,0.221,0,0.0
+2019,individual_health,SilverScript Ins Co,14583553.0,0.012,0,0.0
+2019,individual_health,Transamerica Premier Life Ins Co,9580883.0,0.008,0,0.0
+2019,individual_health,United Of Omaha Life Ins Co,10878737.0,0.009000000000000001,0,0.0
+2019,individual_health,WellCare Prescription Ins Inc,16324941.0,0.013999999999999999,0,0.0
+2019,individual_health,Willamette Dental of ID Inc,13617834.0,0.012,0,0.0
+2020,auto,Allstate Fire & Cas Ins Co,74828972.0,0.07,0,0.0
+2020,auto,American Family Ins Co,16443270.0,0.01,0,0.0
+2020,auto,Auto Owners Ins Co,19469370.0,0.02,0,0.0
+2020,auto,Farm Bureau Mut Ins Co Of ID,121112389.0,0.11,1,1.9
+2020,auto,Farmers Ins Co Of ID,75338575.0,0.07,0,0.0
+2020,auto,GEICO Advantage Ins Co,54413969.0,0.05,0,0.0
+2020,auto,GEICO Choice Ins Co,33055469.0,0.03,0,0.0
+2020,auto,GEICO Secure Ins Co,12014296.0,0.01,0,0.0
+2020,auto,Geico Gen Ins Co,13092618.0,0.01,0,0.0
+2020,auto,LM Gen Ins Co,24703547.0,0.02,0,0.0
+2020,auto,Progressive Direct Ins Co,59465946.0,0.05,1,3.86
+2020,auto,Progressive Northwestern Ins Co,70734494.0,0.06,0,0.0
+2020,auto,Safeco Ins Co Of IL,102996271.0,0.09,1,2.23
+2020,auto,Standard Fire Ins Co,22369192.0,0.02,0,0.0
+2020,auto,State Farm Fire & Cas Co,14078495.0,0.01,0,0.0
+2020,auto,State Farm Mut Auto Ins Co,143385405.0,0.12,0,0.0
+2020,auto,USAA Cas Ins Co,22437649.0,0.02,0,0.0
+2020,auto,USAA Gen Ind Co,18071384.0,0.02,0,0.0
+2020,auto,United Serv Automobile Assn,22312429.0,0.02,0,0.0
+2020,auto,Viking Ins Co Of WI,22321353.0,0.02,1,10.29
+2020,group_health,Aetna Life Ins Co,29179968.0,0.02,0,0.0
+2020,group_health,Blue Cross of ID Care Plus Inc,8521242.0,0.0,0,0.0
+2020,group_health,Blue Cross of ID Hlth Serv Inc,833343617.0,0.45,1,1.11
+2020,group_health,Cigna Hlth & Life Ins Co,45331466.0,0.02,0,0.0
+2020,group_health,Delta Dental Plan of ID Inc,67241682.0,0.04,0,0.0
+2020,group_health,HCC Life Ins Co,8819584.0,0.0,0,0.0
+2020,group_health,Humana Ins Co,20227375.0,0.01,0,0.0
+2020,group_health,Life Ins Co Of N Amer,12773890.0,0.01,0,0.0
+2020,group_health,Metropolitan Life Ins Co,17077414.0,0.01,0,0.0
+2020,group_health,Pacificsource Hlth Plans,81655409.0,0.04,0,0.0
+2020,group_health,Principal Life Ins Co,8916096.0,0.0,0,0.0
+2020,group_health,Regence Blueshield Of ID Inc,265378441.0,0.14,0,0.0
+2020,group_health,SelectHealth Inc,134626218.0,0.07,0,0.0
+2020,group_health,SilverScript Ins Co,11552117.0,0.01,0,0.0
+2020,group_health,Standard Ins Co,9327978.0,0.01,0,0.0
+2020,group_health,Timber Products Manufacturers Trust,8831292.0,0.0,0,0.0
+2020,group_health,UnitedHealthcare Ins Co,89408016.0,0.05,0,0.0
+2020,group_health,Unum Life Ins Co Of Amer,8606331.0,0.0,0,0.0
+2020,group_health,WellCare Prescription Ins Inc,16503691.0,0.01,0,0.0
+2020,group_health,Willamette Dental of ID Inc,14800181.0,0.01,0,0.0
+2020,homeowners,AIG Prop Cas Co,5512217.0,0.01,0,0.0
+2020,homeowners,Allstate Vehicle & Prop Ins Co,21169008.0,0.05,0,0.0
+2020,homeowners,American Economy Ins Co,15548800.0,0.03,0,0.0
+2020,homeowners,American Family Mut Ins Co SI,6610542.0,0.01,0,0.0
+2020,homeowners,Auto Owners Ins Co,12181597.0,0.03,0,0.0
+2020,homeowners,Farm Bureau Mut Ins Co Of ID,43011488.0,0.09,0,0.0
+2020,homeowners,Farmers Ins Co Of ID,10756259.0,0.02,0,0.0
+2020,homeowners,Farmers Ins Exch,26195638.0,0.06,0,0.0
+2020,homeowners,Foremost Ins Co Grand Rapids MI,9130082.0,0.02,0,0.0
+2020,homeowners,Liberty Ins Corp,13249625.0,0.03,0,0.0
+2020,homeowners,Mutual Of Enumclaw Ins Co,5538639.0,0.01,0,0.0
+2020,homeowners,Safeco Ins Co Of IL,38570258.0,0.08,1,5.93
+2020,homeowners,State Farm Fire & Cas Co,67010164.0,0.15,0,0.0
+2020,homeowners,Travco Ins Co,10992941.0,0.02,0,0.0
+2020,homeowners,Travelers Home & Marine Ins Co,9109538.0,0.02,0,0.0
+2020,homeowners,USAA Cas Ins Co,10959517.0,0.02,0,0.0
+2020,homeowners,USAA Gen Ind Co,7712620.0,0.02,0,0.0
+2020,homeowners,United Heritage Prop & Cas Co,12156719.0,0.03,0,0.0
+2020,homeowners,United Serv Automobile Assn,16379491.0,0.04,0,0.0
+2020,homeowners,Vigilant Ins Co,6296689.0,0.01,0,0.0
+2020,individual_health,Aetna Hlth & Life Ins Co,20104140.0,0.02,0,0.0
+2020,individual_health,American Family Life Assur Co of Col,31973060.0,0.02,0,0.0
+2020,individual_health,Blue Cross of ID Care Plus Inc,8521242.0,0.01,0,0.0
+2020,individual_health,Blue Cross of ID Hlth Serv Inc,425046062.0,0.32,2,0.52
+2020,individual_health,Continental Life Ins Co Brentwood,22650811.0,0.02,0,0.0
+2020,individual_health,Delta Dental Plan of ID Inc,67241682.0,0.05,0,0.0
+2020,individual_health,Genworth Life Ins Co,8027646.0,0.01,0,0.0
+2020,individual_health,Humana Ins Co,20227375.0,0.02,0,0.0
+2020,individual_health,Montana Hlth Cooperative,69034790.0,0.05,5,7.94
+2020,individual_health,Mutual Of Omaha Ins Co,18166602.0,0.01,0,0.0
+2020,individual_health,Northwestern Mut Life Ins Co,8282487.0,0.01,0,0.0
+2020,individual_health,Omaha Ins Co,7150398.0,0.01,0,0.0
+2020,individual_health,Pacificsource Hlth Plans,17139837.0,0.01,0,0.0
+2020,individual_health,Regence Blueshield Of ID Inc,57150653.0,0.04,0,0.0
+2020,individual_health,SelectHealth Inc,327248433.0,0.25,0,0.0
+2020,individual_health,SilverScript Ins Co,11552117.0,0.01,0,0.0
+2020,individual_health,Transamerica Life Ins Co,12195093.0,0.01,0,0.0
+2020,individual_health,United Of Omaha Life Ins Co,10212540.0,0.01,0,0.0
+2020,individual_health,WellCare Prescription Ins Inc,16503691.0,0.01,0,0.0
+2020,individual_health,Willamette Dental of ID Inc,14800181.0,0.01,0,0.0

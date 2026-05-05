@@ -1,0 +1,44 @@
+
+### 2026-05-05T15:14Z — parse run
+  auto_2015.pdf: 116 companies, 1167 complaints, $3,807,399,847 premium
+  auto_2016.pdf: 149 companies, 1109 complaints, $4,136,223,894 premium
+  auto_2017.pdf: 144 companies, 979 complaints, $4,506,182,776 premium
+  auto_2018.pdf: 135 companies, 927 complaints, $4,822,694,720 premium
+  auto_2019.pdf: 135 companies, 930 complaints, $4,887,096,371 premium
+  auto_2020.pdf: 137 companies, 707 complaints, $4,748,431,377 premium
+  auto_2021.pdf: 138 companies, 833 complaints, $4,834,130,159 premium
+  auto_2022.pdf: 149 companies, 859 complaints, $4,963,963,006 premium
+  auto_2023.pdf: 162 companies, 953 complaints, $5,479,980,753 premium
+  auto_2024.pdf: 137 companies, 983 complaints, $5,965,162,142 premium
+  homeowners_2015.pdf: 109 companies, 510 complaints, $1,851,827,403 premium
+  homeowners_2016.pdf: 140 companies, 447 complaints, $1,856,491,147 premium
+  homeowners_2017.pdf: 128 companies, 325 complaints, $1,862,257,789 premium
+  homeowners_2018.pdf: 146 companies, 325 complaints, $1,907,118,804 premium
+  homeowners_2019.pdf: 160 companies, 315 complaints, $1,954,111,564 premium
+  homeowners_2020.pdf: 158 companies, 1091 complaints, $2,054,662,480 premium
+  homeowners_2021.pdf: 187 companies, 4492 complaints, $2,094,892,042 premium
+  homeowners_2022.pdf: 201 companies, 2508 complaints, $2,362,227,088 premium
+  homeowners_2023.pdf: 190 companies, 969 complaints, $2,888,354,270 premium
+  homeowners_2024.pdf: 160 companies, 735 complaints, $3,151,480,712 premium
+  life_2015.pdf: 361 companies, 752 complaints, $1,746,715,392 premium
+  life_2016.pdf: 378 companies, 377 complaints, $1,862,741,766 premium
+  life_2017.pdf: 391 companies, 331 complaints, $1,908,906,812 premium
+  life_2018.pdf: 403 companies, 318 complaints, $1,930,170,164 premium
+  life_2019.pdf: 401 companies, 299 complaints, $1,950,942,427 premium
+  life_2020.pdf: 391 companies, 286 complaints, $1,925,148,630 premium
+  life_2021.pdf: 406 companies, 216 complaints, $2,098,855,316 premium
+  life_2022.pdf: 385 companies, 245 complaints, $2,164,292,884 premium
+  life_2023.pdf: 389 companies, 270 complaints, $2,157,899,039 premium
+  life_2024.pdf: 382 companies, 287 complaints, $2,160,560,149 premium
+  accident_health_2015.pdf: 260 companies, 779 complaints, $1,658,433,310 premium
+  accident_health_2016.pdf: 288 companies, 715 complaints, $1,925,951,284 premium
+  accident_health_2017.pdf: 301 companies, 482 complaints, $2,115,618,948 premium
+  accident_health_2018.pdf: 305 companies, 319 complaints, $2,082,903,574 premium
+  accident_health_2019.pdf: 326 companies, 260 complaints, $1,992,563,921 premium
+  accident_health_2020.pdf: 323 companies, 201 complaints, $2,160,410,320 premium
+  accident_health_2021.pdf: 328 companies, 246 complaints, $2,229,249,338 premium
+  accident_health_2022.pdf: 305 companies, 286 complaints, $2,339,348,909 premium
+  accident_health_2023.pdf: 130 companies, 268 complaints, $7,020,436,172 premium
+  accident_health_2024.pdf: 116 companies, 302 complaints, $8,511,351,077 premium
+  wrote la_complaints_company_yearly: 9550 rows
+  wrote la_complaints_yearly: 40 rows

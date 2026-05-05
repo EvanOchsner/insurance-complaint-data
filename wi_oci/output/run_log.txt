@@ -1,0 +1,107 @@
+
+=== run started 2026-05-05T04:27:46+00:00 ===
+  2020: data years inferred as [2019, 2020]
+  2020: parsed 28 (data_year × line) rows from Table II
+  HARD FAILURE on WIR_2021.pdf: WIR_2021.pdf: Table II header not found
+
+=== run started 2026-05-05T04:29:03+00:00 ===
+  2020: data years inferred as [2019, 2020]
+  2020: parsed 28 (data_year × line) rows from Table II
+  2021: data years inferred as [2020, 2021]
+  2021: parsed 14 (data_year × line) rows from Table II
+  2022: data years inferred as [2021, 2022]
+  2022: parsed 28 (data_year × line) rows from Table II
+  2023: data years inferred as [2022, 2023]
+  2023: parsed 28 (data_year × line) rows from Table II
+  2024: data years inferred as [2023, 2024]
+  2024: parsed 28 (data_year × line) rows from Table II
+Wrote wi_complaints_yearly.parquet (84 rows; canonical / latest-revision)
+Wrote wi_complaints_all_versions.parquet (126 rows; all reports, for audit)
+
+Data years: [2019, 2020, 2021, 2022, 2023, 2024]
+Lines: ['auto', 'fire_allied_other_property', 'general_liability', 'grand_total', 'group_health', 'homeowners_tenants_farmowners', 'individual_health', 'life_credit_annuities', 'long_term_care', 'medicare_supplement', 'other_pc', 'total_accident_health', 'total_property_casualty', 'workers_comp']
+
+Grand totals + Total P&C + Total A&H by year:
+shape: (24, 5)
+┌───────────┬─────────────────────────┬────────────┬─────────────┬──────────────┐
+│ data_year ┆ line                    ┆ complaints ┆ report_year ┆ source_file  │
+│ ---       ┆ ---                     ┆ ---        ┆ ---         ┆ ---          │
+│ i32       ┆ str                     ┆ i64        ┆ i32         ┆ str          │
+╞═══════════╪═════════════════════════╪════════════╪═════════════╪══════════════╡
+│ 2019      ┆ grand_total             ┆ 2807       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ grand_total             ┆ 2588       ┆ 2021        ┆ WIR_2021.pdf │
+│ 2021      ┆ grand_total             ┆ 2121       ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ grand_total             ┆ 2467       ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ grand_total             ┆ 2878       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ grand_total             ┆ 3219       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2019      ┆ life_credit_annuities   ┆ 428        ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ life_credit_annuities   ┆ 354        ┆ 2021        ┆ WIR_2021.pdf │
+│ 2021      ┆ life_credit_annuities   ┆ 303        ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ life_credit_annuities   ┆ 307        ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ life_credit_annuities   ┆ 385        ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ life_credit_annuities   ┆ 437        ┆ 2024        ┆ WIR_2024.pdf │
+│ 2019      ┆ total_accident_health   ┆ 1080       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ total_accident_health   ┆ 1038       ┆ 2021        ┆ WIR_2021.pdf │
+│ 2021      ┆ total_accident_health   ┆ 858        ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ total_accident_health   ┆ 832        ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ total_accident_health   ┆ 939        ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ total_accident_health   ┆ 1049       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2019      ┆ total_property_casualty ┆ 1299       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ total_property_casualty ┆ 1196       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2021      ┆ total_property_casualty ┆ 960        ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ total_property_casualty ┆ 1328       ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ total_property_casualty ┆ 1554       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ total_property_casualty ┆ 1733       ┆ 2024        ┆ WIR_2024.pdf │
+└───────────┴─────────────────────────┴────────────┴─────────────┴──────────────┘
+=== run completed 2026-05-05T04:31:34+00:00 ===
+
+=== run started 2026-05-05T04:31:42+00:00 ===
+  2020: data years inferred as [2019, 2020]
+  2020: parsed 28 (data_year × line) rows from Table II
+  2021: data years inferred as [2020, 2021]
+  2021: parsed 14 (data_year × line) rows from Table II
+  2022: data years inferred as [2021, 2022]
+  2022: parsed 28 (data_year × line) rows from Table II
+  2023: data years inferred as [2022, 2023]
+  2023: parsed 28 (data_year × line) rows from Table II
+  2024: data years inferred as [2023, 2024]
+  2024: parsed 28 (data_year × line) rows from Table II
+Wrote wi_complaints_yearly.parquet (84 rows; canonical / latest-revision)
+Wrote wi_complaints_all_versions.parquet (126 rows; all reports, for audit)
+
+Data years: [2019, 2020, 2021, 2022, 2023, 2024]
+Lines: ['auto', 'fire_allied_other_property', 'general_liability', 'grand_total', 'group_health', 'homeowners_tenants_farmowners', 'individual_health', 'life_credit_annuities', 'long_term_care', 'medicare_supplement', 'other_pc', 'total_accident_health', 'total_property_casualty', 'workers_comp']
+
+Grand totals + Total P&C + Total A&H by year:
+shape: (24, 5)
+┌───────────┬─────────────────────────┬────────────┬─────────────┬──────────────┐
+│ data_year ┆ line                    ┆ complaints ┆ report_year ┆ source_file  │
+│ ---       ┆ ---                     ┆ ---        ┆ ---         ┆ ---          │
+│ i32       ┆ str                     ┆ i64        ┆ i32         ┆ str          │
+╞═══════════╪═════════════════════════╪════════════╪═════════════╪══════════════╡
+│ 2019      ┆ grand_total             ┆ 2807       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ grand_total             ┆ 2588       ┆ 2021        ┆ WIR_2021.pdf │
+│ 2021      ┆ grand_total             ┆ 2121       ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ grand_total             ┆ 2467       ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ grand_total             ┆ 2878       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ grand_total             ┆ 3219       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2019      ┆ life_credit_annuities   ┆ 428        ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ life_credit_annuities   ┆ 354        ┆ 2021        ┆ WIR_2021.pdf │
+│ 2021      ┆ life_credit_annuities   ┆ 303        ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ life_credit_annuities   ┆ 307        ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ life_credit_annuities   ┆ 385        ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ life_credit_annuities   ┆ 437        ┆ 2024        ┆ WIR_2024.pdf │
+│ 2019      ┆ total_accident_health   ┆ 1080       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ total_accident_health   ┆ 1038       ┆ 2021        ┆ WIR_2021.pdf │
+│ 2021      ┆ total_accident_health   ┆ 858        ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ total_accident_health   ┆ 832        ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ total_accident_health   ┆ 939        ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ total_accident_health   ┆ 1049       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2019      ┆ total_property_casualty ┆ 1299       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2020      ┆ total_property_casualty ┆ 1196       ┆ 2020        ┆ WIR_2020.pdf │
+│ 2021      ┆ total_property_casualty ┆ 960        ┆ 2022        ┆ WIR_2022.pdf │
+│ 2022      ┆ total_property_casualty ┆ 1328       ┆ 2023        ┆ WIR_2023.pdf │
+│ 2023      ┆ total_property_casualty ┆ 1554       ┆ 2024        ┆ WIR_2024.pdf │
+│ 2024      ┆ total_property_casualty ┆ 1733       ┆ 2024        ┆ WIR_2024.pdf │
+└───────────┴─────────────────────────┴────────────┴─────────────┴──────────────┘
+=== run completed 2026-05-05T04:34:11+00:00 ===

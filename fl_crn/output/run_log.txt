@@ -1,0 +1,269 @@
+
+=== run started 2026-05-04T19:00:02+00:00 ===
+  2003 Accident & Health: 0
+  2003 Life & Annuity: 0
+  2003 Medicare Supplement: 0
+  2003 Auto: 0
+  2003 Residential Property & Casualty: 0
+  2003 Commercial Property & Casualty: 0
+  2003 Professional Liability: 0
+  2003 Miscellaneous: 0
+  2003 Other: 0
+  2003 ALL: 0
+  2004 Accident & Health: 0
+  2004 Life & Annuity: 0
+  2004 Medicare Supplement: 0
+  2004 Auto: 0
+  2004 Residential Property & Casualty: 0
+  2004 Commercial Property & Casualty: 0
+  2004 Professional Liability: 0
+  2004 Miscellaneous: 0
+  2004 Other: 0
+  2004 ALL: 0
+  2005 Accident & Health: 0
+  2005 Life & Annuity: 0
+  2005 Medicare Supplement: 0
+  2005 Auto: 0
+  2005 Residential Property & Casualty: 0
+  2005 Commercial Property & Casualty: 0
+  2005 Professional Liability: 0
+  2005 Miscellaneous: 0
+  2005 Other: 0
+  2005 ALL: 0
+  2006 Accident & Health: 0
+  2006 Life & Annuity: 0
+  2006 Medicare Supplement: 0
+  2006 Auto: 0
+  2006 Residential Property & Casualty: 0
+  2006 Commercial Property & Casualty: 0
+  2006 Professional Liability: 0
+  2006 Miscellaneous: 0
+  2006 Other: 0
+  2006 ALL: 0
+  2007 Accident & Health: 0
+  2007 Life & Annuity: 0
+  2007 Medicare Supplement: 0
+  2007 Auto: 0
+  2007 Residential Property & Casualty: 0
+  2007 Commercial Property & Casualty: 0
+  2007 Professional Liability: 0
+  2007 Miscellaneous: 0
+  2007 Other: 0
+  2007 ALL: 0
+  2008 Accident & Health: 0
+  2008 Life & Annuity: 0
+  2008 Medicare Supplement: 0
+  2008 Auto: 0
+  2008 Residential Property & Casualty: 0
+  2008 Commercial Property & Casualty: 0
+  2008 Professional Liability: 0
+  2008 Miscellaneous: 0
+  2008 Other: 0
+  2008 ALL: 0
+  2009 Accident & Health: 0
+  2009 Life & Annuity: 0
+  2009 Medicare Supplement: 0
+  2009 Auto: 0
+  2009 Residential Property & Casualty: 0
+  2009 Commercial Property & Casualty: 0
+  2009 Professional Liability: 0
+  2009 Miscellaneous: 0
+  2009 Other: 0
+  2009 ALL: 0
+  2010 Accident & Health: 0
+  2010 Life & Annuity: 0
+  2010 Medicare Supplement: 0
+  2010 Auto: 0
+  2010 Residential Property & Casualty: 0
+  2010 Commercial Property & Casualty: 0
+  2010 Professional Liability: 0
+  2010 Miscellaneous: 0
+  2010 Other: 0
+  2010 ALL: 0
+  2011 Accident & Health: 0
+  2011 Life & Annuity: 0
+  2011 Medicare Supplement: 0
+  2011 Auto: 0
+  2011 Residential Property & Casualty: 0
+  2011 Commercial Property & Casualty: 0
+  2011 Professional Liability: 0
+  2011 Miscellaneous: 0
+  2011 Other: 0
+  2011 ALL: 0
+  2012 Accident & Health: 0
+  2012 Life & Annuity: 0
+  2012 Medicare Supplement: 0
+  2012 Auto: 0
+  2012 Residential Property & Casualty: 0
+  2012 Commercial Property & Casualty: 0
+  2012 Professional Liability: 0
+  2012 Miscellaneous: 0
+  2012 Other: 0
+  2012 ALL: 0
+  2013 Accident & Health: 0
+  2013 Life & Annuity: 0
+  2013 Medicare Supplement: 0
+  2013 Auto: 0
+  2013 Residential Property & Casualty: 0
+  2013 Commercial Property & Casualty: 0
+  2013 Professional Liability: 0
+  2013 Miscellaneous: 0
+  2013 Other: 0
+  2013 ALL: 0
+  2014 Accident & Health: 1134
+  2014 Life & Annuity: 32
+  2014 Medicare Supplement: 3
+  2014 Auto: 13334
+  2014 Residential Property & Casualty: 1253
+  2014 Commercial Property & Casualty: 304
+  2014 Professional Liability: 19
+  2014 Miscellaneous: 8
+  2014 Other: 162
+  2014 ALL: 16249
+  2015 Accident & Health: 535
+  2015 Life & Annuity: 42
+  2015 Medicare Supplement: 14
+  2015 Auto: 24354
+  2015 Residential Property & Casualty: 2654
+  2015 Commercial Property & Casualty: 544
+  2015 Professional Liability: 74
+  2015 Miscellaneous: 8
+  2015 Other: 347
+  2015 ALL: 28572
+  2016 Accident & Health: 152
+  2016 Life & Annuity: 42
+  2016 Medicare Supplement: 12
+  2016 Auto: 22583
+  2016 Residential Property & Casualty: 3516
+  2016 Commercial Property & Casualty: 607
+  2016 Professional Liability: 51
+  2016 Miscellaneous: 14
+  2016 Other: 788
+  2016 ALL: 27765
+  2017 Accident & Health: 157
+  2017 Life & Annuity: 35
+  2017 Medicare Supplement: 18
+  2017 Auto: 32309
+  2017 Residential Property & Casualty: 4910
+  2017 Commercial Property & Casualty: 722
+  2017 Professional Liability: 42
+  2017 Miscellaneous: 11
+  2017 Other: 699
+  2017 ALL: 38903
+  2018 Accident & Health: 270
+  2018 Life & Annuity: 41
+  2018 Medicare Supplement: 13
+  2018 Auto: 30338
+  2018 Residential Property & Casualty: 14563
+  2018 Commercial Property & Casualty: 1661
+  2018 Professional Liability: 46
+  2018 Miscellaneous: 17
+  2018 Other: 555
+  2018 ALL: 47504
+  2019 Accident & Health: 311
+  2019 Life & Annuity: 38
+  2019 Medicare Supplement: 11
+  2019 Auto: 31580
+  2019 Residential Property & Casualty: 18344
+  2019 Commercial Property & Casualty: 1499
+  2019 Professional Liability: 56
+  2019 Miscellaneous: 18
+  2019 Other: 618
+  2019 ALL: 52475
+  2020 Accident & Health: 897
+  2020 Life & Annuity: 34
+  2020 Medicare Supplement: 25
+  2020 Auto: 35604
+  2020 Residential Property & Casualty: 25046
+  2020 Commercial Property & Casualty: 1583
+  2020 Professional Liability: 102
+  2020 Miscellaneous: 10
+  2020 Other: 548
+  2020 ALL: 63850
+  2021 Accident & Health: 1170
+  2021 Life & Annuity: 41
+  2021 Medicare Supplement: 32
+  2021 Auto: 39979
+  2021 Residential Property & Casualty: 26118
+  2021 Commercial Property & Casualty: 1236
+  2021 Professional Liability: 86
+  2021 Miscellaneous: 105
+  2021 Other: 436
+  2021 ALL: 69203
+  2022 Accident & Health: 211
+  2022 Life & Annuity: 31
+  2022 Medicare Supplement: 15
+  2022 Auto: 37859
+  2022 Residential Property & Casualty: 20711
+  2022 Commercial Property & Casualty: 1044
+  2022 Professional Liability: 69
+  2022 Miscellaneous: 52
+  2022 Other: 533
+  2022 ALL: 60525
+  2023 Accident & Health: 263
+  2023 Life & Annuity: 30
+  2023 Medicare Supplement: 11
+  2023 Auto: 37857
+  2023 Residential Property & Casualty: 24796
+  2023 Commercial Property & Casualty: 1839
+  2023 Professional Liability: 106
+  2023 Miscellaneous: 4
+  2023 Other: 345
+  2023 ALL: 65251
+  2024 Accident & Health: 364
+  2024 Life & Annuity: 23
+  2024 Medicare Supplement: 19
+  2024 Auto: 42469
+  2024 Residential Property & Casualty: 17636
+  2024 Commercial Property & Casualty: 1315
+  2024 Professional Liability: 86
+  2024 Miscellaneous: 10
+  2024 Other: 398
+  2024 ALL: 62320
+  2025 Accident & Health: 704
+  2025 Life & Annuity: 27
+  2025 Medicare Supplement: 22
+  2025 Auto: 46785
+  2025 Residential Property & Casualty: 12260
+  2025 Commercial Property & Casualty: 1302
+  2025 Professional Liability: 179
+  2025 Miscellaneous: 12
+  2025 Other: 537
+  2025 ALL: 61828
+  2026 Accident & Health: 113
+  2026 Life & Annuity: 12
+  2026 Medicare Supplement: 5
+  2026 Auto: 14075
+  2026 Residential Property & Casualty: 3526
+  2026 Commercial Property & Casualty: 380
+  2026 Professional Liability: 62
+  2026 Miscellaneous: 1
+  2026 Other: 195
+  2026 ALL: 18369
+
+--- sum-of-lines vs no-filter total ---
+  2003: no_filter=      0  sum_of_lines=      0  delta=+0
+  2004: no_filter=      0  sum_of_lines=      0  delta=+0
+  2005: no_filter=      0  sum_of_lines=      0  delta=+0
+  2006: no_filter=      0  sum_of_lines=      0  delta=+0
+  2007: no_filter=      0  sum_of_lines=      0  delta=+0
+  2008: no_filter=      0  sum_of_lines=      0  delta=+0
+  2009: no_filter=      0  sum_of_lines=      0  delta=+0
+  2010: no_filter=      0  sum_of_lines=      0  delta=+0
+  2011: no_filter=      0  sum_of_lines=      0  delta=+0
+  2012: no_filter=      0  sum_of_lines=      0  delta=+0
+  2013: no_filter=      0  sum_of_lines=      0  delta=+0
+  2014: no_filter= 16,249  sum_of_lines= 16,249  delta=+0
+  2015: no_filter= 28,572  sum_of_lines= 28,572  delta=+0
+  2016: no_filter= 27,765  sum_of_lines= 27,765  delta=+0
+  2017: no_filter= 38,903  sum_of_lines= 38,903  delta=+0
+  2018: no_filter= 47,504  sum_of_lines= 47,504  delta=+0
+  2019: no_filter= 52,475  sum_of_lines= 52,475  delta=+0
+  2020: no_filter= 63,850  sum_of_lines= 63,849  delta=-1
+  2021: no_filter= 69,203  sum_of_lines= 69,203  delta=+0
+  2022: no_filter= 60,525  sum_of_lines= 60,525  delta=+0
+  2023: no_filter= 65,251  sum_of_lines= 65,251  delta=+0
+  2024: no_filter= 62,320  sum_of_lines= 62,320  delta=+0
+  2025: no_filter= 61,828  sum_of_lines= 61,828  delta=+0
+  2026: no_filter= 18,369  sum_of_lines= 18,369  delta=+0
+=== run completed; 240 requests ===

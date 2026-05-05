@@ -1,0 +1,554 @@
+
+=== run started 2026-05-04T23:38:31+00:00 ===
+Parsing 80 source files
+  2009_annuity.pdf: 41 rows  (8 skipped)
+  2009_auto.pdf: 129 rows  (12 skipped)
+  2009_health.pdf: 178 rows  (17 skipped)
+  2009_homeowners.pdf: 103 rows  (10 skipped)
+  2009_life.pdf: 142 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,871,228,459 469
+      skip: 269 Companies with Zero Complaints 500,041,816
+      skip: Total Premium and Complaints 2,371,270,275 469
+      skip: Report does not include the 269 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2009
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2010_annuity.pdf: 24 rows  (8 skipped)
+  2010_auto.pdf: 115 rows  (12 skipped)
+  2010_health.pdf: 135 rows  (15 skipped)
+  2010_homeowners.pdf: 76 rows  (9 skipped)
+  2010_life.pdf: 119 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,990,904,981 371
+      skip: 272 Companies with Zero Complaints 409,380,377
+      skip: Total Premium and Complaints 2,400,285,358 371
+      skip: Report does not include the 272 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2010
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2011_annuity.pdf: 24 rows  (8 skipped)
+  2011_auto.pdf: 126 rows  (16 skipped)
+  2011_health.pdf: 135 rows  (15 skipped)
+  2011_homeowners.pdf: 94 rows  (10 skipped)
+  2011_life.pdf: 126 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,753,917,232 379
+      skip: 264 Companies with Zero Complaints 705,952,250
+      skip: Total Premium and Complaints 2,459,869,482 379
+      skip: Report does not include the 264 companies with zero complaints
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2011
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2012_annuity.pdf: 17 rows  (8 skipped)
+  2012_auto.pdf: 117 rows  (15 skipped)
+  2012_health.pdf: 85 rows  (13 skipped)
+  2012_homeowners.pdf: 70 rows  (10 skipped)
+  2012_life.pdf: 72 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,602,015,274 154
+      skip: 315 Companies with Zero Complaints 990,149,683
+      skip: Total Premium and Complaints 2,592,164,957 154
+      skip: Report does not include the 315 companies with zero complaints
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2012
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2013_annuity.pdf: 8 rows  (8 skipped)
+  2013_auto.pdf: 96 rows  (10 skipped)
+  2013_health.pdf: 57 rows  (13 skipped)
+  2013_homeowners.pdf: 46 rows  (10 skipped)
+  2013_life.pdf: 34 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 967,239,276 67
+      skip: 348 Companies with Zero Complaints 1,639,219,574
+      skip: Total Premium and Complaints 2,606,458,850 67
+      skip: Report does not include the 348 companies with zero complaints
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2013
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2014_annuity.xlsx: 6 rows  (9 skipped)
+  2014_auto.xlsx: 67 rows  (9 skipped)
+  2014_health.xlsx: 39 rows  (12 skipped)
+  2014_homeowners.xlsx: 28 rows  (9 skipped)
+  2014_life.xlsx: 50 rows  (10 skipped)
+  2015_annuity.pdf: 4 rows  (9 skipped)
+  2015_auto.pdf: 92 rows  (10 skipped)
+  2015_health.pdf: 70 rows  (12 skipped)
+  2015_homeowners.pdf: 46 rows  (8 skipped)
+  2015_life.pdf: 50 rows  (9 skipped)
+  2016_annuity.pdf: 8 rows  (10 skipped)
+  2016_auto.pdf: 106 rows  (11 skipped)
+  2016_health.pdf: 62 rows  (12 skipped)
+  2016_homeowners.pdf: 39 rows  (8 skipped)
+  2016_life.pdf: 61 rows  (10 skipped)
+  2017_annuity.pdf: 1 rows  (16 skipped)
+  2017_auto.pdf: 1 rows  (92 skipped)
+  2017_health.pdf: 2 rows  (71 skipped)
+  2017_homeowners.pdf: 0 rows  (52 skipped)
+  2017_life.pdf: 57 rows  (10 skipped)
+  2018_annuity.pdf: 0 rows  (19 skipped)
+  2018_auto.pdf: 3 rows  (94 skipped)
+  2018_health.pdf: 65 rows  (13 skipped)
+  2018_homeowners.pdf: 1 rows  (53 skipped)
+  2018_life.pdf: 0 rows  (70 skipped)
+  2019_annuity.pdf: 10 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,363,756,900 12
+      skip: 231 Companies with Zero Complaints $4,677,387,201
+      skip: Total Premium and Complaints $6,041,144,101 12
+      skip: Report does not include the 231 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2019
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2019_auto.pdf: 88 rows  (8 skipped)
+  2019_health.pdf: 67 rows  (10 skipped)
+  2019_homeowners.pdf: 42 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,597,235,958 115
+      skip: 167 Companies with Zero Complaints $470,912,517
+      skip: Total Premium and Complaints $2,068,148,475 115
+      skip: Report does not include 167 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2019.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2019_life.pdf: 63 rows  (10 skipped)
+  2020_annuity.pdf: 10 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 921,882,411 12
+      skip: 230 Companies with no complaints 5,070,549,468
+      skip: Total Premium and Complaints 5,992,431,879 12
+      skip: Report does not include the 230 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2020
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2020_auto.pdf: 78 rows  (8 skipped)
+  2020_health.pdf: 54 rows  (10 skipped)
+  2020_homeowners.pdf: 40 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,706,773,959 101
+      skip: 132 Companies with Zero Complaints $440,243,683
+      skip: Total Premium and Complaints $2,147,017,642 101
+      skip: Report does not include 132 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2020.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2020_life.pdf: 59 rows  (8 skipped)
+  2021_annuity.pdf: 6 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $497,695,603 7
+      skip: 236 Companies with no complaints $6,183,883,315
+      skip: Total Premium and Complaints $6,681,578,918 7
+      skip: Report does not include the 236 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2021
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2021_auto.pdf: 89 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $4,073,084,851 336
+      skip: 448 Companies with Zero complaints $1,085,881,446
+      skip: Total Premium and Complaints $5,158,966,297 336
+      skip: Report does not include 448 companies with zero complaints.
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2021
+      skip: Premium information from Property & Casualty Annual Statement Page 19,
+  2021_health.pdf: 58 rows  (10 skipped)
+  2021_homeowners.pdf: 40 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $486,038,389 156
+      skip: 179 Companies with Zero Complaints $1,819,818,801
+      skip: Total Premium and Complaints $2,305,857,190 156
+      skip: Report does not include 179 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2021.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2021_life.pdf: 56 rows  (8 skipped)
+  2022_annuity.pdf: 8 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,319,649,969 12
+      skip: 228 Companies with no complaints $5,899,647,657
+      skip: Total Premium and Complaints $7,219,297,626 12
+      skip: Report does not include the 228 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2022
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2022_auto.pdf: 73 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $4,242,931,770 289
+      skip: 462 Companies with Zero complaints $936,057,020
+      skip: Total Premium and Complaints $5,178,988,790 289
+      skip: Report does not include 462 companies with zero complaints.
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2022
+      skip: Premium information from Property & Casualty Annual Statement Page 19,
+  2022_health.pdf: 40 rows  (9 skipped)
+  2022_homeowners.pdf: 50 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $2,140,559,768 147
+      skip: 167 Companies with Zero Complaints $379,277,647
+      skip: Total Premium and Complaints $2,519,837,415 147
+      skip: Report does not include 167 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - N o premium w as re portped dyu rin g 2022.y g
+      skip: Column 1
+  2022_life.pdf: 48 rows  (8 skipped)
+  2023_annuity.pdf: 12 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 4,494,399,942 16
+      skip: 279 Companies with Zero Complaints 2,340,502,633
+      skip: Total Premium and Complaints 6,834,902,575 16
+      skip: Report does not include the 279 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2023
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 26 & 33
+  2023_auto.pdf: 83 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 4,935,306,205 345
+      skip: 465 Companies with Zero complaints 1,231,835,283
+      skip: Total Premium and Complaints 4,935,306,281 345
+      skip: Report does not include 465 companies with zero complaints.
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - N o premium w as re portped dyu rin g 2023y g
+      skip: 19.1, 19.2, 19.3, 19.4 & 21.1, Column 1
+  2023_health.pdf: 48 rows  (10 skipped)
+  2023_homeowners.pdf: 46 rows  (8 skipped)
+  2023_life.pdf: 49 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,789,773,955 81
+      skip: 405 Companies with Zero Complaints 1,755,578,611
+      skip: Total Premium and Complaints 3,545,352,566 81
+      skip: Report does not include the 405 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2023
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 11 & 19
+  2024_annuity.pdf: 8 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 2,322,202,425 11
+      skip: 405 Companies with Zero Complaints 7,320,300,168
+      skip: Total Premium and Complaints 9,642,502,593 11
+      skip: Report does not include the 405 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2024
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 26 & 33
+  2024_auto.pdf: 75 rows  (8 skipped)
+  2024_health.pdf: 41 rows  (10 skipped)
+  2024_homeowners.pdf: 51 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 554,046,075 206
+      skip: 164 Companies with Zero Complaints 2,685,054,856
+      skip: Total Premium and Complaints 3,239,100,931 206
+      skip: Report does not include 164 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2024.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2024_life.pdf: 41 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,391,184,978 74
+      skip: 405 Companies with Zero Complaints 2,261,432,980
+      skip: Total Premium and Complaints 3,652,617,958 74
+      skip: Report does not include the 405 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2024
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 11 & 19
+
+Complaint-index stats:
+shape: (1, 6)
+┌────────┬──────────┬──────┬────────┬────────┬───────────┐
+│ median ┆ mean     ┆ min  ┆ max    ┆ n_null ┆ n_present │
+│ ---    ┆ ---      ┆ ---  ┆ ---    ┆ ---    ┆ ---       │
+│ f64    ┆ f64      ┆ f64  ┆ f64    ┆ u32    ┆ u32       │
+╞════════╪══════════╪══════╪════════╪════════╪═══════════╡
+│ 1.89   ┆ 5.783801 ┆ 0.02 ┆ 834.27 ┆ 734    ┆ 3726      │
+└────────┴──────────┴──────┴────────┴────────┴───────────┘
+Wrote in_complaints_company_yearly.parquet (4,460 rows)
+Wrote in_complaints_yearly.parquet (77 rows)
+
+Distinct (year × line) slices: 77
+Years: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+Lines: ['annuity', 'auto', 'health', 'homeowners', 'life']
+
+Yearly aggregate (head):
+shape: (77, 6)
+┌──────┬────────────┬──────────────────┬───────────────┬─────────────┬────────────────────┐
+│ year ┆ line       ┆ total_complaints ┆ total_premium ┆ n_companies ┆ median_index       │
+│ ---  ┆ ---        ┆ ---              ┆ ---           ┆ ---         ┆ ---                │
+│ i32  ┆ str        ┆ i64              ┆ f64           ┆ u32         ┆ f64                │
+╞══════╪════════════╪══════════════════╪═══════════════╪═════════════╪════════════════════╡
+│ 2009 ┆ annuity    ┆ 79               ┆ 2897203374    ┆ 41          ┆ 1.7149999999999999 │
+│ 2009 ┆ auto       ┆ 858              ┆ 2599754297    ┆ 129         ┆ 1.26               │
+│ 2009 ┆ health     ┆ 1504             ┆ 6972032962    ┆ 178         ┆ 1.54               │
+│ 2009 ┆ homeowners ┆ 639              ┆ 1300853092    ┆ 103         ┆ 0.9299999999999999 │
+│ 2009 ┆ life       ┆ 469              ┆ 1871228459    ┆ 142         ┆ 1.415              │
+│ 2010 ┆ annuity    ┆ 37               ┆ 1941997014    ┆ 24          ┆ 4.8                │
+│ 2010 ┆ auto       ┆ 841              ┆ 2646113589    ┆ 115         ┆ 1.19               │
+│ 2010 ┆ health     ┆ 1265             ┆ 8500702997    ┆ 135         ┆ 1.96               │
+│ 2010 ┆ homeowners ┆ 522              ┆ 1337856099    ┆ 76          ┆ 1.2650000000000001 │
+│ 2010 ┆ life       ┆ 371              ┆ 1990904981    ┆ 119         ┆ 1.455              │
+│ …    ┆ …          ┆ …                ┆ …             ┆ …           ┆ …                  │
+│ 2023 ┆ annuity    ┆ 16               ┆ 2340502633    ┆ 12          ┆ 5.91               │
+│ 2023 ┆ auto       ┆ 345              ┆ 4935306281    ┆ 83          ┆ 2.03               │
+│ 2023 ┆ health     ┆ 224              ┆ 6280565459    ┆ 48          ┆ 2.93               │
+│ 2023 ┆ homeowners ┆ 208              ┆ 2293986590    ┆ 46          ┆ 1.4449999999999998 │
+│ 2023 ┆ life       ┆ 81               ┆ 1789773955    ┆ 49          ┆ 4.08               │
+│ 2024 ┆ annuity    ┆ 11               ┆ 2322202425    ┆ 8           ┆ 3.9350000000000005 │
+│ 2024 ┆ auto       ┆ 320              ┆ 5172899465    ┆ 75          ┆ 2.585              │
+│ 2024 ┆ health     ┆ 166              ┆ 7454709547    ┆ 41          ┆ 2.95               │
+│ 2024 ┆ homeowners ┆ 206              ┆ 2685464859    ┆ 51          ┆ 1.87               │
+│ 2024 ┆ life       ┆ 74               ┆ 1391184978    ┆ 41          ┆ 4.04               │
+└──────┴────────────┴──────────────────┴───────────────┴─────────────┴────────────────────┘
+=== run completed 2026-05-04T23:38:39+00:00 ===
+
+=== run started 2026-05-04T23:39:11+00:00 ===
+Parsing 80 source files
+  2009_annuity.pdf: 41 rows  (8 skipped)
+  2009_auto.pdf: 129 rows  (12 skipped)
+  2009_health.pdf: 178 rows  (17 skipped)
+  2009_homeowners.pdf: 103 rows  (10 skipped)
+  2009_life.pdf: 142 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,871,228,459 469
+      skip: 269 Companies with Zero Complaints 500,041,816
+      skip: Total Premium and Complaints 2,371,270,275 469
+      skip: Report does not include the 269 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2009
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2010_annuity.pdf: 24 rows  (8 skipped)
+  2010_auto.pdf: 115 rows  (12 skipped)
+  2010_health.pdf: 135 rows  (15 skipped)
+  2010_homeowners.pdf: 76 rows  (9 skipped)
+  2010_life.pdf: 119 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,990,904,981 371
+      skip: 272 Companies with Zero Complaints 409,380,377
+      skip: Total Premium and Complaints 2,400,285,358 371
+      skip: Report does not include the 272 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2010
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2011_annuity.pdf: 24 rows  (8 skipped)
+  2011_auto.pdf: 126 rows  (16 skipped)
+  2011_health.pdf: 135 rows  (15 skipped)
+  2011_homeowners.pdf: 94 rows  (10 skipped)
+  2011_life.pdf: 126 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,753,917,232 379
+      skip: 264 Companies with Zero Complaints 705,952,250
+      skip: Total Premium and Complaints 2,459,869,482 379
+      skip: Report does not include the 264 companies with zero complaints
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2011
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2012_annuity.pdf: 17 rows  (8 skipped)
+  2012_auto.pdf: 117 rows  (15 skipped)
+  2012_health.pdf: 85 rows  (13 skipped)
+  2012_homeowners.pdf: 70 rows  (10 skipped)
+  2012_life.pdf: 72 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,602,015,274 154
+      skip: 315 Companies with Zero Complaints 990,149,683
+      skip: Total Premium and Complaints 2,592,164,957 154
+      skip: Report does not include the 315 companies with zero complaints
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2012
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2013_annuity.pdf: 8 rows  (8 skipped)
+  2013_auto.pdf: 96 rows  (10 skipped)
+  2013_health.pdf: 57 rows  (13 skipped)
+  2013_homeowners.pdf: 46 rows  (10 skipped)
+  2013_life.pdf: 34 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 967,239,276 67
+      skip: 348 Companies with Zero Complaints 1,639,219,574
+      skip: Total Premium and Complaints 2,606,458,850 67
+      skip: Report does not include the 348 companies with zero complaints
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported in 2013
+      skip: Premium information from Life Annual Statement Page 24, Line 1, Column 5
+  2014_annuity.xlsx: 6 rows  (9 skipped)
+  2014_auto.xlsx: 67 rows  (9 skipped)
+  2014_health.xlsx: 39 rows  (12 skipped)
+  2014_homeowners.xlsx: 28 rows  (9 skipped)
+  2014_life.xlsx: 50 rows  (10 skipped)
+  2015_annuity.pdf: 4 rows  (9 skipped)
+  2015_auto.pdf: 92 rows  (10 skipped)
+  2015_health.pdf: 70 rows  (12 skipped)
+  2015_homeowners.pdf: 46 rows  (8 skipped)
+  2015_life.pdf: 50 rows  (9 skipped)
+  2016_annuity.pdf: 8 rows  (10 skipped)
+  2016_auto.pdf: 106 rows  (11 skipped)
+  2016_health.pdf: 62 rows  (12 skipped)
+  2016_homeowners.pdf: 39 rows  (8 skipped)
+  2016_life.pdf: 61 rows  (10 skipped)
+  2017_annuity.pdf: 8 rows  (9 skipped)
+  2017_auto.pdf: 84 rows  (9 skipped)
+  2017_health.pdf: 61 rows  (12 skipped)
+  2017_homeowners.pdf: 44 rows  (8 skipped)
+  2017_life.pdf: 57 rows  (10 skipped)
+  2018_annuity.pdf: 10 rows  (9 skipped)
+  2018_auto.pdf: 87 rows  (10 skipped)
+  2018_health.pdf: 65 rows  (13 skipped)
+  2018_homeowners.pdf: 46 rows  (8 skipped)
+  2018_life.pdf: 60 rows  (10 skipped)
+  2019_annuity.pdf: 10 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,363,756,900 12
+      skip: 231 Companies with Zero Complaints $4,677,387,201
+      skip: Total Premium and Complaints $6,041,144,101 12
+      skip: Report does not include the 231 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2019
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2019_auto.pdf: 88 rows  (8 skipped)
+  2019_health.pdf: 67 rows  (10 skipped)
+  2019_homeowners.pdf: 42 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,597,235,958 115
+      skip: 167 Companies with Zero Complaints $470,912,517
+      skip: Total Premium and Complaints $2,068,148,475 115
+      skip: Report does not include 167 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2019.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2019_life.pdf: 63 rows  (10 skipped)
+  2020_annuity.pdf: 10 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 921,882,411 12
+      skip: 230 Companies with no complaints 5,070,549,468
+      skip: Total Premium and Complaints 5,992,431,879 12
+      skip: Report does not include the 230 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2020
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2020_auto.pdf: 78 rows  (8 skipped)
+  2020_health.pdf: 54 rows  (10 skipped)
+  2020_homeowners.pdf: 40 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,706,773,959 101
+      skip: 132 Companies with Zero Complaints $440,243,683
+      skip: Total Premium and Complaints $2,147,017,642 101
+      skip: Report does not include 132 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2020.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2020_life.pdf: 59 rows  (8 skipped)
+  2021_annuity.pdf: 6 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $497,695,603 7
+      skip: 236 Companies with no complaints $6,183,883,315
+      skip: Total Premium and Complaints $6,681,578,918 7
+      skip: Report does not include the 236 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2021
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2021_auto.pdf: 89 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $4,073,084,851 336
+      skip: 448 Companies with Zero complaints $1,085,881,446
+      skip: Total Premium and Complaints $5,158,966,297 336
+      skip: Report does not include 448 companies with zero complaints.
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2021
+      skip: Premium information from Property & Casualty Annual Statement Page 19,
+  2021_health.pdf: 58 rows  (10 skipped)
+  2021_homeowners.pdf: 40 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $486,038,389 156
+      skip: 179 Companies with Zero Complaints $1,819,818,801
+      skip: Total Premium and Complaints $2,305,857,190 156
+      skip: Report does not include 179 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2021.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2021_life.pdf: 56 rows  (8 skipped)
+  2022_annuity.pdf: 8 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $1,319,649,969 12
+      skip: 228 Companies with no complaints $5,899,647,657
+      skip: Total Premium and Complaints $7,219,297,626 12
+      skip: Report does not include the 228 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None- No premium was reported during 2022
+      skip: Premium information from Life Annual Statement Page 24, Line 2, Column 5
+  2022_auto.pdf: 73 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $4,242,931,770 289
+      skip: 462 Companies with Zero complaints $936,057,020
+      skip: Total Premium and Complaints $5,178,988,790 289
+      skip: Report does not include 462 companies with zero complaints.
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2022
+      skip: Premium information from Property & Casualty Annual Statement Page 19,
+  2022_health.pdf: 40 rows  (9 skipped)
+  2022_homeowners.pdf: 50 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints $2,140,559,768 147
+      skip: 167 Companies with Zero Complaints $379,277,647
+      skip: Total Premium and Complaints $2,519,837,415 147
+      skip: Report does not include 167 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - N o premium w as re portped dyu rin g 2022.y g
+      skip: Column 1
+  2022_life.pdf: 48 rows  (8 skipped)
+  2023_annuity.pdf: 12 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 4,494,399,942 16
+      skip: 279 Companies with Zero Complaints 2,340,502,633
+      skip: Total Premium and Complaints 6,834,902,575 16
+      skip: Report does not include the 279 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2023
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 26 & 33
+  2023_auto.pdf: 83 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 4,935,306,205 345
+      skip: 465 Companies with Zero complaints 1,231,835,283
+      skip: Total Premium and Complaints 4,935,306,281 345
+      skip: Report does not include 465 companies with zero complaints.
+      skip: DNC - did not calculate (premiums under $1 million)
+      skip: None - N o premium w as re portped dyu rin g 2023y g
+      skip: 19.1, 19.2, 19.3, 19.4 & 21.1, Column 1
+  2023_health.pdf: 48 rows  (10 skipped)
+  2023_homeowners.pdf: 46 rows  (8 skipped)
+  2023_life.pdf: 49 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,789,773,955 81
+      skip: 405 Companies with Zero Complaints 1,755,578,611
+      skip: Total Premium and Complaints 3,545,352,566 81
+      skip: Report does not include the 405 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2023
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 11 & 19
+  2024_annuity.pdf: 8 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 2,322,202,425 11
+      skip: 405 Companies with Zero Complaints 7,320,300,168
+      skip: Total Premium and Complaints 9,642,502,593 11
+      skip: Report does not include the 405 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2024
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 26 & 33
+  2024_auto.pdf: 75 rows  (8 skipped)
+  2024_health.pdf: 41 rows  (10 skipped)
+  2024_homeowners.pdf: 51 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 554,046,075 206
+      skip: 164 Companies with Zero Complaints 2,685,054,856
+      skip: Total Premium and Complaints 3,239,100,931 206
+      skip: Report does not include 164 companies with zero complaints
+      skip: DNC- did not calculate (premiums under $1 million)
+      skip: None - No premium was reported during 2024.
+      skip: Premium information from Property & Casualty Annual Statement Page 19, Line 4, Column 1
+  2024_life.pdf: 41 rows  (7 skipped)
+      skip: Subtotal Premium and Complaints 1,391,184,978 74
+      skip: 405 Companies with Zero Complaints 2,261,432,980
+      skip: Total Premium and Complaints 3,652,617,958 74
+      skip: Report does not include the 405 companies with zero complaints
+      skip: DNC- did not calculate (premium under $1 million)
+      skip: None- No premium was reported in 2024
+      skip: Premium information from Life Annual Statement Page 24, Col. 1, Line 11 & 19
+
+Complaint-index stats:
+shape: (1, 6)
+┌────────┬──────────┬──────┬─────────┬────────┬───────────┐
+│ median ┆ mean     ┆ min  ┆ max     ┆ n_null ┆ n_present │
+│ ---    ┆ ---      ┆ ---  ┆ ---     ┆ ---    ┆ ---       │
+│ f64    ┆ f64      ┆ f64  ┆ f64     ┆ u32    ┆ u32       │
+╞════════╪══════════╪══════╪═════════╪════════╪═══════════╡
+│ 1.92   ┆ 6.253916 ┆ 0.02 ┆ 1177.02 ┆ 763    ┆ 4089      │
+└────────┴──────────┴──────┴─────────┴────────┴───────────┘
+Wrote in_complaints_company_yearly.parquet (4,852 rows)
+Wrote in_complaints_yearly.parquet (80 rows)
+
+Distinct (year × line) slices: 80
+Years: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+Lines: ['annuity', 'auto', 'health', 'homeowners', 'life']
+
+Yearly aggregate (head):
+shape: (80, 6)
+┌──────┬────────────┬──────────────────┬───────────────┬─────────────┬────────────────────┐
+│ year ┆ line       ┆ total_complaints ┆ total_premium ┆ n_companies ┆ median_index       │
+│ ---  ┆ ---        ┆ ---              ┆ ---           ┆ ---         ┆ ---                │
+│ i32  ┆ str        ┆ i64              ┆ f64           ┆ u32         ┆ f64                │
+╞══════╪════════════╪══════════════════╪═══════════════╪═════════════╪════════════════════╡
+│ 2009 ┆ annuity    ┆ 79               ┆ 2897203374    ┆ 41          ┆ 1.7149999999999999 │
+│ 2009 ┆ auto       ┆ 858              ┆ 2599754297    ┆ 129         ┆ 1.26               │
+│ 2009 ┆ health     ┆ 1504             ┆ 6972032962    ┆ 178         ┆ 1.54               │
+│ 2009 ┆ homeowners ┆ 639              ┆ 1300853092    ┆ 103         ┆ 0.9299999999999999 │
+│ 2009 ┆ life       ┆ 469              ┆ 1871228459    ┆ 142         ┆ 1.415              │
+│ 2010 ┆ annuity    ┆ 37               ┆ 1941997014    ┆ 24          ┆ 4.8                │
+│ 2010 ┆ auto       ┆ 841              ┆ 2646113589    ┆ 115         ┆ 1.19               │
+│ 2010 ┆ health     ┆ 1265             ┆ 8500702997    ┆ 135         ┆ 1.96               │
+│ 2010 ┆ homeowners ┆ 522              ┆ 1337856099    ┆ 76          ┆ 1.2650000000000001 │
+│ 2010 ┆ life       ┆ 371              ┆ 1990904981    ┆ 119         ┆ 1.455              │
+│ …    ┆ …          ┆ …                ┆ …             ┆ …           ┆ …                  │
+│ 2023 ┆ annuity    ┆ 16               ┆ 2340502633    ┆ 12          ┆ 5.91               │
+│ 2023 ┆ auto       ┆ 345              ┆ 4935306281    ┆ 83          ┆ 2.03               │
+│ 2023 ┆ health     ┆ 224              ┆ 6280565459    ┆ 48          ┆ 2.93               │
+│ 2023 ┆ homeowners ┆ 208              ┆ 2293986590    ┆ 46          ┆ 1.4449999999999998 │
+│ 2023 ┆ life       ┆ 81               ┆ 1789773955    ┆ 49          ┆ 4.08               │
+│ 2024 ┆ annuity    ┆ 11               ┆ 2322202425    ┆ 8           ┆ 3.9350000000000005 │
+│ 2024 ┆ auto       ┆ 320              ┆ 5172899465    ┆ 75          ┆ 2.585              │
+│ 2024 ┆ health     ┆ 166              ┆ 7454709547    ┆ 41          ┆ 2.95               │
+│ 2024 ┆ homeowners ┆ 206              ┆ 2685464859    ┆ 51          ┆ 1.87               │
+│ 2024 ┆ life       ┆ 74               ┆ 1391184978    ┆ 41          ┆ 4.04               │
+└──────┴────────────┴──────────────────┴───────────────┴─────────────┴────────────────────┘
+=== run completed 2026-05-04T23:39:18+00:00 ===

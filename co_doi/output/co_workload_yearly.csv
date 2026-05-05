@@ -1,0 +1,17 @@
+fiscal_year,line,count,count_type,source_file
+2022,all_lines,3085,closed,FY2022.pdf
+2023,all_lines,5920,closed,FY2023.pdf
+2023,life_health,2620,received,FY2023.pdf
+2023,property_casualty,3300,received,FY2023.pdf
+2024,all_lines,7327,closed,FY2024.pdf
+2024,all_lines,6987,received,FY2024.pdf
+2024,health,1716,received,FY2024.pdf
+2024,homeowners,1504,received,FY2024.pdf
+2024,life_health,1929,received,FY2024.pdf
+2024,property_casualty,3829,received,FY2024.pdf
+2025,all_lines,5224,closed,FY2025.pdf
+2025,all_lines,7792,received_with_inquiries,FY2025.pdf
+2025,health,1313,received_with_inquiries,FY2025.pdf
+2025,homeowners,1463,received_with_inquiries,FY2025.pdf
+2025,life_health,1511,received_with_inquiries,FY2025.pdf
+2025,property_casualty,3505,received_with_inquiries,FY2025.pdf

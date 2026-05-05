@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "naic_idrr",
+      "name": "NAIC IDRR — state-regulator consumer complaints",
+      "short_name": "NAIC IDRR",
+      "category": "regulator_finding",
+      "jurisdiction": ["US"],
+      "year_field_label": "Calendar year",
+      "y_axis_label": "Consumer complaints (NAIC IDRR)",
+      "caveat_short": "Self-reported workload counts each state insurance department submits to NAIC. 'Complaints' is a *received* count, not a closed/confirmed disposition. Coverage 1998–2022; 2003 unparseable from the source PDF (multi-column layout). Inquiries are pre-complaint research questions, not bad-behavior signals — included for context.",
+      "provenance_url": "naic_idrr/PROVENANCE.md",
+      "parquet": "naic_idrr/output/naic_idrr_complaints_state_yearly.parquet",
+      "x_field": "year",
+      "group_field": "jurisdiction",
+      "group_field_label": "State / jurisdiction",
+      "metrics": [
+        {"id": "complaints", "label": "Complaints received", "column": "complaints"},
+        {"id": "inquiries", "label": "Inquiries received", "column": "inquiries"}
+      ],
+      "default_metric": "complaints",
+      "national_rollup": true,
+      "national_rollup_label": "National total (sum of all jurisdictions)",
+      "national_rollup_per_state_label": "Per-state",
+      "default_groups": ["CA", "NY", "FL", "TX", "IL", "PA", "MD", "MI", "OH", "LA"],
+      "group_presets": [
+        {"label": "Top 10 by 2022 complaints", "groups": ["CA", "NY", "FL", "TX", "IL", "PA", "MD", "MI", "OH", "LA"]},
+        {"label": "All 50 + DC", "exclude_groups": ["PR", "VI", "GU", "MP", "AS"]},
+        {"label": "All + territories", "all": true},
+        {"label": "None", "groups": []}
+      ]
+    }
+  ]
+}

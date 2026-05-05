@@ -1,0 +1,64 @@
+
+=== run started 2026-05-04T19:42:55+00:00 ===
+
+[ifca]
+  ifca 2025: 1439 notices from 53 pages
+  ifca 2026: 502 notices from 16 pages
+  ifca 2025: seq 0001..1439 (1439 rows, expected 1439, missing 0)
+  ifca 2026: seq 0001..0502 (502 rows, expected 502, missing 0)
+Wrote wa_ifca_notices.parquet (1941 rows)
+Wrote wa_ifca_notices_yearly.parquet (26 rows)
+shape: (26, 3)
+┌──────┬────────────┬───────┐
+│ year ┆ line       ┆ count │
+│ ---  ┆ ---        ┆ ---   │
+│ i32  ┆ str        ┆ u32   │
+╞══════╪════════════╪═══════╡
+│ 2025 ┆ ALL        ┆ 1439  │
+│ 2025 ┆ Auto       ┆ 235   │
+│ 2025 ┆ Health     ┆ 19    │
+│ 2025 ┆ Homeowners ┆ 263   │
+│ 2025 ┆ Liability  ┆ 113   │
+│ 2025 ┆ Life       ┆ 9     │
+│ 2025 ┆ Other      ┆ 174   │
+│ 2025 ┆ PIP        ┆ 49    │
+│ 2025 ┆ Property   ┆ 272   │
+│ 2025 ┆ Title      ┆ 13    │
+│ 2025 ┆ UIM        ┆ 215   │
+│ 2025 ┆ UM         ┆ 32    │
+│ 2025 ┆ Unknown    ┆ 45    │
+│ 2026 ┆ ALL        ┆ 502   │
+│ 2026 ┆ Auto       ┆ 76    │
+│ 2026 ┆ Health     ┆ 2     │
+│ 2026 ┆ Homeowners ┆ 124   │
+│ 2026 ┆ Liability  ┆ 56    │
+│ 2026 ┆ Life       ┆ 1     │
+│ 2026 ┆ Other      ┆ 61    │
+│ 2026 ┆ PIP        ┆ 19    │
+│ 2026 ┆ Property   ┆ 45    │
+│ 2026 ┆ Title      ┆ 9     │
+│ 2026 ┆ UIM        ┆ 92    │
+│ 2026 ┆ UM         ┆ 8     │
+│ 2026 ┆ Unknown    ┆ 9     │
+└──────┴────────────┴───────┘
+
+[annual reports]
+  AR 2020: complaints=6678, recoveries_M=45.4
+  AR 2021: complaints=7705, recoveries_M=15.7
+  AR 2022: complaints=8603, recoveries_M=26.9
+  AR 2023: complaints=9441, recoveries_M=27.4
+  AR 2024: complaints=10127, recoveries_M=27.4
+Wrote wa_complaints_state_yearly.parquet (5 rows)
+shape: (5, 3)
+┌──────┬──────────────────┬─────────────────────┐
+│ year ┆ total_complaints ┆ recoveries_millions │
+│ ---  ┆ ---              ┆ ---                 │
+│ i64  ┆ i64              ┆ f64                 │
+╞══════╪══════════════════╪═════════════════════╡
+│ 2020 ┆ 6678             ┆ 45.4                │
+│ 2021 ┆ 7705             ┆ 15.7                │
+│ 2022 ┆ 8603             ┆ 26.9                │
+│ 2023 ┆ 9441             ┆ 27.4                │
+│ 2024 ┆ 10127            ┆ 27.4                │
+└──────┴──────────────────┴─────────────────────┘
+=== run completed 2026-05-04T19:43:11+00:00 ===

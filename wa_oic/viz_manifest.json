@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "wa_ifca",
+      "name": "WA IFCA — pre-suit notices by line",
+      "short_name": "WA IFCA",
+      "category": "plaintiff_allegation",
+      "jurisdiction": ["WA"],
+      "year_field_label": "Year",
+      "y_axis_label": "IFCA notices (WA)",
+      "caveat_short": "IFCA notices are PLAINTIFF-SIDE 20-day pre-suit notices under RCW 48.30.015 — NOT regulator findings. Coverage is 2025–2026 only (older PDFs were removed by the OIC). 2026 is partial. Counts measure litigation pressure under Washington's Insurance Fair Conduct Act specifically. Health insurance is excluded by statute.",
+      "provenance_url": "wa_oic/PROVENANCE.md",
+      "parquet": "wa_oic/output/wa_ifca_notices_yearly.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line of insurance",
+      "metrics": [
+        {"id": "count", "label": "IFCA notices", "column": "count"}
+      ],
+      "default_metric": "count",
+      "default_groups": ["Auto", "Homeowners", "UIM", "Property", "Liability"],
+      "group_presets": [
+        {"label": "Auto-related", "groups": ["Auto", "UIM", "UM", "PIP"]},
+        {"label": "P&C-flavored", "groups": ["Property", "Homeowners", "Liability", "Title"]},
+        {"label": "All lines", "exclude_groups": ["ALL"]},
+        {"label": "Headline (ALL)", "groups": ["ALL"]}
+      ],
+      "partial_year": 2026
+    },
+    {
+      "id": "wa_oic_ar",
+      "name": "WA OIC — Annual Report consumer complaints",
+      "short_name": "WA OIC AR",
+      "category": "regulator_finding",
+      "jurisdiction": ["WA"],
+      "year_field_label": "Year",
+      "y_axis_label": "Consumer complaints (WA OIC)",
+      "caveat_short": "OIC's annual workload count of consumer complaints processed. All lines combined — no per-line breakdown is published. Recoveries reflect dollars OIC's intervention returned to consumers in claim adjustments and refunds. Coverage is 2020–2024 (5 years).",
+      "provenance_url": "wa_oic/PROVENANCE.md",
+      "parquet": "wa_oic/output/wa_complaints_state_yearly.parquet",
+      "x_field": "year",
+      "group_field": null,
+      "metrics": [
+        {"id": "total_complaints", "label": "Total complaints", "column": "total_complaints"},
+        {"id": "recoveries_millions", "label": "Consumer $ recovered ($M)", "column": "recoveries_millions"}
+      ],
+      "default_metric": "total_complaints"
+    }
+  ]
+}

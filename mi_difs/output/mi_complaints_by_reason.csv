@@ -1,0 +1,37 @@
+state,year,reason_category,entity_type,count,pct_within_entity
+MI,2022,Claim Handling,hmo,417,0.76
+MI,2022,Claim Handling,insurance_company,2401,0.43
+MI,2022,Claim Handling,other,1,0.02
+MI,2022,Customer Service,hmo,92,0.17
+MI,2022,Customer Service,insurance_company,2659,0.47
+MI,2022,Customer Service,other,2,0.03
+MI,2022,Marketing & Sales,hmo,13,0.02
+MI,2022,Marketing & Sales,insurance_company,85,0.02
+MI,2022,Marketing & Sales,other,60,0.95
+MI,2022,Underwriting,hmo,29,0.05
+MI,2022,Underwriting,insurance_company,454,0.08
+MI,2022,Underwriting,other,0,0.0
+MI,2023,Claim Handling,hmo,516,0.69
+MI,2023,Claim Handling,insurance_company,2665,0.63
+MI,2023,Claim Handling,other,1,0.01
+MI,2023,Customer Service,hmo,174,0.23
+MI,2023,Customer Service,insurance_company,903,0.21
+MI,2023,Customer Service,other,4,0.04
+MI,2023,Marketing & Sales,hmo,25,0.03
+MI,2023,Marketing & Sales,insurance_company,107,0.03
+MI,2023,Marketing & Sales,other,96,0.92
+MI,2023,Underwriting,hmo,31,0.04
+MI,2023,Underwriting,insurance_company,578,0.14
+MI,2023,Underwriting,other,0,0.0
+MI,2024,Claim Handling,hmo,498,0.69
+MI,2024,Claim Handling,insurance_company,3124,0.6
+MI,2024,Claim Handling,other,1,0.01
+MI,2024,Customer Service,hmo,170,0.24
+MI,2024,Customer Service,insurance_company,1000,0.19
+MI,2024,Customer Service,other,0,0.0
+MI,2024,Marketing & Sales,hmo,30,0.04
+MI,2024,Marketing & Sales,insurance_company,158,0.03
+MI,2024,Marketing & Sales,other,106,0.99
+MI,2024,Underwriting,hmo,24,0.03
+MI,2024,Underwriting,insurance_company,890,0.17
+MI,2024,Underwriting,other,0,0.0

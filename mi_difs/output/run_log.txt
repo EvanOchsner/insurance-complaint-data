@@ -1,0 +1,46 @@
+
+### 2026-05-05T14:27Z — parse run
+  -- company_automobile_2022.html: 100 company rows
+  -- company_homeowners_2022.html: 63 company rows
+  -- company_life_2022.html: 72 company rows
+  -- company_accident_health_2022.html: 74 company rows
+  -- company_annuity_2022.html: 30 company rows
+  -- stats_total_2022.html: 4 total-complaint rows
+  -- stats_line_of_coverage_2022.html: 7 line-of-coverage rows
+  -- stats_complaint_reason_2022.html: 12 reason rows
+  -- company_automobile_2023.html: 85 company rows
+  -- company_homeowners_2023.html: 72 company rows
+  -- company_life_2023.html: 82 company rows
+  -- company_accident_health_2023.html: 72 company rows
+  -- company_annuity_2023.html: 29 company rows
+  -- stats_total_2023.html: 4 total-complaint rows
+  -- stats_line_of_coverage_2023.html: 7 line-of-coverage rows
+  -- stats_complaint_reason_2023.html: 12 reason rows
+  -- company_automobile_2024.html: 82 company rows
+  -- company_homeowners_2024.html: 66 company rows
+  -- company_life_2024.html: 75 company rows
+  -- company_accident_health_2024.html: 96 company rows
+  -- company_annuity_2024.html: 35 company rows
+  -- stats_total_2024.html: 4 total-complaint rows
+  -- stats_line_of_coverage_2024.html: 7 line-of-coverage rows
+  -- stats_complaint_reason_2024.html: 12 reason rows
+  wrote mi_complaints_company_yearly: 1033 rows
+  wrote mi_complaints_yearly: 21 rows
+  wrote mi_complaints_total_yearly: 12 rows
+  wrote mi_complaints_by_reason: 36 rows
+  cross-check: per-line company-complaint sums vs Line-of-Coverage totals
+     2022 accident_health: company-sum=906 line-of-coverage=1456 diff=550
+     2022 annuity: company-sum=43 line-of-coverage=48 diff=5
+     2022 automobile: company-sum=3541 line-of-coverage=3646 diff=105
+     2022 homeowners: company-sum=482 line-of-coverage=496 diff=14
+     2022 life: company-sum=203 line-of-coverage=224 diff=21
+     2023 accident_health: company-sum=941 line-of-coverage=1649 diff=708
+     2023 annuity: company-sum=57 line-of-coverage=63 diff=6
+     2023 automobile: company-sum=1647 line-of-coverage=1740 diff=93
+     2023 homeowners: company-sum=768 line-of-coverage=778 diff=10
+     2023 life: company-sum=249 line-of-coverage=299 diff=50
+     2024 accident_health: company-sum=1933 line-of-coverage=1991 diff=58
+     2024 annuity: company-sum=72 line-of-coverage=80 diff=8
+     2024 automobile: company-sum=1775 line-of-coverage=1864 diff=89
+     2024 homeowners: company-sum=906 line-of-coverage=925 diff=19
+     2024 life: company-sum=254 line-of-coverage=316 diff=62

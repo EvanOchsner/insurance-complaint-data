@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "ks_kid",
+      "name": "KS KID — per-company complaint index, by line",
+      "short_name": "KS KID",
+      "category": "regulator_complaint_index",
+      "jurisdiction": ["KS"],
+      "year_field_label": "Data year",
+      "y_axis_label": "Kansas complaint index",
+      "caveat_short": "NAIC-tradition complaint index = (share of complaints) / (share of premium), normalized so 1.0 = parity. Different metric class than TX `Confirmed`/CT `against_insurer` counts. Includes top-20 premium writers regardless of complaint count, so per-company medians are closer to ~1.0 than IN's (which excludes zero-complaint companies).",
+      "provenance_url": "ks_kid/PROVENANCE.md",
+      "parquet": "ks_kid/output/ks_complaints_yearly.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "median_index", "label": "Median complaint index", "column": "median_index"},
+        {"id": "total_complaints", "label": "Total complaints (top-20 premium writers)", "column": "total_complaints"},
+        {"id": "n_companies", "label": "Number of companies in report", "column": "n_companies"},
+        {"id": "market_share_covered", "label": "Market share covered by the report (fraction)", "column": "market_share_covered"}
+      ],
+      "default_metric": "median_index",
+      "default_groups": ["auto", "health", "homeowners", "life", "annuity", "long_term_care"],
+      "group_presets": [
+        {"label": "All lines", "all": true}
+      ]
+    }
+  ]
+}

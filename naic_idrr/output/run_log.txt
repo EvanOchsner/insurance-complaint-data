@@ -1,0 +1,238 @@
+
+=== 2026-05-04T22:21:37+00:00 parse run ===
+  -- 1986.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1987.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1988.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1989.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1990.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1991.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1992.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1993.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  ok 1994.pdf: data_year=1994 page=57 rows=53 (skipped 2 empty/territory) sum_complaints=548,537 sum_inquiries=3,060,067
+     vs PDF Total row: complaints=444,867 (Δ=103670, WARN) inquiries=3,173,406 (Δ=113339)
+  -- 1995.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1996.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1997.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  ok 1998.pdf: data_year=1998 page=61 rows=53 (skipped 2 empty/territory) sum_complaints=403,815 sum_inquiries=3,548,071
+     vs PDF Total row: complaints=86 (Δ=403729, WARN) inquiries=23 (Δ=3548048)
+  ok 1999.pdf: data_year=1999 page=61 rows=53 (skipped 2 empty/territory) sum_complaints=438,481 sum_inquiries=3,263,048
+     vs PDF Total row: complaints=81 (Δ=438400, WARN) inquiries=19 (Δ=3263029)
+  ok 2000.pdf: data_year=2000 page=63 rows=52 (skipped 3 empty/territory) sum_complaints=426,566 sum_inquiries=3,016,179
+     vs PDF Total row: complaints=82 (Δ=426484, WARN) inquiries=170 (Δ=3016009)
+  ok 2001.pdf: data_year=2001 page=63 rows=51 (skipped 4 empty/territory) sum_complaints=469,908 sum_inquiries=3,095,206
+     vs PDF Total row: complaints=82 (Δ=469826, WARN) inquiries=170 (Δ=3095036)
+  ok 2002.pdf: data_year=2002 page=63 rows=51 (skipped 4 empty/territory) sum_complaints=492,600 sum_inquiries=3,706,393
+     vs PDF Total row: complaints=83 (Δ=492517, WARN) inquiries=170 (Δ=3706223)
+  ok 2003.pdf: data_year=2003 page=6 rows=0 (skipped 50 empty/territory) sum_complaints=0 sum_inquiries=0
+  ok 2004.pdf: data_year=2004 page=70 rows=52 (skipped 3 empty/territory) sum_complaints=474,846 sum_inquiries=3,218,516
+     vs PDF Total row: complaints=474,846 (Δ=0, ok) inquiries=3,218,516 (Δ=0)
+  ok 2005.pdf: data_year=2005 page=72 rows=52 (skipped 3 empty/territory) sum_complaints=422,260 sum_inquiries=2,476,233
+     vs PDF Total row: complaints=422,260 (Δ=0, ok) inquiries=2,476,233 (Δ=0)
+  ok 2006.pdf: data_year=2006 page=73 rows=52 (skipped 3 empty/territory) sum_complaints=393,654 sum_inquiries=2,562,064
+     vs PDF Total row: complaints=393,654 (Δ=0, ok) inquiries=2,562,064 (Δ=0)
+  ok 2007.pdf: data_year=2007 page=71 rows=52 (skipped 4 empty/territory) sum_complaints=371,444 sum_inquiries=2,351,686
+     vs PDF Total row: complaints=371,444 (Δ=0, ok) inquiries=2,351,686 (Δ=0)
+  ok 2008.pdf: data_year=2008 page=72 rows=52 (skipped 4 empty/territory) sum_complaints=337,327 sum_inquiries=2,169,052
+     vs PDF Total row: complaints=337,327 (Δ=0, ok) inquiries=2,169,052 (Δ=0)
+  ok 2009.pdf: data_year=2009 page=72 rows=53 (skipped 3 empty/territory) sum_complaints=322,872 sum_inquiries=2,362,588
+     vs PDF Total row: complaints=322,872 (Δ=0, ok) inquiries=2,362,588 (Δ=0)
+  ok 2010_vol12.pdf: data_year=2010 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=304,455 sum_inquiries=2,141,912
+     vs PDF Total row: complaints=304,455 (Δ=0, ok) inquiries=2,141,912 (Δ=0)
+  ok 2011_vol12.pdf: data_year=2011 page=66 rows=53 (skipped 3 empty/territory) sum_complaints=283,280 sum_inquiries=2,112,800
+     vs PDF Total row: complaints=283,280 (Δ=0, ok) inquiries=2,112,800 (Δ=0)
+  ok 2012_vol12.pdf: data_year=2012 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=270,979 sum_inquiries=2,300,399
+     vs PDF Total row: complaints=270,979 (Δ=0, ok) inquiries=2,300,399 (Δ=0)
+  ok 2013_vol12.pdf: data_year=2013 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=267,711 sum_inquiries=2,071,301
+     vs PDF Total row: complaints=267,711 (Δ=0, ok) inquiries=2,071,301 (Δ=0)
+  ok 2014.pdf: data_year=2014 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=279,980 sum_inquiries=1,937,653
+     vs PDF Total row: complaints=279,980 (Δ=0, ok) inquiries=1,937,653 (Δ=0)
+  ok 2015.pdf: data_year=2015 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=299,625 sum_inquiries=1,878,057
+     vs PDF Total row: complaints=299,625 (Δ=0, ok) inquiries=1,878,057 (Δ=0)
+  ok 2016.pdf: data_year=2016 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=305,420 sum_inquiries=1,878,753
+     vs PDF Total row: complaints=305,420 (Δ=0, ok) inquiries=1,878,753 (Δ=0)
+  ok 2017.pdf: data_year=2017 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=290,813 sum_inquiries=1,727,317
+     vs PDF Total row: complaints=290,813 (Δ=0, ok) inquiries=1,727,317 (Δ=0)
+  ok 2018.pdf: data_year=2018 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=287,641 sum_inquiries=1,632,612
+     vs PDF Total row: complaints=287,641 (Δ=0, ok) inquiries=1,632,612 (Δ=0)
+  ok 2019.pdf: data_year=2019 page=64 rows=51 (skipped 5 empty/territory) sum_complaints=270,844 sum_inquiries=1,561,738
+     vs PDF Total row: complaints=270,844 (Δ=0, ok) inquiries=1,561,738 (Δ=0)
+  ok 2020.pdf: data_year=2020 page=64 rows=56 (skipped 0 empty/territory) sum_complaints=246,900 sum_inquiries=1,322,358
+     vs PDF Total row: complaints=246,900 (Δ=0, ok) inquiries=1,322,358 (Δ=0)
+  ok 2021.pdf: data_year=2021 page=64 rows=56 (skipped 0 empty/territory) sum_complaints=259,345 sum_inquiries=1,528,862
+     vs PDF Total row: complaints=259,345 (Δ=0, ok) inquiries=1,528,862 (Δ=0)
+  ok 2022.pdf: data_year=2022 page=63 rows=53 (skipped 3 empty/territory) sum_complaints=282,567 sum_inquiries=1,516,175
+     vs PDF Total row: complaints=282,567 (Δ=0, ok) inquiries=1,516,175 (Δ=0)
+  ?? 2023.pdf: title says data year=2022 but index says 2023 (NAIC IDRR is published in year N+1 with year-N data; using title year)
+  ok 2023.pdf: data_year=2022 page=63 rows=53 (skipped 3 empty/territory) sum_complaints=282,567 sum_inquiries=1,516,175
+     vs PDF Total row: complaints=282,567 (Δ=0, ok) inquiries=1,516,175 (Δ=0)
+  -- 2023.pdf: data_year=2022 already seen, skipping duplicate
+  wrote naic_idrr_complaints_state_yearly.parquet + naic_idrr_complaints_state_yearly.csv: 1314 rows, 25 years (1994-2022), 56 jurisdictions
+  skipped 12 PDFs: 1986.pdf, 1987.pdf, 1988.pdf, 1989.pdf, 1990.pdf, 1991.pdf, 1992.pdf, 1993.pdf, 1995.pdf, 1996.pdf, 1997.pdf, 2003.pdf
+
+=== 2026-05-04T22:25:25+00:00 parse run ===
+  -- 1986.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1987.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1988.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1989.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1990.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1991.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1992.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1993.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  ok 1994.pdf: data_year=1994 page=57 rows=53 (skipped 2 empty/territory) sum_complaints=548,537 sum_inquiries=3,060,067
+     vs PDF Total row: complaints=444,867 (Δ=103670, WARN) inquiries=3,173,406 (Δ=113339)
+  ok 1995.pdf: data_year=1995 page=58 rows=32 (skipped 0 empty/territory) sum_complaints=211,558 sum_inquiries=2,225,379
+     vs PDF Total row: complaints=372,765 (Δ=161207, WARN) inquiries=3,447,866 (Δ=1222487)
+  -- 1996.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1997.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  ok 1998.pdf: data_year=1998 page=61 rows=53 (skipped 2 empty/territory) sum_complaints=403,815 sum_inquiries=3,548,071
+     vs PDF Total row: complaints=405,323 (Δ=1508, ok) inquiries=3,546,563 (Δ=1508)
+  ok 1999.pdf: data_year=1999 page=61 rows=53 (skipped 2 empty/territory) sum_complaints=438,481 sum_inquiries=3,263,048
+     vs PDF Total row: complaints=448,169 (Δ=9688, WARN) inquiries=3,263,048 (Δ=0)
+  ok 2000.pdf: data_year=2000 page=63 rows=52 (skipped 3 empty/territory) sum_complaints=426,566 sum_inquiries=3,016,179
+     vs PDF Total row: complaints=426,566 (Δ=0, ok) inquiries=3,016,179 (Δ=0)
+  ok 2001.pdf: data_year=2001 page=63 rows=51 (skipped 4 empty/territory) sum_complaints=469,908 sum_inquiries=3,095,206
+     vs PDF Total row: complaints=469,908 (Δ=0, ok) inquiries=3,095,206 (Δ=0)
+  ok 2002.pdf: data_year=2002 page=63 rows=51 (skipped 4 empty/territory) sum_complaints=492,600 sum_inquiries=3,706,393
+     vs PDF Total row: complaints=496,272 (Δ=3672, ok) inquiries=3,702,721 (Δ=3672)
+  ok 2003.pdf: data_year=2003 page=6 rows=0 (skipped 50 empty/territory) sum_complaints=0 sum_inquiries=0
+  ok 2004.pdf: data_year=2004 page=70 rows=52 (skipped 3 empty/territory) sum_complaints=474,846 sum_inquiries=3,218,516
+     vs PDF Total row: complaints=474,846 (Δ=0, ok) inquiries=3,218,516 (Δ=0)
+  ok 2005.pdf: data_year=2005 page=72 rows=52 (skipped 3 empty/territory) sum_complaints=422,260 sum_inquiries=2,476,233
+     vs PDF Total row: complaints=422,260 (Δ=0, ok) inquiries=2,476,233 (Δ=0)
+  ok 2006.pdf: data_year=2006 page=73 rows=52 (skipped 3 empty/territory) sum_complaints=393,654 sum_inquiries=2,562,064
+     vs PDF Total row: complaints=393,654 (Δ=0, ok) inquiries=2,562,064 (Δ=0)
+  ok 2007.pdf: data_year=2007 page=71 rows=52 (skipped 4 empty/territory) sum_complaints=371,444 sum_inquiries=2,351,686
+     vs PDF Total row: complaints=371,444 (Δ=0, ok) inquiries=2,351,686 (Δ=0)
+  ok 2008.pdf: data_year=2008 page=72 rows=52 (skipped 4 empty/territory) sum_complaints=337,327 sum_inquiries=2,169,052
+     vs PDF Total row: complaints=337,327 (Δ=0, ok) inquiries=2,169,052 (Δ=0)
+  ok 2009.pdf: data_year=2009 page=72 rows=53 (skipped 3 empty/territory) sum_complaints=322,872 sum_inquiries=2,362,588
+     vs PDF Total row: complaints=322,872 (Δ=0, ok) inquiries=2,362,588 (Δ=0)
+  ok 2010_vol12.pdf: data_year=2010 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=304,455 sum_inquiries=2,141,912
+     vs PDF Total row: complaints=304,455 (Δ=0, ok) inquiries=2,141,912 (Δ=0)
+  ok 2011_vol12.pdf: data_year=2011 page=66 rows=53 (skipped 3 empty/territory) sum_complaints=283,280 sum_inquiries=2,112,800
+     vs PDF Total row: complaints=283,280 (Δ=0, ok) inquiries=2,112,800 (Δ=0)
+  ok 2012_vol12.pdf: data_year=2012 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=270,979 sum_inquiries=2,300,399
+     vs PDF Total row: complaints=270,979 (Δ=0, ok) inquiries=2,300,399 (Δ=0)
+  ok 2013_vol12.pdf: data_year=2013 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=267,711 sum_inquiries=2,071,301
+     vs PDF Total row: complaints=267,711 (Δ=0, ok) inquiries=2,071,301 (Δ=0)
+  ok 2014.pdf: data_year=2014 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=279,980 sum_inquiries=1,937,653
+     vs PDF Total row: complaints=279,980 (Δ=0, ok) inquiries=1,937,653 (Δ=0)
+  ok 2015.pdf: data_year=2015 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=299,625 sum_inquiries=1,878,057
+     vs PDF Total row: complaints=299,625 (Δ=0, ok) inquiries=1,878,057 (Δ=0)
+  ok 2016.pdf: data_year=2016 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=305,420 sum_inquiries=1,878,753
+     vs PDF Total row: complaints=305,420 (Δ=0, ok) inquiries=1,878,753 (Δ=0)
+  ok 2017.pdf: data_year=2017 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=290,813 sum_inquiries=1,727,317
+     vs PDF Total row: complaints=290,813 (Δ=0, ok) inquiries=1,727,317 (Δ=0)
+  ok 2018.pdf: data_year=2018 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=287,641 sum_inquiries=1,632,612
+     vs PDF Total row: complaints=287,641 (Δ=0, ok) inquiries=1,632,612 (Δ=0)
+  ok 2019.pdf: data_year=2019 page=64 rows=51 (skipped 5 empty/territory) sum_complaints=270,844 sum_inquiries=1,561,738
+     vs PDF Total row: complaints=270,844 (Δ=0, ok) inquiries=1,561,738 (Δ=0)
+  ok 2020.pdf: data_year=2020 page=64 rows=56 (skipped 0 empty/territory) sum_complaints=246,900 sum_inquiries=1,322,358
+     vs PDF Total row: complaints=246,900 (Δ=0, ok) inquiries=1,322,358 (Δ=0)
+  ok 2021.pdf: data_year=2021 page=64 rows=56 (skipped 0 empty/territory) sum_complaints=259,345 sum_inquiries=1,528,862
+     vs PDF Total row: complaints=259,345 (Δ=0, ok) inquiries=1,528,862 (Δ=0)
+  ok 2022.pdf: data_year=2022 page=63 rows=53 (skipped 3 empty/territory) sum_complaints=282,567 sum_inquiries=1,516,175
+     vs PDF Total row: complaints=282,567 (Δ=0, ok) inquiries=1,516,175 (Δ=0)
+  ?? 2023.pdf: title says data year=2022 but index says 2023 (NAIC IDRR is published in year N+1 with year-N data; using title year)
+  ok 2023.pdf: data_year=2022 page=63 rows=53 (skipped 3 empty/territory) sum_complaints=282,567 sum_inquiries=1,516,175
+     vs PDF Total row: complaints=282,567 (Δ=0, ok) inquiries=1,516,175 (Δ=0)
+  -- 2023.pdf: data_year=2022 already seen, skipping duplicate
+  wrote naic_idrr_complaints_state_yearly.parquet + naic_idrr_complaints_state_yearly.csv: 1346 rows, 26 years (1994-2022), 56 jurisdictions
+  skipped 11 PDFs: 1986.pdf, 1987.pdf, 1988.pdf, 1989.pdf, 1990.pdf, 1991.pdf, 1992.pdf, 1993.pdf, 1996.pdf, 1997.pdf, 2003.pdf
+
+=== 2026-05-04T22:28:08+00:00 parse run ===
+  -- 1986.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1987.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1988.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1989.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1990.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1991.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1992.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1993.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  ok 1994.pdf: data_year=1994 page=57 rows=53 (skipped 2 empty/territory) sum_complaints=548,537 sum_inquiries=3,060,067
+     vs PDF Total row: complaints=444,867 (Δ=103670, WARN) inquiries=3,173,406 (Δ=113339)
+     XX rejecting 1994.pdf year=1994: sum-vs-Total mismatch is 23.3% > 5%; data unreliable
+  ok 1995.pdf: data_year=1995 page=58 rows=32 (skipped 0 empty/territory) sum_complaints=211,558 sum_inquiries=2,225,379
+     vs PDF Total row: complaints=372,765 (Δ=161207, WARN) inquiries=3,447,866 (Δ=1222487)
+     XX rejecting 1995.pdf year=1995: sum-vs-Total mismatch is 43.2% > 5%; data unreliable
+  -- 1996.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  -- 1997.pdf: no Consumer Complaints/Inquiries table page found (likely scanned/OCR-broken; skipping)
+  ok 1998.pdf: data_year=1998 page=61 rows=53 (skipped 2 empty/territory) sum_complaints=403,815 sum_inquiries=3,548,071
+     vs PDF Total row: complaints=405,323 (Δ=1508, ok) inquiries=3,546,563 (Δ=1508)
+  ok 1999.pdf: data_year=1999 page=61 rows=53 (skipped 2 empty/territory) sum_complaints=438,481 sum_inquiries=3,263,048
+     vs PDF Total row: complaints=448,169 (Δ=9688, ok) inquiries=3,263,048 (Δ=0)
+  ok 2000.pdf: data_year=2000 page=63 rows=52 (skipped 3 empty/territory) sum_complaints=426,566 sum_inquiries=3,016,179
+     vs PDF Total row: complaints=426,566 (Δ=0, ok) inquiries=3,016,179 (Δ=0)
+  ok 2001.pdf: data_year=2001 page=63 rows=51 (skipped 4 empty/territory) sum_complaints=469,908 sum_inquiries=3,095,206
+     vs PDF Total row: complaints=469,908 (Δ=0, ok) inquiries=3,095,206 (Δ=0)
+  ok 2002.pdf: data_year=2002 page=63 rows=51 (skipped 4 empty/territory) sum_complaints=492,600 sum_inquiries=3,706,393
+     vs PDF Total row: complaints=496,272 (Δ=3672, ok) inquiries=3,702,721 (Δ=3672)
+  ok 2003.pdf: data_year=2003 page=6 rows=0 (skipped 50 empty/territory) sum_complaints=0 sum_inquiries=0
+  ok 2004.pdf: data_year=2004 page=70 rows=52 (skipped 3 empty/territory) sum_complaints=474,846 sum_inquiries=3,218,516
+     vs PDF Total row: complaints=474,846 (Δ=0, ok) inquiries=3,218,516 (Δ=0)
+  ok 2005.pdf: data_year=2005 page=72 rows=52 (skipped 3 empty/territory) sum_complaints=422,260 sum_inquiries=2,476,233
+     vs PDF Total row: complaints=422,260 (Δ=0, ok) inquiries=2,476,233 (Δ=0)
+  ok 2006.pdf: data_year=2006 page=73 rows=52 (skipped 3 empty/territory) sum_complaints=393,654 sum_inquiries=2,562,064
+     vs PDF Total row: complaints=393,654 (Δ=0, ok) inquiries=2,562,064 (Δ=0)
+  ok 2007.pdf: data_year=2007 page=71 rows=52 (skipped 4 empty/territory) sum_complaints=371,444 sum_inquiries=2,351,686
+     vs PDF Total row: complaints=371,444 (Δ=0, ok) inquiries=2,351,686 (Δ=0)
+  ok 2008.pdf: data_year=2008 page=72 rows=52 (skipped 4 empty/territory) sum_complaints=337,327 sum_inquiries=2,169,052
+     vs PDF Total row: complaints=337,327 (Δ=0, ok) inquiries=2,169,052 (Δ=0)
+  ok 2009.pdf: data_year=2009 page=72 rows=53 (skipped 3 empty/territory) sum_complaints=322,872 sum_inquiries=2,362,588
+     vs PDF Total row: complaints=322,872 (Δ=0, ok) inquiries=2,362,588 (Δ=0)
+  ok 2010_vol12.pdf: data_year=2010 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=304,455 sum_inquiries=2,141,912
+     vs PDF Total row: complaints=304,455 (Δ=0, ok) inquiries=2,141,912 (Δ=0)
+  ok 2011_vol12.pdf: data_year=2011 page=66 rows=53 (skipped 3 empty/territory) sum_complaints=283,280 sum_inquiries=2,112,800
+     vs PDF Total row: complaints=283,280 (Δ=0, ok) inquiries=2,112,800 (Δ=0)
+  ok 2012_vol12.pdf: data_year=2012 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=270,979 sum_inquiries=2,300,399
+     vs PDF Total row: complaints=270,979 (Δ=0, ok) inquiries=2,300,399 (Δ=0)
+  ok 2013_vol12.pdf: data_year=2013 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=267,711 sum_inquiries=2,071,301
+     vs PDF Total row: complaints=267,711 (Δ=0, ok) inquiries=2,071,301 (Δ=0)
+  ok 2014.pdf: data_year=2014 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=279,980 sum_inquiries=1,937,653
+     vs PDF Total row: complaints=279,980 (Δ=0, ok) inquiries=1,937,653 (Δ=0)
+  ok 2015.pdf: data_year=2015 page=66 rows=52 (skipped 4 empty/territory) sum_complaints=299,625 sum_inquiries=1,878,057
+     vs PDF Total row: complaints=299,625 (Δ=0, ok) inquiries=1,878,057 (Δ=0)
+  ok 2016.pdf: data_year=2016 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=305,420 sum_inquiries=1,878,753
+     vs PDF Total row: complaints=305,420 (Δ=0, ok) inquiries=1,878,753 (Δ=0)
+  ok 2017.pdf: data_year=2017 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=290,813 sum_inquiries=1,727,317
+     vs PDF Total row: complaints=290,813 (Δ=0, ok) inquiries=1,727,317 (Δ=0)
+  ok 2018.pdf: data_year=2018 page=64 rows=53 (skipped 3 empty/territory) sum_complaints=287,641 sum_inquiries=1,632,612
+     vs PDF Total row: complaints=287,641 (Δ=0, ok) inquiries=1,632,612 (Δ=0)
+  ok 2019.pdf: data_year=2019 page=64 rows=51 (skipped 5 empty/territory) sum_complaints=270,844 sum_inquiries=1,561,738
+     vs PDF Total row: complaints=270,844 (Δ=0, ok) inquiries=1,561,738 (Δ=0)
+  ok 2020.pdf: data_year=2020 page=64 rows=56 (skipped 0 empty/territory) sum_complaints=246,900 sum_inquiries=1,322,358
+     vs PDF Total row: complaints=246,900 (Δ=0, ok) inquiries=1,322,358 (Δ=0)
+  ok 2021.pdf: data_year=2021 page=64 rows=56 (skipped 0 empty/territory) sum_complaints=259,345 sum_inquiries=1,528,862
+     vs PDF Total row: complaints=259,345 (Δ=0, ok) inquiries=1,528,862 (Δ=0)
+  ok 2022.pdf: data_year=2022 page=63 rows=53 (skipped 3 empty/territory) sum_complaints=282,567 sum_inquiries=1,516,175
+     vs PDF Total row: complaints=282,567 (Δ=0, ok) inquiries=1,516,175 (Δ=0)
+  ?? 2023.pdf: title says data year=2022 but index says 2023 (NAIC IDRR is published in year N+1 with year-N data; using title year)
+  ok 2023.pdf: data_year=2022 page=63 rows=53 (skipped 3 empty/territory) sum_complaints=282,567 sum_inquiries=1,516,175
+     vs PDF Total row: complaints=282,567 (Δ=0, ok) inquiries=1,516,175 (Δ=0)
+  -- 2023.pdf: data_year=2022 already seen, skipping duplicate
+  wrote naic_idrr_complaints_state_yearly.parquet + naic_idrr_complaints_state_yearly.csv: 1261 rows, 24 years (1998-2022), 56 jurisdictions
+  skipped 13 PDFs: 1986.pdf, 1987.pdf, 1988.pdf, 1989.pdf, 1990.pdf, 1991.pdf, 1992.pdf, 1993.pdf, 1994.pdf, 1995.pdf, 1996.pdf, 1997.pdf, 2003.pdf
+
+### 2026-05-05T13:20Z — phase 4 canonicalize
+
+- input rows: 1261
+- output rows: 1224  (territories AS/GU/MP/PR/VI dropped)
+- output years: 1998–2022 (missing in-range: [2003])
+- output jurisdictions: 51 (expected 51)
+- output sha256: 635b0b6214f3b078d93d90f5f9e9baadcdd454745c7456cb9eda01b64c6e5804
+
+Tail-state coverage (30 jurisdictions per §8.2):
+  - no anomalies; every tail state has continuous IDRR coverage 1998–2022 except 2003 (parser gap, project-wide)
+
+
+### 2026-05-05T13:21Z — phase 4 canonicalize
+
+- input rows: 1261
+- output rows: 1224  (territories AS/GU/MP/PR/VI dropped)
+- output years: 1998–2022 (missing in-range: [2003])
+- output jurisdictions: 51 (expected 51)
+- output sha256: 635b0b6214f3b078d93d90f5f9e9baadcdd454745c7456cb9eda01b64c6e5804
+
+Tail-state coverage (30 jurisdictions per §8.2):
+  - no anomalies; every tail state has continuous IDRR coverage 1998–2022 except 2003 (parser gap, project-wide)
+

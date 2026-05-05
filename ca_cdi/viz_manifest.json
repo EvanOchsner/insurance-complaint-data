@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "ca_cdi_top50",
+      "name": "CA CDI — Top-50 Justified Complaint counts by line",
+      "short_name": "CA CDI top-50 by line",
+      "category": "regulator_finding",
+      "jurisdiction": ["CA"],
+      "year_field_label": "Year",
+      "y_axis_label": "Justified complaints — top 50",
+      "caveat_short": "CDI's `Justified` finding (CCR Title 10, Subch. 7.4): the licensee acted in contravention of statute, regulation, or contract. Sums cover only the top-50 insurers in CDI's most recent study covering each year — smaller carriers are not published.",
+      "provenance_url": "ca_cdi/PROVENANCE.md",
+      "parquet": "ca_cdi/output/ca_complaints_yearly_justified.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line of insurance",
+      "metrics": [
+        {"id": "justified_per_100k_exposure", "label": "Justified per 100k exposure", "column": "justified_per_100k_exposure"},
+        {"id": "total_justified_top50", "label": "Justified count (top-50 sum)", "column": "total_justified_top50"},
+        {"id": "total_exposure_top50", "label": "Total exposure (top-50 sum)", "column": "total_exposure_top50"}
+      ],
+      "default_metric": "justified_per_100k_exposure",
+      "default_groups": ["auto", "home", "life"],
+      "group_presets": [
+        {"label": "All lines", "all": true}
+      ],
+      "outcome_buckets": {
+        "aggregation": {"sum_across_groups": true},
+        "buckets": {
+          "against_insurer": {"column": "total_justified_top50", "label": "Justified (CDI finding for consumer; top-50 only)"},
+          "mixed":           null,
+          "for_insurer":     null,
+          "no_decision":     null
+        }
+      },
+      "default_chart_mode": "stacked"
+    },
+    {
+      "id": "ca_cdi_state",
+      "name": "CA CDI — state-level complaint volume",
+      "short_name": "CA CDI state totals",
+      "category": "regulator_finding",
+      "jurisdiction": ["CA"],
+      "year_field_label": "Year",
+      "y_axis_label": "Complaints (CA CDI)",
+      "caveat_short": "CDI's annual workload counts from the Annual Report of the Insurance Commissioner. Counts include all lines combined — no per-line breakdown is available at this level. The dollar-recoveries metric reflects CDI's intervention outcomes that returned money to consumers.",
+      "provenance_url": "ca_cdi/PROVENANCE.md",
+      "parquet": "ca_cdi/output/ca_complaints_state_yearly.parquet",
+      "x_field": "year",
+      "group_field": null,
+      "metrics": [
+        {"id": "complaints_closed", "label": "Complaints closed", "column": "complaints_closed"},
+        {"id": "complaints_opened", "label": "Complaints opened", "column": "complaints_opened"},
+        {"id": "consumer_dollars_recovered", "label": "Consumer $ recovered", "column": "consumer_dollars_recovered", "unit": "dollars"}
+      ],
+      "default_metric": "complaints_closed"
+    }
+  ]
+}

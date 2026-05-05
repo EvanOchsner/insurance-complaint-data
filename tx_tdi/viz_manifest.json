@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "tx_tdi",
+      "name": "TX TDI — closed consumer complaints, by coverage",
+      "short_name": "TX TDI",
+      "category": "regulator_finding",
+      "jurisdiction": ["TX"],
+      "year_field_label": "Year closed",
+      "y_axis_label": "Complaints (TX TDI)",
+      "caveat_short": "TDI's `Confirmed` finding: regulator concluded the insurer violated a statute, rule, or policy provision. 'Not Confirmed' means insurer's position was substantiated. Annual count, no rolling window.",
+      "provenance_url": "tx_tdi/PROVENANCE.md",
+      "parquet": "tx_tdi/output/tx_complaints_yearly_confirmed.parquet",
+      "x_field": "year_closed",
+      "group_field": "coverage_type",
+      "group_field_label": "Coverage type",
+      "metrics": [
+        {"id": "confirmed_rate", "label": "Confirmed rate (share)", "column": "confirmed_rate", "unit": "share"},
+        {"id": "confirmed", "label": "Confirmed count", "column": "confirmed"},
+        {"id": "total", "label": "Total complaints", "column": "total"},
+        {"id": "not_confirmed", "label": "Not Confirmed count", "column": "not_confirmed"}
+      ],
+      "default_metric": "confirmed_rate",
+      "default_groups": ["ALL"],
+      "group_presets": [
+        {"label": "Headline (ALL)", "groups": ["ALL"]},
+        {"label": "All non-ALL lines", "exclude_groups": ["ALL"]},
+        {"label": "All", "all": true}
+      ],
+      "partial_year": 2026,
+      "outcome_buckets": {
+        "aggregation": {"filter_to_group": "ALL"},
+        "buckets": {
+          "against_insurer": {"column": "confirmed", "label": "Confirmed (insurer at fault)"},
+          "mixed":           null,
+          "for_insurer":     {"column": "not_confirmed", "label": "Not Confirmed (insurer position upheld)"},
+          "no_decision":     null
+        }
+      },
+      "default_chart_mode": "two_panel"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+state,year,entity_type,count
+MI,2022,hmo,505
+MI,2022,insurance_company,5424
+MI,2022,other,63
+MI,2022,total,5992
+MI,2023,hmo,668
+MI,2023,insurance_company,3920
+MI,2023,other,104
+MI,2023,total,4692
+MI,2024,hmo,637
+MI,2024,insurance_company,4613
+MI,2024,other,107
+MI,2024,total,5357

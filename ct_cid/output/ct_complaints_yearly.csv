@@ -1,0 +1,925 @@
+year_closed,coverage,disposition,count
+2018,,,57
+2018,Homeowners,Company Position Substantiated,6
+2018,Homeowners,No Jurisdiction,1
+2018,Individual Private Passenger,,2
+2019,,,54
+2019,Homeowners,Company Position Substantiated,4
+2019,Individual Private Passenger,Company Position Substantiated,1
+2020,,,57
+2020,Commercial Multi-Peril,Company Position Substantiated,1
+2020,Group,,2
+2020,Homeowners,Claim Settled,1
+2020,Individual,Company Position Substantiated,10
+2020,Individual,No Action Requested/Required,11
+2020,Individual,Question of Fact/Contract/Provision/Legal Issue,2
+2021,,,57
+2021,A & H,No Action Requested/Required,6
+2021,A & H,Question of Fact/Contract/Provision/Legal Issue,4
+2021,Dwelling Fire,,2
+2021,Group,Company Position Substantiated,3
+2021,Group,No Action Requested/Required,1
+2021,Group,No Jurisdiction,1
+2021,Homeowners,,2
+2021,Individual,,12
+2021,Individual,Claim Settled,10
+2021,Individual,Company Position Substantiated,45
+2021,Individual,Compromised Settlement/Resolution,5
+2021,Individual,Insufficient Information,4
+2021,Individual,No Action Requested/Required,48
+2021,Individual,No Jurisdiction,1
+2021,Individual,Question of Fact/Contract/Provision/Legal Issue,10
+2021,Individual Private Passenger,Company Position Overturned,1
+2022,,,457
+2022,,Company Position Overturned,16
+2022,,Company Position Substantiated,22
+2022,,Compromised Settlement/Resolution,2
+2022,,Insufficient Information,5
+2022,,No Action Requested/Required,1
+2022,,No Jurisdiction,5
+2022,,Question of Fact/Contract/Provision/Legal Issue,10
+2022,A & H,,865
+2022,A & H,Claim Settled,493
+2022,A & H,Company Position Overturned,123
+2022,A & H,Company Position Substantiated,508
+2022,A & H,Complaint Withdrawn,8
+2022,A & H,Compromised Settlement/Resolution,24
+2022,A & H,Insufficient Information,32
+2022,A & H,No Action Requested/Required,18
+2022,A & H,No Jurisdiction,6
+2022,A & H,Question of Fact/Contract/Provision/Legal Issue,99
+2022,A & H,Referred to Another State’s Dept of Insurance,4
+2022,Auto Warranty,,1
+2022,Builder's Risk,Company Position Substantiated,1
+2022,Business Interruption,,1
+2022,Commercial,,22
+2022,Commercial,Claim Settled,10
+2022,Commercial,Company Position Overturned,18
+2022,Commercial,Company Position Substantiated,45
+2022,Commercial,Complaint Withdrawn,4
+2022,Commercial,No Jurisdiction,1
+2022,Commercial Multi-Peril,,15
+2022,Commercial Multi-Peril,Claim Settled,2
+2022,Commercial Multi-Peril,Company Position Overturned,25
+2022,Commercial Multi-Peril,Company Position Substantiated,67
+2022,Commercial Multi-Peril,Complaint Withdrawn,1
+2022,Commercial Multi-Peril,No Jurisdiction,3
+2022,Condo/Townhome,,13
+2022,Condo/Townhome,Claim Settled,2
+2022,Condo/Townhome,Company Position Overturned,4
+2022,Condo/Townhome,Company Position Substantiated,23
+2022,Condo/Townhome,No Jurisdiction,3
+2022,Credit Life,Company Position Substantiated,2
+2022,Directors & Officers,Company Position Substantiated,1
+2022,Dwelling Fire,,9
+2022,Dwelling Fire,Claim Settled,6
+2022,Dwelling Fire,Company Position Substantiated,5
+2022,Extended Warranty,,6
+2022,Extended Warranty & Service Contracts,,14
+2022,Extended Warranty & Service Contracts,Company Position Substantiated,8
+2022,Farm owner/Ranch owner,,2
+2022,Farm owner/Ranch owner,Company Position Substantiated,1
+2022,Federal Flood,,2
+2022,Federal Flood,Company Position Substantiated,4
+2022,Federal Programs,No Jurisdiction,4
+2022,"Fire, Allied Lines",,3
+2022,"Fire, Allied Lines",Company Position Substantiated,9
+2022,General,,17
+2022,General,Company Position Substantiated,12
+2022,Group,,796
+2022,Group,Claim Settled,348
+2022,Group,Company Position Overturned,127
+2022,Group,Company Position Substantiated,386
+2022,Group,Complaint Withdrawn,10
+2022,Group,Compromised Settlement/Resolution,16
+2022,Group,Insufficient Information,27
+2022,Group,No Action Requested/Required,7
+2022,Group,No Jurisdiction,14
+2022,Group,Question of Fact/Contract/Provision/Legal Issue,112
+2022,Group,Referred to Another State’s Dept of Insurance,4
+2022,Group Annuities,No Action Requested/Required,2
+2022,Group Life,,2
+2022,Group Life,Claim Settled,8
+2022,Group Life,Company Position Substantiated,16
+2022,Group Life,Compromised Settlement/Resolution,8
+2022,Group Life,No Action Requested/Required,5
+2022,Group Life,No Jurisdiction,12
+2022,Homeowners,,309
+2022,Homeowners,Claim Settled,33
+2022,Homeowners,Company Position Overturned,78
+2022,Homeowners,Company Position Substantiated,394
+2022,Homeowners,Complaint Withdrawn,3
+2022,Homeowners,No Action Requested/Required,4
+2022,Homeowners,No Jurisdiction,15
+2022,Homeowners,Question of Fact/Contract/Provision/Legal Issue,1
+2022,IRA,Compromised Settlement/Resolution,2
+2022,Individual,,1023
+2022,Individual,Claim Reopened,1
+2022,Individual,Claim Settled,210
+2022,Individual,Company Position Overturned,106
+2022,Individual,Company Position Substantiated,319
+2022,Individual,Compromised Settlement/Resolution,14
+2022,Individual,Insufficient Information,13
+2022,Individual,No Action Requested/Required,13
+2022,Individual,No Jurisdiction,2
+2022,Individual,Question of Fact/Contract/Provision/Legal Issue,59
+2022,Individual Annuities,Claim Settled,6
+2022,Individual Annuities,Company Position Substantiated,38
+2022,Individual Annuities,Complaint Withdrawn,4
+2022,Individual Annuities,Compromised Settlement/Resolution,23
+2022,Individual Annuities,No Action Requested/Required,7
+2022,Individual Annuities,No Jurisdiction,15
+2022,Individual Annuities,Question of Fact/Contract/Provision/Legal Issue,9
+2022,Individual Life,,8
+2022,Individual Life,Claim Settled,17
+2022,Individual Life,Company Position Overturned,2
+2022,Individual Life,Company Position Substantiated,172
+2022,Individual Life,Complaint Withdrawn,10
+2022,Individual Life,Compromised Settlement/Resolution,52
+2022,Individual Life,No Action Requested/Required,25
+2022,Individual Life,No Jurisdiction,27
+2022,Individual Life,Question of Fact/Contract/Provision/Legal Issue,5
+2022,Individual Private Passenger,,915
+2022,Individual Private Passenger,Claim Settled,156
+2022,Individual Private Passenger,Company Position Overturned,122
+2022,Individual Private Passenger,Company Position Substantiated,915
+2022,Individual Private Passenger,Complaint Withdrawn,15
+2022,Individual Private Passenger,Compromised Settlement/Resolution,9
+2022,Individual Private Passenger,Insufficient Information,3
+2022,Individual Private Passenger,No Action Requested/Required,4
+2022,Individual Private Passenger,No Jurisdiction,34
+2022,Individual Private Passenger,Question of Fact/Contract/Provision/Legal Issue,1
+2022,Individual Private Passenger,Referred to Other Division for Possible Disciplinary Action,6
+2022,Individual Private Passenger,Referred to Outside Agency/Dept,2
+2022,Inland Marine,,2
+2022,Inland Marine,Claim Settled,2
+2022,Inland Marine,Company Position Substantiated,4
+2022,Mobile Homeowner,Company Position Overturned,4
+2022,Motorcycle,,20
+2022,Motorcycle,Company Position Substantiated,3
+2022,Motorhome,Company Position Overturned,1
+2022,Motorhome,Company Position Substantiated,6
+2022,Motorsport,Company Position Substantiated,2
+2022,Other [Enter Coverage],,6
+2022,Pet Insurance,,10
+2022,Pet Insurance,Claim Settled,24
+2022,Pet Insurance,Company Position Overturned,8
+2022,Pet Insurance,Company Position Substantiated,28
+2022,Portable Electronics,,3
+2022,Products,,1
+2022,Professional/E&O,Company Position Substantiated,3
+2022,Rental,Company Position Substantiated,2
+2022,Renter/Tenants,,18
+2022,Renter/Tenants,Claim Settled,4
+2022,Renter/Tenants,Company Position Substantiated,30
+2022,Renter/Tenants,Complaint Withdrawn,2
+2022,Renter/Tenants,Question of Fact/Contract/Provision/Legal Issue,1
+2022,Title,,14
+2022,Travel,,67
+2022,Travel,Claim Settled,38
+2022,Travel,Company Position Overturned,7
+2022,Travel,Company Position Substantiated,42
+2022,Travel,No Jurisdiction,3
+2022,Umbrella,,2
+2022,Umbrella,Company Position Overturned,2
+2022,Umbrella,Company Position Substantiated,3
+2022,Unknown,,1
+2022,Unknown,Compromised Settlement/Resolution,1
+2022,Watercraft,,12
+2022,Watercraft,Company Position Substantiated,5
+2022,Workers' Compensation,,1
+2022,Workers' Compensation,Company Position Overturned,6
+2022,Workers' Compensation,Company Position Substantiated,12
+2022,Workers' Compensation,Complaint Withdrawn,1
+2022,Workers' Compensation,Insufficient Information,2
+2022,Workers' Compensation,No Jurisdiction,11
+2023,,,481
+2023,,Company Position Substantiated,6
+2023,,No Action Requested/Required,1
+2023,,No Jurisdiction,6
+2023,,Referred to Another State’s Dept of Insurance,1
+2023,A & H,,1720
+2023,A & H,Claim Reopened,14
+2023,A & H,Claim Settled,1228
+2023,A & H,Company Position Overturned,303
+2023,A & H,Company Position Substantiated,803
+2023,A & H,Complaint Withdrawn,26
+2023,A & H,Compromised Settlement/Resolution,152
+2023,A & H,Insufficient Information,29
+2023,A & H,No Action Requested/Required,78
+2023,A & H,No Jurisdiction,30
+2023,A & H,Question of Fact/Contract/Provision/Legal Issue,366
+2023,A & H,Referred to Another State’s Dept of Insurance,10
+2023,Auto Warranty,Company Position Substantiated,1
+2023,Commercial,,70
+2023,Commercial,Claim Settled,16
+2023,Commercial,Company Position Overturned,8
+2023,Commercial,Company Position Substantiated,43
+2023,Commercial,Complaint Withdrawn,2
+2023,Commercial,No Jurisdiction,5
+2023,Commercial,Question of Fact/Contract/Provision/Legal Issue,2
+2023,Commercial,Referred to Other Division for Possible Disciplinary Action,3
+2023,Commercial Multi-Peril,,78
+2023,Commercial Multi-Peril,Claim Settled,11
+2023,Commercial Multi-Peril,Company Position Overturned,2
+2023,Commercial Multi-Peril,Company Position Substantiated,41
+2023,Commercial Multi-Peril,Complaint Withdrawn,2
+2023,Commercial Multi-Peril,No Action Requested/Required,3
+2023,Commercial Multi-Peril,No Jurisdiction,5
+2023,Commercial Multi-Peril,Question of Fact/Contract/Provision/Legal Issue,10
+2023,Condo/Townhome,,26
+2023,Condo/Townhome,Claim Settled,9
+2023,Condo/Townhome,Company Position Overturned,6
+2023,Condo/Townhome,Company Position Substantiated,41
+2023,Condo/Townhome,Question of Fact/Contract/Provision/Legal Issue,5
+2023,Condo/Townhome,Referred to Other Division for Possible Disciplinary Action,1
+2023,Credit Accident & Health,,34
+2023,Credit Accident & Health,Company Position Substantiated,12
+2023,Crop/Hail,No Jurisdiction,1
+2023,Directors & Officers,Company Position Substantiated,2
+2023,Dwelling Fire,,15
+2023,Dwelling Fire,Company Position Substantiated,2
+2023,Dwelling Fire,Question of Fact/Contract/Provision/Legal Issue,1
+2023,Extended Warranty,Company Position Substantiated,1
+2023,Extended Warranty & Service Contracts,,13
+2023,Extended Warranty & Service Contracts,Claim Settled,4
+2023,Extended Warranty & Service Contracts,Company Position Substantiated,6
+2023,Extended Warranty & Service Contracts,Question of Fact/Contract/Provision/Legal Issue,1
+2023,Federal Flood,Complaint Withdrawn,2
+2023,Fidelity & Surety,Company Position Overturned,2
+2023,"Fire, Allied Lines",,4
+2023,"Fire, Allied Lines",Company Position Substantiated,1
+2023,General,,26
+2023,General,Company Position Substantiated,5
+2023,General,Complaint Withdrawn,1
+2023,General,No Action Requested/Required,1
+2023,General,Question of Fact/Contract/Provision/Legal Issue,2
+2023,Group,,1425
+2023,Group,Claim Reopened,12
+2023,Group,Claim Settled,719
+2023,Group,Company Position Overturned,268
+2023,Group,Company Position Substantiated,498
+2023,Group,Complaint Withdrawn,14
+2023,Group,Compromised Settlement/Resolution,54
+2023,Group,Insufficient Information,12
+2023,Group,No Action Requested/Required,12
+2023,Group,No Jurisdiction,30
+2023,Group,Question of Fact/Contract/Provision/Legal Issue,228
+2023,Group Annuities,,2
+2023,Group Annuities,Compromised Settlement/Resolution,2
+2023,Group Homeowners,,3
+2023,Group Life,,2
+2023,Group Life,Claim Reopened,1
+2023,Group Life,Claim Settled,7
+2023,Group Life,Company Position Substantiated,12
+2023,Group Life,Compromised Settlement/Resolution,10
+2023,Group Life,Insufficient Information,2
+2023,Group Life,No Action Requested/Required,2
+2023,Group Life,No Jurisdiction,10
+2023,Group Private Passenger,Company Position Substantiated,2
+2023,Homeowners,,541
+2023,Homeowners,Claim Settled,48
+2023,Homeowners,Company Position Overturned,35
+2023,Homeowners,Company Position Substantiated,376
+2023,Homeowners,Complaint Withdrawn,10
+2023,Homeowners,Insufficient Information,3
+2023,Homeowners,No Action Requested/Required,1
+2023,Homeowners,No Jurisdiction,5
+2023,Homeowners,Question of Fact/Contract/Provision/Legal Issue,86
+2023,Homeowners,Referred to Outside Agency/Dept,2
+2023,Individual,,833
+2023,Individual,Claim Settled,357
+2023,Individual,Company Position Overturned,78
+2023,Individual,Company Position Substantiated,386
+2023,Individual,Complaint Withdrawn,10
+2023,Individual,Compromised Settlement/Resolution,54
+2023,Individual,Insufficient Information,14
+2023,Individual,No Action Requested/Required,43
+2023,Individual,Question of Fact/Contract/Provision/Legal Issue,110
+2023,Individual,Referred to Another State’s Dept of Insurance,10
+2023,Individual Annuities,,4
+2023,Individual Annuities,Claim Settled,5
+2023,Individual Annuities,Company Position Substantiated,38
+2023,Individual Annuities,Complaint Withdrawn,5
+2023,Individual Annuities,Compromised Settlement/Resolution,50
+2023,Individual Annuities,Insufficient Information,2
+2023,Individual Annuities,No Action Requested/Required,4
+2023,Individual Annuities,No Jurisdiction,2
+2023,Individual Annuities,Referred to Another State’s Dept of Insurance,1
+2023,Individual Life,,5
+2023,Individual Life,Claim Settled,19
+2023,Individual Life,Company Position Overturned,6
+2023,Individual Life,Company Position Substantiated,162
+2023,Individual Life,Complaint Withdrawn,7
+2023,Individual Life,Compromised Settlement/Resolution,85
+2023,Individual Life,Insufficient Information,6
+2023,Individual Life,No Action Requested/Required,15
+2023,Individual Life,No Jurisdiction,15
+2023,Individual Life,Question of Fact/Contract/Provision/Legal Issue,2
+2023,Individual Private Passenger,,1305
+2023,Individual Private Passenger,Claim Settled,215
+2023,Individual Private Passenger,Company Position Overturned,42
+2023,Individual Private Passenger,Company Position Substantiated,1140
+2023,Individual Private Passenger,Complaint Withdrawn,33
+2023,Individual Private Passenger,Compromised Settlement/Resolution,2
+2023,Individual Private Passenger,Insufficient Information,9
+2023,Individual Private Passenger,No Action Requested/Required,5
+2023,Individual Private Passenger,No Jurisdiction,28
+2023,Individual Private Passenger,Question of Fact/Contract/Provision/Legal Issue,61
+2023,Individual Private Passenger,Referred to Another State’s Dept of Insurance,7
+2023,Individual Private Passenger,Referred to Other Division for Possible Disciplinary Action,4
+2023,Individual Private Passenger,Referred to Outside Agency/Dept,7
+2023,Inland Marine,,5
+2023,Inland Marine,Company Position Substantiated,6
+2023,Inland Marine,Compromised Settlement/Resolution,1
+2023,Inland Marine,Insufficient Information,2
+2023,Inland Marine,Question of Fact/Contract/Provision/Legal Issue,2
+2023,Mobile Homeowner,,2
+2023,Mobile Homeowner,Company Position Substantiated,3
+2023,Mobile Homeowner,Complaint Withdrawn,1
+2023,Mobile Homeowner,Question of Fact/Contract/Provision/Legal Issue,1
+2023,Motorcycle,Claim Settled,1
+2023,Motorcycle,Company Position Substantiated,2
+2023,Motorhome,,3
+2023,Motorhome,Claim Settled,2
+2023,Motorhome,Company Position Substantiated,3
+2023,Motorhome,Question of Fact/Contract/Provision/Legal Issue,1
+2023,Motorsport,Company Position Substantiated,1
+2023,Ocean Marine,,1
+2023,Ocean Marine,Company Position Substantiated,1
+2023,Other [Enter Coverage],Company Position Substantiated,2
+2023,Pet Insurance,,13
+2023,Pet Insurance,Claim Settled,6
+2023,Pet Insurance,Company Position Overturned,1
+2023,Pet Insurance,Company Position Substantiated,21
+2023,Professional/E&O,,10
+2023,Professional/E&O,Company Position Overturned,4
+2023,Professional/E&O,Company Position Substantiated,1
+2023,Professional/E&O,No Jurisdiction,1
+2023,Rental,,4
+2023,Rental,Company Position Substantiated,6
+2023,Renter/Tenants,,17
+2023,Renter/Tenants,Claim Settled,2
+2023,Renter/Tenants,Company Position Substantiated,7
+2023,Surplus Lines,Company Position Substantiated,2
+2023,Title,,3
+2023,Title,Question of Fact/Contract/Provision/Legal Issue,5
+2023,Travel,,37
+2023,Travel,Claim Settled,38
+2023,Travel,Company Position Overturned,2
+2023,Travel,Company Position Substantiated,39
+2023,Travel,Compromised Settlement/Resolution,3
+2023,Travel,No Jurisdiction,1
+2023,Travel,Question of Fact/Contract/Provision/Legal Issue,1
+2023,Umbrella,,6
+2023,Umbrella,Company Position Substantiated,9
+2023,Watercraft,,11
+2023,Watercraft,Company Position Substantiated,2
+2023,Workers' Compensation,,10
+2023,Workers' Compensation,Company Position Substantiated,26
+2023,Workers' Compensation,No Jurisdiction,23
+2024,,,652
+2024,,Claim Settled,2
+2024,,Company Position Overturned,1
+2024,,Company Position Substantiated,2
+2024,,No Action Requested/Required,2
+2024,,No Jurisdiction,5
+2024,A & H,,1771
+2024,A & H,Claim Settled,1614
+2024,A & H,Company Position Overturned,387
+2024,A & H,Company Position Substantiated,1416
+2024,A & H,Complaint Withdrawn,2
+2024,A & H,Compromised Settlement/Resolution,228
+2024,A & H,Fine Assessed,8
+2024,A & H,Insufficient Information,58
+2024,A & H,No Action Requested/Required,61
+2024,A & H,No Jurisdiction,65
+2024,A & H,Question of Fact/Contract/Provision/Legal Issue,443
+2024,A & H,Referred to Outside Agency/Dept,34
+2024,Accelerated Benefits,Company Position Substantiated,1
+2024,Builder's Risk,Company Position Substantiated,1
+2024,Business Interruption,Company Position Substantiated,3
+2024,Commercial,,80
+2024,Commercial,Claim Settled,29
+2024,Commercial,Company Position Overturned,3
+2024,Commercial,Company Position Substantiated,48
+2024,Commercial,Complaint Withdrawn,3
+2024,Commercial,No Action Requested/Required,2
+2024,Commercial,No Jurisdiction,1
+2024,Commercial,Question of Fact/Contract/Provision/Legal Issue,22
+2024,Commercial,Referred to Another State’s Dept of Insurance,2
+2024,Commercial,Referred to Other Division for Possible Disciplinary Action,5
+2024,Commercial Multi-Peril,,108
+2024,Commercial Multi-Peril,Claim Reopened,3
+2024,Commercial Multi-Peril,Claim Settled,11
+2024,Commercial Multi-Peril,Company Position Substantiated,65
+2024,Commercial Multi-Peril,Complaint Withdrawn,2
+2024,Commercial Multi-Peril,Insufficient Information,1
+2024,Commercial Multi-Peril,No Action Requested/Required,1
+2024,Commercial Multi-Peril,No Jurisdiction,11
+2024,Commercial Multi-Peril,Question of Fact/Contract/Provision/Legal Issue,43
+2024,Commercial Multi-Peril,Referred to Another State’s Dept of Insurance,1
+2024,Commercial Multi-Peril,Referred to Outside Agency/Dept,11
+2024,Condo/Townhome,,33
+2024,Condo/Townhome,Claim Settled,4
+2024,Condo/Townhome,Company Position Substantiated,32
+2024,Condo/Townhome,No Jurisdiction,5
+2024,Condo/Townhome,Question of Fact/Contract/Provision/Legal Issue,8
+2024,Condo/Townhome,Referred to Another State’s Dept of Insurance,1
+2024,Credit Accident & Health,,20
+2024,Credit Accident & Health,Claim Settled,12
+2024,Credit Accident & Health,No Jurisdiction,4
+2024,Credit Accident & Health,Question of Fact/Contract/Provision/Legal Issue,2
+2024,Credit Life,No Action Requested/Required,1
+2024,Crop/Hail,Company Position Substantiated,2
+2024,Directors & Officers,No Jurisdiction,1
+2024,Directors & Officers,Question of Fact/Contract/Provision/Legal Issue,1
+2024,Dwelling Fire,,18
+2024,Dwelling Fire,Question of Fact/Contract/Provision/Legal Issue,6
+2024,Extended Warranty,,2
+2024,Extended Warranty & Service Contracts,,9
+2024,Extended Warranty & Service Contracts,Claim Settled,2
+2024,Extended Warranty & Service Contracts,Company Position Substantiated,13
+2024,Extended Warranty & Service Contracts,No Action Requested/Required,1
+2024,Extended Warranty & Service Contracts,No Jurisdiction,1
+2024,Extended Warranty & Service Contracts,Referred to Outside Agency/Dept,1
+2024,Federal Flood,Company Position Substantiated,4
+2024,Fidelity & Surety,Company Position Substantiated,4
+2024,Fidelity & Surety,No Jurisdiction,1
+2024,"Fire, Allied Lines",,12
+2024,"Fire, Allied Lines",Question of Fact/Contract/Provision/Legal Issue,3
+2024,GAP Ins,Question of Fact/Contract/Provision/Legal Issue,2
+2024,General,,2
+2024,General,Company Position Substantiated,14
+2024,General,Question of Fact/Contract/Provision/Legal Issue,1
+2024,General,Referred to Another State’s Dept of Insurance,1
+2024,General,Referred to Other Division for Possible Disciplinary Action,4
+2024,Group,,1605
+2024,Group,Claim Reopened,1
+2024,Group,Claim Settled,1093
+2024,Group,Company Position Overturned,300
+2024,Group,Company Position Substantiated,930
+2024,Group,Complaint Withdrawn,3
+2024,Group,Compromised Settlement/Resolution,40
+2024,Group,Insufficient Information,36
+2024,Group,No Action Requested/Required,25
+2024,Group,No Jurisdiction,50
+2024,Group,Question of Fact/Contract/Provision/Legal Issue,204
+2024,Group,Referred to Outside Agency/Dept,6
+2024,Group Annuities,Company Position Substantiated,2
+2024,Group Homeowners,Company Position Substantiated,1
+2024,Group Life,,10
+2024,Group Life,Claim Settled,4
+2024,Group Life,Company Position Substantiated,20
+2024,Group Life,Compromised Settlement/Resolution,3
+2024,Group Life,Insufficient Information,3
+2024,Group Life,No Action Requested/Required,1
+2024,Group Life,No Jurisdiction,2
+2024,Group Private Passenger,Claim Settled,2
+2024,Group Private Passenger,Company Position Substantiated,3
+2024,Homeowners,,665
+2024,Homeowners,Claim Reopened,2
+2024,Homeowners,Claim Settled,63
+2024,Homeowners,Company Position Overturned,14
+2024,Homeowners,Company Position Substantiated,594
+2024,Homeowners,Complaint Withdrawn,17
+2024,Homeowners,Compromised Settlement/Resolution,2
+2024,Homeowners,Insufficient Information,5
+2024,Homeowners,No Action Requested/Required,5
+2024,Homeowners,No Jurisdiction,9
+2024,Homeowners,Question of Fact/Contract/Provision/Legal Issue,340
+2024,Homeowners,Referred to Another State’s Dept of Insurance,3
+2024,Homeowners,Referred to Other Division for Possible Disciplinary Action,4
+2024,Homeowners,Referred to Outside Agency/Dept,7
+2024,Individual,,801
+2024,Individual,Claim Settled,395
+2024,Individual,Company Position Overturned,123
+2024,Individual,Company Position Substantiated,616
+2024,Individual,Compromised Settlement/Resolution,132
+2024,Individual,Fine Assessed,8
+2024,Individual,Insufficient Information,24
+2024,Individual,No Action Requested/Required,32
+2024,Individual,No Jurisdiction,6
+2024,Individual,Question of Fact/Contract/Provision/Legal Issue,204
+2024,Individual,Referred to Other Division for Possible Disciplinary Action,8
+2024,Individual,Referred to Outside Agency/Dept,20
+2024,Individual Annuities,,20
+2024,Individual Annuities,Claim Settled,4
+2024,Individual Annuities,Company Position Substantiated,56
+2024,Individual Annuities,Complaint Withdrawn,1
+2024,Individual Annuities,Compromised Settlement/Resolution,21
+2024,Individual Annuities,Insufficient Information,6
+2024,Individual Annuities,No Jurisdiction,1
+2024,Individual Life,,51
+2024,Individual Life,Claim Settled,12
+2024,Individual Life,Company Position Substantiated,167
+2024,Individual Life,Compromised Settlement/Resolution,38
+2024,Individual Life,Insufficient Information,19
+2024,Individual Life,No Action Requested/Required,9
+2024,Individual Life,No Jurisdiction,12
+2024,Individual Life,Referred to Other Division for Possible Disciplinary Action,1
+2024,Individual Private Passenger,,1450
+2024,Individual Private Passenger,Claim Reopened,6
+2024,Individual Private Passenger,Claim Settled,263
+2024,Individual Private Passenger,Company Position Overturned,4
+2024,Individual Private Passenger,Company Position Substantiated,1297
+2024,Individual Private Passenger,Complaint Withdrawn,14
+2024,Individual Private Passenger,Compromised Settlement/Resolution,3
+2024,Individual Private Passenger,Insufficient Information,26
+2024,Individual Private Passenger,No Action Requested/Required,11
+2024,Individual Private Passenger,No Jurisdiction,43
+2024,Individual Private Passenger,Question of Fact/Contract/Provision/Legal Issue,165
+2024,Individual Private Passenger,Referred to Another State’s Dept of Insurance,30
+2024,Individual Private Passenger,Referred to Outside Agency/Dept,5
+2024,Inland Marine,,6
+2024,Inland Marine,Claim Settled,1
+2024,Inland Marine,Question of Fact/Contract/Provision/Legal Issue,1
+2024,Inland Marine,Referred to Outside Agency/Dept,1
+2024,Mobile Homeowner,,5
+2024,Mobile Homeowner,Company Position Substantiated,4
+2024,Mobile Homeowner,Question of Fact/Contract/Provision/Legal Issue,2
+2024,Motorcycle,,1
+2024,Motorcycle,Claim Settled,2
+2024,Motorcycle,Company Position Substantiated,4
+2024,Motorhome,,9
+2024,Motorhome,Company Position Substantiated,3
+2024,Motorhome,Complaint Withdrawn,1
+2024,Motorhome,Question of Fact/Contract/Provision/Legal Issue,1
+2024,Other [Enter Coverage],Company Position Substantiated,2
+2024,Pet Insurance,,16
+2024,Pet Insurance,Claim Settled,2
+2024,Pet Insurance,Company Position Substantiated,39
+2024,Pet Insurance,Question of Fact/Contract/Provision/Legal Issue,4
+2024,Portable Electronics,,3
+2024,Professional/E&O,Company Position Substantiated,4
+2024,Rental,Claim Settled,9
+2024,Rental,Question of Fact/Contract/Provision/Legal Issue,4
+2024,Renter/Tenants,,22
+2024,Renter/Tenants,Claim Settled,3
+2024,Renter/Tenants,Company Position Substantiated,14
+2024,Renter/Tenants,No Action Requested/Required,1
+2024,Renter/Tenants,Question of Fact/Contract/Provision/Legal Issue,2
+2024,Title,,1
+2024,Title,Company Position Substantiated,1
+2024,Title,Question of Fact/Contract/Provision/Legal Issue,2
+2024,Travel,,33
+2024,Travel,Claim Reopened,1
+2024,Travel,Claim Settled,28
+2024,Travel,Company Position Substantiated,47
+2024,Travel,Complaint Withdrawn,1
+2024,Travel,No Jurisdiction,2
+2024,Travel,Question of Fact/Contract/Provision/Legal Issue,13
+2024,Travel,Referred to Another State’s Dept of Insurance,3
+2024,Travel,Referred to Other Division for Possible Disciplinary Action,4
+2024,Umbrella,,14
+2024,Umbrella,Company Position Substantiated,5
+2024,Watercraft,,1
+2024,Watercraft,Company Position Substantiated,1
+2024,Watercraft,Question of Fact/Contract/Provision/Legal Issue,2
+2024,Workers' Compensation,,18
+2024,Workers' Compensation,Company Position Substantiated,13
+2024,Workers' Compensation,Complaint Withdrawn,1
+2024,Workers' Compensation,No Jurisdiction,14
+2024,Workers' Compensation,Referred to Outside Agency/Dept,4
+2025,,,849
+2025,,Claim Settled,1
+2025,,Company Position Overturned,1
+2025,,Company Position Substantiated,10
+2025,,No Jurisdiction,2
+2025,A & H,,2328
+2025,A & H,Claim Reopened,4
+2025,A & H,Claim Settled,1093
+2025,A & H,Company Position Overturned,343
+2025,A & H,Company Position Substantiated,1243
+2025,A & H,Complaint Withdrawn,4
+2025,A & H,Compromised Settlement/Resolution,175
+2025,A & H,Insufficient Information,42
+2025,A & H,No Action Requested/Required,90
+2025,A & H,No Jurisdiction,16
+2025,A & H,Question of Fact/Contract/Provision/Legal Issue,300
+2025,A & H,Referred to Outside Agency/Dept,15
+2025,Builder's Risk,Company Position Overturned,1
+2025,Business Interruption,Company Position Substantiated,3
+2025,Commercial,,92
+2025,Commercial,Claim Reopened,2
+2025,Commercial,Claim Settled,28
+2025,Commercial,Company Position Substantiated,59
+2025,Commercial,Complaint Withdrawn,1
+2025,Commercial,Compromised Settlement/Resolution,4
+2025,Commercial,No Jurisdiction,9
+2025,Commercial,Question of Fact/Contract/Provision/Legal Issue,35
+2025,Commercial,Referred to Another State’s Dept of Insurance,4
+2025,Commercial,Referred to Outside Agency/Dept,2
+2025,Commercial Multi-Peril,,74
+2025,Commercial Multi-Peril,Claim Settled,5
+2025,Commercial Multi-Peril,Company Position Overturned,2
+2025,Commercial Multi-Peril,Company Position Substantiated,75
+2025,Commercial Multi-Peril,Complaint Withdrawn,18
+2025,Commercial Multi-Peril,No Jurisdiction,8
+2025,Commercial Multi-Peril,Question of Fact/Contract/Provision/Legal Issue,22
+2025,Commercial Multi-Peril,Referred to Another State’s Dept of Insurance,3
+2025,Commercial Multi-Peril,Referred to Outside Agency/Dept,4
+2025,Condo/Townhome,,20
+2025,Condo/Townhome,Claim Settled,3
+2025,Condo/Townhome,Company Position Substantiated,24
+2025,Condo/Townhome,Compromised Settlement/Resolution,4
+2025,Condo/Townhome,No Jurisdiction,2
+2025,Condo/Townhome,Question of Fact/Contract/Provision/Legal Issue,18
+2025,Condo/Townhome,Referred to Outside Agency/Dept,4
+2025,Dwelling Fire,,14
+2025,Dwelling Fire,Claim Reopened,2
+2025,Dwelling Fire,Company Position Substantiated,7
+2025,Dwelling Fire,Question of Fact/Contract/Provision/Legal Issue,12
+2025,Extended Warranty & Service Contracts,,6
+2025,Extended Warranty & Service Contracts,Company Position Substantiated,7
+2025,Extended Warranty & Service Contracts,No Jurisdiction,1
+2025,Extended Warranty & Service Contracts,Question of Fact/Contract/Provision/Legal Issue,3
+2025,Federal Programs,,1
+2025,Federal Programs,Company Position Substantiated,1
+2025,Federal Programs,No Jurisdiction,1
+2025,Fidelity & Surety,,2
+2025,Fidelity & Surety,Company Position Overturned,2
+2025,Fidelity & Surety,Company Position Substantiated,4
+2025,"Fire, Allied Lines",,6
+2025,"Fire, Allied Lines",Company Position Substantiated,4
+2025,GAP Ins,Question of Fact/Contract/Provision/Legal Issue,2
+2025,General,,8
+2025,General,Claim Settled,4
+2025,General,Company Position Substantiated,14
+2025,General,Insufficient Information,2
+2025,General,No Jurisdiction,6
+2025,General,Question of Fact/Contract/Provision/Legal Issue,19
+2025,General,Referred to Another State’s Dept of Insurance,6
+2025,General,Referred to Other Division for Possible Disciplinary Action,2
+2025,General,Referred to Outside Agency/Dept,2
+2025,Group,,1629
+2025,Group,Claim Reopened,4
+2025,Group,Claim Settled,466
+2025,Group,Company Position Overturned,268
+2025,Group,Company Position Substantiated,752
+2025,Group,Complaint Withdrawn,6
+2025,Group,Compromised Settlement/Resolution,42
+2025,Group,Insufficient Information,4
+2025,Group,No Action Requested/Required,8
+2025,Group,No Jurisdiction,15
+2025,Group,Question of Fact/Contract/Provision/Legal Issue,167
+2025,Group Annuities,,1
+2025,Group Annuities,Company Position Substantiated,2
+2025,Group Annuities,No Jurisdiction,1
+2025,Group Life,,2
+2025,Group Life,Claim Settled,3
+2025,Group Life,Company Position Overturned,6
+2025,Group Life,Company Position Substantiated,8
+2025,Group Life,Complaint Withdrawn,1
+2025,Group Life,Compromised Settlement/Resolution,6
+2025,Group Life,No Jurisdiction,1
+2025,Group Private Passenger,Company Position Substantiated,7
+2025,Homeowners,,548
+2025,Homeowners,Claim Reopened,6
+2025,Homeowners,Claim Settled,89
+2025,Homeowners,Company Position Overturned,16
+2025,Homeowners,Company Position Substantiated,724
+2025,Homeowners,Complaint Withdrawn,6
+2025,Homeowners,Compromised Settlement/Resolution,8
+2025,Homeowners,Insufficient Information,9
+2025,Homeowners,No Action Requested/Required,1
+2025,Homeowners,No Jurisdiction,6
+2025,Homeowners,Question of Fact/Contract/Provision/Legal Issue,423
+2025,Homeowners,Referred to Another State’s Dept of Insurance,2
+2025,Homeowners,Referred to Other Division for Possible Disciplinary Action,6
+2025,Homeowners,Referred to Outside Agency/Dept,13
+2025,Individual,,1124
+2025,Individual,Claim Settled,403
+2025,Individual,Company Position Overturned,137
+2025,Individual,Company Position Substantiated,576
+2025,Individual,Compromised Settlement/Resolution,92
+2025,Individual,Insufficient Information,6
+2025,Individual,No Action Requested/Required,52
+2025,Individual,No Jurisdiction,1
+2025,Individual,Question of Fact/Contract/Provision/Legal Issue,109
+2025,Individual,Referred to Outside Agency/Dept,17
+2025,Individual Annuities,,12
+2025,Individual Annuities,Claim Settled,4
+2025,Individual Annuities,Company Position Substantiated,65
+2025,Individual Annuities,Complaint Withdrawn,2
+2025,Individual Annuities,Compromised Settlement/Resolution,25
+2025,Individual Annuities,No Action Requested/Required,4
+2025,Individual Life,,10
+2025,Individual Life,Claim Settled,12
+2025,Individual Life,Company Position Overturned,7
+2025,Individual Life,Company Position Substantiated,149
+2025,Individual Life,Complaint Withdrawn,2
+2025,Individual Life,Compromised Settlement/Resolution,46
+2025,Individual Life,Insufficient Information,6
+2025,Individual Life,No Action Requested/Required,8
+2025,Individual Life,No Jurisdiction,11
+2025,Individual Private Passenger,,1153
+2025,Individual Private Passenger,Claim Settled,331
+2025,Individual Private Passenger,Company Position Overturned,27
+2025,Individual Private Passenger,Company Position Substantiated,1340
+2025,Individual Private Passenger,Complaint Withdrawn,19
+2025,Individual Private Passenger,Compromised Settlement/Resolution,22
+2025,Individual Private Passenger,Insufficient Information,5
+2025,Individual Private Passenger,No Action Requested/Required,2
+2025,Individual Private Passenger,No Jurisdiction,33
+2025,Individual Private Passenger,Question of Fact/Contract/Provision/Legal Issue,470
+2025,Individual Private Passenger,Referred to Another State’s Dept of Insurance,15
+2025,Individual Private Passenger,Referred to Other Division for Possible Disciplinary Action,22
+2025,Individual Private Passenger,Referred to Outside Agency/Dept,19
+2025,Inland Marine,,10
+2025,Inland Marine,Claim Settled,3
+2025,Inland Marine,Company Position Substantiated,6
+2025,Mobile Homeowner,,2
+2025,Mobile Homeowner,Company Position Substantiated,10
+2025,Motorcycle,Company Position Substantiated,1
+2025,Motorcycle,Question of Fact/Contract/Provision/Legal Issue,1
+2025,Motorhome,,2
+2025,Motorhome,Company Position Substantiated,5
+2025,Motorhome,Question of Fact/Contract/Provision/Legal Issue,1
+2025,Other [Enter Coverage],Company Position Substantiated,2
+2025,Other [Enter Coverage],No Jurisdiction,1
+2025,Pet Insurance,,20
+2025,Pet Insurance,Claim Settled,11
+2025,Pet Insurance,Company Position Overturned,8
+2025,Pet Insurance,Company Position Substantiated,54
+2025,Pet Insurance,Complaint Withdrawn,1
+2025,Pet Insurance,Question of Fact/Contract/Provision/Legal Issue,1
+2025,Portable Electronics,Question of Fact/Contract/Provision/Legal Issue,1
+2025,Professional/E&O,Claim Settled,1
+2025,Professional/E&O,Company Position Substantiated,6
+2025,Professional/E&O,Compromised Settlement/Resolution,1
+2025,Professional/E&O,No Jurisdiction,1
+2025,Rental,Company Position Substantiated,4
+2025,Rental,No Jurisdiction,2
+2025,Rental,Question of Fact/Contract/Provision/Legal Issue,2
+2025,Renter/Tenants,,27
+2025,Renter/Tenants,Company Position Substantiated,26
+2025,Renter/Tenants,Question of Fact/Contract/Provision/Legal Issue,9
+2025,Title,,3
+2025,Title,Company Position Overturned,2
+2025,Title,Company Position Substantiated,1
+2025,Title,No Jurisdiction,1
+2025,Title,Question of Fact/Contract/Provision/Legal Issue,1
+2025,Title,Referred to Other Division for Possible Disciplinary Action,2
+2025,Travel,,44
+2025,Travel,Claim Reopened,2
+2025,Travel,Claim Settled,15
+2025,Travel,Company Position Substantiated,45
+2025,Travel,Complaint Withdrawn,1
+2025,Travel,Question of Fact/Contract/Provision/Legal Issue,5
+2025,Travel,Referred to Another State’s Dept of Insurance,1
+2025,Umbrella,Company Position Substantiated,16
+2025,Umbrella,Complaint Withdrawn,3
+2025,Umbrella,Compromised Settlement/Resolution,2
+2025,Umbrella,No Jurisdiction,2
+2025,Watercraft,,1
+2025,Watercraft,Company Position Substantiated,4
+2025,Workers' Compensation,,4
+2025,Workers' Compensation,Company Position Overturned,1
+2025,Workers' Compensation,Company Position Substantiated,21
+2025,Workers' Compensation,Complaint Withdrawn,1
+2025,Workers' Compensation,No Jurisdiction,13
+2026,,,397
+2026,,Company Position Substantiated,3
+2026,,Insufficient Information,2
+2026,,No Action Requested/Required,1
+2026,,No Jurisdiction,1
+2026,,Referred to Outside Agency/Dept,1
+2026,A & H,,1562
+2026,A & H,Claim Settled,509
+2026,A & H,Company Position Overturned,116
+2026,A & H,Company Position Substantiated,591
+2026,A & H,Compromised Settlement/Resolution,161
+2026,A & H,Insufficient Information,24
+2026,A & H,No Action Requested/Required,31
+2026,A & H,No Jurisdiction,1
+2026,A & H,Question of Fact/Contract/Provision/Legal Issue,110
+2026,A & H,Referred to Other Division for Possible Disciplinary Action,6
+2026,A & H,Referred to Outside Agency/Dept,24
+2026,Auto Warranty,Company Position Substantiated,6
+2026,Commercial,,22
+2026,Commercial,Claim Settled,11
+2026,Commercial,Company Position Overturned,6
+2026,Commercial,Company Position Substantiated,18
+2026,Commercial,No Jurisdiction,1
+2026,Commercial,Question of Fact/Contract/Provision/Legal Issue,3
+2026,Commercial,Referred to Another State’s Dept of Insurance,1
+2026,Commercial Multi-Peril,,8
+2026,Commercial Multi-Peril,Claim Reopened,9
+2026,Commercial Multi-Peril,Claim Settled,4
+2026,Commercial Multi-Peril,Company Position Overturned,6
+2026,Commercial Multi-Peril,Company Position Substantiated,48
+2026,Commercial Multi-Peril,No Jurisdiction,1
+2026,Commercial Multi-Peril,Question of Fact/Contract/Provision/Legal Issue,5
+2026,Commercial Multi-Peril,Referred to Another State’s Dept of Insurance,3
+2026,Condo/Townhome,,2
+2026,Condo/Townhome,Company Position Substantiated,8
+2026,Condo/Townhome,Question of Fact/Contract/Provision/Legal Issue,4
+2026,Dwelling Fire,Complaint Withdrawn,1
+2026,Dwelling Fire,Question of Fact/Contract/Provision/Legal Issue,2
+2026,Extended Warranty,Compromised Settlement/Resolution,2
+2026,Extended Warranty & Service Contracts,,7
+2026,Extended Warranty & Service Contracts,Claim Settled,1
+2026,Extended Warranty & Service Contracts,Company Position Substantiated,9
+2026,Extended Warranty & Service Contracts,Compromised Settlement/Resolution,2
+2026,Federal Flood,Company Position Substantiated,1
+2026,Fidelity & Surety,,2
+2026,Fidelity & Surety,No Jurisdiction,1
+2026,Fidelity & Surety,Referred to Another State’s Dept of Insurance,1
+2026,"Fire, Allied Lines",Company Position Substantiated,1
+2026,General,Company Position Substantiated,3
+2026,General,Question of Fact/Contract/Provision/Legal Issue,18
+2026,General,Referred to Other Division for Possible Disciplinary Action,6
+2026,Group,,613
+2026,Group,Claim Reopened,4
+2026,Group,Claim Settled,117
+2026,Group,Company Position Overturned,72
+2026,Group,Company Position Substantiated,294
+2026,Group,Compromised Settlement/Resolution,16
+2026,Group,Insufficient Information,4
+2026,Group,No Action Requested/Required,14
+2026,Group,Question of Fact/Contract/Provision/Legal Issue,48
+2026,Group,Referred to Other Division for Possible Disciplinary Action,6
+2026,Group Life,Claim Settled,2
+2026,Group Life,Company Position Substantiated,5
+2026,Group Private Passenger,,4
+2026,Group Private Passenger,Company Position Substantiated,3
+2026,Homeowners,,104
+2026,Homeowners,Claim Settled,19
+2026,Homeowners,Company Position Overturned,14
+2026,Homeowners,Company Position Substantiated,230
+2026,Homeowners,Complaint Withdrawn,10
+2026,Homeowners,Compromised Settlement/Resolution,15
+2026,Homeowners,Insufficient Information,2
+2026,Homeowners,No Jurisdiction,2
+2026,Homeowners,Question of Fact/Contract/Provision/Legal Issue,138
+2026,Homeowners,Referred to Another State’s Dept of Insurance,1
+2026,Individual,,1263
+2026,Individual,Claim Settled,241
+2026,Individual,Company Position Overturned,62
+2026,Individual,Company Position Substantiated,337
+2026,Individual,Compromised Settlement/Resolution,147
+2026,Individual,Insufficient Information,6
+2026,Individual,No Action Requested/Required,12
+2026,Individual,Question of Fact/Contract/Provision/Legal Issue,56
+2026,Individual,Referred to Outside Agency/Dept,24
+2026,Individual Annuities,,1
+2026,Individual Annuities,Company Position Substantiated,23
+2026,Individual Annuities,Complaint Withdrawn,1
+2026,Individual Annuities,Compromised Settlement/Resolution,5
+2026,Individual Annuities,No Action Requested/Required,1
+2026,Individual Life,,8
+2026,Individual Life,Claim Settled,2
+2026,Individual Life,Company Position Overturned,6
+2026,Individual Life,Company Position Substantiated,57
+2026,Individual Life,Compromised Settlement/Resolution,9
+2026,Individual Life,No Action Requested/Required,1
+2026,Individual Life,No Jurisdiction,2
+2026,Individual Private Passenger,,303
+2026,Individual Private Passenger,Claim Settled,111
+2026,Individual Private Passenger,Company Position Overturned,27
+2026,Individual Private Passenger,Company Position Substantiated,486
+2026,Individual Private Passenger,Complaint Withdrawn,23
+2026,Individual Private Passenger,Compromised Settlement/Resolution,26
+2026,Individual Private Passenger,Insufficient Information,3
+2026,Individual Private Passenger,No Action Requested/Required,3
+2026,Individual Private Passenger,No Jurisdiction,12
+2026,Individual Private Passenger,Question of Fact/Contract/Provision/Legal Issue,183
+2026,Individual Private Passenger,Referred to Another State’s Dept of Insurance,5
+2026,Individual Private Passenger,Referred to Other Division for Possible Disciplinary Action,9
+2026,Inland Marine,Claim Settled,1
+2026,Inland Marine,Company Position Substantiated,4
+2026,Mobile Homeowner,Claim Settled,2
+2026,Mobile Homeowner,Question of Fact/Contract/Provision/Legal Issue,2
+2026,Motorcycle,,3
+2026,Motorcycle,Company Position Substantiated,4
+2026,Motorhome,Company Position Substantiated,1
+2026,Ocean Marine,,4
+2026,Pet Insurance,,6
+2026,Pet Insurance,Claim Settled,3
+2026,Pet Insurance,Company Position Overturned,4
+2026,Pet Insurance,Company Position Substantiated,14
+2026,Pet Insurance,Compromised Settlement/Resolution,2
+2026,Portable Electronics,Company Position Substantiated,1
+2026,Professional/E&O,,2
+2026,Professional/E&O,Company Position Substantiated,1
+2026,Professional/E&O,Question of Fact/Contract/Provision/Legal Issue,2
+2026,Rental,No Jurisdiction,1
+2026,Rental,Referred to Another State’s Dept of Insurance,1
+2026,Renter/Tenants,,20
+2026,Renter/Tenants,Company Position Substantiated,9
+2026,Renter/Tenants,Compromised Settlement/Resolution,1
+2026,Renter/Tenants,No Action Requested/Required,3
+2026,Renter/Tenants,Question of Fact/Contract/Provision/Legal Issue,7
+2026,Title,,6
+2026,Travel,,5
+2026,Travel,Claim Settled,10
+2026,Travel,Company Position Overturned,3
+2026,Travel,Company Position Substantiated,17
+2026,Travel,Question of Fact/Contract/Provision/Legal Issue,3
+2026,Umbrella,,6
+2026,Umbrella,Company Position Substantiated,1
+2026,Watercraft,Company Position Substantiated,2
+2026,Workers' Compensation,Company Position Substantiated,9
+2026,Workers' Compensation,Compromised Settlement/Resolution,6
+2026,Workers' Compensation,No Jurisdiction,1

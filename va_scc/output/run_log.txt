@@ -1,0 +1,12 @@
+
+=== run started 2026-05-05T02:42:56+00:00 ===
+  FY2022: P&C=2,322 L&H=1,347 ER reviewed=524 (against=83, for=75, mixed=0, no_dec=366)
+  FY2023: P&C=2,779 L&H=1,347 ER reviewed=585 (against=106, for=84, mixed=1, no_dec=394)
+  FY2024: P&C=3,230 L&H=1,809 ER reviewed=543 (against=114, for=110, mixed=3, no_dec=326)
+  FY2025: P&C=3,342 L&H=1,898 ER reviewed=459 (against=114, for=80, mixed=2, no_dec=263)
+  WARNING FY2024: sum(dispositions)=228 vs eligible=218 (delta=10)
+Wrote va_complaints_yearly.parquet (8 rows)
+Wrote va_external_review_yearly.parquet (4 rows)
+
+Lifetime ER aggregate: 417/772 = 54.02% against-insurer (of decided)
+=== run completed 2026-05-05T02:43:03+00:00 ===

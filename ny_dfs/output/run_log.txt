@@ -1,0 +1,163 @@
+
+=== run started 2026-05-04T19:22:55+00:00 ===
+
+[auto]
+Auto: loaded 2,461 rows
+Wrote ny_auto_complaints_company_year.parquet (2461 rows)
+Wrote ny_auto_complaints_yearly.parquet (16 rows)
+shape: (16, 8)
+┌──────┬─────────────┬────────────┬────────────┬────────────┬────────────┬────────────┬────────────┐
+│ year ┆ total_uphel ┆ total_ques ┆ total_not_ ┆ total_comp ┆ total_prem ┆ n_companie ┆ statewide_ │
+│ ---  ┆ d_2yr       ┆ tion_of_fa ┆ upheld_2yr ┆ laints_2yr ┆ iums_milli ┆ s          ┆ complaint_ │
+│ i32  ┆ ---         ┆ ct_2yr     ┆ ---        ┆ ---        ┆ ons_2yr_av ┆ ---        ┆ ratio      │
+│      ┆ i64         ┆ ---        ┆ i64        ┆ i64        ┆ …          ┆ u32        ┆ ---        │
+│      ┆             ┆ i64        ┆            ┆            ┆ ---        ┆            ┆ f64        │
+│      ┆             ┆            ┆            ┆            ┆ f64        ┆            ┆            │
+╞══════╪═════════════╪════════════╪════════════╪════════════╪════════════╪════════════╪════════════╡
+│ 2009 ┆ 966         ┆ 2104       ┆ 3738       ┆ 6808       ┆ 9712.951   ┆ 181        ┆ 0.099455   │
+│ 2010 ┆ 621         ┆ 2395       ┆ 3410       ┆ 6426       ┆ 10027.525  ┆ 179        ┆ 0.06193    │
+│ 2011 ┆ 478         ┆ 1423       ┆ 2799       ┆ 4700       ┆ 10283.597  ┆ 169        ┆ 0.046482   │
+│ 2012 ┆ 459         ┆ 1190       ┆ 2374       ┆ 4023       ┆ 10609.529  ┆ 172        ┆ 0.043263   │
+│ 2013 ┆ 520         ┆ 972        ┆ 1897       ┆ 3389       ┆ 10949.204  ┆ 171        ┆ 0.047492   │
+│ 2014 ┆ 610         ┆ 1382       ┆ 2495       ┆ 4487       ┆ 11290.648  ┆ 170        ┆ 0.054027   │
+│ 2015 ┆ 281         ┆ 1004       ┆ 1758       ┆ 3043       ┆ 12276.911  ┆ 158        ┆ 0.022888   │
+│ 2016 ┆ 281         ┆ 1004       ┆ 1758       ┆ 3043       ┆ 12276.911  ┆ 158        ┆ 0.022888   │
+│ 2017 ┆ 392         ┆ 964        ┆ 1956       ┆ 3312       ┆ 12938.43   ┆ 159        ┆ 0.030297   │
+│ 2018 ┆ 316         ┆ 1013       ┆ 1853       ┆ 3182       ┆ 13611.94   ┆ 151        ┆ 0.023215   │
+│ 2019 ┆ 419         ┆ 765        ┆ 1488       ┆ 2672       ┆ 14078.25   ┆ 139        ┆ 0.029762   │
+│ 2020 ┆ 437         ┆ 724        ┆ 1992       ┆ 3153       ┆ 14101.9292 ┆ 135        ┆ 0.030989   │
+│      ┆             ┆            ┆            ┆            ┆ 64         ┆            ┆            │
+│ 2021 ┆ 429         ┆ 621        ┆ 1541       ┆ 2591       ┆ 14449.4307 ┆ 135        ┆ 0.02969    │
+│      ┆             ┆            ┆            ┆            ┆ 08         ┆            ┆            │
+│ 2022 ┆ 403         ┆ 791        ┆ 2036       ┆ 3230       ┆ 15095.4852 ┆ 132        ┆ 0.026697   │
+│      ┆             ┆            ┆            ┆            ┆ 97         ┆            ┆            │
+│ 2023 ┆ 445         ┆ 792        ┆ 2262       ┆ 3499       ┆ 16201.8972 ┆ 124        ┆ 0.027466   │
+│      ┆             ┆            ┆            ┆            ┆ 77         ┆            ┆            │
+│ 2024 ┆ 629         ┆ 1108       ┆ 3414       ┆ 5151       ┆ 18428.2013 ┆ 128        ┆ 0.034132   │
+│      ┆             ┆            ┆            ┆            ┆ 84         ┆            ┆            │
+└──────┴─────────────┴────────────┴────────────┴────────────┴────────────┴────────────┴────────────┘
+
+[health]
+  guide=2016 page=6 HMO 2015: 10 rows
+  guide=2016 page=7 EPO/PPO 2015: 13 rows
+  guide=2016 page=8 Commercial 2015: 16 rows
+  guide=2016 page=9 Commercial 2015: 16 rows
+  guide=2016 page=11 HMO 2015: 0 rows
+  guide=2016 page=12 EPO/PPO 2015: 13 rows
+  guide=2016 page=13 Commercial 2015: 16 rows
+  guide=2016 page=14 Commercial 2015: 16 rows
+  guide=2017 page=6 HMO 2016: 9 rows
+  guide=2017 page=7 EPO/PPO 2016: 14 rows
+  guide=2017 page=8 Commercial 2016: 16 rows
+  guide=2017 page=9 Commercial 2016: 16 rows
+  guide=2017 page=11 HMO 2016: 0 rows
+  guide=2017 page=12 EPO/PPO 2016: 14 rows
+  guide=2017 page=13 Commercial 2016: 16 rows
+  guide=2017 page=14 Commercial 2016: 16 rows
+  guide=2018 page=6 HMO 2017: 9 rows
+  guide=2018 page=7 EPO/PPO 2017: 13 rows
+  guide=2018 page=8 Commercial 2017: 17 rows
+  guide=2018 page=9 Commercial 2017: 13 rows
+  guide=2018 page=11 HMO 2017: 0 rows
+  guide=2018 page=12 EPO/PPO 2017: 13 rows
+  guide=2018 page=13 Commercial 2017: 17 rows
+  guide=2018 page=14 Commercial 2017: 13 rows
+  guide=2019 page=6 HMO 2018: 8 rows
+  guide=2019 page=7 EPO/PPO 2018: 13 rows
+  guide=2019 page=8 Commercial 2018: 16 rows
+  guide=2019 page=9 Commercial 2018: 17 rows
+  guide=2019 page=11 HMO 2018: 0 rows
+  guide=2019 page=12 EPO/PPO 2018: 13 rows
+  guide=2019 page=13 Commercial 2018: 16 rows
+  guide=2019 page=14 Commercial 2018: 17 rows
+  guide=2020 page=6 HMO 2019: 8 rows
+  guide=2020 page=7 EPO/PPO 2019: 14 rows
+  guide=2020 page=8 Commercial 2019: 19 rows
+  guide=2020 page=9 Commercial 2019: 17 rows
+  guide=2020 page=11 HMO 2019: 0 rows
+  guide=2020 page=12 EPO/PPO 2019: 14 rows
+  guide=2020 page=13 Commercial 2019: 19 rows
+  guide=2020 page=14 Commercial 2019: 17 rows
+  guide=2021 page=6 HMO 2020: 8 rows
+  guide=2021 page=7 EPO/PPO 2020: 15 rows
+  guide=2021 page=8 Commercial 2020: 18 rows
+  guide=2021 page=9 Commercial 2020: 17 rows
+  guide=2021 page=11 HMO 2020: 0 rows
+  guide=2021 page=12 EPO/PPO 2020: 15 rows
+  guide=2021 page=13 Commercial 2020: 18 rows
+  guide=2021 page=14 Commercial 2020: 17 rows
+  guide=2022 page=6 HMO 2021: 6 rows
+  guide=2022 page=7 EPO/PPO 2021: 15 rows
+  guide=2022 page=8 Commercial 2021: 18 rows
+  guide=2022 page=9 Commercial 2021: 14 rows
+  guide=2022 page=11 HMO 2021: 0 rows
+  guide=2022 page=12 EPO/PPO 2021: 15 rows
+  guide=2022 page=13 Commercial 2021: 18 rows
+  guide=2022 page=14 Commercial 2021: 14 rows
+  guide=2023 page=6 HMO 2022: 7 rows
+  guide=2023 page=7 EPO/PPO 2022: 15 rows
+  guide=2023 page=8 Commercial 2022: 16 rows
+  guide=2023 page=9 Commercial 2022: 16 rows
+  guide=2023 page=11 HMO 2022: 0 rows
+  guide=2023 page=12 EPO/PPO 2022: 15 rows
+  guide=2023 page=13 Commercial 2022: 16 rows
+  guide=2023 page=14 Commercial 2022: 16 rows
+  guide=2024 page=6 HMO 2023: 6 rows
+  guide=2024 page=7 EPO/PPO 2023: 14 rows
+  guide=2024 page=8 Commercial 2023: 16 rows
+  guide=2024 page=9 Commercial 2023: 17 rows
+  guide=2024 page=11 HMO 2023: 0 rows
+  guide=2024 page=12 EPO/PPO 2023: 14 rows
+  guide=2024 page=13 Commercial 2023: 16 rows
+  guide=2024 page=14 Commercial 2023: 17 rows
+  guide=2025 page=6 HMO 2024: 7 rows
+  guide=2025 page=7 EPO/PPO 2024: 13 rows
+  guide=2025 page=8 Commercial 2024: 16 rows
+  guide=2025 page=9 Commercial 2024: 17 rows
+  guide=2025 page=11 HMO 2024: 0 rows
+  guide=2025 page=12 EPO/PPO 2024: 13 rows
+  guide=2025 page=13 Commercial 2024: 16 rows
+  guide=2025 page=14 Commercial 2024: 17 rows
+Health: 1012 raw rows -> 688 after dedup
+Wrote ny_health_complaints_company_year.parquet (688 rows)
+Wrote ny_health_complaints_yearly.parquet (30 rows)
+shape: (30, 9)
+┌──────┬────────────┬────────────┬────────────┬───┬────────────┬────────────┬─────────┬────────────┐
+│ year ┆ plan_type  ┆ total_comp ┆ upheld_com ┆ … ┆ total_comp ┆ upheld_com ┆ n_plans ┆ upheld_per │
+│ ---  ┆ ---        ┆ laints_dfs ┆ plaints_df ┆   ┆ laints_doh ┆ plaints_do ┆ ---     ┆ _million_p │
+│ i64  ┆ str        ┆ ---        ┆ s          ┆   ┆ ---        ┆ h          ┆ u32     ┆ remium     │
+│      ┆            ┆ i64        ┆ ---        ┆   ┆ i64        ┆ ---        ┆         ┆ ---        │
+│      ┆            ┆            ┆ i64        ┆   ┆            ┆ i64        ┆         ┆ f64        │
+╞══════╪════════════╪════════════╪════════════╪═══╪════════════╪════════════╪═════════╪════════════╡
+│ 2015 ┆ Commercial ┆ 315        ┆ 79         ┆ … ┆ 0          ┆ 0          ┆ 37      ┆ 0.015831   │
+│ 2015 ┆ EPO/PPO    ┆ 3603       ┆ 1139       ┆ … ┆ 0          ┆ 0          ┆ 23      ┆ 0.028369   │
+│ 2015 ┆ HMO        ┆ 2223       ┆ 784        ┆ … ┆ 7          ┆ 1          ┆ 10      ┆ 0.13663    │
+│ 2016 ┆ Commercial ┆ 243        ┆ 88         ┆ … ┆ 0          ┆ 0          ┆ 36      ┆ 0.015732   │
+│ 2016 ┆ EPO/PPO    ┆ 4402       ┆ 1146       ┆ … ┆ 0          ┆ 0          ┆ 23      ┆ 0.028699   │
+│ 2016 ┆ HMO        ┆ 1196       ┆ 409        ┆ … ┆ 18         ┆ 1          ┆ 9       ┆ 0.065178   │
+│ 2017 ┆ Commercial ┆ 249        ┆ 68         ┆ … ┆ 0          ┆ 0          ┆ 33      ┆ 0.015015   │
+│ 2017 ┆ EPO/PPO    ┆ 5596       ┆ 2614       ┆ … ┆ 0          ┆ 0          ┆ 22      ┆ 0.072835   │
+│ 2017 ┆ HMO        ┆ 1115       ┆ 402        ┆ … ┆ 14         ┆ 1          ┆ 9       ┆ 0.067879   │
+│ 2018 ┆ Commercial ┆ 247        ┆ 49         ┆ … ┆ 0          ┆ 0          ┆ 37      ┆ 0.009954   │
+│ 2018 ┆ EPO/PPO    ┆ 6967       ┆ 3598       ┆ … ┆ 0          ┆ 0          ┆ 23      ┆ 0.086078   │
+│ 2018 ┆ HMO        ┆ 1184       ┆ 654        ┆ … ┆ 7          ┆ 0          ┆ 8       ┆ 0.122142   │
+│ 2019 ┆ Commercial ┆ 259        ┆ 73         ┆ … ┆ 0          ┆ 0          ┆ 39      ┆ 0.013571   │
+│ 2019 ┆ EPO/PPO    ┆ 4460       ┆ 1692       ┆ … ┆ 0          ┆ 0          ┆ 24      ┆ 0.038986   │
+│ 2019 ┆ HMO        ┆ 1031       ┆ 544        ┆ … ┆ 7          ┆ 3          ┆ 8       ┆ 0.102872   │
+│ 2020 ┆ Commercial ┆ 220        ┆ 37         ┆ … ┆ 0          ┆ 0          ┆ 39      ┆ 0.00643    │
+│ 2020 ┆ EPO/PPO    ┆ 5021       ┆ 2072       ┆ … ┆ 0          ┆ 0          ┆ 27      ┆ 0.048241   │
+│ 2020 ┆ HMO        ┆ 1281       ┆ 390        ┆ … ┆ 1          ┆ 1          ┆ 8       ┆ 0.079628   │
+│ 2021 ┆ Commercial ┆ 242        ┆ 49         ┆ … ┆ 0          ┆ 0          ┆ 35      ┆ 0.008032   │
+│ 2021 ┆ EPO/PPO    ┆ 5403       ┆ 1907       ┆ … ┆ 0          ┆ 0          ┆ 26      ┆ 0.041582   │
+│ 2021 ┆ HMO        ┆ 732        ┆ 269        ┆ … ┆ 1          ┆ 0          ┆ 6       ┆ 0.056228   │
+│ 2022 ┆ Commercial ┆ 278        ┆ 62         ┆ … ┆ 0          ┆ 0          ┆ 35      ┆ 0.009183   │
+│ 2022 ┆ EPO/PPO    ┆ 5058       ┆ 2432       ┆ … ┆ 0          ┆ 0          ┆ 28      ┆ 0.052929   │
+│ 2022 ┆ HMO        ┆ 730        ┆ 419        ┆ … ┆ 1          ┆ 0          ┆ 7       ┆ 0.08015    │
+│ 2023 ┆ Commercial ┆ 323        ┆ 77         ┆ … ┆ 0          ┆ 0          ┆ 37      ┆ 0.01051    │
+│ 2023 ┆ EPO/PPO    ┆ 6871       ┆ 3700       ┆ … ┆ 0          ┆ 0          ┆ 26      ┆ 0.078967   │
+│ 2023 ┆ HMO        ┆ 1265       ┆ 788        ┆ … ┆ 1          ┆ 0          ┆ 6       ┆ 0.134461   │
+│ 2024 ┆ Commercial ┆ 311        ┆ 71         ┆ … ┆ 0          ┆ 0          ┆ 36      ┆ 0.010139   │
+│ 2024 ┆ EPO/PPO    ┆ 6189       ┆ 3290       ┆ … ┆ 0          ┆ 0          ┆ 24      ┆ 0.072746   │
+│ 2024 ┆ HMO        ┆ 694        ┆ 376        ┆ … ┆ 0          ┆ 0          ┆ 7       ┆ 0.057521   │
+└──────┴────────────┴────────────┴────────────┴───┴────────────┴────────────┴─────────┴────────────┘
+=== run completed 2026-05-04T19:29:49+00:00 ===

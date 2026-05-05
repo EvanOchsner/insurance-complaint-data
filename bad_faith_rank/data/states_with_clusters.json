@@ -1,0 +1,3396 @@
+{
+  "version": "0.3",
+  "scope": "First- and third-party bad faith for individual (non-commercial) P&C insureds; 50 states + DC.",
+  "rubric_version": "v0.3 (Factor 11 removed; weights F2=14, F4=12, F6=12, F10=10)",
+  "tier_bands": [
+    {
+      "id": "T1",
+      "label": "Tier 1 \u2014 Strongest",
+      "min_score": 7.0,
+      "color": "#1a9850"
+    },
+    {
+      "id": "T2",
+      "label": "Tier 2 \u2014 Strong",
+      "min_score": 6.0,
+      "color": "#66bd63"
+    },
+    {
+      "id": "T3",
+      "label": "Tier 3 \u2014 Moderate",
+      "min_score": 5.0,
+      "color": "#fee08b"
+    },
+    {
+      "id": "T4",
+      "label": "Tier 4 \u2014 Weak",
+      "min_score": 4.0,
+      "color": "#fdae61"
+    },
+    {
+      "id": "T5",
+      "label": "Tier 5 \u2014 Weakest",
+      "min_score": 0.0,
+      "color": "#d73027"
+    }
+  ],
+  "structural_clusters": [
+    {
+      "id": "S0_admin_hybrid",
+      "label": "Mandatory Admin-Channel Hybrid",
+      "description": "Statute requires a pre-suit administrative complaint to the state DOI as a condition of filing a bad-faith suit. The DOI's findings carry weight, and procedural barriers are unusually high. Currently a class of one (Maryland \u00a727-1001 / \u00a73-1701).",
+      "drivers": "Bad-faith disputes channel through the regulator first; DOI dispositions are a meaningful primary signal; court filings are filtered.",
+      "examples_expected": [
+        "MD"
+      ]
+    },
+    {
+      "id": "S1_multi_tool_statutory",
+      "label": "Multi-Tool Statutory Regime",
+      "description": "Robust statutory cause of action with built-in remedies \u2014 typically a multiplier or percent-penalty + one-way attorney fees + a clear standard. Insureds can litigate without relying on common-law tort.",
+      "drivers": "Statutory teeth predict higher litigation volume and more pre-suit settlement; CRN/demand mechanisms generate large public databases of allegations.",
+      "examples_expected": [
+        "WA",
+        "PA",
+        "MA",
+        "CO",
+        "NM",
+        "TX"
+      ]
+    },
+    {
+      "id": "S2_statute_constrained",
+      "label": "Statutory Path, Constrained",
+      "description": "A statutory bad-faith path exists but is narrower than the multi-tool regimes \u2014 capped damages (IL \u00a7155, VA \u00a738.2-209), strict construction (TN \u00a756-7-105), narrow scope (RI \u00a79-1-33 first-party only), demand-letter prerequisites that gate filing, or a single-tool subset (e.g., percent-penalty without fee shifting, or fee shifting without multiplier).",
+      "drivers": "Procedural prerequisites (CRNs, demand letters) generate visible plaintiff-side activity; statutory caps hold settlement values down; common-law tort either absent or preempted by the statute.",
+      "examples_expected": [
+        "RI",
+        "KY",
+        "MO",
+        "NV",
+        "NC",
+        "CT",
+        "NJ",
+        "TN",
+        "FL",
+        "GA",
+        "WV",
+        "LA",
+        "IL",
+        "MT",
+        "ME",
+        "AR",
+        "MN"
+      ]
+    },
+    {
+      "id": "S3_common_law_tort",
+      "label": "Common-Law Tort Driven",
+      "description": "Recognized common-law tort cause of action for first-party bad faith (or contract+tort hybrid), but no meaningful statutory PRoA. Damages and standards depend on judicial doctrine.",
+      "drivers": "Litigation is concentrated in larger-loss cases where contingency-fee economics work; lower-volume case-by-case footprint; admin-side complaint volume is the more visible signal.",
+      "examples_expected": [
+        "CA",
+        "AZ",
+        "AK",
+        "OK",
+        "HI",
+        "ID",
+        "ND",
+        "OH",
+        "IA",
+        "WI",
+        "SC",
+        "AL",
+        "MS",
+        "OR",
+        "VT",
+        "WY",
+        "DE",
+        "SD",
+        "NE",
+        "IN"
+      ]
+    },
+    {
+      "id": "S4_minimal_protection",
+      "label": "Minimal Protection",
+      "description": "No robust common-law tort AND no meaningful statutory PRoA. Insureds are largely limited to contract damages, narrow regulatory penalties, or attorney-fee statutes that do not compensate for non-payment.",
+      "drivers": "Bad-faith litigation is rare and low-stakes; admin complaint volume is the dominant footprint; insurer behavior is constrained more by reputation/market than by law.",
+      "examples_expected": [
+        "NY",
+        "MI",
+        "DC",
+        "NH",
+        "UT",
+        "VA",
+        "KS"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "state": "WA",
+      "state_name": "Washington",
+      "default_score": 7.96,
+      "tier": "T1",
+      "structural_cluster": "S1_multi_tool_statutory",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 10,
+          "rationale": "Robust common-law tort PLUS IFCA statutory PRoA PLUS CPA route \u2014 strongest combined first-party regime in nation.",
+          "cite": "Coventry v. Am. States (Wash. 1998); RCW 48.30.015; Hangman Ridge (Wash. 1986)"
+        },
+        "f1b_third_party_cause": {
+          "score": 8,
+          "rationale": "Common-law tort + coverage-by-estoppel remedy under Kirk; CPA also reaches third-party scenarios; broader than typical Stowers.",
+          "cite": "Kirk v. Mt. Airy Ins. (Wash. 1998); St. Paul v. Onvia (Wash. 2008)"
+        },
+        "f2_statutory_proa": {
+          "score": 9,
+          "rationale": "IFCA broad PRoA with treble and one-way fees, augmented by CPA route; Perez-Crisantos (2017) limited IFCA to coverage/benefits denials, costing top score.",
+          "cite": "RCW 48.30.015; Perez-Crisantos v. State Farm (Wash. 2017)"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Unreasonable, frivolous, or unfounded breach \u2014 objective test; insured may prevail under CPA regardless of correctness of coverage decision.",
+          "cite": "St. Paul v. Onvia (Wash. 2008); P.E.L. v. Premera (Wash. 2023)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 9,
+          "rationale": "Consequential, emotional distress, plus coverage-by-estoppel remedy effectively expands liability beyond policy limits.",
+          "cite": "Coventry (Wash. 1998); Kirk (Wash. 1998); Schmidt v. Coogan (Wash. 2004)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "True punitives generally unavailable in WA, but IFCA treble damages function as exemplary substitute.",
+          "cite": "RCW 48.30.015(2); McKee, 191 P.3d at 860"
+        },
+        "f6_statutory_penalty": {
+          "score": 10,
+          "rationale": "Treble damages (3x) under IFCA \u2014 among the most powerful in the nation.",
+          "cite": "RCW 48.30.015(2); Perez-Crisantos (Wash. 2017)"
+        },
+        "f7_attorney_fees": {
+          "score": 10,
+          "rationale": "Mandatory one-way fees + statutory litigation costs under IFCA; CPA also provides fees.",
+          "cite": "RCW 48.30.015(3); RCW 19.86.090"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "20-day pre-suit notice to insurer AND OIC required under IFCA \u2014 modest cure period, narrower than FL/GA.",
+          "cite": "RCW 48.30.015(8)"
+        },
+        "f9_admin_remedy": {
+          "score": 8,
+          "rationale": "OIC robust \u2014 investigates, fines, restitution, license action; statutorily integrated as IFCA pre-suit channel.",
+          "cite": "RCW 48.30.015(8); WA OIC"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 4,
+          "rationale": "Perez-Crisantos (2017) significantly narrowed IFCA scope to coverage/benefits denials, excluding broader UCSPA violations.",
+          "cite": "Perez-Crisantos v. State Farm (Wash. 2017)"
+        }
+      }
+    },
+    {
+      "state": "PA",
+      "state_name": "Pennsylvania",
+      "default_score": 7.78,
+      "tier": "T1",
+      "structural_cluster": "S1_multi_tool_statutory",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 8,
+          "rationale": "Strong statutory bad-faith path under \u00a78371 plus contract-based implied covenant; tort treated separately and non-contingent.",
+          "cite": "42 Pa.C.S. \u00a78371; Ash v. Continental (Pa. 2007)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "\u00a78371 reaches third-party scenarios; plus common-law duty under Birth Center.",
+          "cite": "42 Pa.C.S. \u00a78371; Birth Center v. St. Paul (Pa. 2001)"
+        },
+        "f2_statutory_proa": {
+          "score": 10,
+          "rationale": "\u00a78371 broad PRoA covering any bad-faith insurer conduct, no pre-suit notice, no cure period.",
+          "cite": "42 Pa.C.S. \u00a78371; Rancosky v. Washington Nat'l (Pa. 2017)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Terletsky test: no reasonable basis + knew/recklessly disregarded; clear and convincing standard of proof.",
+          "cite": "Terletsky v. Prudential (Pa. Super. 1994); Rancosky (Pa. 2017)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Compensatory damages including emotional distress plus statutory punitive damages; broad scope under Birth Center.",
+          "cite": "Birth Center v. St. Paul (Pa. 2001); 42 Pa.C.S. \u00a78371"
+        },
+        "f5_punitive_damages": {
+          "score": 8,
+          "rationale": "Statutorily authorized punitive damages on clear and convincing bad-faith finding; no statutory cap.",
+          "cite": "42 Pa.C.S. \u00a78371"
+        },
+        "f6_statutory_penalty": {
+          "score": 8,
+          "rationale": "Prime+3% interest on claim from date made + punitives + costs + fees \u2014 strong statutory teeth, no multiplier per se.",
+          "cite": "42 Pa.C.S. \u00a78371"
+        },
+        "f7_attorney_fees": {
+          "score": 9,
+          "rationale": "Mandatory one-way fees + court costs available on bad-faith finding under \u00a78371.",
+          "cite": "42 Pa.C.S. \u00a78371"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period under \u00a78371.",
+          "cite": "42 Pa.C.S. \u00a78371"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "PID Bureau of Consumer Services moderate with fines and C&D; no binding individual adjudication.",
+          "cite": "PA Insurance Department Bureau of Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 6,
+          "rationale": "Stable broad statute; Rancosky (2017) confirmed Terletsky test; Watchword (2024) clarified clear-and-convincing standard \u2014 modestly stable to slightly broadening.",
+          "cite": "Rancosky (Pa. 2017); Watchword (Pa. Super. 2024)"
+        }
+      }
+    },
+    {
+      "state": "MA",
+      "state_name": "Massachusetts",
+      "default_score": 7.6,
+      "tier": "T1",
+      "structural_cluster": "S1_multi_tool_statutory",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law bad faith plus robust statutory c. 93A/176D cause of action; well-established and broadly available.",
+          "cite": "Hopkins v. Liberty Mutual, 750 N.E.2d 943 (Mass. 2001); Green v. Blue Cross & Blue Shield, 713 N.E.2d 992 (Mass. App. Ct.)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Third-party claims actionable under c. 93A via c. 176D \u00a73(9); broad reach.",
+          "cite": "Mass. Gen. Laws c. 93A \u00a79; c. 176D \u00a73(9); Hopkins, 750 N.E.2d 943"
+        },
+        "f2_statutory_proa": {
+          "score": 10,
+          "rationale": "Robust statutory PRoA via c. 93A \u00a79 reaching both first- and third-party with low-procedural-friction 30-day demand and powerful remedies.",
+          "cite": "Mass. Gen. Laws c. 93A \u00a79; c. 176D \u00a73(9)"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Unfair-trade-practice standard objective; insurer must make reasonable settlement tender once liability reasonably clear.",
+          "cite": "c. 176D \u00a73(9)(f); Hopkins, 750 N.E.2d 943; Rawan v. Cont'l Cas. Co., 136 N.E.3d 327 (Mass. 2019)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "All foreseeable consequential losses + emotional distress (when insurer acts deceptively/knowingly) recoverable.",
+          "cite": "Rivera v. Com. Ins. Co., 993 N.E.2d 1208 (Mass. Ct. App. 2013); Hershenow v. Enter. Rent-A-Car, 840 N.E.2d 526 (Mass. 2006)"
+        },
+        "f5_punitive_damages": {
+          "score": 7,
+          "rationale": "Up to 2x or 3x actual damages for willful/knowing 93A violation (statutory multiplier serves punitive function).",
+          "cite": "Mass. Gen. Laws c. 93A \u00a79(3)"
+        },
+        "f6_statutory_penalty": {
+          "score": 10,
+          "rationale": "2x-3x damages for willful or knowing violations\u2014among nation's strongest statutory teeth.",
+          "cite": "Mass. Gen. Laws c. 93A \u00a79(3)"
+        },
+        "f7_attorney_fees": {
+          "score": 10,
+          "rationale": "Mandatory one-way attorney fees + costs to prevailing insured under c. 93A.",
+          "cite": "Mass. Gen. Laws c. 93A \u00a79(4); Bobick v. U.S. Fid. & Guar., 790 N.E.2d 653 (Mass. 2003)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "30-day c. 93A demand letter required pre-suit with reasonable-tender safe harbor.",
+          "cite": "Mass. Gen. Laws c. 93A \u00a79(3)"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI moderate; investigates and fines but no individual binding adjudication.",
+          "cite": "Massachusetts Division of Insurance Consumer Service Section"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable c. 93A/176D jurisprudence; Rawan (2019) reaffirmed causation requirement without major shift.",
+          "cite": "Rawan, 136 N.E.3d 327"
+        }
+      }
+    },
+    {
+      "state": "CO",
+      "state_name": "Colorado",
+      "default_score": 7.34,
+      "tier": "T1",
+      "structural_cluster": "S1_multi_tool_statutory",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 9,
+          "rationale": "Strong common-law tort (Goodson/Savio) PLUS statutory unreasonable-delay claim under \u00a710-3-1115.",
+          "cite": "Goodson v. Am. Standard (Colo. 2004); Travelers v. Savio (Colo. 1985)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Established third-party tort under Trimble; reasonableness-under-circumstances standard.",
+          "cite": "Farmers Group v. Trimble (Colo. 1984)"
+        },
+        "f2_statutory_proa": {
+          "score": 7,
+          "rationale": "\u00a710-3-1115/1116 PRoA with broad 'unreasonable delay or denial' trigger; reaches first-party squarely; CCPA crossover for trebling.",
+          "cite": "C.R.S. \u00a710-3-1115, \u00a710-3-1116; \u00a76-1-113"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Common-law: unreasonable + knowing/reckless; statutory claim only requires 'without reasonable basis'.",
+          "cite": "Goodson (Colo. 2004); Fisher v. State Farm (Colo. 2018)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Consequential plus emotional distress; lost earnings recoverable.",
+          "cite": "Goodson, 89 P.3d 409 (Colo. 2004)"
+        },
+        "f5_punitive_damages": {
+          "score": 6,
+          "rationale": "Available with fraud/malice/willful-wanton; CCPA crossover allows treble actual damages.",
+          "cite": "C.R.S. \u00a713-21-102; Showpiece Homes (Colo. 2001)"
+        },
+        "f6_statutory_penalty": {
+          "score": 8,
+          "rationale": "2x covered benefit under \u00a710-3-1116 \u2014 significant statutory teeth on lower threshold.",
+          "cite": "C.R.S. \u00a710-3-1116"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees in statutory bad-faith and CCPA actions; not in common-law tort alone.",
+          "cite": "C.R.S. \u00a710-3-1116; Allstate v. Huizar (Colo. 2002)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period.",
+          "cite": "C.R.S. \u00a710-3-1116"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Division of Insurance Consumer Services moderate; fines available.",
+          "cite": "C.R.S. \u00a710-3-1104"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 7,
+          "rationale": "Fisher 2018 affirmed broad statutory bad-faith reading; recent precedent broadening.",
+          "cite": "Fisher v. State Farm (Colo. 2018)"
+        }
+      }
+    },
+    {
+      "state": "NM",
+      "state_name": "New Mexico",
+      "default_score": 7.16,
+      "tier": "T1",
+      "structural_cluster": "S1_multi_tool_statutory",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 9,
+          "rationale": "Both common-law tort (Sloan/Hovey-Jaramillo) and statutory PRoA under \u00a759A-16-30; bad-faith treated as torts.",
+          "cite": "Sloan v. State Farm (N.M. 2004); N.M. Stat. \u00a759A-16-30"
+        },
+        "f1b_third_party_cause": {
+          "score": 8,
+          "rationale": "Recognized for failure to defend, settle within limits, and timely pay; entire judgment recoverable on excess.",
+          "cite": "Am. Nat'l Prop. v. Rosenschein (D.N.M. 2020); Dairyland v. Herman (10th Cir. 1998)"
+        },
+        "f2_statutory_proa": {
+          "score": 9,
+          "rationale": "\u00a759A-16-30 broad PRoA; UPA crossover via \u00a757-12-10 (Hovet) layers consumer-protection remedies including treble.",
+          "cite": "N.M. Stat. \u00a759A-16-30; \u00a757-12-10; Hovet v. Allstate"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Frivolous/unfounded denial \u2014 i.e., arbitrary or baseless refusal lacking reasonable grounds; objective.",
+          "cite": "Sloan, 85 P.3d at 236-37; Jackson Nat'l v. Receconi (N.M. 1992)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential damages and excess judgment recoverable; emotional distress availability uncertain (federal courts have rejected).",
+          "cite": "N.M. Stat. \u00a759A-16-30; Fava v. Liberty Mut. (D.N.M. 2018)"
+        },
+        "f5_punitive_damages": {
+          "score": 6,
+          "rationale": "Punitive available on culpable mental state; clear & convincing standard.",
+          "cite": "Supreme Contracting v. Preferred (D.N.M. 2023); Peck v. Progressive (D.N.M. 2023)"
+        },
+        "f6_statutory_penalty": {
+          "score": 8,
+          "rationale": "Treble damages potentially available via UPA \u00a757-12-10 crossover; 15% statutory interest.",
+          "cite": "N.M. Stat. \u00a757-12-10; \u00a756-8-3; Hovet v. Allstate"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees under \u00a759A-16-30 if willful violation; broader award under \u00a739-2-1 if insurer acted unreasonably.",
+          "cite": "N.M. Stat. \u00a759A-16-30; \u00a739-2-1"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "N.M. Stat. \u00a759A-16-30"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "OSI Consumer Assistance Bureau investigates moderately with fines; no binding adjudication.",
+          "cite": "OSI Consumer Assistance Bureau"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Hovey-Jaramillo (2023) reaffirmed bad-faith claims as torts; no major recent narrowing.",
+          "cite": "Hovey-Jaramillo v. Liberty Mut. (N.M. 2023)"
+        }
+      }
+    },
+    {
+      "state": "TX",
+      "state_name": "Texas",
+      "default_score": 7.12,
+      "tier": "T1",
+      "structural_cluster": "S1_multi_tool_statutory",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 8,
+          "rationale": "Independent first-party tort (Arnold) PLUS Ch. 541 statutory PRoA PLUS Ch. 542 prompt-pay; multi-tool regime.",
+          "cite": "Arnold v. Nat'l Cnty. Mut. (Tex. 1987); Tex. Ins. Code \u00a7541.151"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Stowers doctrine \u2014 landmark national standard; insurer liable for full excess judgment when ordinarily prudent insurer would accept within-limits demand.",
+          "cite": "Stowers v. Am. Indem. (Tex. 1929); In re Farmers Tex. (Tex. 2021)"
+        },
+        "f2_statutory_proa": {
+          "score": 9,
+          "rationale": "Ch. 541 broad PRoA with treble for knowing violations + Ch. 542 prompt-pay PRoA + DTPA crossover; reaches first- and third-party. Modestly hurt by \u00a7542A 60-day notice for residential property.",
+          "cite": "Tex. Ins. Code \u00a7\u00a7541.151, 542.060, 542A.003"
+        },
+        "f3_liability_standard": {
+          "score": 6,
+          "rationale": "No reasonable basis + knew or should have known (objective-leaning), but bona fide coverage dispute defeats and no failure-to-investigate claim per Casta\u00f1eda.",
+          "cite": "Universe Life v. Giles (Tex. 1997); Provident Am. v. Casta\u00f1eda (Tex. 1998)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages including loss of use, lost profits, and excess judgment in third-party context; mental anguish requires willful/grossly negligent + physical injury.",
+          "cite": "J&D Towing v. Am. Alternative (Tex. 2016); Arnold (Tex. 1987)"
+        },
+        "f5_punitive_damages": {
+          "score": 6,
+          "rationale": "Available on tort claims with clear & convincing evidence of fraud, malice, or gross negligence; statutory caps under \u00a741.008.",
+          "cite": "Tex. Civ. Prac. & Rem. Code \u00a741.003(a), \u00a741.008"
+        },
+        "f6_statutory_penalty": {
+          "score": 9,
+          "rationale": "18% statutory interest on overdue claims under \u00a7542.060 PLUS treble damages under \u00a7541.152 for knowing violations.",
+          "cite": "Tex. Ins. Code \u00a7\u00a7542.060, 541.152"
+        },
+        "f7_attorney_fees": {
+          "score": 8,
+          "rationale": "One-way fees under \u00a7541.152, \u00a7542A.007, and \u00a738.001(b)(8) for breach of contract \u2014 broadly available.",
+          "cite": "Tex. Ins. Code \u00a7\u00a7541.152, 542A.007; Tex. CPRC \u00a738.001"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "60-day pre-suit notice under \u00a7541.154 / \u00a7542A.003 for residential property claims; not gating all claims but adds friction.",
+          "cite": "Tex. Ins. Code \u00a7\u00a7541.154, 542A.003"
+        },
+        "f9_admin_remedy": {
+          "score": 7,
+          "rationale": "TDI robust \u2014 complaints feed enforcement, publishes complaint ratios, OPIC statutory consumer advocate; no individual adjudication.",
+          "cite": "TDI Consumer Protection; OPIC"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 4,
+          "rationale": "HB 1774 / \u00a7542A (2017) substantially narrowed first-party residential property claims; Casta\u00f1eda and progeny restrict scope; Rodriguez v. Safeco (2024) further refined prompt-pay.",
+          "cite": "HB 1774 (2017); Rodriguez v. Safeco (Tex. 2024)"
+        }
+      }
+    },
+    {
+      "state": "MT",
+      "state_name": "Montana",
+      "default_score": 6.32,
+      "tier": "T2",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 9,
+          "rationale": "Both an independent statutory PRoA under \u00a733-18-242 and a common-law tort/breach claim available to first-party insureds.",
+          "cite": "Mont. Code Ann. \u00a733-18-242; Draggin' Y Cattle Co. v. Junkermier (Mont. 2019)"
+        },
+        "f1b_third_party_cause": {
+          "score": 9,
+          "rationale": "Statutory PRoA under \u00a733-18-242 reaches third-party claimants (rare), plus common-law duty to settle within limits.",
+          "cite": "Mont. Code Ann. \u00a733-18-242; Draggin' Y Cattle (Mont. 2019)"
+        },
+        "f2_statutory_proa": {
+          "score": 10,
+          "rationale": "\u00a733-18-242 is one of few statutes creating an independent PRoA reaching BOTH first- and third-party claimants with no cure period.",
+          "cite": "Mont. Code Ann. \u00a733-18-242"
+        },
+        "f3_liability_standard": {
+          "score": 6,
+          "rationale": "Statute imposes liability unless insurer had a reasonable basis in law or fact for contesting; objective standard with reasonable-basis defense.",
+          "cite": "Mont. Code Ann. \u00a733-18-242(5)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Compensatory + consequential + emotional distress (Stephens) recoverable; punitive available under MUTPA.",
+          "cite": "Mont. Code Ann. \u00a733-18-242; Stephens v. Safeco (Mont. 1993)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitive available on actual malice/fraud (clear & convincing under \u00a727-1-221), capped at $10M.",
+          "cite": "Mont. Code Ann. \u00a727-1-220(3), \u00a727-1-221"
+        },
+        "f6_statutory_penalty": {
+          "score": 4,
+          "rationale": "Statutory PRoA exists but no built-in multiplier or percent penalty; only 10% interest under \u00a731-1-106.",
+          "cite": "Mont. Code Ann. \u00a731-1-106; \u00a733-18-242"
+        },
+        "f7_attorney_fees": {
+          "score": 2,
+          "rationale": "Attorneys' fees generally NOT recoverable in Montana per Mountain West Farm Bureau v. Hall.",
+          "cite": "Mountain West Farm Bureau v. Hall (Mont. 2001)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period; third-party must wait until underlying claim resolved (modest timing constraint).",
+          "cite": "Mont. Code Ann. \u00a733-18-242"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "CSI Policyholder Services investigates with fines and C&D, but mostly moderate role; no binding adjudication.",
+          "cite": "Mont. CSI Policyholder Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Draggin' Y (2019) reaffirmed scope but no major recent broadening or narrowing.",
+          "cite": "Draggin' Y Cattle (Mont. 2019)"
+        }
+      }
+    },
+    {
+      "state": "RI",
+      "state_name": "Rhode Island",
+      "default_score": 6.32,
+      "tier": "T2",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 8,
+          "rationale": "Statutory PRoA under \u00a79-1-33 plus independent common-law tort recognized; broad damages available.",
+          "cite": "R.I. Gen. Laws \u00a79-1-33; Skaling v. Aetna (R.I. 2002); Zarrella v. Minn. Mut. (R.I. 2003)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Asermely rule: insurer liable for excess judgment when it rejects within-limits demand absent insured's refusal \u2014 broader than typical Stowers.",
+          "cite": "Asermely v. Allstate (R.I. 1999); DeMarco v. Travelers (R.I. 2011)"
+        },
+        "f2_statutory_proa": {
+          "score": 7,
+          "rationale": "Statutory PRoA under \u00a79-1-33 \u2014 broad in first-party context with punitive and fees baked in; third-party reached through common-law not statute.",
+          "cite": "R.I. Gen. Laws \u00a79-1-33"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Insurer acted unreasonably AND knew or was conscious that conduct was unreasonable \u2014 Anderson-style standard.",
+          "cite": "Skaling v. Aetna, 799 A.2d 997, 1009 (R.I. 2002)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential and emotional distress damages broadly available, plus punitive.",
+          "cite": "Bibeault v. Hanover (R.I. 1980)"
+        },
+        "f5_punitive_damages": {
+          "score": 7,
+          "rationale": "Punitive damages available as a matter of right in bad-faith cases on showing of bad-faith refusal \u2014 relatively favorable.",
+          "cite": "Skaling v. Aetna, 799 A.2d at 1016"
+        },
+        "f6_statutory_penalty": {
+          "score": 4,
+          "rationale": "No fixed multiplier or % penalty; statute incorporates punitives + fees but no automatic mathematical teeth. Stat. interest 12%.",
+          "cite": "R.I. Gen. Laws \u00a79-1-33; \u00a79-21-10"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fee shift to insured under \u00a79-1-33 upon bad-faith finding.",
+          "cite": "R.I. Gen. Laws \u00a79-1-33"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No statutory pre-suit notice, demand, or cure period required.",
+          "cite": "Statutory framework; no \u00a79-1-33 cure period"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DBR Insurance Division mediates and fines but no formal individual adjudication or pre-suit channel.",
+          "cite": "RI DBR Insurance Division"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Asermely and Skaling remain controlling; no major narrowing or broadening in recent decade.",
+          "cite": "DeMarco v. Travelers (R.I. 2011)"
+        }
+      }
+    },
+    {
+      "state": "KY",
+      "state_name": "Kentucky",
+      "default_score": 6.18,
+      "tier": "T2",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law first-party bad faith and parallel statutory UCSPA cause of action under Reeder; broadly available.",
+          "cite": "Wittmer v. Jones, 864 S.W.2d 885 (Ky. 1993); State Farm v. Reeder, 763 S.W.2d 116 (Ky. 1989)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Third parties may maintain UCSPA bad-faith action under \u00a7304.12-230 per Reeder\u2014relatively rare expansion.",
+          "cite": "State Farm v. Reeder, 763 S.W.2d 116 (Ky. 1989)"
+        },
+        "f2_statutory_proa": {
+          "score": 7,
+          "rationale": "Statutory PRoA via UCSPA (\u00a7304.12-230) reaching both first- and third-party; KCPA also available to insureds.",
+          "cite": "KRS \u00a7304.12-230; KRS \u00a7367.220; Reeder, 763 S.W.2d 116; Stevens v. Motorist Mut., 759 S.W.2d 819 (Ky. 1988)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Wittmer test: lack of reasonable basis AND knowing/reckless disregard\u2014Anderson-style standard.",
+          "cite": "Wittmer v. Jones, 864 S.W.2d 885 (Ky. 1993)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages and emotional distress/mental anguish damages recoverable under UCSPA.",
+          "cite": "Curry v. Fireman's Fund, 784 S.W.2d 176 (Ky. 1989); Wittmer, 864 S.W.2d 885"
+        },
+        "f5_punitive_damages": {
+          "score": 7,
+          "rationale": "Punitives available for outrageous conduct, evil motive, or reckless indifference; no statutory cap noted.",
+          "cite": "Wittmer, 864 S.W.2d at 890"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "12% statutory interest; no separate statutory multiplier or fixed penalty.",
+          "cite": "KRS \u00a7360.010"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "Attorney fees recoverable as damages under bad-faith; fee statute KRS \u00a7304.12-235 if delay without reasonable foundation.",
+          "cite": "KRS \u00a7304.12-235"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "KRS \u00a7304.12-230"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI moderate; investigates and fines but no individual binding adjudication.",
+          "cite": "Kentucky DOI Consumer Protection"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Demetre (2017) reaffirmed framework. No major recent narrowing.",
+          "cite": "Indiana Ins. Co. v. Demetre, 527 S.W.3d 12 (Ky. 2017)"
+        }
+      }
+    },
+    {
+      "state": "CA",
+      "state_name": "California",
+      "default_score": 5.82,
+      "tier": "T3",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 10,
+          "rationale": "Robust common-law tort (Gruenberg/Egan); broad damages; lenient unreasonable-or-without-proper-cause standard.",
+          "cite": "Gruenberg v. Aetna (Cal. 1973); Egan v. Mut. of Omaha (Cal. 1979)"
+        },
+        "f1b_third_party_cause": {
+          "score": 9,
+          "rationale": "Crisci/Comunale/Johansen failure-to-settle doctrine well-established with reasonable-offer rule.",
+          "cite": "Crisci v. Security (Cal. 1967); Johansen (Cal. 1975)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "Royal Globe PRoA repealed by Moradi-Shalal (1988); \u00a7790.03 regulatory-only. UCL channel narrow.",
+          "cite": "Cal. Ins. Code \u00a7790.03(h); Moradi-Shalal (Cal. 1988)"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Objective 'unreasonable or without proper cause'; no malice/intent required for liability (only for punitives).",
+          "cite": "Gruenberg, 510 P.2d 1032; R&B Auto Ctr. (Cal. App. 2006)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 9,
+          "rationale": "Full consequential and emotional distress damages broadly available.",
+          "cite": "Behnke (Cal. App. 2011); Cal. Civ. \u00a73300; Cates Const. (Cal. 1999)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on clear and convincing evidence of oppression, fraud, or malice; no statutory cap on bad-faith punitives.",
+          "cite": "Cal. Civ. \u00a73294; Nickerson (Cal. 2016)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "10% prejudgment interest under \u00a73287; no multiplier.",
+          "cite": "Cal. Civ. Code \u00a73287"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Brandt fees recoverable as damages but not statutory mandatory one-way.",
+          "cite": "Brandt v. Superior Court (Cal. 1985); Cassim v. Allstate (Cal. 2004)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Cal. Ins. Code \u00a7790.03"
+        },
+        "f9_admin_remedy": {
+          "score": 7,
+          "rationale": "CDI Hearing Bureau and Market Conduct robust on admin side.",
+          "cite": "Cal. Ins. Code \u00a712921.4"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 6,
+          "rationale": "Stable to mildly broadening; Nickerson 2016 reinforced punitives availability; no major recent narrowing.",
+          "cite": "Nickerson v. Stonebridge (Cal. 2016)"
+        }
+      }
+    },
+    {
+      "state": "MO",
+      "state_name": "Missouri",
+      "default_score": 5.82,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "No common-law first-party bad-faith tort; statutory vexatious-refusal cause under \u00a7375.420.",
+          "cite": "Mo. Rev. Stat. \u00a7375.420; Duncan v. Andrew County Mut. Ins. Co., 665 S.W.2d 13 (Mo. Ct. App. 1983)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Robust common-law third-party bad-faith tort; insurer fiduciary duty with full excess-judgment liability and punitives available.",
+          "cite": "Shobe v. Kelly, 279 S.W.3d 203 (Mo. Ct. App. 2009); Truck Ins. Exch. v. Prairie Framing, 162 S.W.3d 64 (Mo. Ct. App. 2005)"
+        },
+        "f2_statutory_proa": {
+          "score": 5,
+          "rationale": "Statutory PRoA via \u00a7375.420 vexatious-refusal extends to both first- and third-party but with capped percent penalty.",
+          "cite": "Mo. Rev. Stat. \u00a7375.420; Drury Co. v. Missouri United Sch. Ins. Couns., 455 S.W.3d 30 (Mo. Ct. App. 2014)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "'Without reasonable cause or excuse'\u2014objective; insurer protected if reasonable cause to believe no liability.",
+          "cite": "Dhyne v. State Farm, 188 S.W.3d 454 (Mo. 2006); Doe Run Res. v. Lloyd's London, 400 S.W.3d 463 (Mo. Ct. App. 2013)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages, emotional distress, and full excess-judgment recoverable in third-party bad-faith.",
+          "cite": "Rinehart v. Shelter Gen. Ins. Co., 261 S.W.3d 583 (Mo. App. W.D. 2008); Truck Ins. Exch., 162 S.W.3d 64"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitives available on clear and convincing showing of culpable mental state\u2014wanton, willful, outrageous, or reckless disregard.",
+          "cite": "John v. Allstate Ins. Co., 262 S.W.3d 655 (Mo. Ct. App. 2008); Rinehart, 261 S.W.3d 583"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "Vexatious-refusal: 20% of first $1,500 + 10% over $1,500 + attorney fees\u2014modest cap.",
+          "cite": "Mo. Rev. Stat. \u00a7375.420"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way attorney fees under \u00a7375.420 vexatious-refusal statute.",
+          "cite": "Mo. Rev. Stat. \u00a7375.420"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Mo. Rev. Stat. \u00a7375.420"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI moderate; investigates, fines, C&D but no individual binding adjudication.",
+          "cite": "Missouri DOI Consumer Affairs Division"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; recent decisions reaffirm vexatious-refusal framework without major shift.",
+          "cite": "Dhyne, 188 S.W.3d 454; Drury, 455 S.W.3d 30"
+        }
+      }
+    },
+    {
+      "state": "NV",
+      "state_name": "Nevada",
+      "default_score": 5.8,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 8,
+          "rationale": "Strong common-law tort under Falline plus independent statutory PRoA via NRS 686A.310 reaching first-party.",
+          "cite": "Falline v. GNLV (Nev. 1991); NRS 686A.310; Hart v. Prudential"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Common-law third-party bad faith well-established (Landow); standard considers welfare of insured.",
+          "cite": "Landow v. Med. Ins. Exch. (D. Nev. 1995)"
+        },
+        "f2_statutory_proa": {
+          "score": 7,
+          "rationale": "NRS 686A.310 creates PRoA per Hart v. Prudential; reaches both contexts but tied to enumerated practices.",
+          "cite": "NRS 686A.310; Hart v. Prudential"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Falline standard: no reasonable basis + knew/recklessly disregarded \u2014 Anderson/Wisconsin-style.",
+          "cite": "Falline (Nev. 1991); Powers v. USAA (Nev. 1998)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential + emotional distress damages broadly available; excess judgment recoverable third-party.",
+          "cite": "U.S. Fid. & Guar. v. Peterson (Nev. 1975); Fiscus (Nev. 1986)"
+        },
+        "f5_punitive_damages": {
+          "score": 8,
+          "rationale": "Punitive available on clear & convincing oppression/fraud/malice; no cap (rare).",
+          "cite": "NRS 42.005(1)"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "Prime+2% interest under NRS 99.040; no multiplier or percent penalty.",
+          "cite": "NRS 99.040; NRS 686A.310"
+        },
+        "f7_attorney_fees": {
+          "score": 3,
+          "rationale": "Discretionary fees only when recovery does not exceed $20k or claim was harassment; narrow.",
+          "cite": "NRS 18.010"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required for either common-law or statutory claims.",
+          "cite": "NRS 686A.310"
+        },
+        "f9_admin_remedy": {
+          "score": 6,
+          "rationale": "Moderate-robust DOI with fines, C&D, restitution orders; mandatory non-binding arb for auto BI <$50k.",
+          "cite": "NRS 38.250; NV DOI Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Hart v. Prudential established statutory PRoA; no recent narrowing or major broadening.",
+          "cite": "Hart v. Prudential"
+        }
+      }
+    },
+    {
+      "state": "NC",
+      "state_name": "North Carolina",
+      "default_score": 5.58,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 6,
+          "rationale": "Common-law bad faith recognized (Von Hagel/Lovell) plus \u00a775-1.1 UDTPA channel via Gray; requires aggravating/outrageous conduct.",
+          "cite": "Lovell v. Nationwide (N.C. 1993); Gray v. NC Ins. Underwriting (N.C. 2000)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Recognized but channeled through same common-law/\u00a775-1.1 framework; no separate Stowers-line elaboration.",
+          "cite": "Topsail Reef HOA v. Zurich (4th Cir. 2001)"
+        },
+        "f2_statutory_proa": {
+          "score": 5,
+          "rationale": "No direct PRoA under \u00a758-63-15; channels through Chapter 75 UDTPA per Gray with treble + fees.",
+          "cite": "N.C. Gen. Stat. \u00a775-1.1; \u00a758-63-15; Gray (N.C. 2000)"
+        },
+        "f3_liability_standard": {
+          "score": 4,
+          "rationale": "Aggravating/outrageous conduct required \u2014 fraud, malice, gross negligence, oppression, wanton/reckless disregard.",
+          "cite": "Dailey v. Integon (N.C. App. 1985); Lovell (N.C. 1993)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages possible (federal courts allow); emotional distress in limited cases; treble under \u00a775-16.",
+          "cite": "Bald Head Island (E.D.N.C. 2022); Dailey (N.C. App. 1985)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitive available with aggravating/outrageous conduct (fraud/malice/willful or wanton); \u00a71D-15.",
+          "cite": "Defeat the Beat v. Lloyd's (N.C. App. 2008); \u00a71D-15"
+        },
+        "f6_statutory_penalty": {
+          "score": 7,
+          "rationale": "Treble damages under \u00a775-16 via UDTPA channel \u2014 strong but requires \u00a775-1.1 violation.",
+          "cite": "N.C. Gen. Stat. \u00a775-16; \u00a775-1.1; Gray (N.C. 2000)"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "One-way fees under \u00a775-16.1 to prevailing UDTPA party with willful violation finding.",
+          "cite": "N.C. Gen. Stat. \u00a775-16.1"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "N.C. Gen. Stat. \u00a775-1.1; \u00a758-63-15"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI Consumer Services investigates moderately with fines and C&D; no binding adjudication.",
+          "cite": "NC DOI Consumer Services Division"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Lifebrite (2023) reaffirmed Lovell framework; no major recent direction change.",
+          "cite": "Lifebrite Hosp. Grp. (M.D.N.C. 2023)"
+        }
+      }
+    },
+    {
+      "state": "CT",
+      "state_name": "Connecticut",
+      "default_score": 5.56,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "Common-law tort exists but requires 'improper motive' or 'dishonest purpose'; CUIPA/CUTPA channel adds statutory teeth.",
+          "cite": "PSE Consulting v. Mercede (Conn. 2004); Dorfman v. Smith (Conn. 2022)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Recognized cause of action for negligent failure to settle; ordinary-prudence standard.",
+          "cite": "Carford v. Empire Fire (Conn. Super. 2012)"
+        },
+        "f2_statutory_proa": {
+          "score": 5,
+          "rationale": "No direct CUIPA PRoA but CUTPA channel reaches insurance practices with treble damages and fees.",
+          "cite": "Conn. Gen. Stat. \u00a738a-816 (CUIPA); \u00a742-110g (CUTPA)"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "Improper motive/dishonest purpose \u2014 knowing/reckless tier; closer to actual fraud-adjacent.",
+          "cite": "PSE Consulting (Conn. 2004)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential and emotional distress damages available.",
+          "cite": "Capstone Bldg. v. Am. Motorists (Conn. 2013); Buckman (Conn. 1987)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available only via CUTPA channel; treble under \u00a742-110g.",
+          "cite": "Conn. Gen. Stat. \u00a742-110g"
+        },
+        "f6_statutory_penalty": {
+          "score": 7,
+          "rationale": "Treble damages possible via CUTPA; 10% statutory interest.",
+          "cite": "Conn. Gen. Stat. \u00a742-110g; \u00a737-3a"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Available under CUTPA and as compensatory damages for bad faith conduct.",
+          "cite": "ACMAT v. Greater NY Mut. (Conn. 2007); \u00a742-110g"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No statutory pre-suit notice; CUTPA demand customary but not mandatory.",
+          "cite": "Conn. Gen. Stat. \u00a738a-816"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "CID Consumer Affairs moderate; fines and C&D.",
+          "cite": "Conn. Gen. Stat. \u00a738a-816"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Dorfman 2022 reaffirmed standard; stable.",
+          "cite": "Dorfman v. Smith (Conn. 2022)"
+        }
+      }
+    },
+    {
+      "state": "WI",
+      "state_name": "Wisconsin",
+      "default_score": 5.52,
+      "tier": "T3",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Anderson v. Continental \u2014 landmark common-law first-party bad-faith tort with classic 'no reasonable basis + knowledge or reckless disregard' standard.",
+          "cite": "Anderson v. Cont'l Ins. (Wis. 1978); Jones v. Secura (Wis. 2002)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Mowry/Roehl recognize third-party bad faith for failure to settle and even within deductible context \u2014 moderately broad.",
+          "cite": "Mowry v. Badger State Mut. (Wis. 1986); Roehl Transp. v. Liberty Mut. (Wis. 2010)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "No PRoA under UCSPA \u00a7628.34; \u00a7628.46 prompt-pay 12% interest is regulatory, not a true PRoA.",
+          "cite": "Wis. Stat. \u00a7628.34, \u00a7628.46"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Anderson canonical: no reasonable basis + knowledge or reckless disregard \u2014 defines middle anchor.",
+          "cite": "Anderson v. Cont'l Ins., 271 N.W.2d 368, 377 (Wis. 1978)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages broadly available; emotional distress recoverable when severe + substantial other damage.",
+          "cite": "DeChant v. Monarch Life (Wis. 1996); Jones (Wis. 2002)"
+        },
+        "f5_punitive_damages": {
+          "score": 7,
+          "rationale": "Available with intentional breach + oppression/fraud/malice (Mid-Continent v. Straka standard); no statutory cap unique to bad faith.",
+          "cite": "Anderson (Wis. 1978)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "12% prompt-pay interest under \u00a7628.46 only; no multiplier or % penalty.",
+          "cite": "Wis. Stat. \u00a7628.46"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "DeChant recognizes fees as part of damages proximately resulting from bad faith \u2014 broader than discretionary, narrower than mandatory.",
+          "cite": "DeChant v. Monarch Life (Wis. 1996)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Wisconsin framework"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "OCI Consumer Affairs moderate \u2014 fines, no individual adjudication.",
+          "cite": "WI OCI Consumer Affairs"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 6,
+          "rationale": "Roehl (2010) extended bad faith to within-deductible context \u2014 modestly broadening; doctrine otherwise stable.",
+          "cite": "Roehl Transp. v. Liberty Mut. (Wis. 2010)"
+        }
+      }
+    },
+    {
+      "state": "SC",
+      "state_name": "South Carolina",
+      "default_score": 5.44,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law tort recognized in Nichols with reasonable-basis liability standard; statute does not create PRoA.",
+          "cite": "Nichols v. State Farm (S.C. 1983); Masterclean v. Star Ins. (S.C. 2001)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Tyger River duty to settle when reasonable; insurer liable for entire excess judgment for unreasonable refusal.",
+          "cite": "Tyger River Pine v. Maryland Cas. (S.C. 1933); Doe v. SCMMLJUA (S.C. 2001)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "UCSPA does not create PRoA; \u00a738-59-40 provides fees only as adjunct, not standalone PRoA. First-party only.",
+          "cite": "S.C. Code \u00a738-59-40; Masterclean (S.C. 2001)"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "No reasonable basis to support denial \u2014 objective test, negligence may be considered.",
+          "cite": "Helena Chem. v. Allianz (S.C. 2004); Nichols (S.C. 1983)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential damages without regard to policy limits; emotional distress recognized in federal applications but limited state authority.",
+          "cite": "Brown v. SC Ins. (S.C. App. 1984); Wright v. UNUM (D.S.C. 2001)"
+        },
+        "f5_punitive_damages": {
+          "score": 6,
+          "rationale": "Available on willful or reckless disregard standard; no statutory cap specific to bad faith though general SC punitive caps apply.",
+          "cite": "Nichols (S.C. 1983); Crossley v. State Farm (S.C. 1992)"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "Up to 1/3 of judgment as attorney fees under \u00a738-59-40 \u2014 penalty-like but limited; no multiplier.",
+          "cite": "S.C. Code \u00a738-59-40"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "One-way fee shift after 90-day demand on bad-faith refusal, capped at 1/3 of judgment.",
+          "cite": "S.C. Code \u00a738-59-40"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 6,
+          "rationale": "90-day demand triggers fee statute but is not a strict pre-suit prerequisite to common-law bad faith. Modest friction.",
+          "cite": "S.C. Code \u00a738-59-40"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI Office of Consumer Services mediates and fines; no individual adjudicatory mechanism.",
+          "cite": "SC DOI Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Reeves (2021) reaffirmed Tyger River line; no major recent direction.",
+          "cite": "Reeves v. SC Mun. Ins. (S.C. 2021)"
+        }
+      }
+    },
+    {
+      "state": "NJ",
+      "state_name": "New Jersey",
+      "default_score": 5.28,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 8,
+          "rationale": "Common-law first-party tort recognized (Pickett); 2022 Insurance Fair Conduct Act adds statutory cause for UM/UIM unreasonable delay/denial.",
+          "cite": "Pickett v. Lloyd's (N.J. 1993); N.J. Stat. \u00a717:29BB-3"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Common-law third-party bad faith well-established; insurer liable above policy limits if refusal not honest weighing of probabilities.",
+          "cite": "Pickett v. Lloyd's, 621 A.2d 445 (N.J. 1993)"
+        },
+        "f2_statutory_proa": {
+          "score": 4,
+          "rationale": "Insurance Fair Conduct Act (2022) PRoA limited to UM/UIM first-party claims; no general PRoA per Pickett.",
+          "cite": "N.J. Stat. \u00a717:29BB-3; Pickett (N.J. 1993)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Anderson standard: absence of reasonable basis + knew/recklessly disregarded; 'fairly debatable' bar.",
+          "cite": "Pickett, 621 A.2d at 468"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential economic damages available; emotional distress only in egregious circumstances.",
+          "cite": "Pickett, 621 A.2d at 454, 480"
+        },
+        "f5_punitive_damages": {
+          "score": 4,
+          "rationale": "Punitive on clear & convincing actual malice or wanton/willful disregard; capped at 5x compensatory or $350k.",
+          "cite": "N.J.S.A. \u00a72A:15-5.12; Pickett at 477"
+        },
+        "f6_statutory_penalty": {
+          "score": 1,
+          "rationale": "No general statutory multiplier; new IFCA limited to UM/UIM context.",
+          "cite": "N.J.S.A. \u00a717:29B-4"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "One-way fees available under R. 4:42-9(a)(6) for liability/indemnity coverage actions; multi-factor discretion.",
+          "cite": "N.J. R. 4:42-9(a)(6); Scullion (N.J. App. 2001)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 8,
+          "rationale": "No statutory pre-suit notice or cure period; appraisal is contractual not statutory barrier.",
+          "cite": "Pickett (N.J. 1993)"
+        },
+        "f9_admin_remedy": {
+          "score": 7,
+          "rationale": "Robust DOBI; statutorily-created Insurance Consumer Ombudsman (rare); mandatory PIP arbitration; fines + C&D.",
+          "cite": "N.J.S.A. 17:29E-1 (Ombudsman); N.J.S.A. 39:6A-5.1 (PIP arb)"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 7,
+          "rationale": "Trend toward broadening: Wadeer reaffirmed; 2022 IFCA enacted creating new statutory remedy.",
+          "cite": "N.J. Stat. \u00a717:29BB-3 (2022 IFCA)"
+        }
+      }
+    },
+    {
+      "state": "TN",
+      "state_name": "Tennessee",
+      "default_score": 5.26,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "No first-party common-law tort; statutory remedy under \u00a756-7-105 (penal, strictly construed) is exclusive statutory path though common-law contract remedies coexist.",
+          "cite": "Tenn. Code \u00a756-7-105; Lindenberg v. Jackson Nat'l (6th Cir. 2018); Fred Simmons Trucking (Tenn. App. 2004)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Common-law cause of action for failure to settle within limits; ordinary care/diligence standard with willingness-to-gamble framing.",
+          "cite": "Johnson v. Tennessee Farmers Mut. (Tenn. 2006)"
+        },
+        "f2_statutory_proa": {
+          "score": 4,
+          "rationale": "Statutory PRoA under \u00a756-7-105 is penal and strictly construed, first-party only, with formal demand + 60-day wait.",
+          "cite": "Tenn. Code \u00a756-7-105; Wilson v. State Farm (E.D. Tenn. 2011)"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "Refusal not in good faith \u2014 strictly construed penal standard requires more than mere mistake; high bar in practice.",
+          "cite": "Tenn. Code \u00a756-7-105; Wilson (E.D. Tenn. 2011)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential and emotional distress damages available, but ED requires outrageous conduct + serious mental injury.",
+          "cite": "Holt v. Am. Progressive Life Ins. (Tenn. App. 1987); Riad v. Erie (Tenn. App. 2013)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Conflicting authority post-Riad and Lindenberg; punitives now available alongside statutory penalty if separate tort proven, clear & convincing.",
+          "cite": "Riad v. Erie (Tenn. App. 2013); Lindenberg (6th Cir. 2018)"
+        },
+        "f6_statutory_penalty": {
+          "score": 7,
+          "rationale": "25% of liability penalty under \u00a756-7-105 on bad-faith refusal \u2014 substantial but discretionary and strictly construed.",
+          "cite": "Tenn. Code \u00a756-7-105"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "Discretionary fees under \u00a756-7-105 (court or jury discretion).",
+          "cite": "Tenn. Code \u00a756-7-105"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "Formal demand + 60-day wait required under \u00a756-7-105 for statutory penalty (though contract claim itself not gated).",
+          "cite": "Tenn. Code \u00a756-7-105"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "TDCI Consumer Insurance Services mediates and enforces fines/C&D; no individual adjudication mechanism.",
+          "cite": "TDCI Consumer Insurance Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 6,
+          "rationale": "Recent appellate activity (Riad, Lindenberg) opened door to common-law remedies alongside statutory \u2014 modestly broadening.",
+          "cite": "Riad (Tenn. App. 2013); Lindenberg (6th Cir. 2018)"
+        }
+      }
+    },
+    {
+      "state": "FL",
+      "state_name": "Florida",
+      "default_score": 5.24,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "No common-law first-party tort; Civil Remedy Statute \u00a7624.155 provides the path but post-SB 2A (2022) requires adverse adjudication on contract first.",
+          "cite": "Time Ins. v. Burger (Fla. 1998); Fla. Stat. \u00a7624.1551"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Long-standing common-law third-party bad faith; Subsection 4 (90-day tender safe harbor) recently added.",
+          "cite": "Time Ins. v. Burger (Fla. 1998); Fla. Stat. \u00a7624.155(4)"
+        },
+        "f2_statutory_proa": {
+          "score": 6,
+          "rationale": "Broad PRoA under \u00a7624.155 reaches first- and third-party but with 60-day CRN cure and post-2022 adverse-adjudication prerequisite.",
+          "cite": "Fla. Stat. \u00a7624.155; \u00a7624.1551"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Subsection 5 clarifies bad faith requires 'more than mere negligence'; insured's own good-faith conduct now considered.",
+          "cite": "Fla. Stat. \u00a7624.155(5)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages and emotional distress (where bad faith caused failure to receive necessary care) recoverable; can exceed policy limits.",
+          "cite": "McLeod v. Cont'l Ins. (Fla. 1992); Fla. Stat. \u00a7624.155(11)"
+        },
+        "f5_punitive_damages": {
+          "score": 4,
+          "rationale": "Available only on 'general business practice' showing \u2014 willful/wanton/malicious or reckless disregard.",
+          "cite": "Fla. Stat. \u00a7624.155(8)"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "12-18% statutory interest on overdue claims; no statutory multiplier itself but broad damages and fees.",
+          "cite": "Fla. Stat. \u00a7627.428; \u00a7624.155"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees under \u00a7624.155(7) and \u00a7627.428 for prevailing insureds.",
+          "cite": "Fla. Stat. \u00a7624.155(7); \u00a7627.428"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 2,
+          "rationale": "Mandatory 60-day CRN to DFS plus insurer cure window; post-2022 90-day liability tender safe harbor; residential property notice under \u00a7627.70152.",
+          "cite": "Fla. Stat. \u00a7624.155(3); \u00a7624.155(4)"
+        },
+        "f9_admin_remedy": {
+          "score": 8,
+          "rationale": "DFS Civil Remedy and mediation programs robust; mandatory residential property mediation; CRN database public.",
+          "cite": "Fla. Stat. \u00a7627.7015; \u00a7624.155"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 1,
+          "rationale": "SB 2A (Dec 2022) substantially narrowed first-party bad faith \u2014 added adverse-adjudication prerequisite, 90-day tender safe harbor, comparative bad-faith reduction.",
+          "cite": "SB 2A 2022; Fla. Stat. \u00a7624.1551; \u00a7624.155(4)-(6)"
+        }
+      }
+    },
+    {
+      "state": "AK",
+      "state_name": "Alaska",
+      "default_score": 5.2,
+      "tier": "T3",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Tort recognized (Nicholson) on 'no reasonable basis' standard \u2014 does not require fraud or deceit.",
+          "cite": "State Farm v. Nicholson, 777 P.2d 1152 (Alaska 1989); Hillman (Alaska 1993)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Strong duty: insurer must investigate, inform of offers, and tender limits when substantial likelihood of excess verdict; excess judgment recoverable.",
+          "cite": "Whitney v. State Farm (Alaska 2011); Jackson v. Am. Equity (Alaska 2004)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "UCSPA adopted but no express or implied PRoA.",
+          "cite": "Alaska Stat. \u00a721.36.125; O.K. Lumber v. Providence Wash. (Alaska 1998)"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "'No reasonable basis' objective standard; no fraud/deceit required.",
+          "cite": "Hillman, 855 P.2d 1321 (Alaska 1993)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Broad consequential damages (mental anxiety, credit/reputation, lost earnings) plus emotional distress without 'severe' threshold.",
+          "cite": "Alaska Pac. Assur. v. Collins (Alaska 1990); Ace v. Aetna (9th Cir. 1998)"
+        },
+        "f5_punitive_damages": {
+          "score": 6,
+          "rationale": "Punitives on clear and convincing evidence of outrageous/malice/reckless indifference.",
+          "cite": "Great Divide Ins. v. Carpenter (Alaska 2004); Alaska Stat. \u00a709.17.020"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "10.5% statutory interest (3% + Fed disc.); no multiplier.",
+          "cite": "Alaska Stat. \u00a721.36.125 / \u00a709.30.070"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Civil Rule 82 prevailing-party fee formula favors prevailing insured but only partial; not full one-way.",
+          "cite": "Alaska R. Civ. P. 82; Hillman (Alaska 1993)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Alaska Stat. \u00a721.36.125"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI Consumer Services Section moderate; investigates and fines but no individual binding adjudication.",
+          "cite": "Alaska Stat. \u00a721.36"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; insufficient detail in survey on recent direction.",
+          "cite": "Whitney (Alaska 2011)"
+        }
+      }
+    },
+    {
+      "state": "WV",
+      "state_name": "West Virginia",
+      "default_score": 5.18,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law first-party tort recognized; Hayseeds remedy strong (fees + net economic loss + ED); statutory UTPA route also available with general business practice requirement.",
+          "cite": "Loudin v. Nat'l Liab. (W. Va. 2011); Hayseeds v. State Farm (W. Va. 1986); Elmore (W. Va. 1998)"
+        },
+        "f1b_third_party_cause": {
+          "score": 3,
+          "rationale": "Post-2005 reform eliminated third-party PRoA under UTPA (\u00a733-11-4a); third-party Jenkins-line bad faith largely gone for direct claims.",
+          "cite": "W. Va. Code \u00a733-11-4a; State ex rel. Nationwide v. Kaufman (W. Va. 2008)"
+        },
+        "f2_statutory_proa": {
+          "score": 4,
+          "rationale": "WVUTPA PRoA exists for first-party with general business practice requirement; third-party PRoA eliminated 2005.",
+          "cite": "W. Va. Code \u00a733-11-4a; Mills v. Watkins (W. Va. 2003)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "No reasonable basis + general business practice (multiple-violation) for UTPA claims; common-law more lenient.",
+          "cite": "Mills v. Watkins (W. Va. 2003); Hayseeds (W. Va. 1986)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential and emotional distress damages broadly available under Hayseeds and net-economic-loss framework.",
+          "cite": "Hayseeds v. State Farm (W. Va. 1986)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available under UTPA; for property settlement requires high actual-malice threshold per McCormick.",
+          "cite": "McCormick v. Allstate (W. Va. 1998); Hayseeds (W. Va. 1986)"
+        },
+        "f6_statutory_penalty": {
+          "score": 4,
+          "rationale": "No multiplier or fixed % penalty; Hayseeds attorney fees + net economic loss function as common-law penalty.",
+          "cite": "Hayseeds (W. Va. 1986); W. Va. Code \u00a756-6-31"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "Hayseeds common-law fees broadly available when insured substantially prevails \u2014 robust route.",
+          "cite": "Hayseeds v. State Farm (W. Va. 1986)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 7,
+          "rationale": "No pre-suit notice for first-party; UTPA general-business-practice requirement is substantive not procedural; underlying claim must be resolved before UTPA suit.",
+          "cite": "Klettner v. State Farm (W. Va. 1999); \u00a733-11-4a"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "OIC Consumer Services moderate; fines + C&D, no individual adjudication.",
+          "cite": "WV OIC Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 3,
+          "rationale": "Post-2005 third-party reform was a major narrowing; subsequent decade has trended toward stabilization but reform legacy persists.",
+          "cite": "W. Va. Code \u00a733-11-4a (2005)"
+        }
+      }
+    },
+    {
+      "state": "LA",
+      "state_name": "Louisiana",
+      "default_score": 5.14,
+      "tier": "T3",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "Statutory cause of action under \u00a722:1892 (post-Act 3 2024 consolidation); requires arbitrary, capricious, or without probable cause failure to pay.",
+          "cite": "La. R.S. \u00a722:1892 (as amended by Act 3, 2024)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Third-party settlement breach is enumerated act under \u00a722:1892; standard duty-to-settle exposure.",
+          "cite": "La. R.S. \u00a722:1892(A)(2)"
+        },
+        "f2_statutory_proa": {
+          "score": 5,
+          "rationale": "Statutory PRoA reaching both first- and third-party; Act 3 (2024) folded \u00a722:1973 into \u00a722:1892, narrowing some remedies (eliminated 2x consequential).",
+          "cite": "La. R.S. \u00a722:1892, \u00a722:1892.2 (Act 3 of 2024)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "'Arbitrary, capricious, or without probable cause' standard; objective but elevated.",
+          "cite": "La. R.S. \u00a722:1892; LeBlanc v. Allied Tr. Ins. Co., 2022 WL 4597863 (W.D. La. 2022)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages available but post-Act 3 no longer doubled; emotional distress availability uncertain under new statute.",
+          "cite": "La. R.S. \u00a722:1892 (Act 3, 2024); Lewis v. State Farm, 946 So.2d 708 (La. App. 2006)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Statutory 'penalty' of greater of 2x damages or $5,000 functions as quasi-punitive; no separate punitives.",
+          "cite": "La. R.S. \u00a722:1892; Sher v. Lafayette Ins. Co., 998 So.2d 201 (La. 2008)"
+        },
+        "f6_statutory_penalty": {
+          "score": 7,
+          "rationale": "50% of loss or $5,000 (greater) under \u00a722:1892 (and \u00a722:1893(B)(1)) plus mandatory attorney fees.",
+          "cite": "La. R.S. \u00a722:1892, \u00a722:1893(B)(1)"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "Mandatory one-way attorney fees for arbitrary/capricious failure to pay.",
+          "cite": "La. R.S. \u00a722:1892(B)(1)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "Satisfactory proof of loss + 30/60-day waiting period required before suit.",
+          "cite": "La. R.S. \u00a722:1892"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "LDI moderate; investigates and has receivership powers but no individual binding adjudication.",
+          "cite": "LDI Office of Consumer Advocacy"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 2,
+          "rationale": "Act 3 (eff. 7/1/2024) substantially restructured regime, repealed \u00a722:1973 (which had 2x consequential damages), narrowing some insured remedies.",
+          "cite": "La. Act No. 3 of 2024"
+        }
+      }
+    },
+    {
+      "state": "MD",
+      "state_name": "Maryland",
+      "default_score": 5.06,
+      "tier": "T3",
+      "structural_cluster": "S0_admin_hybrid",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "No common-law first-party tort; statutory cause under \u00a73-1701 with mandatory MIA admin exhaustion under \u00a727-1001.",
+          "cite": "Md. Code, Cts. & Jud. Proc. \u00a73-1701; Md. Code, Ins. \u00a727-1001; Sefcik v. State Farm, 2024 WL 411899 (Md. Ct. Spec. App. 2024)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Common-law third-party failure-to-settle claim recognized with excess-judgment exposure.",
+          "cite": "Trattner v. Nat'l W. Life Ins. Co., 2024 WL 3237075 (D. Md. 2024); Hartford Fire v. Annapolis Bay Charters, 69 F.Supp.2d 756 (D. Md. 1999)"
+        },
+        "f2_statutory_proa": {
+          "score": 5,
+          "rationale": "Statutory PRoA reaches first-party only with mandatory MIA exhaustion as gating procedure; no statutory third-party reach.",
+          "cite": "Md. Code, Ins. \u00a727-1001"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "'Good faith' = informed judgment based on honesty and diligence; objective evaluation of conduct/diligence.",
+          "cite": "Md. Code, Ins. \u00a727-1001; Cecilia Schwaber Tr. Two v. Hartford, 636 F.Supp.2d 481 (D. Md. 2009)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Actual damages plus expenses, costs, attorney fees, and up to 25% interest; no punitives. Excess-judgment recoverable in third-party.",
+          "cite": "Md. Code, Cts. & Jud. Proc. \u00a73-1701(e)"
+        },
+        "f5_punitive_damages": {
+          "score": 0,
+          "rationale": "Punitive damages unavailable for first-party statutory bad-faith claims.",
+          "cite": "Md. Code, Cts. & Jud. Proc. \u00a73-1701; Allstate Indem. v. Parsons, 2010 WL 2163869 (D. Md. 2010)"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "Up to 25% interest on actual damages plus expenses\u2014significant but capped.",
+          "cite": "Md. Code, Cts. & Jud. Proc. \u00a73-1701(e)"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way attorney fees recoverable up to 1/3 of actual damages.",
+          "cite": "Md. Code, Cts. & Jud. Proc. \u00a73-1701(e)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 0,
+          "rationale": "Mandatory MIA complaint required pre-suit; admin exhaustion is unique nationwide barrier.",
+          "cite": "Md. Code, Ins. \u00a727-1001(c)-(d)"
+        },
+        "f9_admin_remedy": {
+          "score": 9,
+          "rationale": "MIA adjudicates \u00a727-1001 complaints with binding 90-day determination on bad faith and damages; uniquely robust admin path.",
+          "cite": "Md. Code, Ins. \u00a727-1001(e)"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable \u00a727-1001/\u00a73-1701 jurisprudence; recent decisions reaffirm framework.",
+          "cite": "Sefcik, 2024 WL 411899; Trattner, 2024 WL 3237075"
+        }
+      }
+    },
+    {
+      "state": "HI",
+      "state_name": "Hawaii",
+      "default_score": 5.04,
+      "tier": "T3",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Best Place adopted Gruenberg test \u2014 withholding benefits without proper cause; UCSPA evidence supports common-law claim.",
+          "cite": "Best Place v. Penn America (Haw. 1996)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Common-law bad faith available; insufficient detail on third-party-specific doctrine in survey.",
+          "cite": "Best Place (Haw. 1996)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "UCSPA adopted but no PRoA; statutory violations only support common-law claim.",
+          "cite": "Haw. Rev. Stat. \u00a7431:13-103"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Unreasonable or without proper cause \u2014 objective standard adopted from California.",
+          "cite": "Best Place (Haw. 1996)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Consequential and emotional distress damages available.",
+          "cite": "Best Place (Haw. 1996); Young v. Allstate (Haw. 2008)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on clear and convincing evidence of wanton/oppressive/willful misconduct.",
+          "cite": "Best Place, 920 P.2d 334 (Haw. 1996)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "10% statutory interest under \u00a7478-2; no multiplier.",
+          "cite": "Haw. Rev. Stat. \u00a7478-2"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Available under \u00a7431:10-242 for prevailing policyholder.",
+          "cite": "Haw. Rev. Stat. \u00a7431:10-242"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Haw. Rev. Stat. \u00a7431:13-103"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Insurance Division Investigations moderate; fines.",
+          "cite": "Haw. Rev. Stat. \u00a7431:13"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; insufficient detail in survey on recent direction.",
+          "cite": "Young v. Allstate (Haw. 2008)"
+        }
+      }
+    },
+    {
+      "state": "AZ",
+      "state_name": "Arizona",
+      "default_score": 4.92,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 9,
+          "rationale": "Robust Noble/Rawlings/Clearwater tort; objective unreasonableness with knowing/reckless mental state.",
+          "cite": "Noble v. Nat'l Am. (Ariz. 1981); Rawlings v. Apodaca (Ariz. 1986); Clearwater (Ariz. 1990)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Equal-consideration standard with multi-factor test; established cause of action.",
+          "cite": "Clearwater, 792 P.2d 719 (Ariz. 1990)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "UCSPA adopted but explicitly disclaims private cause of action.",
+          "cite": "Ariz. Rev. Stat. \u00a720-461(D)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Acts unreasonably PLUS knowingly or with reckless disregard \u2014 Anderson-style standard.",
+          "cite": "Clearwater, 792 P.2d 719 (Ariz. 1990)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Consequential and emotional distress damages broadly available even absent severe distress.",
+          "cite": "Farr v. Transamerica (Ariz. App. 1984)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on clear and convincing 'evil mind' showing \u2014 high bar but no statutory cap noted.",
+          "cite": "Rawlings (Ariz. 1986); Hawkins v. Allstate (Ariz. 1987)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "10% statutory interest under \u00a744-1201; no multiplier.",
+          "cite": "Ariz. Rev. Stat. \u00a744-1201"
+        },
+        "f7_attorney_fees": {
+          "score": 3,
+          "rationale": "Discretionary under \u00a712-341.01; no mandatory one-way shift.",
+          "cite": "Ariz. Rev. Stat. \u00a712-341.01; Sparks (Ariz. 1982)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Ariz. Rev. Stat. \u00a720-461"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Consumer Affairs Division moderate; fines and C&D but no individual adjudication.",
+          "cite": "Ariz. Admin. Code \u00a720-6-801"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; no major recent narrowing in survey.",
+          "cite": "Demetrullas (D. Ariz. 2013)"
+        }
+      }
+    },
+    {
+      "state": "GA",
+      "state_name": "Georgia",
+      "default_score": 4.88,
+      "tier": "T4",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "No common-law first-party tort; statutory claim under \u00a733-4-6 only with 60-day demand prerequisite.",
+          "cite": "O.C.G.A. \u00a733-4-6; Lavoi (Ga. App. 2008)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Strong common-law third-party action under Holt 'equal consideration' rule; First Acceptance v. Hughes recently reaffirmed.",
+          "cite": "S. Gen. Ins. v. Holt (Ga. 1992); First Acceptance v. Hughes (Ga. 2019)"
+        },
+        "f2_statutory_proa": {
+          "score": 5,
+          "rationale": "\u00a733-4-6 PRoA for first-party only with 60-day demand; \u00a733-4-7 third-party post-judgment.",
+          "cite": "O.C.G.A. \u00a733-4-6, \u00a733-4-7"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "'Frivolous and unfounded refusal' \u2014 narrow; insurer's reasonable question of law/fact defeats claim.",
+          "cite": "King v. Atlanta Cas. (Ga. App. 2006); Flynt (Ga. App. 2011)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 2,
+          "rationale": "Consequential and emotional distress damages NOT recoverable in first-party bad faith \u2014 \u00a733-4-6 is exclusive remedy.",
+          "cite": "Wallace v. State Farm (Ga. App. 2000); Holt (Ga. 1992)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available in bad-faith actions if entitled to compensatory.",
+          "cite": "Howell v. S. Heritage Ins. (Ga. App. 1994)"
+        },
+        "f6_statutory_penalty": {
+          "score": 7,
+          "rationale": "50% of loss or $5,000 (greater) plus attorney fees under \u00a733-4-6.",
+          "cite": "O.C.G.A. \u00a733-4-6"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees under \u00a733-4-6.",
+          "cite": "O.C.G.A. \u00a733-4-6"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 3,
+          "rationale": "Mandatory 60-day demand prerequisite with cure window.",
+          "cite": "O.C.G.A. \u00a733-4-6"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "OCI Consumer Services moderate; fines.",
+          "cite": "O.C.G.A. \u00a7\u00a733-6-30 to 33-6-37"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "First Acceptance v. Hughes (2019) reaffirmed third-party doctrine; first-party narrow but stable.",
+          "cite": "First Acceptance v. Hughes (Ga. 2019)"
+        }
+      }
+    },
+    {
+      "state": "ID",
+      "state_name": "Idaho",
+      "default_score": 4.86,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Tort recognized under 'fairly debatable' standard; requires intentional and unreasonable denial plus harm not fully compensable by contract.",
+          "cite": "White v. Unigard (Idaho 1986); Weinstein (Idaho 2010)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Equal-consideration standard with seven factors; recognized that fairly-debatable standard inadequate for third-party.",
+          "cite": "Truck Ins. Exch. v. Bishara (Idaho 1996); McKinley (Idaho 2007)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "UCSPA adopted but no PRoA \u2014 common-law tort suffices.",
+          "cite": "Idaho Code \u00a741-1329; White v. Unigard (Idaho 1986)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Intentional and unreasonable denial, claim not fairly debatable, not a good-faith mistake \u2014 Anderson-tier.",
+          "cite": "Weinstein, 233 P.3d 1221 (Idaho 2010)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Tort damages including unforeseeable extra-contractual loss and emotional distress.",
+          "cite": "White (Idaho 1986); Walston (Idaho 1996)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on clear and convincing oppressive/fraudulent/malicious/outrageous conduct.",
+          "cite": "Idaho Code \u00a76-1604; Weinstein (Idaho 2010)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "12% statutory interest; no multiplier.",
+          "cite": "Idaho Code \u00a741-1839"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees under \u00a741-1839 if insurer fails to pay within 30 days of proof of loss.",
+          "cite": "Idaho Code \u00a741-1839"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "Proof of loss + 30-day wait under \u00a741-1839 acts as soft pre-suit window for fees.",
+          "cite": "Idaho Code \u00a741-1839"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI Consumer Affairs moderate; fines.",
+          "cite": "Idaho Code \u00a741-1329"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable since Weinstein 2010.",
+          "cite": "Weinstein (Idaho 2010)"
+        }
+      }
+    },
+    {
+      "state": "OK",
+      "state_name": "Oklahoma",
+      "default_score": 4.84,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 8,
+          "rationale": "Strong common-law tort under Christian/Badillo with broad damages; well-established Oklahoma doctrine.",
+          "cite": "Christian v. Am. Home Assur. (Okla. 1977); Badillo v. Mid Century (Okla. 2005)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Common-law bad-faith framework applies; Badillo elaborated standards.",
+          "cite": "Badillo v. Mid Century (Okla. 2005)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No statutory PRoA \u2014 Walker v. Chouteau Lime expressly held no PRoA under \u00a71250.5.",
+          "cite": "Walker v. Chouteau Lime (Okla. 1993); 36 O.S. \u00a71250.1"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Unreasonable conduct under the circumstances \u2014 objective reasonableness, lenient than malice; what insurer knew/should have known.",
+          "cite": "Hale v. A.G. Ins. (Okla. App. 2006); Badillo (Okla. 2005)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 8,
+          "rationale": "Actual + consequential + emotional distress (no severe/outrageous threshold) + punitive \u2014 broad damages package.",
+          "cite": "Capstick v. Allstate (10th Cir. 1993); Hale (Okla. App. 2006)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitive on wanton/reckless disregard; capped per 23 O.S. \u00a79.1.",
+          "cite": "Willis v. Midland Risk (10th Cir. 1994); 23 O.S. \u00a79.1"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory multiplier; only 6% interest.",
+          "cite": "15 O.S. \u00a7266"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "Fees available under 36 O.S. \u00a73629 to prevailing insured.",
+          "cite": "36 O.S. \u00a73629"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "36 O.S. \u00a71250.1 et seq."
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "OID Consumer Assistance moderate with fines and Anti-Fraud unit; no binding adjudication.",
+          "cite": "OK Insurance Department Consumer Assistance"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Christian/Badillo line continues; emotional distress threshold confirmed lenient.",
+          "cite": "Badillo (Okla. 2005); Capstick (10th Cir. 1993)"
+        }
+      }
+    },
+    {
+      "state": "IL",
+      "state_name": "Illinois",
+      "default_score": 4.82,
+      "tier": "T4",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 3,
+          "rationale": "No common-law first-party tort recognized; \u00a7155 preempts. Statutory remedy only with capped penalty.",
+          "cite": "Cramer v. Insurance Exchange Agency, 675 N.E.2d 897 (Ill. 1996); 215 ILCS 5/155"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Common-law third-party bad faith failure-to-settle well-established with punitive damages available.",
+          "cite": "Griffith v. Valor Ins., 763 N.E.2d 299 (Ill. 2001); O'Neill v. Gallant Ins. Co., 769 N.E.2d 100 (Ill. 2002)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "215 ILCS 5/155 statutory penalty path with capped damages, first-party only and exclusive remedy precluding broader tort.",
+          "cite": "215 ILCS 5/155; Cramer, 675 N.E.2d 897"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "'Unreasonable and vexatious' standard under \u00a7155; no recovery for bona fide coverage disputes or legitimate defenses.",
+          "cite": "215 ILCS 5/155; Scottsdale Indem. v. Village of Crestwood, 784 F.Supp.2d 988 (N.D. Ill. 2011)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 3,
+          "rationale": "Consequential and emotional distress damages NOT available under \u00a7155 statutory claim; capped statutory penalty only.",
+          "cite": "Cramer, 675 N.E.2d 897; Nelles v. State Farm, 742 N.E.2d 420 (Ill. 2000)"
+        },
+        "f5_punitive_damages": {
+          "score": 3,
+          "rationale": "Punitives unavailable in first-party \u00a7155 claim; available only in third-party failure-to-settle context.",
+          "cite": "O'Neill v. Gallant Ins. Co., 769 N.E.2d 100 (Ill. 2002)"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "Greater of $60k, 60% of recovery, or excess over offer + attorney fees\u2014capped, modest.",
+          "cite": "215 ILCS 5/155"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees to insured under \u00a7155 on finding of vexatious conduct.",
+          "cite": "215 ILCS 5/155"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "215 ILCS 5/155"
+        },
+        "f9_admin_remedy": {
+          "score": 6,
+          "rationale": "DOI moderate-robust; investigates, fines, license action, but no individual binding adjudication.",
+          "cite": "Illinois DOI Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable \u00a7155 jurisprudence; no major recent broadening or narrowing.",
+          "cite": "Chandler v. Am. Fire & Cas. Co., 879 N.E.2d 396 (2007)"
+        }
+      }
+    },
+    {
+      "state": "IA",
+      "state_name": "Iowa",
+      "default_score": 4.76,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law first-party bad faith recognized with 'no reasonable basis' / 'fairly debatable' standard.",
+          "cite": "Thornton v. Am. Interstate Ins. Co., 897 N.W.2d 455 (Iowa 2017); United Fire & Cas. v. Shelly Funeral Home, 642 N.W.2d 648 (Iowa 2002)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Standard duty-to-settle claim recognized; insurer protected if good-faith honest belief in defensible position.",
+          "cite": "Johnson v. Am. Family Mut. Ins. Co., 674 N.W.2d 88 (Iowa 2004)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No statutory PRoA under UCSPA per Seeman line.",
+          "cite": "Iowa Code \u00a7507B.4"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Anderson-style: no reasonable basis for denial AND knowledge/reckless disregard of that lack.",
+          "cite": "Thornton, 897 N.W.2d at 461-65"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages and emotional distress (with showing of mental suffering) recoverable.",
+          "cite": "Nassen v. National States Ins. Co., 494 N.W.2d 231 (Iowa 1992)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitives available on showing of malice, fraud, gross negligence, or illegal act.",
+          "cite": "Dolan v. Aid Ins. Co., 431 N.W.2d 790 (Iowa 1998); Bradley v. W. Bend Mut. Ins. Co., 796 N.W.2d 455 (Iowa Ct. App. 2003)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "10% statutory interest; no other statutory penalty or multiplier.",
+          "cite": "Iowa Code \u00a7535.3"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Attorney fees recoverable in bad-faith actions per Clark-Petersen; somewhat discretionary scope.",
+          "cite": "Clark-Petersen Co. v. Indep. Ins. Assocs., 514 N.W.2d 912 (Iowa 1994)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Iowa Code \u00a7507B.4 (no PRoA-related barriers)"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Iowa Insurance Division Consumer Advocate Bureau; investigates and fines but no individual binding adjudication.",
+          "cite": "Iowa Insurance Division Consumer Advocate Bureau"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Thornton (2017) reaffirmed standard without expansion or narrowing.",
+          "cite": "Thornton, 897 N.W.2d 455"
+        }
+      }
+    },
+    {
+      "state": "ND",
+      "state_name": "North Dakota",
+      "default_score": 4.76,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law tort for bad faith recognized; insurer acts unreasonably by failing to compensate without proper cause.",
+          "cite": "Fetch v. Quam (N.D. 2001); Corwin Chrysler-Plymouth (N.D. 1979)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Bad-faith framework applies to insurer's contractual relationship; not separately elaborated for failure to settle.",
+          "cite": "Fetch (N.D. 2001); Corwin Chrysler (N.D. 1979)"
+        },
+        "f2_statutory_proa": {
+          "score": 1,
+          "rationale": "Volk declined to determine whether \u00a726.1-04 creates PRoA; effectively no recognized statutory route.",
+          "cite": "Volk v. Wisconsin Mortgage (N.D. 1991); N.D.C.C. \u00a726.1-04-03"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Test is whether insurer acts unreasonably \u2014 objective reasonable-basis standard, lower than knowing/reckless.",
+          "cite": "Fetch, 623 N.W. at 361"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential, compensatory, and emotional distress damages all available; attorneys' fees recoverable as consequential.",
+          "cite": "Hartman v. Estate of Miller (N.D. 2003); Ingalls v. Paul Revere (N.D. 1997)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitive available with finding of oppression/fraud/malice (actual or implied) beyond bad-faith finding.",
+          "cite": "Corwin Chrysler-Plymouth, 279 N.W.2d at 645"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory penalty/multiplier; only 6% interest.",
+          "cite": "N.D.C.C. \u00a747-14-05"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "Attorneys' fees recoverable as consequential damages on bad-faith finding (Hartman/Corwin) \u2014 broad common-law route.",
+          "cite": "Hartman v. Estate of Miller (N.D. 2003)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "N.D.C.C. \u00a726.1-04-03"
+        },
+        "f9_admin_remedy": {
+          "score": 4,
+          "rationale": "DOI Consumer Assistance investigates moderately with fines; no binding adjudication.",
+          "cite": "ND DOI Consumer Assistance"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; longstanding Corwin/Fetch framework continues without significant recent change.",
+          "cite": "Fetch (N.D. 2001)"
+        }
+      }
+    },
+    {
+      "state": "AR",
+      "state_name": "Arkansas",
+      "default_score": 4.74,
+      "tier": "T4",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 4,
+          "rationale": "Tort exists but narrow \u2014 requires 'dishonest, malicious, or oppressive' conduct with hatred/ill will/spirit of revenge.",
+          "cite": "Parker v. S. Farm Bureau (Ark. 1996); Columbia Nat'l v. Freeman (Ark. 2002)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Standard failure-to-settle: excess judgment recoverable for fraud, bad faith, or negligence.",
+          "cite": "McCall v. S. Farm Bureau (Ark. 1973)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "Limited statutory PRoA under \u00a723-79-208 for failure to pay within policy time after demand.",
+          "cite": "Ark. Code \u00a723-79-208(a)(1)"
+        },
+        "f3_liability_standard": {
+          "score": 0,
+          "rationale": "Hatred, ill will, or spirit of revenge \u2014 actual-malice tier.",
+          "cite": "Columbia Nat'l v. Freeman (Ark. 2002)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages may flow from bad faith but not in pure breach-of-contract; limited emotional.",
+          "cite": "Carpenter (8th Cir. 1995); H&H Brokerage (8th Cir. 1999)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available where conduct intentionally dishonest or deceitful.",
+          "cite": "Viking Ins. v. Jester (Ark. 1992)"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "12% penalty on amount of loss + attorney fees under \u00a723-79-208.",
+          "cite": "Ark. Code \u00a723-79-208(a)(1)"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way fees to insured under \u00a723-79-208 prosecution and collection.",
+          "cite": "Ark. Code \u00a723-79-208(a)(1)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Ark. Code \u00a723-79-208"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Moderate \u2014 DOI investigates and fines.",
+          "cite": "Ark. Code \u00a723-66-206"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; insufficient detail in survey on recent direction.",
+          "cite": "Parker (Ark. 1996)"
+        }
+      }
+    },
+    {
+      "state": "SD",
+      "state_name": "South Dakota",
+      "default_score": 4.66,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law first-party bad-faith tort recognized in Champion/Stene with reasonable-basis test.",
+          "cite": "Champion v. USF&G (S.D. 1987); Stene v. State Farm (S.D. 1998)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Crabb recognizes excess-judgment cause of action for wrongful or unreasonable refusal to settle; assignable.",
+          "cite": "Crabb v. Nat'l Indem. (S.D. 1973); Trouten v. Heritage Mut. (S.D. 2001)"
+        },
+        "f2_statutory_proa": {
+          "score": 1,
+          "rationale": "UCSPA \u00a758-33-67 does not create PRoA; \u00a758-33-69 expressly disclaims one. \u00a758-12-3 fees are an adjunct, not a PRoA.",
+          "cite": "SDCL \u00a758-33-69; Dakota Plains AG Ctr."
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "No reasonable basis + insurer's knowledge or reckless disregard \u2014 Anderson-style.",
+          "cite": "Stene v. State Farm, 583 N.W.2d 399, 403 (S.D. 1998)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential damages available; emotional distress conditioned on showing pecuniary loss caused the distress.",
+          "cite": "Athey v. Farmers Ins. (8th Cir. 2000)"
+        },
+        "f5_punitive_damages": {
+          "score": 6,
+          "rationale": "Available under SDCL \u00a721-3-2 on oppression, fraud, or malice \u2014 clear & convincing.",
+          "cite": "SDCL \u00a721-3-2; Harter v. Plains Ins. (S.D. 1998)"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "No multiplier or % penalty. Statutory interest only.",
+          "cite": "SDCL \u00a754-3-16"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "One-way fees under \u00a758-12-3 if refusal vexatious or without reasonable cause.",
+          "cite": "SDCL \u00a758-12-3; Sawyer v. Farm Bureau (S.D. 2000)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No statutory pre-suit notice, demand, or cure period.",
+          "cite": "SD framework"
+        },
+        "f9_admin_remedy": {
+          "score": 3,
+          "rationale": "DOI is weak/mediation-focused; fines but no adjudicatory mechanism.",
+          "cite": "SD Division of Insurance Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable doctrine; no recent major narrowing or broadening.",
+          "cite": "Trouten (S.D. 2001); Stene line"
+        }
+      }
+    },
+    {
+      "state": "ME",
+      "state_name": "Maine",
+      "default_score": 4.54,
+      "tier": "T4",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "Common-law breach-of-good-faith claim sounds in contract only (Marquis); statutory cause under \u00a72436-A available but no separate tort.",
+          "cite": "Marquis v. Farm Family Mut. Ins., 628 A.2d 644 (Me. 1993); 24-A M.R.S. \u00a72436-A"
+        },
+        "f1b_third_party_cause": {
+          "score": 0,
+          "rationale": "Maine does not recognize third-party bad faith.",
+          "cite": "Linscott v. State Farm Mut. Auto. Ins. Co., 368 A.2d 1161 (Me. 1977)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "Statutory PRoA under \u00a72436-A first-party only; no third-party reach.",
+          "cite": "24-A M.R.S. \u00a72436-A"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "Insurer acts 'without just cause' if it refuses to settle without reasonable basis to contest liability/damages\u2014objective standard.",
+          "cite": "24-A M.R.S. \u00a72436-A(2)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 3,
+          "rationale": "Consequential damages available; emotional distress generally not recoverable in contract claims.",
+          "cite": "Marquis, 628 A.2d 644; McAfee v. Wright, 651 A.2d 371 (Me. 1994)"
+        },
+        "f5_punitive_damages": {
+          "score": 0,
+          "rationale": "Punitives unavailable in contract action or under \u00a72436-A.",
+          "cite": "Stull v. First Am. Title Ins. Co., 745 A.2d 975 (Me. 2000); Marquis, 628 A.2d 644"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "Interest at 1.5% per month (18%/yr) on damages plus 1.5x interest if unfair claims practices found.",
+          "cite": "24-A M.R.S. \u00a72436-A(1)"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "One-way attorney fees + costs available under \u00a72436-A(1).",
+          "cite": "24-A M.R.S. \u00a72436-A(1)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "24-A M.R.S. \u00a72436-A"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Bureau of Insurance moderate; investigates and fines but no individual binding adjudication.",
+          "cite": "Maine Bureau of Insurance"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; no major recent broadening or narrowing.",
+          "cite": "Marquis, 628 A.2d 644 (controlling)"
+        }
+      }
+    },
+    {
+      "state": "DE",
+      "state_name": "Delaware",
+      "default_score": 4.52,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 6,
+          "rationale": "First-party bad-faith recognized as breach of implied covenant; 'clearly lacks reasonable justification' standard, treated as contract claim.",
+          "cite": "Enrique v. State Farm (Del. 2016); Tackett (Del. 1995)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Established failure-to-settle action for excess judgment; reasonable-and-prudent-person standard.",
+          "cite": "Stilwell v. Parsons (Del. 1958); Corrado Bros. (Del. 1989)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "UCSPA adopted but no PRoA.",
+          "cite": "18 Del. C. \u00a72304"
+        },
+        "f3_liability_standard": {
+          "score": 7,
+          "rationale": "'Clearly lacks reasonable justification' \u2014 objective no-reasonable-basis tier.",
+          "cite": "Enrique, 142 A.3d 506 (Del. 2016)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages available but emotional distress generally requires physical injury.",
+          "cite": "Tackett (Del. 1995); Pierce (Del. 1996)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on showing of malice or reckless indifference.",
+          "cite": "Enrique (Del. 2016); Pressman (Del. 1996)"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "Legal rate (5% over Fed disc.); no multiplier.",
+          "cite": "18 Del. C. \u00a72304"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Available in bad faith and under \u00a74102 for property insurance judgments.",
+          "cite": "18 Del. Code \u00a74102; Clausen (Del. Super. 1997)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "18 Del. C. \u00a72304"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI Consumer Services moderate; fines; binding arb available.",
+          "cite": "18 Del. Admin. Code \u00a7902"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Enrique 2016 stable; no major recent shift.",
+          "cite": "Enrique (Del. 2016)"
+        }
+      }
+    },
+    {
+      "state": "VT",
+      "state_name": "Vermont",
+      "default_score": 4.44,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Independent tort cause of action for first-party bad faith with reasonable-basis + knowing/reckless standard.",
+          "cite": "Bushey v. Allstate (Vt. 1995); Town of Ira (Vt. 2014)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Recognized in Myers; insurer liable for excess judgment when intentionally disregards insured's financial interests.",
+          "cite": "Myers v. Ambassador Ins. (Vt. 1986)"
+        },
+        "f2_statutory_proa": {
+          "score": 1,
+          "rationale": "No PRoA under \u00a74724 (Hamill); Consumer Fraud Act applicability to insurance is open question.",
+          "cite": "Hamill v. Pawtucket Mut. (Vt. 2005); 8 V.S.A. \u00a74724"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "No reasonable basis + insurer knew or recklessly disregarded \u2014 Anderson-style.",
+          "cite": "Bushey, 670 A.2d at 809"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential damages routinely awarded in tort; emotional distress recoverable but not always.",
+          "cite": "Phillips v. Aetna (D. Vt. 1979); Buote v. Verizon (D. Vt. 2003)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on showing of malice, gross misconduct, or reckless disregard plus outrageous conduct.",
+          "cite": "Davis v. Liberty Mut. (D. Vt. 1998); Monahan (Vt. 2005)"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "No statutory multiplier or percent penalty. Stat interest 12% only.",
+          "cite": "12 V.S.A. \u00a72903"
+        },
+        "f7_attorney_fees": {
+          "score": 3,
+          "rationale": "Discretionary under 'dominating reasons of justice' standard; not routinely awarded.",
+          "cite": "Concord Gen. Mut. v. Woods (Vt. 2003); Monahan (Vt. 2005)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Vermont framework"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DFR Insurance Consumer Services moderate; fines but no individual adjudication.",
+          "cite": "VT DFR Insurance Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Bushey and Murphy (2014) maintain fairly debatable doctrine without major recent shift.",
+          "cite": "Murphy v. Patriot Ins. (Vt. 2014)"
+        }
+      }
+    },
+    {
+      "state": "WY",
+      "state_name": "Wyoming",
+      "default_score": 4.44,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 6,
+          "rationale": "Common-law first-party bad-faith tort recognized with objective reasonable-basis test.",
+          "cite": "Ahrenholtz v. Time Ins. (Wyo. 1998); Cathcart v. State Farm (Wyo. 2005)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Feinman silent on Wyoming third-party doctrine specifics; default to standard Stowers-equivalent recognized in most states.",
+          "cite": "Wyoming common law (Feinman silent)"
+        },
+        "f2_statutory_proa": {
+          "score": 1,
+          "rationale": "No PRoA under UCSPA \u00a726-13-124. Statute regulatory only.",
+          "cite": "Wyo. Stat. \u00a726-13-124"
+        },
+        "f3_liability_standard": {
+          "score": 6,
+          "rationale": "Objective fairly-debatable standard with knowledge or reckless disregard requirement.",
+          "cite": "Kirkwood v. CUNA Mut. (Wyo. 1997); Ahrenholtz (Wyo. 1998)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential and emotional distress damages available, ED conditioned on additional economic loss.",
+          "cite": "State Farm v. Shrader (Wyo. 1994); Farmers Ins. v. Shirley (Wyo. 1998)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Available on evil intent, wanton disregard, or gross/outrageous conduct \u2014 moderate cap-free standard.",
+          "cite": "McCullough v. Golden Rule (Wyo. 1990)"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "No multiplier or % penalty. Statutory interest 10% only.",
+          "cite": "Wyo. Stat. \u00a740-14-106"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Available under \u00a726-15-124(c) when insurer unreasonably or without cause refuses to pay full covered loss \u2014 one-way but not robust.",
+          "cite": "Wyo. Stat. \u00a726-15-124(c)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Wyoming framework"
+        },
+        "f9_admin_remedy": {
+          "score": 3,
+          "rationale": "DOI weak/mediation-focused; fines but no adjudication mechanism.",
+          "cite": "WY DOI Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; doctrine continues under Ahrenholtz/Cathcart line without major recent direction.",
+          "cite": "Cathcart (Wyo. 2005); Falkenburg (Wyo. 2023)"
+        }
+      }
+    },
+    {
+      "state": "OH",
+      "state_name": "Ohio",
+      "default_score": 4.4,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Independent common-law bad-faith tort recognized for both first- and third-party (Zoppo); reasonable justification standard.",
+          "cite": "Zoppo v. Homestead Ins. (Ohio 1994); Ballard v. Nationwide (Ohio App. 2015)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Third-party bad faith recognized with same Zoppo framework.",
+          "cite": "Am. States Ins. v. Sovereign Chemical (Ohio App. 2002); Zoppo"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No statutory PRoA per Strack; \u00a73901.21 is regulatory only.",
+          "cite": "Strack v. Westfield (Ohio App. 1986); Ohio Rev. Code \u00a73901.21"
+        },
+        "f3_liability_standard": {
+          "score": 6,
+          "rationale": "Reasonable justification standard (Zoppo modified prior 'actual knowledge' requirement); more permissive than malice.",
+          "cite": "Zoppo, 644 N.E.2d at 399-400; Ballard"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Compensatory damages flowing from bad faith including emotional distress and economic harm; attorneys' fees as element when punitives warranted.",
+          "cite": "Zoppo (Ohio 1994); Eastham; Asmaro"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitive available on actual malice/fraud/insult; Ohio caps apply.",
+          "cite": "Zoppo, 644 N.E.2d at 402"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory multiplier or percent penalty.",
+          "cite": "Ohio Rev. Code \u00a73901.21"
+        },
+        "f7_attorney_fees": {
+          "score": 4,
+          "rationale": "Fees as element of compensatory damages only when punitives warranted; not free-standing one-way.",
+          "cite": "Zoppo, 644 N.E.2d at 402"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Ohio Rev. Code \u00a73901.21"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "ODI Consumer Services moderate with fines and C&D; no binding adjudication.",
+          "cite": "Ohio DOI Consumer Services Division"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Zoppo framework remains; no major recent broadening or narrowing.",
+          "cite": "Zoppo (Ohio 1994); Ballard (Ohio App. 2015)"
+        }
+      }
+    },
+    {
+      "state": "KS",
+      "state_name": "Kansas",
+      "default_score": 4.3,
+      "tier": "T4",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 3,
+          "rationale": "No common-law first-party bad-faith tort; only statutory attorney-fee remedy under \u00a740-256 for refusal 'without just cause'.",
+          "cite": "Spencer v. Aetna Life & Cas., 611 P.2d 149 (Kan. 1980); Stroud v. Ozark Nat. Life, 510 P.3d 728 (Kan. App. 2022)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Third-party claim available as breach-of-contract action requiring excess judgment and causal link.",
+          "cite": "Aves v. Shah, 906 P.2d 642 (Kan. 1995); Gruber v. Marshall, 482 P.3d 612 (Kan. App. 2021)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "Limited statutory PRoA via \u00a740-256 (attorney-fee statute) tied to refusal without just cause; no broader bad-faith PRoA.",
+          "cite": "K.S.A. \u00a740-256; K.S.A. \u00a740-2404 (UCSPA, no PRoA)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "'Without just cause or excuse'\u2014objective; no recovery if bona fide and reasonable factual ground for contesting.",
+          "cite": "Brown v. Combined Ins. Co., 597 P.2d 1080 (Kan. 1979); Koch v. Prudential, 470 P.2d 756 (Kan. 1970)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages recoverable; emotional distress only via separate tort of outrage with extreme/severe distress.",
+          "cite": "Mo. Med. Ins. Co. v. Wong, 676 P.2d 113 (Kan. 1984); Smith v. Welch, 967 P.2d 727 (Kan. 1998)"
+        },
+        "f5_punitive_damages": {
+          "score": 3,
+          "rationale": "Punitives only via independent tort with willful/wanton conduct, malice, or fraud\u2014high threshold.",
+          "cite": "K.S.A. \u00a760-3702(c); Guarantee Abstract & Title v. Interstate Fire & Cas., 652 P.2d 665 (Kan. 1982)"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory multiplier or penalty beyond 10% legal interest.",
+          "cite": "K.S.A. \u00a716-201"
+        },
+        "f7_attorney_fees": {
+          "score": 7,
+          "rationale": "Mandatory one-way fees under \u00a740-256 if refusal 'without just cause'.",
+          "cite": "K.S.A. \u00a740-256"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "K.S.A. \u00a740-256"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI moderate; investigates and issues fines/C&D but no individual binding adjudication.",
+          "cite": "Kansas DOI Consumer Assistance"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; recent decisions (Stroud 2022, Gruber 2021) reaffirm existing framework without major shift.",
+          "cite": "Stroud, 510 P.3d 728; Gruber, 482 P.3d 612"
+        }
+      }
+    },
+    {
+      "state": "MN",
+      "state_name": "Minnesota",
+      "default_score": 4.2,
+      "tier": "T4",
+      "structural_cluster": "S2_statute_constrained",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "No common-law first-party bad-faith tort; statutory cause under \u00a7604.18 requires court permission via motion to amend.",
+          "cite": "Minn. Stat. \u00a7604.18; Peterson v. W. Nat'l Mut. Ins. Co., 946 N.W.2d 903 (Minn. 2020)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Common-law third-party duty-to-settle with heightened fiduciary obligations; no statutory cause.",
+          "cite": "Peterson, 946 N.W.2d 903; Fette v. Columbia Cas. Co., 1993 WL 377091 (Minn. Ct. App. 1993)"
+        },
+        "f2_statutory_proa": {
+          "score": 3,
+          "rationale": "Statutory PRoA under \u00a7604.18 first-party only with court-permission gating; capped damages.",
+          "cite": "Minn. Stat. \u00a7604.18, subd. 4"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Anderson-style: lacked reasonable basis AND knew or recklessly disregarded that lack.",
+          "cite": "Minn. Stat. \u00a7604.18, subd. 2(a); Anderson v. Continental Ins., 271 N.W.2d 368 (Wis. 1978)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 3,
+          "rationale": "Consequential damages available; emotional distress requires independent tort.",
+          "cite": "Pillsbury Co. v. Nat'l Union Fire, 425 N.W.2d 244 (Minn. Ct. App. 1988); Lickteig v. Alderson, 556 N.W.2d 557 (Minn. 1996)"
+        },
+        "f5_punitive_damages": {
+          "score": 3,
+          "rationale": "Punitives unavailable for first-party; available only in third-party failure-to-settle.",
+          "cite": "In re Silicone Implant Ins. Coverage Litig., 652 N.W.2d 46 (Minn. Ct. App. 2002); Wilbur v. State Farm, 880 N.W.2d 874 (Minn. Ct. App. 2016)"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "Up to one-half of proceeds in excess of insurer's offer or $250k (whichever less) under \u00a7604.18.",
+          "cite": "Minn. Stat. \u00a7604.18"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "One-way attorney fees up to $100k under \u00a7604.18; otherwise generally not recoverable.",
+          "cite": "Minn. Stat. \u00a7604.18(3)(2); American Standard Ins. v. Le, 551 N.W.2d 923 (Minn. 1996)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 3,
+          "rationale": "Court permission required via motion to amend complaint with evidentiary support; effective pre-suit gate.",
+          "cite": "Minn. Stat. \u00a7604.18, subd. 4"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Commerce Dept moderate; investigates and fines but no individual binding adjudication.",
+          "cite": "Minnesota Commerce Dept Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Peterson (2020) reaffirmed framework without major shift.",
+          "cite": "Peterson, 946 N.W.2d 903"
+        }
+      }
+    },
+    {
+      "state": "OR",
+      "state_name": "Oregon",
+      "default_score": 4.14,
+      "tier": "T4",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "Historically no first-party tort (Farris); Moody (2023) opened negligence-per-se theory for emotional distress under ORS 746.230, scope still developing.",
+          "cite": "Farris v. USF&G (Or. 1978); Moody v. Oregon Comm. CU (Or. 2023)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Third-party bad-faith claim recognized in tort under Georgetown Realty.",
+          "cite": "Georgetown Realty v. Home Ins. (Or. 1992); Parvin v. CNA"
+        },
+        "f2_statutory_proa": {
+          "score": 2,
+          "rationale": "No express PRoA under ORS 746.230; Moody allows negligence-per-se via UCSPA standards but contours unclear.",
+          "cite": "ORS 746.230; Moody (Or. 2023)"
+        },
+        "f3_liability_standard": {
+          "score": 6,
+          "rationale": "Negligence-style under Moody for emotional distress; contract-based reasonableness otherwise.",
+          "cite": "Moody (Or. 2023)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages limited to those reasonably contemplated; emotional distress now possible post-Moody.",
+          "cite": "Nw. Pump v. America States (Or. 1996); Moody (Or. 2023)"
+        },
+        "f5_punitive_damages": {
+          "score": 1,
+          "rationale": "Punitive damages generally unavailable in bad-faith context.",
+          "cite": "Farris, 587 P.2d at 1023"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory penalty/multiplier.",
+          "cite": "ORS 742.061; ORS 746.230"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "One-way fees under ORS 742.061 if recovery exceeds tender; broad applicability but 6-month cure window.",
+          "cite": "ORS 742.061"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 4,
+          "rationale": "ORS 742.061 effectively requires 6-month cure period after proof of loss \u2014 significant procedural friction.",
+          "cite": "ORS 742.061(1)"
+        },
+        "f9_admin_remedy": {
+          "score": 6,
+          "rationale": "DCBS Insurance Consumer Advocacy Unit moderate-robust with fines, C&D, restitution.",
+          "cite": "Oregon DCBS Insurance Consumer Advocacy Unit"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 7,
+          "rationale": "Trending toward broadening: Moody (2023) opened negligence-per-se path; lower courts expanding.",
+          "cite": "Moody v. Oregon Comm. CU (Or. 2023); Liquid Agents (D. Or. 2024)"
+        }
+      }
+    },
+    {
+      "state": "NE",
+      "state_name": "Nebraska",
+      "default_score": 3.98,
+      "tier": "T5",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Recognized common-law tort for first-party bad faith under LeRette; standard requires lack of reasonable basis + knowledge/reckless disregard.",
+          "cite": "LeRette v. Am. Med. Sec. (Neb. 2005)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Third-party bad faith recognized but requires more than negligence \u2014 'some level of intentional wrongdoing' per Braesch.",
+          "cite": "Braesch v. Union Ins. (Neb. 1991); Millard Gutter (Neb. 2022)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No statutory PRoA under Nebraska's UCSPA; bad-faith remedy is purely common-law.",
+          "cite": "Neb. Rev. Stat. \u00a744-1540 (UCSPA, no PRoA)"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "Anderson-style 'no reasonable basis' + knowing/reckless disregard standard; arguable basis defense.",
+          "cite": "LeRette, 705 N.W.2d at 47-50"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential damages and emotional distress (severe and substantial) available.",
+          "cite": "Ruwe v. Farmers Mut. (Neb. 1991); Millard Gutter (Neb. 2022)"
+        },
+        "f5_punitive_damages": {
+          "score": 0,
+          "rationale": "Punitive damages unavailable in Nebraska as a constitutional matter.",
+          "cite": "Distinctive Printing v. Cox (Neb. 1989)"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory penalty/multiplier.",
+          "cite": "Neb. Rev. Stat. \u00a744-1540"
+        },
+        "f7_attorney_fees": {
+          "score": 6,
+          "rationale": "One-way fees available under \u00a744-359 to prevailing insured.",
+          "cite": "Neb. Rev. Stat. \u00a744-359"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Neb. Rev. Stat. \u00a744-1540"
+        },
+        "f9_admin_remedy": {
+          "score": 4,
+          "rationale": "DOI Consumer Affairs investigates with moderate enforcement; no binding individual adjudication.",
+          "cite": "Nebraska DOI Consumer Affairs"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 6,
+          "rationale": "Millard Gutter (2022) reaffirmed and modestly broadened third-party bad faith and emotional distress; trend stable to slightly broadening.",
+          "cite": "Millard Gutter (Neb. 2022)"
+        }
+      }
+    },
+    {
+      "state": "IN",
+      "state_name": "Indiana",
+      "default_score": 3.96,
+      "tier": "T5",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 7,
+          "rationale": "Common-law first-party bad faith firmly recognized; insurer must act with dishonest purpose, ill will, or knowingly without rational basis.",
+          "cite": "Erie Ins. Co. v. Hickman, 622 N.E.2d 515 (Ind. 1993); Friedline v. Shelby Ins. Co., 774 N.E.2d 37 (Ind. 2002)"
+        },
+        "f1b_third_party_cause": {
+          "score": 3,
+          "rationale": "Indiana Supreme Court has not recognized third-party negligent failure-to-settle cause of action; remains narrow/uncertain.",
+          "cite": "Cincinnati Ins. Co. v. Selective Ins. Co., 2021 WL 766651 (S.D. Ind. 2021)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No private right of action under Indiana UCSPA (Ind. Code \u00a727-4-1-4.5).",
+          "cite": "Ind. Code \u00a727-4-1-4.5"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "Heightened standard requiring 'dishonest purpose, moral obliquity, furtive design, or ill will'\u2014above mere negligence.",
+          "cite": "Johnson v. State Farm, 667 N.E.2d 802 (Ind. Ct. App. 1996); Lumberman's Mut. v. Combs, 873 N.E.2d 692 (2007)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential damages and emotional distress (via intentional tort exception to impact rule) recoverable.",
+          "cite": "Erie, 622 N.E.2d 515; Patel v. United Fire & Cas., 80 F.Supp.2d 948 (N.D. Ind. 2000)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitives available on clear and convincing evidence of malice, fraud, gross negligence, or oppressiveness.",
+          "cite": "Erie, 622 N.E.2d 515"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory penalty or multiplier; 8% statutory interest only.",
+          "cite": "Ind. Code \u00a724-4.6-1-102"
+        },
+        "f7_attorney_fees": {
+          "score": 3,
+          "rationale": "Discretionary fees only via \u00a734-52-1-1(b)(3) on finding of bad-faith litigation; American Rule otherwise.",
+          "cite": "Patel, 80 F.Supp.2d 948; Liberty Mut. v. OSI Indus., 831 N.E.2d 192 (Ind. Ct. App. 2005)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Ind. Code \u00a727-4-1-4.5"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DOI moderate; investigates and fines but no individual adjudication or binding findings.",
+          "cite": "Indiana DOI Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; no major recent broadening or narrowing.",
+          "cite": "Erie, 622 N.E.2d 515 (controlling)"
+        }
+      }
+    },
+    {
+      "state": "UT",
+      "state_name": "Utah",
+      "default_score": 3.86,
+      "tier": "T5",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 3,
+          "rationale": "Beck v. Farmers held first-party bad faith is contract claim only \u2014 no independent tort. Significant doctrinal limitation.",
+          "cite": "Beck v. Farmers Ins. Exch. (Utah 1985)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Tort cause of action recognized for third-party context due to insurer's fiduciary duty to defend.",
+          "cite": "Beck v. Farmers, 701 P.2d at 799"
+        },
+        "f2_statutory_proa": {
+          "score": 1,
+          "rationale": "No PRoA under \u00a731A-26-303; \u00a731A-26-301 timely-pay also no PRoA per Saleh.",
+          "cite": "Saleh v. Farmers Ins. (Utah 2006); Utah Code \u00a731A-26-303"
+        },
+        "f3_liability_standard": {
+          "score": 5,
+          "rationale": "First-party (contract): breach of implied covenant of good faith; third-party: fiduciary duty \u2014 moderate standards.",
+          "cite": "Beck (Utah 1985); Black v. Allstate (Utah 2004)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 6,
+          "rationale": "Consequential damages may exceed policy limits per Black v. Allstate; emotional distress available subject to foreseeability.",
+          "cite": "Black v. Allstate (Utah 2004); Beck (Utah 1985)"
+        },
+        "f5_punitive_damages": {
+          "score": 2,
+          "rationale": "Punitives only on independent tort, not breach of contract \u2014 first-party bad faith as contract claim therefore largely lacks punitive route.",
+          "cite": "Gagon v. State Farm (Utah 1988)"
+        },
+        "f6_statutory_penalty": {
+          "score": 1,
+          "rationale": "No statutory multiplier or percent penalty for bad faith.",
+          "cite": "Utah Code \u00a715-1-1 (interest only)"
+        },
+        "f7_attorney_fees": {
+          "score": 4,
+          "rationale": "Available on breach of implied covenant of good faith, but discretionary in contract context.",
+          "cite": "Saleh, 133 P.3d at 435 n.4"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Utah framework"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Utah ID Consumer Services moderate \u2014 fines + C&D, no individual adjudication.",
+          "cite": "Utah ID Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Beck remains controlling; no major recent narrowing or broadening.",
+          "cite": "Beck (Utah 1985) line"
+        }
+      }
+    },
+    {
+      "state": "VA",
+      "state_name": "Virginia",
+      "default_score": 3.82,
+      "tier": "T5",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 3,
+          "rationale": "No independent first-party tort; bad faith is contract claim only under implied covenant of good faith.",
+          "cite": "Botkin v. Donegal Mut. (W.D. Va. 2011); A-View Est. Tr. (Va. Cir. 2021)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Recognized cause of action for excess judgment when insurer fails to settle within limits, but requires clear & convincing evidence of insurer's intentional disregard.",
+          "cite": "Aetna Cas. v. Price (Va. 1966); State Farm v. Floyd (Va. 1988)"
+        },
+        "f2_statutory_proa": {
+          "score": 2,
+          "rationale": "\u00a738.2-209 provides limited fee remedy in declaratory judgment action; capped at $3,500 disputes for double-recovery; no broad PRoA.",
+          "cite": "Va. Code \u00a738.2-209; Sustainable Sea Prod. (E.D. Va. 2022)"
+        },
+        "f3_liability_standard": {
+          "score": 4,
+          "rationale": "Reasonableness standard considering coverage interpretation, investigation, and underlying merits \u2014 moderate-to-difficult.",
+          "cite": "CUNA Mut. v. Norman (Va. 1989)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages available including excess judgment; no separate tort but contract remedies allow general/consequential.",
+          "cite": "TIG Ins. v. Alfa Laval (E.D. Va. 2008); Meccia (Va. Cir. 1987)"
+        },
+        "f5_punitive_damages": {
+          "score": 0,
+          "rationale": "Punitive damages unavailable in bad-faith cases.",
+          "cite": "A-View Est. Tr. (Va. Cir. 2021); Harris v. USAA (Va. Cir. 1994)"
+        },
+        "f6_statutory_penalty": {
+          "score": 3,
+          "rationale": "\u00a738.2-209 double recovery + fees but capped at $3,500 disputes \u2014 very narrow penalty teeth.",
+          "cite": "Va. Code \u00a738.2-209"
+        },
+        "f7_attorney_fees": {
+          "score": 4,
+          "rationale": "Fees available under \u00a738.2-209 in declaratory judgment if insurer not in good faith \u2014 capped/limited statutory route.",
+          "cite": "Va. Code \u00a738.2-209"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 8,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Virginia framework"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "Bureau of Insurance Property & Casualty Consumer Services moderate; fines + C&D, no individual adjudication.",
+          "cite": "VA Bureau of Insurance"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; no major recent direction; courts continue to disfavor free-standing bad-faith tort claims.",
+          "cite": "Liberty Ins. Corp. v. Talley (E.D. Va. 2023)"
+        }
+      }
+    },
+    {
+      "state": "AL",
+      "state_name": "Alabama",
+      "default_score": 3.52,
+      "tier": "T5",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "Common-law tort exists (Chavers/Brechbill) but requires intentional refusal AND actual knowledge of no lawful basis \u2014 narrower than 'no reasonable basis' standard.",
+          "cite": "Chavers v. Nat'l Sec. (Ala. 1981); Brechbill (Ala. 2013)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Third-party failure-to-settle action recognized requiring excess judgment; insurer liable on negligence or intentional refusal.",
+          "cite": "Aetna Cas. & Sur. v. Mitchell Bros. (Ala. 2001); Chavers (Ala. 1981)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "Alabama has not adopted UCSPA; no statutory PRoA.",
+          "cite": "Ala. Code \u00a727-12-24 (regulatory only)"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "Requires intentional refusal plus actual knowledge of absence of legitimate reason \u2014 knowing/reckless-disregard tier.",
+          "cite": "Brechbill, 144 So.3d 248 (Ala. 2013)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 7,
+          "rationale": "Consequential, mental distress, and economic loss recoverable.",
+          "cite": "Chavers, 405 So. 2d 1; Lavoie, 470 So. 2d 1060 (Ala. 1984)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitives available but capped at greater of 3x compensatory or $500k.",
+          "cite": "Ala. Code \u00a76-11-21; Lindblom (Ala. 1992)"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory penalty/multiplier.",
+          "cite": "Ala. Code \u00a727-12-24"
+        },
+        "f7_attorney_fees": {
+          "score": 1,
+          "rationale": "Fees generally not recoverable in coverage litigation.",
+          "cite": "Green v. Standard Fire (Ala. 1985)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "Ala. Code \u00a727-12-24"
+        },
+        "f9_admin_remedy": {
+          "score": 3,
+          "rationale": "DOI weak/mediation-only; no dedicated consumer ombudsman.",
+          "cite": "AL ADC 482-1-124"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable doctrine (Brechbill 2013 reaffirmed Bowen/Chavers); no major recent shifts.",
+          "cite": "Brechbill (Ala. 2013)"
+        }
+      }
+    },
+    {
+      "state": "MS",
+      "state_name": "Mississippi",
+      "default_score": 3.48,
+      "tier": "T5",
+      "structural_cluster": "S3_common_law_tort",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 5,
+          "rationale": "Common-law first-party bad faith recognized but as intentional tort requiring willful/malicious conduct or gross/reckless disregard.",
+          "cite": "Liberty Mut. v. McKneely, 862 So.2d 530 (Miss. 2003); Universal Life v. Veasley, 610 So.2d 290 (Miss. 1992)"
+        },
+        "f1b_third_party_cause": {
+          "score": 0,
+          "rationale": "Mississippi does not recognize third-party bad faith.",
+          "cite": "Hartford Underwriters Ins. Co. v. Williams, 936 So.2d 888 (Miss. 2006)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No private right of action under \u00a783-5-45 (UCSPA).",
+          "cite": "Miss. Code \u00a783-5-45; Burley v. Homeowner's Warranty Corp., 773 F.Supp. 844 (S.D. Miss. 1990)"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "Intentional-tort standard requiring willful/malicious wrong or gross/reckless disregard; mere negligence insufficient.",
+          "cite": "Veasley, 610 So.2d at 295; McKneely, 862 So.2d 530"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential and emotional distress damages recoverable when insurer's conduct culpable; barred when insurer has arguable basis.",
+          "cite": "Veasley, 610 So.2d 290; Lisanby, 47 So.3d 1172 (Miss. 2010)"
+        },
+        "f5_punitive_damages": {
+          "score": 5,
+          "rationale": "Punitives available with showing of malice, gross negligence, or wanton disregard plus no legitimate basis.",
+          "cite": "Vaughn v. Monticello Ins. Co., 838 So.2d 983 (Miss. Ct. App. 2001); Hoover, 125 So.3d 636 (Miss. 2013)"
+        },
+        "f6_statutory_penalty": {
+          "score": 0,
+          "rationale": "No statutory penalty or multiplier; 8% statutory interest only.",
+          "cite": "Miss. Code \u00a783-5-45 (no penalty)"
+        },
+        "f7_attorney_fees": {
+          "score": 5,
+          "rationale": "Attorney fees recoverable when foreseeable from insurer's conduct (extracontractual damages); not statutory one-way.",
+          "cite": "Windmon v. Marshall, 926 So.2d 867 (Miss. 2006); Veasley, 610 So.2d 290"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Miss. Code \u00a783-5-45"
+        },
+        "f9_admin_remedy": {
+          "score": 3,
+          "rationale": "DOI weak/mediation-only; investigates and fines but no individual adjudication.",
+          "cite": "Mississippi DOI Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; recent decisions reaffirm restrictive bad-faith framework.",
+          "cite": "Blanchard v. GEICO Gen. Ins. Co., 375 So.3d 723 (Miss. Ct. App. 2023); Hoover, 125 So.3d 636"
+        }
+      }
+    },
+    {
+      "state": "NH",
+      "state_name": "New Hampshire",
+      "default_score": 3.38,
+      "tier": "T5",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 2,
+          "rationale": "No first-party bad-faith tort recognized (Lawton); only narrow Bennett exception when insurer had exclusive control over investigation.",
+          "cite": "Lawton v. Great SW (N.H. 1978); Bell v. Liberty Mut. (N.H. 2001); Bennett v. ITT Hartford (N.H. 2004)"
+        },
+        "f1b_third_party_cause": {
+          "score": 7,
+          "rationale": "Recognized third-party bad faith with negligence-style standard (reasonable person would have settled).",
+          "cite": "Dumas v. State Farm (N.H. 1971); Gelinas (N.H. 1988); O'Meara (N.H. 2012)"
+        },
+        "f2_statutory_proa": {
+          "score": 1,
+          "rationale": "\u00a7417 has no insured PRoA absent prior Insurance Commissioner finding (Hunt/First Cir.); CPA does not apply to insurance.",
+          "cite": "RSA 417:4; Hunt v. Golden Rule (1st Cir. 2011); Bell (N.H. 2001)"
+        },
+        "f3_liability_standard": {
+          "score": 6,
+          "rationale": "Third-party uses negligence standard (a reasonable person would have settled); first-party effectively contract.",
+          "cite": "Gelinas (N.H. 1988)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 4,
+          "rationale": "Consequential damages available if foreseeable; emotional distress only with separate finding of extreme/outrageous conduct.",
+          "cite": "Bell (N.H. 2001); Jarvis (N.H. 1982)"
+        },
+        "f5_punitive_damages": {
+          "score": 0,
+          "rationale": "Punitive damages unavailable by statute.",
+          "cite": "N.H. Rev. Stat. \u00a7507:16"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "$2,500 per violation payable to insured if Commissioner finds \u00a7417 violation; no multiplier.",
+          "cite": "RSA 417:10"
+        },
+        "f7_attorney_fees": {
+          "score": 4,
+          "rationale": "Fees available in declaratory coverage actions (RSA 491:22-b) and on bad-faith promotion of litigation; not generally one-way.",
+          "cite": "RSA 491:22-b; Drop Anchor (N.H. 1985)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 5,
+          "rationale": "No formal cure period but \u00a7417 PRoA effectively requires prior Commissioner determination \u2014 significant gating.",
+          "cite": "Hunt v. Golden Rule (1st Cir. 2011)"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "NHID investigates moderately with fines and C&D; gating role for statutory claim is significant but mediation-style.",
+          "cite": "NHID Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Bennett carve-out and progeny narrowly applied; no major recent direction.",
+          "cite": "Bennett (N.H. 2004); Skrekas (N.H. 2017)"
+        }
+      }
+    },
+    {
+      "state": "NY",
+      "state_name": "New York",
+      "default_score": 3.22,
+      "tier": "T5",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 3,
+          "rationale": "No first-party bad-faith tort (Acquista); contractual remedy with Bi-Economy consequential damages but no PRoA.",
+          "cite": "Acquista v. NY Life (N.Y. App. 2001); Bi-Economy v. Harleysville (N.Y. 2008)"
+        },
+        "f1b_third_party_cause": {
+          "score": 6,
+          "rationale": "Recognized duty to settle in good faith; 'gross disregard' / deliberate or reckless failure standard; no sinister motive required.",
+          "cite": "Pavia v. State Farm (N.Y. 1993); Soto (N.Y. 1994)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No statutory PRoA per Rocanova/Dalton; \u00a72601 is regulatory only.",
+          "cite": "N.Y. Ins. Law \u00a72601; Rocanova v. Equitable (N.Y. 1994)"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "Third-party requires gross disregard \u2014 deliberate or reckless indifference; high bar above mere negligence.",
+          "cite": "Pavia v. State Farm (N.Y. 1993)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 5,
+          "rationale": "Consequential damages available (Bi-Economy/Panasia); excess judgment recoverable third-party; emotional distress not awarded.",
+          "cite": "Bi-Economy (N.Y. 2008); Panasia (N.Y. 2008); Soto (N.Y. 1994)"
+        },
+        "f5_punitive_damages": {
+          "score": 2,
+          "rationale": "Punitive only with separate tort + 'gross/morally reprehensible' conduct directed at public; very narrow.",
+          "cite": "N.Y. Univ., 662 N.E.2d 763"
+        },
+        "f6_statutory_penalty": {
+          "score": 1,
+          "rationale": "No statutory multiplier; only 9% CPLR \u00a75004 interest.",
+          "cite": "CPLR \u00a75004"
+        },
+        "f7_attorney_fees": {
+          "score": 1,
+          "rationale": "Generally not available; Mighty Midgets bars fees as damages; narrow declaratory exception.",
+          "cite": "Mighty Midgets v. Centennial (N.Y. 1979)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 9,
+          "rationale": "No pre-suit notice or cure period; mandatory PIP arbitration applies in narrow context only.",
+          "cite": "N.Y. Ins. Law \u00a75106(b)"
+        },
+        "f9_admin_remedy": {
+          "score": 6,
+          "rationale": "DFS Consumer Assistance moderate-robust; substantive review and complaint ratios published; mandatory PIP arb.",
+          "cite": "DFS Consumer Assistance; N.Y. Ins. \u00a75106(b)"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Bi-Economy/Panasia (2008) opened consequential damages but no recent broadening of tort or PRoA.",
+          "cite": "Bi-Economy (N.Y. 2008)"
+        }
+      }
+    },
+    {
+      "state": "MI",
+      "state_name": "Michigan",
+      "default_score": 3.14,
+      "tier": "T5",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 3,
+          "rationale": "Michigan does not recognize independent first-party bad-faith tort; only breach-of-contract claims with limited consequential damages.",
+          "cite": "Roberts v. Auto-Owners Ins. Co., 374 N.W.2d 905 (Mich. 1985); Kewin v. Mass. Mut. Life, 295 N.W.2d 50 (Mich. 1980)"
+        },
+        "f1b_third_party_cause": {
+          "score": 5,
+          "rationale": "Bad-faith failure-to-settle is hybrid contract claim allowing recovery of excess judgment; no independent tort.",
+          "cite": "Frankenmuth Mut. Ins. v. Keeley, 461 N.W.2d 666 (Mich. 1990); Com. Union v. Liberty Mut., 393 N.W.2d 161 (Mich. 1986)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "No private right of action under Uniform Trade Practices Act; Michigan Consumer Protection Act preempted.",
+          "cite": "Kassab v. Mich. Basic Prop. Ins. Ass'n, 491 N.W.2d 545 (Mich. 1992); Mich. Comp. Laws \u00a7445.904(3)"
+        },
+        "f3_liability_standard": {
+          "score": 3,
+          "rationale": "'Arbitrary, reckless, indifferent, or intentional disregard' of insured's interests\u2014elevated standard.",
+          "cite": "Liberty Mutual, 393 N.W.2d at 164"
+        },
+        "f4_extracontractual_damages": {
+          "score": 3,
+          "rationale": "Consequential damages limited to those contemplated at contract; emotional distress unavailable absent independent tort.",
+          "cite": "Lawrence v. Will Darrah & Assocs., 516 N.W.2d 43 (Mich. 1994); Roberts, 374 N.W.2d 905; Burnside v. State Farm, 528 N.W.2d 749 (Mich. App. 1995)"
+        },
+        "f5_punitive_damages": {
+          "score": 0,
+          "rationale": "Punitives unavailable for first- or third-party claims; narrow exemplary-damages exception rarely applies.",
+          "cite": "Casey v. Auto Owners Ins. Co., 729 N.W.2d 277 (Mich. App. 2006); Kewin, 295 N.W.2d 50"
+        },
+        "f6_statutory_penalty": {
+          "score": 5,
+          "rationale": "12% per annum penalty interest under UTPA on late-paid claims when not reasonably in dispute.",
+          "cite": "Mich. Comp. Laws \u00a7500.2006(4)"
+        },
+        "f7_attorney_fees": {
+          "score": 0,
+          "rationale": "Attorney fees unavailable for either first- or third-party claims pursuing the insurer.",
+          "cite": "Burnside, 528 N.W.2d at 752-53; Johnson v. USA Underwriters, 936 N.W.2d 834 (Mich. App. 2019)"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure period required.",
+          "cite": "Mich. Comp. Laws \u00a7500.2006"
+        },
+        "f9_admin_remedy": {
+          "score": 5,
+          "rationale": "DIFS moderate; investigates and fines but no individual binding adjudication.",
+          "cite": "Michigan DIFS Consumer Services"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable but anti-insured baseline; no major recent appellate shift.",
+          "cite": "Roberts, 374 N.W.2d 905 (controlling); Kewin, 295 N.W.2d 50"
+        }
+      }
+    },
+    {
+      "state": "DC",
+      "state_name": "District of Columbia",
+      "default_score": 2.24,
+      "tier": "T5",
+      "structural_cluster": "S4_minimal_protection",
+      "scores": {
+        "f1a_first_party_cause": {
+          "score": 0,
+          "rationale": "DC does not recognize tort of bad-faith claims handling in first-party context \u2014 contract remedies only.",
+          "cite": "Choharis v. State Farm (D.C. 2008)"
+        },
+        "f1b_third_party_cause": {
+          "score": 3,
+          "rationale": "No instructive authority; Choharis casts doubt; would likely look to MD which recognizes one.",
+          "cite": "Choharis, 961 A.2d 1080 (D.C. 2008)"
+        },
+        "f2_statutory_proa": {
+          "score": 0,
+          "rationale": "DC has not adopted UCSPA; \u00a731-2231.17 prohibitions explicitly do not create PRoA.",
+          "cite": "D.C. Code \u00a731-2231.02(a)"
+        },
+        "f3_liability_standard": {
+          "score": 0,
+          "rationale": "No tort exists; contract standard only.",
+          "cite": "Choharis (D.C. 2008)"
+        },
+        "f4_extracontractual_damages": {
+          "score": 0,
+          "rationale": "Insured limited to contract damages only \u2014 no consequential beyond breach-of-contract foreseeability.",
+          "cite": "Nkpado v. Standard Ins. (D.D.C. 2010)"
+        },
+        "f5_punitive_damages": {
+          "score": 3,
+          "rationale": "Punitives only where breach 'merges with willful tort' \u2014 narrow.",
+          "cite": "Nkpado (D.D.C. 2010); Choharis (D.C. 2008)"
+        },
+        "f6_statutory_penalty": {
+          "score": 2,
+          "rationale": "6% statutory interest under \u00a728-3302; no multiplier.",
+          "cite": "D.C. Code \u00a728-3302"
+        },
+        "f7_attorney_fees": {
+          "score": 3,
+          "rationale": "Discretionary; no one-way statutory shift.",
+          "cite": "D.C. Code \u00a731-2231.17"
+        },
+        "f8_pre_suit_barriers": {
+          "score": 10,
+          "rationale": "No pre-suit notice or cure requirement.",
+          "cite": "D.C. Code \u00a731-2231"
+        },
+        "f9_admin_remedy": {
+          "score": 3,
+          "rationale": "DISB Consumer Services weak; primarily referral.",
+          "cite": "D.C. Code \u00a731-2231.17"
+        },
+        "f10_recent_appellate_trend": {
+          "score": 5,
+          "rationale": "Stable; Choharis 2008 firmly closes the door on first-party tort.",
+          "cite": "Choharis (D.C. 2008)"
+        }
+      }
+    }
+  ]
+}

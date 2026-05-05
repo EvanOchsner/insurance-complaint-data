@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "mi_difs_yearly",
+      "name": "MI DIFS — complaints by line of coverage",
+      "short_name": "MI DIFS",
+      "category": "regulator_finding",
+      "jurisdiction": ["MI"],
+      "year_field_label": "Calendar year",
+      "y_axis_label": "Complaints (MI DIFS)",
+      "caveat_short": "MI DIFS per-line aggregate complaint counts. WORKLOAD signal — counts of complaints filed, not regulator findings. Outcome data is NOT published on DIFS's public site (confirmed via per-company detail-page spot-check 2026-05-05); a public-records request is queued for that dimension. Pre-2022 history not yet available.",
+      "provenance_url": "mi_difs/PROVENANCE.md",
+      "parquet": "mi_difs/output/mi_complaints_yearly.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "count", "label": "Complaints filed", "column": "count"}
+      ],
+      "default_metric": "count",
+      "default_groups": ["automobile", "accident_health", "homeowners"],
+      "group_presets": [
+        {"label": "Top 3 lines", "groups": ["automobile", "accident_health", "homeowners"]},
+        {"label": "P&C personal", "groups": ["automobile", "homeowners", "fire_allied_cmp"]},
+        {"label": "L&H", "groups": ["accident_health", "life", "annuity"]},
+        {"label": "All", "all": true}
+      ]
+    }
+  ]
+}

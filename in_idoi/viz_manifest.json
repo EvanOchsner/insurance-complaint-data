@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "in_idoi",
+      "name": "IN IDOI — per-company complaint index, by line",
+      "short_name": "IN IDOI",
+      "category": "regulator_complaint_index",
+      "jurisdiction": ["IN"],
+      "year_field_label": "Data year",
+      "y_axis_label": "Indiana complaint index",
+      "caveat_short": "NAIC-tradition complaint index = (share of complaints) / (share of premium), normalized so 1.0 = parity. Different metric class than TX `Confirmed`/CT `against_insurer` counts. Only complaint-having companies appear; per-company medians sit above 1.0 because zero-complaint companies are excluded.",
+      "provenance_url": "in_idoi/PROVENANCE.md",
+      "parquet": "in_idoi/output/in_complaints_yearly.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "median_index", "label": "Median complaint index (complaint-having companies)", "column": "median_index"},
+        {"id": "total_complaints", "label": "Total complaints (complaint-having companies)", "column": "total_complaints"},
+        {"id": "n_companies", "label": "Number of complaint-having companies", "column": "n_companies"},
+        {"id": "total_premium", "label": "Total premium (complaint-having companies, USD)", "column": "total_premium"}
+      ],
+      "default_metric": "median_index",
+      "default_groups": ["auto", "health", "homeowners", "life", "annuity"],
+      "group_presets": [
+        {"label": "All lines", "all": true}
+      ]
+    }
+  ]
+}

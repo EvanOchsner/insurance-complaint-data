@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "va_scc_workload",
+      "name": "VA SCC — complaints received by line (P&C / L&H)",
+      "short_name": "VA SCC workload",
+      "category": "regulator_finding",
+      "jurisdiction": ["VA"],
+      "year_field_label": "Fiscal year (FY ends Jun 30)",
+      "y_axis_label": "Complaints received (VA SCC BOI)",
+      "caveat_short": "VA SCC's annual complaints-received counts, broken out by Property & Casualty vs Life & Health. WORKLOAD signal — what walked in the door — not a regulator finding. For the regulator-finding subset (health appeals only), see 'VA SCC ER'. VA fiscal year ends June 30.",
+      "provenance_url": "va_scc/PROVENANCE.md",
+      "parquet": "va_scc/output/va_complaints_yearly.parquet",
+      "x_field": "fiscal_year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "complaints_received", "label": "Complaints received", "column": "complaints_received"}
+      ],
+      "default_metric": "complaints_received",
+      "default_groups": ["property_and_casualty", "life_and_health"],
+      "group_presets": [
+        {"label": "Both lines", "all": true}
+      ]
+    },
+    {
+      "id": "va_scc_er",
+      "name": "VA SCC — Health External Review dispositions",
+      "short_name": "VA SCC ER",
+      "category": "regulator_finding",
+      "jurisdiction": ["VA"],
+      "year_field_label": "Fiscal year (FY ends Jun 30)",
+      "y_axis_label": "External Review requests (VA SCC BOI)",
+      "caveat_short": "Health external-review dispositions — managed-care coverage appeals only. Pre-filtered for adjudicability (ineligible cases excluded from on-merits pool), so the against-rate runs much higher (~54%) than overall regulator-finding rates would. Don't compare directly to MD MIA's 5.68% — different denominators.",
+      "provenance_url": "va_scc/PROVENANCE.md",
+      "parquet": "va_scc/output/va_external_review_yearly.parquet",
+      "x_field": "fiscal_year",
+      "group_field": null,
+      "metrics": [
+        {"id": "against_rate_of_decided", "label": "Against-rate (of decided)", "column": "against_rate_of_decided", "unit": "share"},
+        {"id": "against_insurer", "label": "Against-insurer count", "column": "against_insurer"},
+        {"id": "for_insurer", "label": "For-insurer count", "column": "for_insurer"},
+        {"id": "mixed", "label": "Mixed (Modified)", "column": "mixed"},
+        {"id": "no_decision", "label": "No decision (Ineligible + Terminated)", "column": "no_decision"},
+        {"id": "total_reviewed", "label": "Total ER requests reviewed", "column": "total_reviewed"}
+      ],
+      "default_metric": "against_rate_of_decided",
+      "outcome_buckets": {
+        "buckets": {
+          "against_insurer": {"column": "against_insurer", "label": "Overturned + Reversed-Itself (against insurer)"},
+          "mixed":           {"column": "mixed", "label": "Modified or Partially Overturned"},
+          "for_insurer":     {"column": "for_insurer", "label": "Upheld (for insurer)"},
+          "no_decision":     {"column": "no_decision", "label": "Ineligible + Terminated"}
+        }
+      },
+      "default_chart_mode": "two_panel"
+    }
+  ]
+}

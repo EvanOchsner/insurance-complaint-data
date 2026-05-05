@@ -1,0 +1,278 @@
+
+### 2026-05-05T14:02Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     section-4 (counts) page 6: 110 rows
+     section-4 (relief % from same page): 110 rows
+     section-8 company rows: 0
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     section-4 (counts) page 5: 55 rows
+     section-4 (relief %) page 4: 0 rows
+     section-8 company rows: 21
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     section-4 (counts) page 6: 50 rows
+     section-4 (relief %) page 7: 0 rows
+     section-8 company rows: 1927
+  wrote mo_complaints_yearly.{parquet,csv}: 325 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 1948 rows
+  WARN: 12 (year,line) cells disagree across reports:
+     2019 total: [2264, 2263, 982, 987]
+     2023 total: [790, 1374]
+     2022 total: [2063, 1092, 714]
+     2021 total: [1906, 1904, 962, 688]
+     2021 life_annuities: [252, 250, 250]
+     2020 life_annuities: [229, 228, 228]
+     2021 all_other_ah: [610, 609, 609]
+     2021 total_ah: [689, 688]
+     2020 total: [1941, 1940, 893, 819]
+     2022 homeowners: [362, 360]
+     2019 hmo: [0, 12, 12, 12]
+     2019 life_annuities: [294, 293, 293]
+
+### 2026-05-05T14:05Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start:             4
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+     section-8 company rows: 0  by line: {}
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start:             51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'private_passenger_auto': 179, 'homeowners_farm_mh_fire': 220, 'accident_health': 382, 'long_term_care': 86, 'medicare_supplement': 130, 'life_annuities': 391, 'hmo': 8}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: []
+     relief-% pages found:        []
+     section-8 start:             65
+     yearly counts parsed: 0 cells
+     relief-% parsed:      0 cells
+     section-8 company rows: 1367  by line: {'unknown': 177, 'hmo': 282, 'life_annuities': 813, 'long_term_care': 15, 'medicare_supplement': 80}
+  wrote mo_complaints_yearly.{parquet,csv}: 215 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 2763 rows
+  WARN: 8 (year,line) cells disagree across reports:
+     2019 total: [2264.0, 2263.0]
+     2021 total: [1906.0, 1904.0]
+     2019 life_annuities: [294.0, 293.0]
+     2021 all_other_ah: [610.0, 609.0]
+     2021 total_ah: [689.0, 688.0]
+     2020 total: [1941.0, 1940.0]
+     2020 life_annuities: [229.0, 228.0]
+     2021 life_annuities: [252.0, 250.0]
+
+### 2026-05-05T14:08Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start:             None
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start:             51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'unknown': 1396}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: [6]
+     relief-% pages found:        [7]
+     section-8 start:             65
+     yearly counts parsed: 45 cells
+     relief-% parsed:      40 cells
+     section-8 company rows: 1367  by line: {'private_passenger_auto': 177, 'homeowners_farm_mh_fire': 216, 'accident_health': 379, 'long_term_care': 88, 'medicare_supplement': 136, 'life_annuities': 364, 'hmo': 7}
+  wrote mo_complaints_yearly.{parquet,csv}: 300 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 2763 rows
+  WARN: 10 (year,line) cells disagree across reports:
+     2019 life_annuities: [294.0, 293.0, 293.0]
+     2021 all_other_ah: [610.0, 609.0, 609.0]
+     2020 life_annuities: [229.0, 228.0, 228.0]
+     2021 life_annuities: [252.0, 250.0, 250.0]
+     2019 total: [2264.0, 2263.0]
+     2022 homeowners: [362.0, 360.0]
+     2020 total: [1941.0, 1940.0]
+     2021 total_ah: [689.0, 688.0, 688.0]
+     2022 total_pc: [1094.0, 1092.0]
+     2021 total: [1906.0, 1904.0]
+
+### 2026-05-05T14:09Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start:             31
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+     section-8 company rows: 0  by line: {}
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start:             51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'private_passenger_auto': 179, 'homeowners_farm_mh_fire': 220, 'accident_health': 382, 'long_term_care': 86, 'medicare_supplement': 130, 'life_annuities': 391, 'hmo': 8}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: [6]
+     relief-% pages found:        [7]
+     section-8 start:             65
+     yearly counts parsed: 45 cells
+     relief-% parsed:      40 cells
+     section-8 company rows: 1367  by line: {'private_passenger_auto': 177, 'homeowners_farm_mh_fire': 216, 'accident_health': 49, 'life_annuities': 855, 'long_term_care': 15, 'medicare_supplement': 48, 'hmo': 7}
+  wrote mo_complaints_yearly.{parquet,csv}: 300 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 2763 rows
+  WARN: 10 (year,line) cells disagree across reports:
+     2020 life_annuities: [229.0, 228.0, 228.0]
+     2020 total: [1941.0, 1940.0]
+     2022 total_pc: [1094.0, 1092.0]
+     2022 homeowners: [362.0, 360.0]
+     2019 life_annuities: [294.0, 293.0, 293.0]
+     2019 total: [2264.0, 2263.0]
+     2021 total: [1906.0, 1904.0]
+     2021 total_ah: [689.0, 688.0, 688.0]
+     2021 all_other_ah: [610.0, 609.0, 609.0]
+     2021 life_annuities: [252.0, 250.0, 250.0]
+
+### 2026-05-05T14:12Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 39
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+     section-8 company rows: 0  by line: {}
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'private_passenger_auto': 179, 'homeowners_farm_mh_fire': 220, 'accident_health': 382, 'long_term_care': 86, 'medicare_supplement': 130, 'life_annuities': 391, 'hmo': 8}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: [6]
+     relief-% pages found:        [7]
+     section-8 start (hardcoded): 65
+     yearly counts parsed: 45 cells
+     relief-% parsed:      40 cells
+     section-8 company rows: 1367  by line: {'private_passenger_auto': 177, 'homeowners_farm_mh_fire': 216, 'accident_health': 379, 'long_term_care': 88, 'medicare_supplement': 136, 'life_annuities': 364, 'hmo': 7}
+  wrote mo_complaints_yearly.{parquet,csv}: 300 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 2763 rows
+  WARN: 10 (year,line) cells disagree across reports:
+     2021 all_other_ah: [610.0, 609.0, 609.0]
+     2021 total: [1906.0, 1904.0]
+     2021 life_annuities: [252.0, 250.0, 250.0]
+     2022 total_pc: [1094.0, 1092.0]
+     2022 homeowners: [362.0, 360.0]
+     2019 total: [2264.0, 2263.0]
+     2020 life_annuities: [229.0, 228.0, 228.0]
+     2019 life_annuities: [294.0, 293.0, 293.0]
+     2021 total_ah: [689.0, 688.0, 688.0]
+     2020 total: [1941.0, 1940.0]
+
+### 2026-05-05T14:13Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 39
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+     section-8 company rows: 1402  by line: {'private_passenger_auto': 395, 'accident_health': 390, 'long_term_care': 87, 'medicare_supplement': 128, 'life_annuities': 394, 'hmo': 8}
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'private_passenger_auto': 179, 'homeowners_farm_mh_fire': 220, 'accident_health': 382, 'long_term_care': 86, 'medicare_supplement': 130, 'life_annuities': 391, 'hmo': 8}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: [6]
+     relief-% pages found:        [7]
+     section-8 start (hardcoded): 65
+     yearly counts parsed: 45 cells
+     relief-% parsed:      40 cells
+     section-8 company rows: 1367  by line: {'private_passenger_auto': 177, 'homeowners_farm_mh_fire': 216, 'accident_health': 379, 'long_term_care': 88, 'medicare_supplement': 136, 'life_annuities': 364, 'hmo': 7}
+  wrote mo_complaints_yearly.{parquet,csv}: 300 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 4165 rows
+  WARN: 10 (year,line) cells disagree across reports:
+     2021 life_annuities: [252.0, 250.0, 250.0]
+     2021 all_other_ah: [610.0, 609.0, 609.0]
+     2021 total_ah: [689.0, 688.0, 688.0]
+     2022 total_pc: [1094.0, 1092.0]
+     2020 total: [1941.0, 1940.0]
+     2022 homeowners: [362.0, 360.0]
+     2020 life_annuities: [229.0, 228.0, 228.0]
+     2019 life_annuities: [294.0, 293.0, 293.0]
+     2021 total: [1906.0, 1904.0]
+     2019 total: [2264.0, 2263.0]
+
+### 2026-05-05T14:14Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 39
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+     section-8 company rows: 1402  by line: {'private_passenger_auto': 174, 'homeowners_farm_mh_fire': 221, 'accident_health': 390, 'long_term_care': 87, 'medicare_supplement': 128, 'life_annuities': 394, 'hmo': 8}
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'private_passenger_auto': 179, 'homeowners_farm_mh_fire': 220, 'accident_health': 382, 'long_term_care': 86, 'medicare_supplement': 130, 'life_annuities': 391, 'hmo': 8}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: [6]
+     relief-% pages found:        [7]
+     section-8 start (hardcoded): 65
+     yearly counts parsed: 45 cells
+     relief-% parsed:      40 cells
+     section-8 company rows: 1367  by line: {'private_passenger_auto': 177, 'homeowners_farm_mh_fire': 216, 'accident_health': 379, 'long_term_care': 88, 'medicare_supplement': 136, 'life_annuities': 364, 'hmo': 7}
+  wrote mo_complaints_yearly.{parquet,csv}: 300 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 4165 rows
+  WARN: 10 (year,line) cells disagree across reports:
+     2019 total: [2264.0, 2263.0]
+     2022 total_pc: [1094.0, 1092.0]
+     2020 life_annuities: [229.0, 228.0, 228.0]
+     2021 all_other_ah: [610.0, 609.0, 609.0]
+     2021 total: [1906.0, 1904.0]
+     2020 total: [1941.0, 1940.0]
+     2021 life_annuities: [252.0, 250.0, 250.0]
+     2019 life_annuities: [294.0, 293.0, 293.0]
+     2021 total_ah: [689.0, 688.0, 688.0]
+     2022 homeowners: [362.0, 360.0]
+
+### 2026-05-05T14:15Z — parse run
+  -- 2021_complaint_report.pdf (report_year=2021, period=2018-2020)
+     total-complaint pages found: [6]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 39
+     yearly counts parsed: 55 cells
+     relief-% parsed:      50 cells
+     section-8 company rows: 1402  by line: {'private_passenger_auto': 174, 'homeowners_farm_mh_fire': 221, 'accident_health': 390, 'long_term_care': 87, 'medicare_supplement': 128, 'life_annuities': 394, 'hmo': 8}
+  -- 2022_complaint_report.pdf (report_year=2022, period=2020-2022)
+     total-complaint pages found: [5]
+     relief-% pages found:        [6]
+     section-8 start (hardcoded): 51
+     yearly counts parsed: 55 cells
+     relief-% parsed:      55 cells
+     section-8 company rows: 1396  by line: {'private_passenger_auto': 179, 'homeowners_farm_mh_fire': 220, 'accident_health': 382, 'long_term_care': 86, 'medicare_supplement': 130, 'life_annuities': 391, 'hmo': 8}
+  -- 2023_complaint_index.pdf (report_year=2023, period=2021-2023)
+     total-complaint pages found: [6]
+     relief-% pages found:        [7]
+     section-8 start (hardcoded): 65
+     yearly counts parsed: 45 cells
+     relief-% parsed:      40 cells
+     section-8 company rows: 1367  by line: {'private_passenger_auto': 177, 'homeowners_farm_mh_fire': 216, 'accident_health': 379, 'long_term_care': 88, 'medicare_supplement': 136, 'life_annuities': 364, 'hmo': 7}
+  wrote mo_complaints_yearly.{parquet,csv}: 300 rows
+  wrote mo_complaints_company_by_period.{parquet,csv}: 4165 rows
+  WARN: 10 (year,line) cells disagree across reports:
+     2021 total_ah: [689.0, 688.0, 688.0]
+     2021 total: [1906.0, 1904.0]
+     2019 total: [2264.0, 2263.0]
+     2022 homeowners: [362.0, 360.0]
+     2020 life_annuities: [229.0, 228.0, 228.0]
+     2021 life_annuities: [252.0, 250.0, 250.0]
+     2019 life_annuities: [294.0, 293.0, 293.0]
+     2020 total: [1941.0, 1940.0]
+     2022 total_pc: [1094.0, 1092.0]
+     2021 all_other_ah: [610.0, 609.0, 609.0]

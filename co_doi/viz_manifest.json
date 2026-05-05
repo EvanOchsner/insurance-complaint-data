@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "co_doi_workload",
+      "name": "CO DOI — workload by line",
+      "short_name": "CO DOI workload",
+      "category": "regulator_finding",
+      "jurisdiction": ["CO"],
+      "year_field_label": "Fiscal year (FY ends Jun 30)",
+      "y_axis_label": "Complaints (CO DOI)",
+      "caveat_short": "CO DOI workload counts (complaints received and closed) by line. WORKLOAD signal — not a regulator finding. FY 2025 reframed received counts to include inquiries; the count_type filter distinguishes. CO publishes per-company complaint indexes via a separate Oracle-backed tool not in this dataset.",
+      "provenance_url": "co_doi/PROVENANCE.md",
+      "parquet": "co_doi/output/co_workload_yearly.parquet",
+      "x_field": "fiscal_year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "filter_field": "count_type",
+      "filter_field_label": "Count type",
+      "filter_default": "received",
+      "metrics": [
+        {"id": "count", "label": "Complaint count", "column": "count"}
+      ],
+      "default_metric": "count",
+      "default_groups": ["property_casualty", "life_health"],
+      "group_presets": [
+        {"label": "P&C vs L&H", "groups": ["property_casualty", "life_health"]},
+        {"label": "Sub-lines", "groups": ["homeowners", "health"]},
+        {"label": "All", "all": true}
+      ]
+    },
+    {
+      "id": "co_doi_recoveries",
+      "name": "CO DOI — money recovered for consumers, by line",
+      "short_name": "CO DOI recoveries",
+      "category": "regulator_finding",
+      "jurisdiction": ["CO"],
+      "year_field_label": "Fiscal year (FY ends Jun 30)",
+      "y_axis_label": "$ recovered (CO DOI)",
+      "caveat_short": "Money recovered = $ DOI extracted from carriers and returned to consumers (reversed denials, expedited delays, statute-violation refunds). Combines multiple intervention types — directional regulator-action signal, not a per-complaint disposition. Recovery categories shift year-to-year (Marshall Fire only 2023; Other P&C only 2025).",
+      "provenance_url": "co_doi/PROVENANCE.md",
+      "parquet": "co_doi/output/co_recoveries_yearly.parquet",
+      "x_field": "fiscal_year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "amount_usd", "label": "Amount recovered (USD)", "column": "amount_usd", "unit": "dollars"}
+      ],
+      "default_metric": "amount_usd",
+      "default_groups": ["total"],
+      "group_presets": [
+        {"label": "Grand total", "groups": ["total"]},
+        {"label": "P&C / L&H rollup", "groups": ["property_casualty", "life_health"]},
+        {"label": "Sub-lines", "groups": ["homeowners", "auto", "health", "life_annuity"]},
+        {"label": "All", "all": true}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+# Local scratch and Claude Code config
+.tmp/
+.claude/
+
+# FJC IDB intermediates (large; reproducible from scripts + manifest)
+fjc_idb/interim/
+
+# TX TDI intermediates (raw API pulls; reproducible from scripts + manifest)
+tx_tdi/interim/
+
+# CA CDI intermediates (raw PDFs; reproducible from scripts + manifest)
+ca_cdi/interim/
+
+# FL CRN intermediates (raw HTML; reproducible from scripts)
+fl_crn/interim/
+
+# NY DFS intermediates (raw API + PDFs; reproducible from scripts)
+ny_dfs/interim/
+
+# WA OIC intermediates (raw PDFs; reproducible from scripts)
+wa_oic/interim/
+
+# CT CID intermediates (raw API pulls; reproducible from scripts + manifest)
+ct_cid/interim/
+
+# IN IDOI intermediates (raw PDFs; reproducible from scripts + manifest)
+in_idoi/interim/
+
+# KS KID intermediates (raw PDFs; reproducible from scripts + manifest)
+ks_kid/interim/
+
+# VA SCC intermediates (raw PDFs; reproducible from scripts + manifest)
+va_scc/interim/
+
+# ID DOI intermediates (raw HTML; reproducible from scripts + manifest)
+id_doi/interim/
+
+# IL IDOI intermediates (raw PDFs; reproducible from scripts + manifest)
+il_idoi/interim/
+
+# CO DOI intermediates (raw PDFs; reproducible from scripts + manifest)
+co_doi/interim/
+
+# WI OCI intermediates (raw PDFs; reproducible from scripts + manifest)
+wi_oci/interim/
+
+# Remaining state intermediates (raw PDFs/HTML; reproducible from scripts + manifests)
+naic_idrr/interim/
+la_ldi/interim/
+mo_dci/interim/
+or_dfr/interim/
+mi_difs/interim/
+
+# TX complaint-level CSV is 54 MB; parquet (~2 MB) is committed instead
+tx_tdi/output/tx_complaints_complaint_level.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

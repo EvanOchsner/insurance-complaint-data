@@ -1,0 +1,218 @@
+year_closed,coverage_type,finding_type,count
+2012,Accident and Health,Confirmed,420
+2012,Accident and Health,Not Confirmed,2927
+2012,Automobile,Confirmed,401
+2012,Automobile,Not Confirmed,1857
+2012,"Fire, Allied Lines & CMP",Confirmed,23
+2012,"Fire, Allied Lines & CMP",Not Confirmed,63
+2012,Homeowners,Confirmed,210
+2012,Homeowners,Not Confirmed,789
+2012,Liability,Confirmed,26
+2012,Liability,Not Confirmed,75
+2012,Life & Annuity,Confirmed,96
+2012,Life & Annuity,Not Confirmed,445
+2012,Miscellaneous,Confirmed,79
+2012,Miscellaneous,Not Confirmed,273
+2013,Accident and Health,Confirmed,1046
+2013,Accident and Health,Not Confirmed,7543
+2013,Automobile,Confirmed,995
+2013,Automobile,Not Confirmed,5432
+2013,"Fire, Allied Lines & CMP",Confirmed,54
+2013,"Fire, Allied Lines & CMP",Not Confirmed,159
+2013,Homeowners,Confirmed,415
+2013,Homeowners,Not Confirmed,2060
+2013,Liability,Confirmed,54
+2013,Liability,Not Confirmed,239
+2013,Life & Annuity,Confirmed,229
+2013,Life & Annuity,Not Confirmed,1097
+2013,Miscellaneous,Confirmed,166
+2013,Miscellaneous,Not Confirmed,662
+2014,Accident and Health,Confirmed,2078
+2014,Accident and Health,Not Confirmed,7842
+2014,Automobile,Confirmed,1247
+2014,Automobile,Not Confirmed,4160
+2014,"Fire, Allied Lines & CMP",Confirmed,44
+2014,"Fire, Allied Lines & CMP",Not Confirmed,102
+2014,Homeowners,Confirmed,413
+2014,Homeowners,Not Confirmed,1375
+2014,Liability,Confirmed,55
+2014,Liability,Not Confirmed,172
+2014,Life & Annuity,Confirmed,170
+2014,Life & Annuity,Not Confirmed,871
+2014,Miscellaneous,Confirmed,307
+2014,Miscellaneous,Not Confirmed,617
+2015,Accident and Health,Confirmed,1355
+2015,Accident and Health,Not Confirmed,8198
+2015,Automobile,Confirmed,1592
+2015,Automobile,Not Confirmed,4888
+2015,"Fire, Allied Lines & CMP",Confirmed,33
+2015,"Fire, Allied Lines & CMP",Not Confirmed,81
+2015,Homeowners,Confirmed,460
+2015,Homeowners,Not Confirmed,1287
+2015,Liability,Confirmed,75
+2015,Liability,Not Confirmed,142
+2015,Life & Annuity,Confirmed,153
+2015,Life & Annuity,Not Confirmed,1051
+2015,Miscellaneous,Confirmed,234
+2015,Miscellaneous,Not Confirmed,724
+2016,Accident and Health,Confirmed,1215
+2016,Accident and Health,Not Confirmed,8662
+2016,Automobile,Confirmed,1378
+2016,Automobile,Not Confirmed,5568
+2016,"Fire, Allied Lines & CMP",Confirmed,38
+2016,"Fire, Allied Lines & CMP",Not Confirmed,119
+2016,Homeowners,Confirmed,427
+2016,Homeowners,Not Confirmed,1742
+2016,Liability,Confirmed,44
+2016,Liability,Not Confirmed,170
+2016,Life & Annuity,Confirmed,191
+2016,Life & Annuity,Not Confirmed,720
+2016,Miscellaneous,Confirmed,151
+2016,Miscellaneous,Not Confirmed,665
+2017,Accident and Health,Confirmed,1229
+2017,Accident and Health,Not Confirmed,9350
+2017,Automobile,Confirmed,1575
+2017,Automobile,Not Confirmed,5205
+2017,"Fire, Allied Lines & CMP",Confirmed,27
+2017,"Fire, Allied Lines & CMP",Not Confirmed,102
+2017,Homeowners,Confirmed,557
+2017,Homeowners,Not Confirmed,1635
+2017,Liability,Confirmed,59
+2017,Liability,Not Confirmed,149
+2017,Life & Annuity,Confirmed,286
+2017,Life & Annuity,Not Confirmed,893
+2017,Miscellaneous,Confirmed,135
+2017,Miscellaneous,Not Confirmed,453
+2018,Accident and Health,Confirmed,867
+2018,Accident and Health,Not Confirmed,10101
+2018,Automobile,Confirmed,1626
+2018,Automobile,Not Confirmed,4755
+2018,"Fire, Allied Lines & CMP",Confirmed,36
+2018,"Fire, Allied Lines & CMP",Not Confirmed,145
+2018,Homeowners,Confirmed,720
+2018,Homeowners,Not Confirmed,1707
+2018,Liability,Confirmed,63
+2018,Liability,Not Confirmed,154
+2018,Life & Annuity,Confirmed,111
+2018,Life & Annuity,Not Confirmed,464
+2018,Miscellaneous,Confirmed,130
+2018,Miscellaneous,Not Confirmed,417
+2019,Accident and Health,Confirmed,2549
+2019,Accident and Health,Not Confirmed,19672
+2019,Automobile,Confirmed,1037
+2019,Automobile,Not Confirmed,3802
+2019,"Fire, Allied Lines & CMP",Confirmed,32
+2019,"Fire, Allied Lines & CMP",Not Confirmed,84
+2019,Homeowners,Confirmed,379
+2019,Homeowners,Not Confirmed,1245
+2019,Liability,Confirmed,35
+2019,Liability,Not Confirmed,121
+2019,Life & Annuity,Confirmed,180
+2019,Life & Annuity,Not Confirmed,1243
+2019,Miscellaneous,Confirmed,107
+2019,Miscellaneous,Not Confirmed,392
+2020,Accident and Health,Confirmed,1330
+2020,Accident and Health,Not Confirmed,6029
+2020,Automobile,Confirmed,839
+2020,Automobile,Not Confirmed,5459
+2020,"Fire, Allied Lines & CMP",Confirmed,33
+2020,"Fire, Allied Lines & CMP",Not Confirmed,208
+2020,Homeowners,Confirmed,448
+2020,Homeowners,Not Confirmed,2105
+2020,Liability,Confirmed,45
+2020,Liability,Not Confirmed,186
+2020,Life & Annuity,Confirmed,191
+2020,Life & Annuity,Not Confirmed,1463
+2020,Miscellaneous,Confirmed,113
+2020,Miscellaneous,Not Confirmed,549
+2021,,Not Confirmed,1
+2021,Accident and Health,Confirmed,917
+2021,Accident and Health,Not Confirmed,4066
+2021,Automobile,Confirmed,411
+2021,Automobile,Not Confirmed,4855
+2021,"Fire, Allied Lines & CMP",Confirmed,23
+2021,"Fire, Allied Lines & CMP",Not Confirmed,149
+2021,Homeowners,Confirmed,404
+2021,Homeowners,Not Confirmed,3345
+2021,Liability,Confirmed,37
+2021,Liability,Not Confirmed,174
+2021,Life & Annuity,Confirmed,185
+2021,Life & Annuity,Not Confirmed,892
+2021,Miscellaneous,Confirmed,65
+2021,Miscellaneous,Not Confirmed,448
+2022,,Confirmed,1
+2022,,Not Confirmed,2
+2022,Accident and Health,Confirmed,990
+2022,Accident and Health,Not Confirmed,2535
+2022,Automobile,Confirmed,592
+2022,Automobile,Not Confirmed,5769
+2022,"Fire, Allied Lines & CMP",Confirmed,22
+2022,"Fire, Allied Lines & CMP",Not Confirmed,121
+2022,Homeowners,Confirmed,291
+2022,Homeowners,Not Confirmed,2488
+2022,Liability,Confirmed,29
+2022,Liability,Not Confirmed,187
+2022,Life & Annuity,Confirmed,186
+2022,Life & Annuity,Not Confirmed,750
+2022,Miscellaneous,Confirmed,78
+2022,Miscellaneous,Not Confirmed,435
+2023,,Confirmed,9
+2023,,Not Confirmed,3
+2023,Accident and Health,Confirmed,1453
+2023,Accident and Health,Not Confirmed,2500
+2023,Automobile,Confirmed,1014
+2023,Automobile,Not Confirmed,8387
+2023,"Fire, Allied Lines & CMP",Confirmed,29
+2023,"Fire, Allied Lines & CMP",Not Confirmed,149
+2023,Homeowners,Confirmed,632
+2023,Homeowners,Not Confirmed,3448
+2023,Liability,Confirmed,39
+2023,Liability,Not Confirmed,207
+2023,Life & Annuity,Confirmed,183
+2023,Life & Annuity,Not Confirmed,667
+2023,Miscellaneous,Confirmed,110
+2023,Miscellaneous,Not Confirmed,426
+2024,,Confirmed,5
+2024,,Not Confirmed,20
+2024,Accident and Health,Confirmed,1560
+2024,Accident and Health,Not Confirmed,2043
+2024,Automobile,Confirmed,1803
+2024,Automobile,Not Confirmed,5926
+2024,"Fire, Allied Lines & CMP",Confirmed,34
+2024,"Fire, Allied Lines & CMP",Not Confirmed,119
+2024,Homeowners,Confirmed,898
+2024,Homeowners,Not Confirmed,3435
+2024,Liability,Confirmed,52
+2024,Liability,Not Confirmed,217
+2024,Life & Annuity,Confirmed,265
+2024,Life & Annuity,Not Confirmed,549
+2024,Miscellaneous,Confirmed,117
+2024,Miscellaneous,Not Confirmed,326
+2025,Accident and Health,Confirmed,2069
+2025,Accident and Health,Not Confirmed,2350
+2025,Automobile,Confirmed,2716
+2025,Automobile,Not Confirmed,7265
+2025,"Fire, Allied Lines & CMP",Confirmed,53
+2025,"Fire, Allied Lines & CMP",Not Confirmed,134
+2025,Homeowners,Confirmed,1556
+2025,Homeowners,Not Confirmed,4035
+2025,Liability,Confirmed,95
+2025,Liability,Not Confirmed,379
+2025,Life & Annuity,Confirmed,422
+2025,Life & Annuity,Not Confirmed,785
+2025,Miscellaneous,Confirmed,146
+2025,Miscellaneous,Not Confirmed,557
+2026,Accident and Health,Confirmed,662
+2026,Accident and Health,Not Confirmed,1148
+2026,Automobile,Confirmed,1128
+2026,Automobile,Not Confirmed,4026
+2026,"Fire, Allied Lines & CMP",Confirmed,14
+2026,"Fire, Allied Lines & CMP",Not Confirmed,45
+2026,Homeowners,Confirmed,538
+2026,Homeowners,Not Confirmed,1546
+2026,Liability,Confirmed,47
+2026,Liability,Not Confirmed,222
+2026,Life & Annuity,Confirmed,133
+2026,Life & Annuity,Not Confirmed,357
+2026,Miscellaneous,Confirmed,96
+2026,Miscellaneous,Not Confirmed,322

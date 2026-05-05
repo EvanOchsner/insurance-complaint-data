@@ -1,0 +1,161 @@
+
+=== run started 2026-05-05T03:00:15+00:00 ===
+  2018.pdf (old layout): 1911 rows, 361 non-row lines skipped
+  2019.pdf (old layout): 0 rows, 0 non-row lines skipped
+  2020.pdf (old layout): 0 rows, 0 non-row lines skipped
+  2023.pdf (new layout): 123 rows, 137 non-row lines skipped
+  2024.pdf (new layout): 131 rows, 146 non-row lines skipped
+Wrote il_complaints_company_yearly.parquet (2,165 rows)
+Wrote il_complaints_yearly.parquet (11 rows)
+
+Years: [2018, 2023, 2024]
+Lines: ['annuity', 'auto', 'group_health', 'hmo', 'homeowners', 'individual_health', 'life']
+Ratio types: ['share_of_share', 'per_million_ep']
+
+Yearly aggregate:
+shape: (11, 6)
+┌──────┬───────────────────┬──────────────────┬─────────────┬──────────────┬───────────────┐
+│ year ┆ line              ┆ total_complaints ┆ n_companies ┆ median_ratio ┆ total_premium │
+│ ---  ┆ ---               ┆ ---              ┆ ---         ┆ ---          ┆ ---           │
+│ i32  ┆ str               ┆ i64              ┆ u32         ┆ f64          ┆ f64           │
+╞══════╪═══════════════════╪══════════════════╪═════════════╪══════════════╪═══════════════╡
+│ 2018 ┆ annuity           ┆ 75               ┆ 293         ┆ 0            ┆ 7623995420    │
+│ 2018 ┆ auto              ┆ 2648             ┆ 244         ┆ 0.35         ┆ 7650582008    │
+│ 2018 ┆ group_health      ┆ 756              ┆ 301         ┆ 0            ┆ 17503978318   │
+│ 2018 ┆ hmo               ┆ 313              ┆ 62          ┆ 0            ┆ 17410590493   │
+│ 2018 ┆ homeowners        ┆ 822              ┆ 212         ┆ 0.42         ┆ 3719716728    │
+│ 2018 ┆ individual_health ┆ 561              ┆ 355         ┆ 0            ┆ 6857683940    │
+│ 2018 ┆ life              ┆ 556              ┆ 444         ┆ 0            ┆ 5649158588    │
+│ 2023 ┆ auto              ┆ 3187             ┆ 70          ┆ 0.3935       ┆ 9309670120    │
+│ 2023 ┆ homeowners        ┆ 2050             ┆ 53          ┆ 0.4408       ┆ 4753259788    │
+│ 2024 ┆ auto              ┆ 3317             ┆ 74          ┆ 0.3147       ┆ 10908989842   │
+│ 2024 ┆ homeowners        ┆ 1249             ┆ 57          ┆ 0.4224       ┆ 3640201754    │
+└──────┴───────────────────┴──────────────────┴─────────────┴──────────────┴───────────────┘
+=== run completed 2026-05-05T03:01:02+00:00 ===
+
+=== run started 2026-05-05T03:02:06+00:00 ===
+  2018.pdf (old layout): 1911 rows, 361 non-row lines skipped
+
+=== run started 2026-05-05T03:02:22+00:00 ===
+  2018.pdf (old layout): 1911 rows, 361 non-row lines skipped
+  2019.pdf (new layout): 93 rows, 264 non-row lines skipped
+  2020.pdf (new layout): 73 rows, 235 non-row lines skipped
+  2023.pdf (old layout): 0 rows, 0 non-row lines skipped
+  2024.pdf (old layout): 0 rows, 0 non-row lines skipped
+Wrote il_complaints_company_yearly.parquet (2,077 rows)
+Wrote il_complaints_yearly.parquet (11 rows)
+
+Years: [2018, 2019, 2020]
+Lines: ['annuity', 'auto', 'group_health', 'hmo', 'homeowners', 'individual_health', 'life']
+Ratio types: ['share_of_share', 'per_million_ep']
+
+Yearly aggregate:
+shape: (11, 6)
+┌──────┬───────────────────┬──────────────────┬─────────────┬─────────────────────┬───────────────┐
+│ year ┆ line              ┆ total_complaints ┆ n_companies ┆ median_ratio        ┆ total_premium │
+│ ---  ┆ ---               ┆ ---              ┆ ---         ┆ ---                 ┆ ---           │
+│ i32  ┆ str               ┆ i64              ┆ u32         ┆ f64                 ┆ f64           │
+╞══════╪═══════════════════╪══════════════════╪═════════════╪═════════════════════╪═══════════════╡
+│ 2018 ┆ annuity           ┆ 75               ┆ 293         ┆ 0                   ┆ 7623995420    │
+│ 2018 ┆ auto              ┆ 2648             ┆ 244         ┆ 0.35                ┆ 7650582008    │
+│ 2018 ┆ group_health      ┆ 756              ┆ 301         ┆ 0                   ┆ 17503978318   │
+│ 2018 ┆ hmo               ┆ 313              ┆ 62          ┆ 0                   ┆ 17410590493   │
+│ 2018 ┆ homeowners        ┆ 822              ┆ 212         ┆ 0.42                ┆ 3719716728    │
+│ 2018 ┆ individual_health ┆ 561              ┆ 355         ┆ 0                   ┆ 6857683940    │
+│ 2018 ┆ life              ┆ 556              ┆ 444         ┆ 0                   ┆ 5649158588    │
+│ 2019 ┆ auto              ┆ 4694             ┆ 59          ┆ 0.4417              ┆ 13322480912   │
+│ 2019 ┆ homeowners        ┆ 1640             ┆ 34          ┆ 0.34245000000000003 ┆ 6320540516    │
+│ 2020 ┆ auto              ┆ 1549             ┆ 42          ┆ 0.27155             ┆ 5862304459    │
+│ 2020 ┆ homeowners        ┆ 1732             ┆ 31          ┆ 0.3157              ┆ 6569190966    │
+└──────┴───────────────────┴──────────────────┴─────────────┴─────────────────────┴───────────────┘
+=== run completed 2026-05-05T03:02:30+00:00 ===
+
+=== run started 2026-05-05T03:02:50+00:00 ===
+  2018.pdf (old layout): 1911 rows, 361 non-row lines skipped
+  2019.pdf (new layout): 93 rows, 264 non-row lines skipped
+  2020.pdf (new layout): 73 rows, 235 non-row lines skipped
+  2023.pdf (new layout): 123 rows, 137 non-row lines skipped
+  2024.pdf (new layout): 132 rows, 145 non-row lines skipped
+Wrote il_complaints_company_yearly.parquet (2,332 rows)
+Wrote il_complaints_yearly.parquet (15 rows)
+
+Years: [2018, 2019, 2020, 2023, 2024]
+Lines: ['annuity', 'auto', 'group_health', 'hmo', 'homeowners', 'individual_health', 'life']
+Ratio types: ['share_of_share', 'per_million_ep']
+
+Yearly aggregate:
+shape: (15, 6)
+┌──────┬───────────────────┬──────────────────┬─────────────┬─────────────────────┬───────────────┐
+│ year ┆ line              ┆ total_complaints ┆ n_companies ┆ median_ratio        ┆ total_premium │
+│ ---  ┆ ---               ┆ ---              ┆ ---         ┆ ---                 ┆ ---           │
+│ i32  ┆ str               ┆ i64              ┆ u32         ┆ f64                 ┆ f64           │
+╞══════╪═══════════════════╪══════════════════╪═════════════╪═════════════════════╪═══════════════╡
+│ 2018 ┆ annuity           ┆ 75               ┆ 293         ┆ 0                   ┆ 7623995420    │
+│ 2018 ┆ auto              ┆ 2648             ┆ 244         ┆ 0.35                ┆ 7650582008    │
+│ 2018 ┆ group_health      ┆ 756              ┆ 301         ┆ 0                   ┆ 17503978318   │
+│ 2018 ┆ hmo               ┆ 313              ┆ 62          ┆ 0                   ┆ 17410590493   │
+│ 2018 ┆ homeowners        ┆ 822              ┆ 212         ┆ 0.42                ┆ 3719716728    │
+│ 2018 ┆ individual_health ┆ 561              ┆ 355         ┆ 0                   ┆ 6857683940    │
+│ 2018 ┆ life              ┆ 556              ┆ 444         ┆ 0                   ┆ 5649158588    │
+│ 2019 ┆ auto              ┆ 4694             ┆ 59          ┆ 0.4417              ┆ 13322480912   │
+│ 2019 ┆ homeowners        ┆ 1640             ┆ 34          ┆ 0.34245000000000003 ┆ 6320540516    │
+│ 2020 ┆ auto              ┆ 1549             ┆ 42          ┆ 0.27155             ┆ 5862304459    │
+│ 2020 ┆ homeowners        ┆ 1732             ┆ 31          ┆ 0.3157              ┆ 6569190966    │
+│ 2023 ┆ auto              ┆ 3187             ┆ 70          ┆ 0.3935              ┆ 9309670120    │
+│ 2023 ┆ homeowners        ┆ 2050             ┆ 53          ┆ 0.4408              ┆ 4753259788    │
+│ 2024 ┆ auto              ┆ 3323             ┆ 75          ┆ 0.3134              ┆ 10908989842   │
+│ 2024 ┆ homeowners        ┆ 1249             ┆ 57          ┆ 0.4224              ┆ 3640201754    │
+└──────┴───────────────────┴──────────────────┴─────────────┴─────────────────────┴───────────────┘
+=== run completed 2026-05-05T03:03:00+00:00 ===
+
+=== run started 2026-05-05T03:03:46+00:00 ===
+  2018.pdf (old layout): 1911 rows, 361 non-row lines skipped
+  2019.pdf (new layout): 164 rows, 193 non-row lines skipped
+  2020.pdf (new layout): 167 rows, 141 non-row lines skipped
+  2023.pdf (new layout): 209 rows, 51 non-row lines skipped
+  2024.pdf (new layout): 220 rows, 57 non-row lines skipped
+Wrote il_complaints_company_yearly.parquet (2,671 rows)
+Wrote il_complaints_yearly.parquet (29 rows)
+
+Years: [2018, 2019, 2020, 2023, 2024]
+Lines: ['annuity', 'auto', 'group_health', 'health', 'hmo', 'homeowners', 'individual_health', 'life']
+Ratio types: ['share_of_share', 'per_million_ep']
+
+Yearly aggregate:
+shape: (29, 6)
+┌──────┬───────────────────┬──────────────────┬─────────────┬─────────────────────┬───────────────┐
+│ year ┆ line              ┆ total_complaints ┆ n_companies ┆ median_ratio        ┆ total_premium │
+│ ---  ┆ ---               ┆ ---              ┆ ---         ┆ ---                 ┆ ---           │
+│ i32  ┆ str               ┆ i64              ┆ u32         ┆ f64                 ┆ f64           │
+╞══════╪═══════════════════╪══════════════════╪═════════════╪═════════════════════╪═══════════════╡
+│ 2018 ┆ annuity           ┆ 75               ┆ 293         ┆ 0                   ┆ 7623995420    │
+│ 2018 ┆ auto              ┆ 2648             ┆ 244         ┆ 0.35                ┆ 7650582008    │
+│ 2018 ┆ group_health      ┆ 756              ┆ 301         ┆ 0                   ┆ 17503978318   │
+│ 2018 ┆ hmo               ┆ 313              ┆ 62          ┆ 0                   ┆ 17410590493   │
+│ 2018 ┆ homeowners        ┆ 822              ┆ 212         ┆ 0.42                ┆ 3719716728    │
+│ 2018 ┆ individual_health ┆ 561              ┆ 355         ┆ 0                   ┆ 6857683940    │
+│ 2018 ┆ life              ┆ 556              ┆ 444         ┆ 0                   ┆ 5649158588    │
+│ 2019 ┆ annuity           ┆ 26               ┆ 3           ┆ 0.2996              ┆ 3548410       │
+│ 2019 ┆ auto              ┆ 4694             ┆ 59          ┆ 0.4417              ┆ 13322480912   │
+│ 2019 ┆ group_health      ┆ 1461             ┆ 32          ┆ 2.07435             ┆ 92837842      │
+│ 2019 ┆ homeowners        ┆ 1640             ┆ 34          ┆ 0.34245000000000003 ┆ 6320540516    │
+│ 2019 ┆ individual_health ┆ 166              ┆ 6           ┆ 0.12434999999999999 ┆ 26058190      │
+│ 2019 ┆ life              ┆ 968              ┆ 30          ┆ 2.05525             ┆ 7304440       │
+│ 2020 ┆ annuity           ┆ 96               ┆ 33          ┆ 0.0235              ┆ 53001536      │
+│ 2020 ┆ auto              ┆ 1712             ┆ 43          ┆ 0.2979              ┆ 5862304471    │
+│ 2020 ┆ group_health      ┆ 988              ┆ 28          ┆ 3.2396              ┆ 76045628      │
+│ 2020 ┆ homeowners        ┆ 1732             ┆ 31          ┆ 0.3157              ┆ 6569190966    │
+│ 2020 ┆ individual_health ┆ 270              ┆ 7           ┆ 0.1009              ┆ 26551454      │
+│ 2020 ┆ life              ┆ 610              ┆ 25          ┆ 1.48145             ┆ 5729174       │
+│ 2023 ┆ annuity           ┆ 175              ┆ 7           ┆ 0.0724              ┆ 63779877      │
+│ 2023 ┆ auto              ┆ 3472             ┆ 71          ┆ 0.3981              ┆ 9309672733    │
+│ 2023 ┆ health            ┆ 1306             ┆ 37          ┆ 3.4017              ┆ 10998948      │
+│ 2023 ┆ homeowners        ┆ 2210             ┆ 54          ┆ 0.447               ┆ 4753261531    │
+│ 2023 ┆ life              ┆ 1773             ┆ 40          ┆ 2.1431500000000003  ┆ 14557801      │
+│ 2024 ┆ annuity           ┆ 146              ┆ 5           ┆ 0.9182              ┆ 2131523       │
+│ 2024 ┆ auto              ┆ 3541             ┆ 76          ┆ 0.3147              ┆ 10908992633   │
+│ 2024 ┆ health            ┆ 1658             ┆ 37          ┆ 3.0729              ┆ 11034960      │
+│ 2024 ┆ homeowners        ┆ 1350             ┆ 59          ┆ 0.429               ┆ 3640205004    │
+│ 2024 ┆ life              ┆ 1859             ┆ 43          ┆ 1.9267              ┆ 16391976      │
+└──────┴───────────────────┴──────────────────┴─────────────┴─────────────────────┴───────────────┘
+=== run completed 2026-05-05T03:03:56+00:00 ===

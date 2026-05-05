@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "mo_dci",
+      "name": "MO DCI — complaints by line, with consumer-relief outcome rate",
+      "short_name": "MO DCI",
+      "category": "regulator_finding",
+      "jurisdiction": ["MO"],
+      "year_field_label": "Calendar year",
+      "y_axis_label": "Complaints (MO DCI)",
+      "caveat_short": "MO DCI per-line per-year complaint counts plus the published 'percent of complaints resolved with consumer relief' rate. The 'against_insurer' bucket is DERIVED (count = round(total × pct_relief)) — a SOFT proxy for the canonical regulator-finding-against-insurer bucket. DCI's 'consumer relief' is broader than TX's 'Confirmed' and includes voluntary remedies — see METHODOLOGY.md for cross-state comparison.",
+      "provenance_url": "mo_dci/PROVENANCE.md",
+      "parquet": "mo_dci/output/mo_complaints_yearly_wide.parquet",
+      "x_field": "year",
+      "group_field": "line",
+      "group_field_label": "Line",
+      "metrics": [
+        {"id": "complaints_total", "label": "Complaints filed", "column": "complaints_total"},
+        {"id": "pct_resolved_consumer_relief", "label": "% resolved with consumer relief", "column": "pct_resolved_consumer_relief", "unit": "share"},
+        {"id": "against_insurer", "label": "Against insurer (derived)", "column": "against_insurer"},
+        {"id": "for_insurer",     "label": "For insurer (derived)", "column": "for_insurer"}
+      ],
+      "default_metric": "complaints_total",
+      "default_groups": ["total"],
+      "group_presets": [
+        {"label": "Headline (total)", "groups": ["total"]},
+        {"label": "P&C lines", "groups": ["private_passenger_auto", "homeowners", "other_pc"]},
+        {"label": "A&H lines", "groups": ["long_term_care", "medicare_supplement", "hmo", "all_other_ah"]},
+        {"label": "Section totals", "groups": ["total_pc", "total_ah", "life_annuities"]},
+        {"label": "All", "all": true}
+      ],
+      "outcome_buckets": {
+        "aggregation": {"filter_to_group": "total"},
+        "buckets": {
+          "against_insurer": {"column": "against_insurer", "label": "Resolved with consumer relief (derived from pct)"},
+          "mixed":           null,
+          "for_insurer":     {"column": "for_insurer",     "label": "Resolved without consumer relief (derived)"},
+          "no_decision":     null
+        }
+      },
+      "default_chart_mode": "two_panel"
+    }
+  ]
+}

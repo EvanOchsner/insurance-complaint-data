@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.S. Insurance Complaint Data</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f8f8f6;
+      --surface:  #ffffff;
+      --border:   #e2e2dc;
+      --text:     #1a1a18;
+      --muted:    #5c5c56;
+      --accent:   #1a5fa8;
+      --accent-h: #0f3f72;
+      font-size: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #161614;
+        --surface: #1f1f1d;
+        --border:  #303030;
+        --text:    #e8e8e4;
+        --muted:   #888880;
+        --accent:  #5b9fdb;
+        --accent-h:#7fb8ef;
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .wrap { max-width: 860px; margin: 0 auto; }
+
+    /* ── header ── */
+    header { margin-bottom: 3rem; }
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 1.05rem;
+    }
+
+    /* ── section headings ── */
+    section { margin-bottom: 3rem; }
+    section h2 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── viewer cards ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .card:hover h3 { color: var(--accent-h); }
+    .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── about prose ── */
+    .prose { font-size: 0.95rem; color: var(--muted); max-width: 72ch; }
+    .prose + .prose { margin-top: 0.7rem; }
+    .prose a { color: var(--accent); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+
+    /* ── footer ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>U.S. Insurance Complaint Data</h1>
+    <p>Normalized complaint, lawsuit, and regulatory-finding data from 20+ state insurance regulators — with interactive viewers, reproducible scripts, and open data.</p>
+  </header>
+
+  <section>
+    <h2>Interactive Viewers</h2>
+    <div class="card-grid">
+      <a href="viz/" class="card">
+        <h3>Unified Data Viewer →</h3>
+        <p>All datasets in a single interface — complaint counts, confirmed findings, litigation rates, and regulatory workload across states and years.</p>
+      </a>
+      <a href="fjc_idb/viz/" class="card">
+        <h3>Federal Insurance Lawsuits →</h3>
+        <p>Federal civil filings coded "Insurance" (NOS 110) by state and year, 1988–present. The only nationwide longitudinal litigation lens in the dataset.</p>
+      </a>
+      <a href="bad_faith_rank/" class="card">
+        <h3>State Bad-Faith Rankings →</h3>
+        <p>Composite ranking of all 51 jurisdictions on 11 weighted factors — live sliders, per-state breakdowns with citations, and structural clusters.</p>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>About This Dataset</h2>
+    <p class="prose">
+      Each source lives in its own subfolder with the collection scripts, a SHA-256 manifest of downloaded files, a methodology note, and a provenance document recording exactly where the data came from and how it was transformed.
+      The outputs are plain CSV and Parquet — no proprietary formats, no accounts required.
+    </p>
+    <p class="prose">
+      Coverage spans 20+ states, the NAIC national dataset (1998–2022), and federal court filings (1988–present).
+      See the <a href="https://github.com/EvanOchsner/insurance-complaint-data">GitHub repository</a> for full dataset documentation.
+    </p>
+  </section>
+
+  <footer>
+    <a href="https://github.com/EvanOchsner/insurance-complaint-data">GitHub</a>
+    <a href="https://ochsner.dev">ochsner.dev</a>
+  </footer>
+
+</div>
+</body>
+</html>

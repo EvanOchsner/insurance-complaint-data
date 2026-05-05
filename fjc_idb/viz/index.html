@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Federal civil insurance filings (NoS=110) by state and year</title>
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js" charset="utf-8"></script>
+<style>
+  :root {
+    --fg: #222;
+    --muted: #666;
+    --border: #ddd;
+    --bg: #fafafa;
+    --accent: #1f4e79;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--fg);
+    background: #fff;
+    font-size: 14px;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 16px 20px 40px; }
+  header h1 { font-size: 18px; margin: 0 0 4px; }
+  header .sub { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .controls {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .row > label { display: inline-flex; align-items: center; gap: 4px; }
+  .row .group-label { color: var(--muted); font-weight: 600; min-width: 90px; }
+  .quick-presets button {
+    margin-right: 6px; padding: 3px 8px;
+    background: #fff; border: 1px solid var(--border); border-radius: 4px; cursor: pointer;
+    font-size: 12px;
+  }
+  .quick-presets button:hover { background: #eef; }
+  select[multiple] {
+    width: 100%; min-height: 80px; max-height: 140px;
+    padding: 4px;
+    border: 1px solid var(--border); border-radius: 4px;
+    font-size: 12px;
+  }
+  #plot { width: 100%; height: 620px; }
+  footer {
+    margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+  }
+  footer code { font-size: 11px; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Federal civil insurance filings (Nature of Suit = 110), by state and year</h1>
+    <div class="sub">
+      Source: FJC Integrated Database, civil cases since 1988.
+      Data through <span id="hdr-max-filedate"></span>.
+      <span id="hdr-partial-warning"></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="row">
+      <span class="group-label">States</span>
+      <div class="quick-presets">
+        <button data-preset="top10">Top 10</button>
+        <button data-preset="all50">All 50 + DC</button>
+        <button data-preset="allplus">All + territories</button>
+        <button data-preset="none">None</button>
+      </div>
+    </div>
+    <div class="row">
+      <select id="state-select" multiple></select>
+    </div>
+    <div class="row">
+      <label><input type="checkbox" id="opt-nationwide" checked> Nationwide total</label>
+      <label><input type="checkbox" id="opt-exclude-partial" checked> Exclude partial year (<span id="hdr-partial-year"></span>)</label>
+      <span class="group-label" style="min-width: 60px;">Y-axis</span>
+      <label><input type="radio" name="yaxis" value="linear" checked> Linear</label>
+      <label><input type="radio" name="yaxis" value="log"> Log</label>
+    </div>
+    <div class="row">
+      <span class="group-label">Per-series</span>
+      <label><input type="checkbox" id="ovl-avg" checked> Average</label>
+      <label><input type="checkbox" id="ovl-ma3"> 3-yr MA</label>
+      <label><input type="checkbox" id="ovl-ma5"> 5-yr MA</label>
+    </div>
+    <div class="row">
+      <span class="group-label">Cross-state</span>
+      <label><input type="checkbox" id="ovl-mean"> Mean of selected</label>
+      <label><input type="checkbox" id="ovl-sum"> Sum of selected</label>
+      <label><input type="checkbox" id="ovl-median"> Median of selected</label>
+    </div>
+  </div>
+
+  <div id="plot"></div>
+
+  <footer>
+    Built from <code>fjc_idb/output/insurance_filings_by_state_year.parquet</code>.
+    Source: <a id="footer-src" href="">FJC IDB cv88on.zip</a>,
+    SHA-256 <code id="footer-sha"></code>,
+    fetched <span id="footer-fetched"></span>.
+    See <code>fjc_idb/METHODOLOGY.md</code> for what NoS=110 covers and what's not in this data.
+    NoS=110 ≠ "bad faith"; federal court only; the trailing year is partial.
+  </footer>
+</div>
+
+<script>
+const PAYLOAD = {"years":[1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"year_min":1988,"year_max":2025,"partial_year":2025,"states":["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MP","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"],"state_meta":{"AK":{"label":"Alaska","is_territory":false},"AL":{"label":"Alabama","is_territory":false},"AR":{"label":"Arkansas","is_territory":false},"AZ":{"label":"Arizona","is_territory":false},"CA":{"label":"California","is_territory":false},"CO":{"label":"Colorado","is_territory":false},"CT":{"label":"Connecticut","is_territory":false},"DC":{"label":"District of Columbia","is_territory":false},"DE":{"label":"Delaware","is_territory":false},"FL":{"label":"Florida","is_territory":false},"GA":{"label":"Georgia","is_territory":false},"GU":{"label":"Guam","is_territory":true},"HI":{"label":"Hawaii","is_territory":false},"IA":{"label":"Iowa","is_territory":false},"ID":{"label":"Idaho","is_territory":false},"IL":{"label":"Illinois","is_territory":false},"IN":{"label":"Indiana","is_territory":false},"KS":{"label":"Kansas","is_territory":false},"KY":{"label":"Kentucky","is_territory":false},"LA":{"label":"Louisiana","is_territory":false},"MA":{"label":"Massachusetts","is_territory":false},"MD":{"label":"Maryland","is_territory":false},"ME":{"label":"Maine","is_territory":false},"MI":{"label":"Michigan","is_territory":false},"MN":{"label":"Minnesota","is_territory":false},"MO":{"label":"Missouri","is_territory":false},"MP":{"label":"Northern Mariana Islands","is_territory":true},"MS":{"label":"Mississippi","is_territory":false},"MT":{"label":"Montana","is_territory":false},"NC":{"label":"North Carolina","is_territory":false},"ND":{"label":"North Dakota","is_territory":false},"NE":{"label":"Nebraska","is_territory":false},"NH":{"label":"New Hampshire","is_territory":false},"NJ":{"label":"New Jersey","is_territory":false},"NM":{"label":"New Mexico","is_territory":false},"NV":{"label":"Nevada","is_territory":false},"NY":{"label":"New York","is_territory":false},"OH":{"label":"Ohio","is_territory":false},"OK":{"label":"Oklahoma","is_territory":false},"OR":{"label":"Oregon","is_territory":false},"PA":{"label":"Pennsylvania","is_territory":false},"PR":{"label":"Puerto Rico","is_territory":true},"RI":{"label":"Rhode Island","is_territory":false},"SC":{"label":"South Carolina","is_territory":false},"SD":{"label":"South Dakota","is_territory":false},"TN":{"label":"Tennessee","is_territory":false},"TX":{"label":"Texas","is_territory":false},"UT":{"label":"Utah","is_territory":false},"VA":{"label":"Virginia","is_territory":false},"VI":{"label":"U.S. Virgin Islands","is_territory":true},"VT":{"label":"Vermont","is_territory":false},"WA":{"label":"Washington","is_territory":false},"WI":{"label":"Wisconsin","is_territory":false},"WV":{"label":"West Virginia","is_territory":false},"WY":{"label":"Wyoming","is_territory":false}},"counts":{"AK":[63,33,50,34,25,41,40,30,25,21,21,19,25,35,26,37,33,32,26,16,29,16,15,23,18,12,26,25,13,22,18,16,31,19,24,17,20,21],"AL":[309,242,302,367,307,272,341,441,499,569,413,444,404,339,351,322,286,283,323,251,240,199,197,213,292,182,187,146,155,162,147,148,166,184,196,154,174,213],"AR":[148,133,117,109,105,89,119,103,109,82,74,78,88,83,102,76,85,71,73,85,82,82,74,96,100,100,114,89,89,64,86,101,86,95,71,111,93,134],"AZ":[69,84,89,88,75,100,83,74,105,101,84,108,110,121,134,135,135,129,131,133,114,165,137,165,178,165,165,122,135,127,141,134,150,155,169,154,179,235],"CA":[1000,871,905,965,999,1028,1140,1138,1071,1049,927,898,815,887,1190,1028,901,811,655,602,695,732,758,729,774,738,803,860,749,710,733,815,978,824,725,777,760,944],"CO":[62,70,49,47,71,73,67,58,66,82,97,77,81,101,103,111,143,143,159,148,171,122,149,178,167,201,275,260,315,361,405,603,611,566,500,474,575,710],"CT":[69,68,77,68,59,94,90,109,121,106,85,98,75,70,75,75,59,58,78,68,80,71,73,72,77,79,74,63,101,121,101,75,87,88,84,51,81,77],"DC":[65,47,39,34,35,32,33,28,31,13,28,15,28,25,21,18,31,15,15,21,15,24,21,12,14,20,24,11,19,16,17,19,18,13,11,12,24,13],"DE":[23,19,13,13,21,15,10,17,9,15,11,10,16,11,14,15,12,13,12,17,19,28,19,13,26,16,4,6,12,13,18,12,31,19,27,18,14,19],"FL":[470,364,329,331,355,441,405,418,540,516,458,403,467,522,524,435,488,650,661,638,644,790,987,841,888,866,798,748,731,749,1653,1707,1890,1790,1417,1622,1337,1178],"GA":[338,334,238,269,275,191,188,188,197,182,174,158,168,196,215,235,240,225,224,221,215,242,239,248,228,232,242,248,233,236,267,286,319,332,256,306,383,616],"GU":[null,1,1,1,3,1,1,null,null,null,1,null,null,1,1,2,1,null,null,null,null,1,1,2,null,1,1,1,null,1,null,1,2,null,1,null,1,3],"HI":[63,82,53,61,64,68,78,87,72,52,51,54,16,39,31,35,32,61,48,40,42,42,54,58,42,30,41,33,46,24,24,20,35,21,17,18,23,44],"IA":[47,43,43,40,45,25,34,31,34,24,39,28,27,42,45,37,30,26,15,13,27,29,37,29,32,27,22,23,26,25,25,32,43,113,78,50,67,58],"ID":[46,32,17,14,18,9,14,16,15,23,17,24,31,21,16,18,17,21,11,16,24,24,29,25,28,18,27,17,19,21,24,16,20,17,22,21,20,28],"IL":[247,189,221,204,217,218,191,206,199,215,182,203,197,214,211,265,248,361,296,289,289,304,286,330,468,349,347,409,355,355,333,356,544,471,417,472,480,454],"IN":[147,115,116,109,135,112,112,137,141,136,152,148,128,122,127,143,160,136,156,140,130,153,180,150,157,154,138,155,118,144,139,110,125,123,125,110,128,129],"KS":[73,63,57,79,61,49,56,38,41,50,37,35,37,44,54,41,48,54,43,48,51,40,41,52,51,30,50,53,37,52,53,65,56,64,60,60,54,71],"KY":[164,117,134,98,106,114,126,141,159,160,133,131,143,151,178,164,156,158,136,133,139,160,177,136,144,127,118,110,104,113,116,121,125,124,85,107,120,152],"LA":[391,279,281,268,243,231,209,259,247,224,261,240,417,257,351,265,229,202,4650,6024,2287,3156,579,341,256,2143,409,197,176,1158,502,202,317,3142,8052,6073,912,652],"MA":[86,70,97,127,110,117,92,95,103,99,95,65,60,80,74,91,133,86,82,78,62,85,76,82,83,89,83,76,79,79,95,81,121,106,88,89,96,98],"MD":[69,72,65,78,90,78,78,99,109,84,80,114,82,119,118,101,117,106,97,94,83,111,96,83,103,120,95,106,83,112,101,93,81,95,105,99,110,90],"ME":[15,15,14,18,21,22,18,31,41,17,26,25,17,23,24,17,19,12,21,22,14,17,13,11,10,11,9,18,20,12,11,11,18,9,8,8,8,15],"MI":[304,197,183,168,177,143,162,152,153,166,147,157,155,146,158,160,148,154,194,184,170,224,232,294,260,239,228,221,208,201,176,168,182,188,206,132,161,161],"MN":[68,43,51,53,61,53,59,71,88,74,64,57,62,75,80,79,73,74,76,56,57,70,97,84,96,92,83,85,57,92,81,97,99,82,84,83,103,99],"MO":[220,160,137,144,152,121,132,103,137,122,126,131,116,157,132,150,176,177,171,176,210,186,246,228,254,257,206,259,253,222,220,235,256,252,204,229,223,274],"MP":[null,1,null,null,1,null,1,null,null,null,1,1,null,2,1,3,1,null,2,null,1,null,null,1,1,1,null,null,null,null,1,null,null,null,null,null,null,null],"MS":[363,296,309,260,288,263,229,211,254,254,236,261,306,440,473,495,274,301,927,899,895,385,214,212,219,186,187,181,177,189,196,197,188,177,182,200,194,189],"MT":[71,68,49,56,47,51,53,38,45,49,40,44,56,66,64,82,67,63,52,53,54,62,54,55,73,61,64,71,54,76,52,86,104,71,71,67,82,100],"NC":[57,60,47,57,70,65,61,61,73,83,68,94,102,106,88,102,117,76,90,92,96,121,99,104,126,106,103,82,101,127,93,137,178,151,112,120,116,164],"ND":[5,9,13,11,13,18,10,25,16,24,33,18,14,17,15,10,15,8,12,9,7,8,8,9,18,8,16,16,18,22,15,14,11,13,9,11,6,6],"NE":[24,25,23,10,19,19,18,16,23,18,23,30,23,22,21,32,21,23,22,21,17,17,22,25,16,15,26,26,22,17,17,25,30,35,46,41,36,34],"NH":[23,20,32,17,31,33,30,21,25,24,20,17,13,10,18,23,20,18,23,14,7,20,17,16,21,7,9,19,6,12,11,12,11,12,13,10,9,21],"NJ":[121,143,113,135,146,171,175,166,171,198,176,168,171,168,202,175,138,125,180,183,185,194,204,192,193,584,1282,523,236,264,234,236,299,234,277,289,276,253],"NM":[80,54,61,52,64,64,58,64,59,62,47,70,52,47,42,67,65,54,54,72,61,53,66,70,79,93,82,77,78,93,101,102,135,76,114,96,135,143],"NV":[71,78,82,96,85,88,87,96,84,94,86,84,103,109,97,138,114,130,122,158,182,169,201,185,180,215,204,158,161,159,183,187,230,235,182,185,174,207],"NY":[259,209,210,327,316,344,386,289,336,325,336,364,349,337,383,441,328,282,301,301,363,374,360,324,365,870,1282,500,411,342,347,399,509,497,556,529,553,507],"OH":[127,143,105,152,159,144,170,132,149,158,109,152,236,303,336,252,268,171,134,132,151,165,135,158,142,139,128,109,118,120,126,140,194,122,100,143,145,125],"OK":[275,260,220,206,211,202,168,184,176,184,191,160,193,288,208,211,186,166,162,132,146,194,216,267,201,196,280,203,203,252,205,209,247,251,221,257,352,506],"OR":[53,60,48,42,47,44,45,47,46,44,46,33,40,59,61,81,54,60,57,78,76,73,103,90,96,86,84,95,98,74,85,83,95,126,118,135,185,213],"PA":[602,547,537,569,475,469,489,500,509,606,579,589,669,588,577,574,526,570,523,490,500,461,568,573,617,579,567,608,555,588,588,605,781,669,636,752,721,677],"PR":[16,20,16,21,19,16,13,14,27,14,10,14,14,22,12,7,17,17,9,9,9,4,8,7,5,11,8,9,9,8,20,16,9,4,5,6,2,4],"RI":[32,29,21,22,31,29,32,26,25,26,21,20,19,24,26,13,23,22,17,25,30,31,27,35,31,27,33,23,27,25,26,18,26,27,16,18,28,29],"SC":[207,149,203,203,190,157,129,142,159,153,132,146,181,192,171,187,209,180,200,180,192,218,176,217,204,181,201,187,202,212,210,240,203,194,204,188,217,294],"SD":[25,18,30,23,26,19,22,17,30,14,16,16,15,22,30,69,29,31,26,11,20,23,25,35,29,13,20,23,32,28,25,31,38,17,31,53,39,44],"TN":[197,165,141,167,154,116,137,112,122,108,118,107,142,147,155,209,158,128,109,102,114,165,120,126,110,144,132,109,110,119,118,147,154,133,155,134,144,179],"TX":[499,572,678,711,748,769,782,841,866,758,680,690,666,639,1019,958,940,708,819,774,607,958,2031,834,877,1008,1439,1341,1412,1442,1762,1596,1372,1633,1772,2015,2094,2586],"UT":[35,35,28,26,33,28,37,42,31,33,25,24,43,30,35,33,34,28,21,48,47,48,49,34,53,51,66,55,63,73,72,57,77,95,68,80,118,126],"VA":[125,132,79,109,111,104,93,95,97,94,84,97,85,98,105,104,99,95,105,79,95,92,106,84,96,113,95,87,96,99,95,102,93,87,71,77,80,85],"VI":[17,8,74,38,8,4,6,10,45,14,14,14,12,10,6,8,null,10,4,8,12,9,9,6,4,11,6,7,7,2,39,29,16,2,8,3,4,4],"VT":[19,14,18,20,24,26,17,20,27,25,33,20,18,15,8,20,13,9,15,13,14,12,13,10,7,13,8,14,9,2,11,7,7,10,5,7,8,11],"WA":[76,63,59,63,74,88,70,95,89,87,101,88,94,87,87,143,95,127,133,126,157,182,214,217,254,221,274,269,254,263,255,258,349,316,286,355,394,496],"WI":[33,36,44,40,32,46,36,38,27,38,46,43,44,53,58,49,50,43,44,47,28,38,42,53,49,53,25,28,28,22,35,44,54,38,47,57,58,56],"WV":[124,116,134,87,116,102,74,92,124,120,121,98,126,114,130,149,147,209,107,101,101,71,77,76,87,96,90,103,99,76,159,67,122,64,53,60,59,74],"WY":[21,20,23,22,20,27,18,25,17,19,22,22,13,19,25,18,16,16,20,14,15,19,15,20,21,17,9,18,22,8,20,6,10,20,16,18,10,13]},"default_selection":["LA","TX","CA","FL","PA","NY","MS","IL","AL","GA"],"source":{"url":"https://www.fjc.gov/sites/default/files/idb/textfiles/cv88on.zip","fetched_at":"2026-05-04T16:47:26+00:00","sha256":"e13c3f473a5da6ed0a18ed4e0626447a29e6efb947cf5af66093e6a014951b56","last_modified":"Thu, 19 Feb 2026 23:47:55 GMT"}};
+
+// ----------------------- color cycle -----------------------
+// Distinct, light-theme-friendly palette. Plotly's default works but cycling
+// 55 series quickly collides; we expand the palette with a deterministic
+// hash-based fallback so each state has a stable color across reloads.
+const PALETTE = [
+  "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
+  "#393b79", "#637939", "#8c6d31", "#843c39", "#7b4173",
+  "#5254a3", "#8ca252", "#bd9e39", "#ad494a", "#a55194",
+  "#6b6ecf", "#b5cf6b", "#e7ba52", "#d6616b", "#ce6dbd",
+  "#9c9ede", "#cedb9c", "#e7cb94", "#e7969c", "#de9ed6",
+];
+const stateColor = {};
+function colorFor(state) {
+  if (state in stateColor) return stateColor[state];
+  // Deterministic assignment by sort order of all states, then palette wrap.
+  const idx = PAYLOAD.states.indexOf(state);
+  const c = PALETTE[idx % PALETTE.length];
+  stateColor[state] = c;
+  return c;
+}
+
+// ----------------------- math helpers -----------------------
+function trailingMA(values, window) {
+  const out = new Array(values.length).fill(null);
+  for (let i = window - 1; i < values.length; i++) {
+    let sum = 0, n = 0, ok = true;
+    for (let k = 0; k < window; k++) {
+      const v = values[i - k];
+      if (v === null || v === undefined) { ok = false; break; }
+      sum += v; n++;
+    }
+    if (ok && n === window) out[i] = sum / n;
+  }
+  return out;
+}
+
+function seriesMean(values) {
+  let sum = 0, n = 0;
+  for (const v of values) {
+    if (v !== null && v !== undefined) { sum += v; n++; }
+  }
+  return n > 0 ? sum / n : null;
+}
+
+function median(arr) {
+  const s = arr.filter(v => v !== null && v !== undefined).slice().sort((a, b) => a - b);
+  if (!s.length) return null;
+  const mid = Math.floor(s.length / 2);
+  return s.length % 2 ? s[mid] : 0.5 * (s[mid - 1] + s[mid]);
+}
+
+// Apply "exclude partial year" by truncating arrays to drop the trailing year.
+function maybeExcludePartial(years, ...arrays) {
+  const exclude = document.getElementById("opt-exclude-partial").checked;
+  if (!exclude) return [years, ...arrays];
+  const lastIdx = years.indexOf(PAYLOAD.partial_year);
+  if (lastIdx === -1) return [years, ...arrays];
+  return [years.slice(0, lastIdx), ...arrays.map(a => a.slice(0, lastIdx))];
+}
+
+// ----------------------- selection state -----------------------
+function getSelected() {
+  const sel = document.getElementById("state-select");
+  return Array.from(sel.selectedOptions).map(o => o.value);
+}
+
+function setSelected(states) {
+  const sel = document.getElementById("state-select");
+  for (const opt of sel.options) opt.selected = states.includes(opt.value);
+}
+
+function applyPreset(name) {
+  if (name === "top10") setSelected(PAYLOAD.default_selection);
+  else if (name === "none") setSelected([]);
+  else if (name === "all50") {
+    setSelected(PAYLOAD.states.filter(s => !PAYLOAD.state_meta[s].is_territory));
+  } else if (name === "allplus") {
+    setSelected(PAYLOAD.states.slice());
+  }
+  recompute();
+}
+
+// ----------------------- plot construction -----------------------
+function buildTraces() {
+  const selected = getSelected();
+  const years = PAYLOAD.years;
+
+  const showAvg = document.getElementById("ovl-avg").checked;
+  const showMA3 = document.getElementById("ovl-ma3").checked;
+  const showMA5 = document.getElementById("ovl-ma5").checked;
+  const showNat = document.getElementById("opt-nationwide").checked;
+  const showMean = document.getElementById("ovl-mean").checked;
+  const showSum = document.getElementById("ovl-sum").checked;
+  const showMedian = document.getElementById("ovl-median").checked;
+
+  const traces = [];
+
+  // Per-state traces (raw + per-series overlays).
+  for (const state of selected) {
+    const color = colorFor(state);
+    const counts = PAYLOAD.counts[state];
+    const [yrs, vals] = maybeExcludePartial(years, counts);
+    const label = `${state} — ${PAYLOAD.state_meta[state].label}`;
+
+    traces.push({
+      x: yrs, y: vals,
+      type: "scatter", mode: "lines",
+      name: label,
+      legendgroup: state,
+      line: { color: color, width: 2 },
+      hovertemplate: `<b>${state}</b> %{x}<br>Filings: %{y:,}<extra></extra>`,
+    });
+
+    if (showAvg) {
+      const m = seriesMean(vals);
+      if (m !== null) {
+        traces.push({
+          x: [yrs[0], yrs[yrs.length - 1]],
+          y: [m, m],
+          type: "scatter", mode: "lines",
+          legendgroup: state,
+          showlegend: false,
+          line: { color: color, width: 1, dash: "dash" },
+          opacity: 0.35,
+          hoverinfo: "skip",
+        });
+      }
+    }
+    if (showMA3) {
+      const ma = trailingMA(vals, 3);
+      traces.push({
+        x: yrs, y: ma,
+        type: "scatter", mode: "lines",
+        legendgroup: state,
+        showlegend: false,
+        line: { color: color, width: 1.5, dash: "dot" },
+        opacity: 0.6,
+        hovertemplate: `<b>${state} 3yr MA</b> %{x}<br>%{y:,.0f}<extra></extra>`,
+      });
+    }
+    if (showMA5) {
+      const ma = trailingMA(vals, 5);
+      traces.push({
+        x: yrs, y: ma,
+        type: "scatter", mode: "lines",
+        legendgroup: state,
+        showlegend: false,
+        line: { color: color, width: 1.5, dash: "dashdot" },
+        opacity: 0.6,
+        hovertemplate: `<b>${state} 5yr MA</b> %{x}<br>%{y:,.0f}<extra></extra>`,
+      });
+    }
+  }
+
+  // Cross-state aggregates over the SELECTED set.
+  if (selected.length > 0 && (showMean || showSum || showMedian)) {
+    // Build a year-by-state matrix, then collapse year-by-year.
+    const fullArrays = selected.map(s => PAYLOAD.counts[s]);
+    const [yrs, ...arrays] = maybeExcludePartial(years, ...fullArrays);
+
+    const meanVals = [], sumVals = [], medVals = [];
+    for (let i = 0; i < yrs.length; i++) {
+      const col = arrays.map(a => a[i]).filter(v => v !== null && v !== undefined);
+      if (col.length === 0) {
+        meanVals.push(null); sumVals.push(null); medVals.push(null);
+      } else {
+        const s = col.reduce((a, b) => a + b, 0);
+        sumVals.push(s);
+        meanVals.push(s / col.length);
+        medVals.push(median(col));
+      }
+    }
+    if (showMean) {
+      traces.push({
+        x: yrs, y: meanVals,
+        type: "scatter", mode: "lines",
+        name: `Mean of selected (n=${selected.length})`,
+        line: { color: "#444", width: 2.5, dash: "dash" },
+        hovertemplate: `<b>Mean of selected</b> %{x}<br>%{y:,.1f}<extra></extra>`,
+      });
+    }
+    if (showSum) {
+      traces.push({
+        x: yrs, y: sumVals,
+        type: "scatter", mode: "lines",
+        name: `Sum of selected (n=${selected.length})`,
+        line: { color: "#444", width: 2.5, dash: "dot" },
+        hovertemplate: `<b>Sum of selected</b> %{x}<br>%{y:,}<extra></extra>`,
+      });
+    }
+    if (showMedian) {
+      traces.push({
+        x: yrs, y: medVals,
+        type: "scatter", mode: "lines",
+        name: `Median of selected (n=${selected.length})`,
+        line: { color: "#444", width: 2.5, dash: "dashdot" },
+        hovertemplate: `<b>Median of selected</b> %{x}<br>%{y:,.1f}<extra></extra>`,
+      });
+    }
+  }
+
+  // Nationwide total — sum across ALL states, independent of selection.
+  if (showNat) {
+    const allArrays = PAYLOAD.states.map(s => PAYLOAD.counts[s]);
+    const [yrs, ...arrays] = maybeExcludePartial(years, ...allArrays);
+    const tot = [];
+    for (let i = 0; i < yrs.length; i++) {
+      const col = arrays.map(a => a[i]).filter(v => v !== null && v !== undefined);
+      tot.push(col.length ? col.reduce((a, b) => a + b, 0) : null);
+    }
+    traces.push({
+      x: yrs, y: tot,
+      type: "scatter", mode: "lines",
+      name: "Nationwide total (all 55 jurisdictions)",
+      line: { color: "#000", width: 3 },
+      hovertemplate: `<b>Nationwide</b> %{x}<br>%{y:,}<extra></extra>`,
+    });
+  }
+
+  return traces;
+}
+
+function buildLayout() {
+  const yScale = document.querySelector("input[name='yaxis']:checked").value;
+  return {
+    margin: { l: 70, r: 20, t: 10, b: 50 },
+    xaxis: { title: "Filing year (calendar)", tickformat: "d" },
+    yaxis: {
+      title: "Filings (NoS = 110)",
+      type: yScale,
+      rangemode: yScale === "log" ? "normal" : "tozero",
+    },
+    legend: { orientation: "v", x: 1.01, y: 1, xanchor: "left", font: { size: 11 } },
+    hovermode: "closest",
+    plot_bgcolor: "#fff",
+    paper_bgcolor: "#fff",
+    showlegend: true,
+  };
+}
+
+function recompute() {
+  const traces = buildTraces();
+  const layout = buildLayout();
+  const config = {
+    responsive: true,
+    displaylogo: false,
+    modeBarButtonsToRemove: ["lasso2d", "select2d"],
+  };
+  Plotly.react("plot", traces, layout, config);
+}
+
+// ----------------------- init -----------------------
+function init() {
+  // Populate state dropdown.
+  const sel = document.getElementById("state-select");
+  for (const s of PAYLOAD.states) {
+    const meta = PAYLOAD.state_meta[s];
+    const opt = document.createElement("option");
+    opt.value = s;
+    opt.textContent = `${s} — ${meta.label}${meta.is_territory ? " (territory)" : ""}`;
+    sel.appendChild(opt);
+  }
+  setSelected(PAYLOAD.default_selection);
+
+  // Header strings.
+  document.getElementById("hdr-max-filedate").textContent =
+    PAYLOAD.source.last_modified
+      ? `${PAYLOAD.year_max} (zip last modified ${PAYLOAD.source.last_modified})`
+      : `${PAYLOAD.year_max}`;
+  document.getElementById("hdr-partial-warning").textContent =
+    `${PAYLOAD.partial_year} is partial.`;
+  document.getElementById("hdr-partial-year").textContent = PAYLOAD.partial_year;
+
+  // Footer.
+  if (PAYLOAD.source.url) {
+    const a = document.getElementById("footer-src");
+    a.href = PAYLOAD.source.url;
+    a.textContent = PAYLOAD.source.url.split("/").pop();
+  }
+  if (PAYLOAD.source.sha256) {
+    document.getElementById("footer-sha").textContent =
+      PAYLOAD.source.sha256.slice(0, 12) + "…";
+  }
+  if (PAYLOAD.source.fetched_at) {
+    document.getElementById("footer-fetched").textContent = PAYLOAD.source.fetched_at;
+  }
+
+  // Wire controls.
+  sel.addEventListener("change", recompute);
+  for (const id of [
+    "opt-nationwide", "opt-exclude-partial",
+    "ovl-avg", "ovl-ma3", "ovl-ma5",
+    "ovl-mean", "ovl-sum", "ovl-median",
+  ]) {
+    document.getElementById(id).addEventListener("change", recompute);
+  }
+  for (const r of document.querySelectorAll("input[name='yaxis']")) {
+    r.addEventListener("change", recompute);
+  }
+  for (const btn of document.querySelectorAll(".quick-presets button")) {
+    btn.addEventListener("click", () => applyPreset(btn.dataset.preset));
+  }
+
+  recompute();
+}
+
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>

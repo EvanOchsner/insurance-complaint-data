@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "md_mia",
+      "name": "MD MIA — §27-1001 first-party bad-faith dispositions",
+      "short_name": "MD MIA",
+      "category": "regulator_finding",
+      "jurisdiction": ["MD"],
+      "year_field_label": "Fiscal year (FY ends Jun 30)",
+      "y_axis_label": "Complaints (MD MIA §27-1001)",
+      "caveat_short": "MIA's first-party bad-faith disposition data under Md. Ins. §27-1001(h). Four-bucket breakout: bad-faith finding (against insurer) / breach to pay only (mixed) / no violation (for insurer) / settled+withdrawn+dismissed (no decision). FY 2008 is a partial year (Oct 2007 – Jun 2008).",
+      "provenance_url": "md_mia/PROVENANCE.md",
+      "parquet": "md_mia/output/md_complaints_yearly.parquet",
+      "x_field": "fy",
+      "group_field": null,
+      "metrics": [
+        {"id": "pct_insured_wins", "label": "Bad-faith / on-merits (%)", "column": "pct_insured_wins", "unit": "percent"},
+        {"id": "pct_any_insured_finding", "label": "Any insured finding / on-merits (%)", "column": "pct_any_insured_finding", "unit": "percent"},
+        {"id": "bad_faith", "label": "Bad-faith findings", "column": "bad_faith"},
+        {"id": "on_merits", "label": "On-merits decisions", "column": "on_merits"},
+        {"id": "total", "label": "Total complaints filed", "column": "total"}
+      ],
+      "default_metric": "pct_insured_wins",
+      "outcome_buckets": {
+        "buckets": {
+          "against_insurer": {"column": "bad_faith", "label": "Bad-faith finding (insurer at fault)"},
+          "mixed":           {"column": "breach_pay_only", "label": "Breach to pay only (partial insured win)"},
+          "for_insurer":     {"column": "no_violation", "label": "No violation (insurer wins)"},
+          "no_decision":     {"column": "settled_wd_dismissed", "label": "Settled / withdrawn / dismissed"}
+        }
+      },
+      "default_chart_mode": "two_panel",
+      "partial_year": 2008,
+      "partial_year_note": "FY 2008 = partial year (Oct 1 2007 – Jun 30 2008)"
+    }
+  ]
+}

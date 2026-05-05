@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "fl_crn",
+      "name": "FL CRN — Civil Remedy Notice counts by line",
+      "short_name": "FL CRN",
+      "category": "plaintiff_allegation",
+      "jurisdiction": ["FL"],
+      "year_field_label": "Year",
+      "y_axis_label": "CRN filings (FL)",
+      "caveat_short": "Civil Remedy Notices are PLAINTIFF ALLEGATIONS filed as a precondition to suing under Fla. Stat. § 624.155 — NOT regulator findings. Counts measure pre-litigation pressure, not insurer wrongdoing per se. Hurricane years (Irma 2017, Ian 2022) and the AOB litigation era (2014–2022) drive non-organic spikes.",
+      "provenance_url": "fl_crn/PROVENANCE.md",
+      "parquet": "fl_crn/output/fl_crn_yearly_counts.parquet",
+      "x_field": "year",
+      "group_field": "type_of_insurance",
+      "group_field_label": "Type of insurance",
+      "metrics": [
+        {"id": "count", "label": "CRN count", "column": "count"}
+      ],
+      "default_metric": "count",
+      "default_groups": ["Auto", "Residential Property & Casualty"],
+      "group_presets": [
+        {"label": "Top P&C lines", "groups": ["Auto", "Residential Property & Casualty", "Commercial Property & Casualty"]},
+        {"label": "All lines", "all": true}
+      ],
+      "partial_year": 2026
+    }
+  ]
+}

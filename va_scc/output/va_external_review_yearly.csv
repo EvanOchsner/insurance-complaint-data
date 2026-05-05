@@ -1,0 +1,5 @@
+fiscal_year,total_reviewed,eligible,ineligible,upheld,overturned,modified,reversed_self,terminated,source_file,against_insurer,for_insurer,mixed,no_decision,on_merits,against_rate_of_decided
+2022,524,159,365,75,80,0,3,1,FY2022.pdf,83,75,0,366,158,0.5253164556962026
+2023,585,191,394,84,105,1,1,0,FY2023.pdf,106,84,1,394,191,0.5549738219895288
+2024,543,218,325,110,102,3,12,1,FY2024.pdf,114,110,3,326,227,0.5022026431718062
+2025,459,196,263,80,114,2,0,0,FY2025.pdf,114,80,2,263,196,0.5816326530612245
