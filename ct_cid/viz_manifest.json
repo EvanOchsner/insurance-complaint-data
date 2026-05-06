@@ -6,39 +6,97 @@
       "name": "CT CID — closed consumer complaints, by coverage",
       "short_name": "CT CID",
       "category": "regulator_finding",
-      "jurisdiction": ["CT"],
+      "jurisdiction": [
+        "CT"
+      ],
       "year_field_label": "Year closed",
       "y_axis_label": "Complaints (CT CID)",
-      "caveat_short": "CID's `disposition` mapped to a 3-bucket against/for/ambiguous classification (see METHODOLOGY). Effective coverage 2022+; pre-2022 is sparse backfill. ~40% of closed rows have null disposition; the 'rate of decided' excludes them from numerator and denominator.",
+      "caveat_short": "Connecticut's regulator publishes a “disposition” for each closed complaint, which we sort into three buckets: against the insurer / for the insurer / ambiguous (see METHODOLOGY). Coverage is solid from 2022 onward; pre-2022 is sparse. About 40% of closed complaints have no disposition recorded — the “rate of decided” chart leaves those out of both the numerator and the denominator.",
       "provenance_url": "ct_cid/PROVENANCE.md",
       "parquet": "ct_cid/output/ct_complaints_yearly_confirmed.parquet",
       "x_field": "year_closed",
       "group_field": "coverage",
       "group_field_label": "Coverage",
       "metrics": [
-        {"id": "against_rate_of_decided", "label": "Against-insurer rate (of decided)", "column": "against_rate_of_decided", "unit": "share"},
-        {"id": "against_rate_of_total", "label": "Against-insurer rate (of total)", "column": "against_rate_of_total", "unit": "share"},
-        {"id": "against_insurer", "label": "Against-insurer count", "column": "against_insurer"},
-        {"id": "for_insurer", "label": "For-insurer count", "column": "for_insurer"},
-        {"id": "ambiguous", "label": "Ambiguous count", "column": "ambiguous"},
-        {"id": "no_disposition", "label": "No-disposition count", "column": "no_disposition"},
-        {"id": "total", "label": "Total complaints", "column": "total"}
+        {
+          "id": "against_rate_of_decided",
+          "label": "Against-insurer rate (of decided)",
+          "column": "against_rate_of_decided",
+          "unit": "share"
+        },
+        {
+          "id": "against_rate_of_total",
+          "label": "Against-insurer rate (of total)",
+          "column": "against_rate_of_total",
+          "unit": "share"
+        },
+        {
+          "id": "against_insurer",
+          "label": "Against-insurer count",
+          "column": "against_insurer"
+        },
+        {
+          "id": "for_insurer",
+          "label": "For-insurer count",
+          "column": "for_insurer"
+        },
+        {
+          "id": "ambiguous",
+          "label": "Ambiguous count",
+          "column": "ambiguous"
+        },
+        {
+          "id": "no_disposition",
+          "label": "No-disposition count",
+          "column": "no_disposition"
+        },
+        {
+          "id": "total",
+          "label": "Total complaints",
+          "column": "total"
+        }
       ],
       "default_metric": "against_rate_of_decided",
-      "default_groups": ["ALL"],
+      "default_groups": [
+        "ALL"
+      ],
       "group_presets": [
-        {"label": "Headline (ALL)", "groups": ["ALL"]},
-        {"label": "All non-ALL lines", "exclude_groups": ["ALL"]},
-        {"label": "All", "all": true}
+        {
+          "label": "Headline (ALL)",
+          "groups": [
+            "ALL"
+          ]
+        },
+        {
+          "label": "All non-ALL lines",
+          "exclude_groups": [
+            "ALL"
+          ]
+        },
+        {
+          "label": "All",
+          "all": true
+        }
       ],
       "partial_year": 2026,
       "outcome_buckets": {
-        "aggregation": {"filter_to_group": "ALL"},
+        "aggregation": {
+          "filter_to_group": "ALL"
+        },
         "buckets": {
-          "against_insurer": {"column": "against_insurer", "label": "Against insurer (regulator action favored consumer)"},
-          "mixed":           null,
-          "for_insurer":     {"column": "for_insurer", "label": "For insurer (Company Position Substantiated)"},
-          "no_decision":     {"column": "no_decision", "label": "No merits decision (ambiguous + null disposition)"}
+          "against_insurer": {
+            "column": "against_insurer",
+            "label": "Against insurer (regulator action favored consumer)"
+          },
+          "mixed": null,
+          "for_insurer": {
+            "column": "for_insurer",
+            "label": "For insurer (Company Position Substantiated)"
+          },
+          "no_decision": {
+            "column": "no_decision",
+            "label": "No merits decision (ambiguous + null disposition)"
+          }
         }
       },
       "default_chart_mode": "two_panel"

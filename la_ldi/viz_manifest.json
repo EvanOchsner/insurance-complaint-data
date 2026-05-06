@@ -6,27 +6,70 @@
       "name": "LA LDI — complaints by line, per-line per-year",
       "short_name": "LA LDI",
       "category": "regulator_finding",
-      "jurisdiction": ["LA"],
+      "jurisdiction": [
+        "LA"
+      ],
       "year_field_label": "Calendar year",
       "y_axis_label": "Complaints (LA LDI)",
-      "caveat_short": "LA LDI per-line per-year complaint totals (summed from per-company tables). WORKLOAD signal — counts of complaints filed, not regulator findings or merits decisions. Note the 2021 homeowners surge driven by Hurricane Ida and the subsequent carrier-insolvency wave. Personal lines only (4 lines: Auto, Homeowners, Life & Annuity, Accident & Health).",
+      "caveat_short": "Louisiana's per-line per-year complaint totals (summed up from per-company tables). This is a workload count — complaints filed, not regulator findings or merits decisions. The 2021 homeowners spike is Hurricane Ida and the carrier-insolvency wave that followed. Personal lines only (auto, homeowners, life & annuity, accident & health).",
       "provenance_url": "la_ldi/PROVENANCE.md",
       "parquet": "la_ldi/output/la_complaints_yearly.parquet",
       "x_field": "year",
       "group_field": "line",
       "group_field_label": "Line",
       "metrics": [
-        {"id": "total_complaints", "label": "Complaints filed", "column": "total_complaints"},
-        {"id": "n_companies",      "label": "# companies reporting", "column": "n_companies"},
-        {"id": "total_premium",    "label": "Total premium written ($)", "column": "total_premium", "unit": "dollars"}
+        {
+          "id": "total_complaints",
+          "label": "Complaints filed",
+          "column": "total_complaints"
+        },
+        {
+          "id": "n_companies",
+          "label": "# companies reporting",
+          "column": "n_companies"
+        },
+        {
+          "id": "total_premium",
+          "label": "Total premium written ($)",
+          "column": "total_premium",
+          "unit": "dollars"
+        }
       ],
       "default_metric": "total_complaints",
-      "default_groups": ["auto", "homeowners", "accident_health", "life"],
+      "default_groups": [
+        "auto",
+        "homeowners",
+        "accident_health",
+        "life"
+      ],
       "group_presets": [
-        {"label": "All 4 lines", "groups": ["auto", "homeowners", "accident_health", "life"]},
-        {"label": "P&C personal", "groups": ["auto", "homeowners"]},
-        {"label": "Health + Life", "groups": ["accident_health", "life"]},
-        {"label": "All", "all": true}
+        {
+          "label": "All 4 lines",
+          "groups": [
+            "auto",
+            "homeowners",
+            "accident_health",
+            "life"
+          ]
+        },
+        {
+          "label": "P&C personal",
+          "groups": [
+            "auto",
+            "homeowners"
+          ]
+        },
+        {
+          "label": "Health + Life",
+          "groups": [
+            "accident_health",
+            "life"
+          ]
+        },
+        {
+          "label": "All",
+          "all": true
+        }
       ]
     }
   ]

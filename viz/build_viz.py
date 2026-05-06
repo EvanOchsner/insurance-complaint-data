@@ -511,6 +511,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   }
   header.title h1 { font-size: 18px; margin: 0 0 4px; }
   header.title .sub { color: var(--muted); font-size: 12px; }
+  header.title .page-intro { font-size: 12px; color: var(--fg); padding: 10px 12px; background: #f0f6fc; border-left: 3px solid var(--accent, #1f4e79); border-radius: 3px; margin: 10px 0 6px; line-height: 1.5; }
   .caveat {
     border: 1px solid var(--border);
     padding: 10px 14px;
@@ -650,8 +651,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <header class="title">
       <h1>Insurance Complaint Rates — Data Viewer</h1>
       <div class="sub">
-        Multiple datasets from federal courts and state insurance regulators, presented with category-aware caveats.
+        How often do people complain about their insurance company, and what happens when they do? This page pulls together complaint and lawsuit data from federal courts and state insurance regulators.
         Built <span id="hdr-build">…</span>.
+      </div>
+      <div class="page-intro">
+        Different sources count different things. A regulator finding "against insurer" means the state agency reviewed and ruled in the consumer's favor. A "civil remedy notice" or "pre-suit notice" is a complaint a <em>plaintiff</em> filed before suing — an allegation, not a verdict. A "complaint index" compares one company against the rest of its market. We tag every chart with what it actually represents so you can compare apples to apples.
       </div>
     </header>
     <div id="caveat" class="caveat">…</div>
@@ -1821,7 +1825,7 @@ function renderStatePage(stateCode) {
         // 2) against / on-merits rate line — own subtitle + own plot
         const sub2 = document.createElement("div");
         sub2.className = "subchart-label";
-        sub2.textContent = "Against-insurer rate (against / on-merits)";
+        sub2.textContent = "Share of decided complaints that ruled against the insurer";
         root.appendChild(sub2);
         const id2 = `sp-chart-${chartIdx++}`;
         const d2 = document.createElement("div");

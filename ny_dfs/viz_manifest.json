@@ -6,35 +6,63 @@
       "name": "NY DFS — Auto upheld complaints (per company)",
       "short_name": "NY DFS Auto",
       "category": "regulator_finding",
-      "jurisdiction": ["NY"],
+      "jurisdiction": [
+        "NY"
+      ],
       "year_field_label": "Filing year",
       "y_axis_label": "Upheld complaints (2-yr rolling)",
-      "caveat_short": "DFS's `upheld` finding: regulator agreed the insurer made an inappropriate decision. NOTE: filing_year Y is a 2-yr rolling window covering Y-1 and Y. Don't sum across years (double counts). Source data has 2015 == 2016 (likely a year not separately published) — see methodology.",
+      "caveat_short": "New York's regulator (DFS) finds a complaint “upheld” when it agrees the insurer made an inappropriate decision. WATCH THE YEAR AXIS: each filing-year value is a 2-year rolling window covering the prior year too — don't sum across years or you'll double-count. Source data shows 2015 == 2016 (likely an unpublished year) — see methodology.",
       "provenance_url": "ny_dfs/PROVENANCE.md",
       "parquet": "ny_dfs/output/ny_auto_complaints_company_year.parquet",
       "x_field": "filing_year",
       "group_field": "company_name",
       "group_field_label": "Insurer",
       "metrics": [
-        {"id": "upheld_complaints", "label": "Upheld complaints (2-yr rolling)", "column": "upheld_complaints"},
-        {"id": "total_complaints", "label": "Total complaints (2-yr rolling)", "column": "total_complaints"},
-        {"id": "ratio", "label": "Complaint ratio", "column": "ratio"}
+        {
+          "id": "upheld_complaints",
+          "label": "Upheld complaints (2-yr rolling)",
+          "column": "upheld_complaints"
+        },
+        {
+          "id": "total_complaints",
+          "label": "Total complaints (2-yr rolling)",
+          "column": "total_complaints"
+        },
+        {
+          "id": "ratio",
+          "label": "Complaint ratio",
+          "column": "ratio"
+        }
       ],
       "default_metric": "upheld_complaints",
       "default_groups_strategy": "top_n_by_metric",
       "default_groups_n": 10,
       "default_groups_metric": "upheld_complaints",
       "group_presets": [
-        {"label": "Top 10 by upheld (overall)", "strategy": "top_n_by_metric", "n": 10, "metric": "upheld_complaints"}
+        {
+          "label": "Top 10 by upheld (overall)",
+          "strategy": "top_n_by_metric",
+          "n": 10,
+          "metric": "upheld_complaints"
+        }
       ],
       "outcome_buckets": {
         "parquet": "ny_dfs/output/ny_auto_complaints_yearly.parquet",
         "x_field": "year",
         "buckets": {
-          "against_insurer": {"column": "total_upheld_2yr", "label": "Upheld (regulator agreed insurer's decision was inappropriate)"},
-          "mixed":           null,
-          "for_insurer":     {"column": "total_not_upheld_2yr", "label": "Not upheld"},
-          "no_decision":     {"column": "total_question_of_fact_2yr", "label": "Question of fact (no merits ruling)"}
+          "against_insurer": {
+            "column": "total_upheld_2yr",
+            "label": "Upheld (regulator agreed insurer's decision was inappropriate)"
+          },
+          "mixed": null,
+          "for_insurer": {
+            "column": "total_not_upheld_2yr",
+            "label": "Not upheld"
+          },
+          "no_decision": {
+            "column": "total_question_of_fact_2yr",
+            "label": "Question of fact (no merits ruling)"
+          }
         }
       },
       "default_chart_mode": "two_panel"
@@ -44,10 +72,12 @@
       "name": "NY DFS — Health upheld complaints (per plan)",
       "short_name": "NY DFS Health",
       "category": "regulator_finding",
-      "jurisdiction": ["NY"],
+      "jurisdiction": [
+        "NY"
+      ],
       "year_field_label": "Data year",
       "y_axis_label": "Upheld complaints (DFS)",
-      "caveat_short": "DFS's `upheld` finding for health insurers, parsed from the annual NY Consumer Guide to Health Insurers. Three plan types: HMO, EPO/PPO, Commercial Health. The `_doh` columns capture parallel Department of Health (quality-of-care) data for HMOs only.",
+      "caveat_short": "New York's regulator (DFS) finds a health-insurance complaint “upheld” when it agrees the insurer made an inappropriate decision. Parsed from the annual NY Consumer Guide to Health Insurers across three plan types (HMO, EPO/PPO, Commercial Health). The `_doh` columns are parallel quality-of-care data from the Department of Health — HMOs only.",
       "provenance_url": "ny_dfs/PROVENANCE.md",
       "parquet": "ny_dfs/output/ny_health_complaints_company_year.parquet",
       "x_field": "data_year",
@@ -57,10 +87,26 @@
       "filter_field_label": "Plan type",
       "filter_default": "EPO/PPO",
       "metrics": [
-        {"id": "upheld_complaints_dfs", "label": "Upheld DFS", "column": "upheld_complaints_dfs"},
-        {"id": "total_complaints_dfs", "label": "Total DFS", "column": "total_complaints_dfs"},
-        {"id": "complaint_ratio_dfs", "label": "Complaint ratio DFS", "column": "complaint_ratio_dfs"},
-        {"id": "premiums_millions", "label": "Premiums ($M)", "column": "premiums_millions"}
+        {
+          "id": "upheld_complaints_dfs",
+          "label": "Upheld DFS",
+          "column": "upheld_complaints_dfs"
+        },
+        {
+          "id": "total_complaints_dfs",
+          "label": "Total DFS",
+          "column": "total_complaints_dfs"
+        },
+        {
+          "id": "complaint_ratio_dfs",
+          "label": "Complaint ratio DFS",
+          "column": "complaint_ratio_dfs"
+        },
+        {
+          "id": "premiums_millions",
+          "label": "Premiums ($M)",
+          "column": "premiums_millions"
+        }
       ],
       "default_metric": "upheld_complaints_dfs",
       "default_groups_strategy": "top_n_by_metric",
@@ -71,10 +117,16 @@
         "x_field": "year",
         "filter_field": "plan_type",
         "buckets": {
-          "against_insurer": {"column": "upheld_complaints_dfs", "label": "Upheld (DFS finding for consumer)"},
-          "mixed":           null,
-          "for_insurer":     {"derive": "total_complaints_dfs - upheld_complaints_dfs", "label": "Not upheld (derived: total − upheld)"},
-          "no_decision":     null
+          "against_insurer": {
+            "column": "upheld_complaints_dfs",
+            "label": "Upheld (DFS finding for consumer)"
+          },
+          "mixed": null,
+          "for_insurer": {
+            "derive": "total_complaints_dfs - upheld_complaints_dfs",
+            "label": "Not upheld (derived: total − upheld)"
+          },
+          "no_decision": null
         }
       },
       "default_chart_mode": "two_panel"

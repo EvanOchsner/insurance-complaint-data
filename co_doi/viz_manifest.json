@@ -6,10 +6,12 @@
       "name": "CO DOI — workload by line",
       "short_name": "CO DOI workload",
       "category": "regulator_finding",
-      "jurisdiction": ["CO"],
+      "jurisdiction": [
+        "CO"
+      ],
       "year_field_label": "Fiscal year (FY ends Jun 30)",
       "y_axis_label": "Complaints (CO DOI)",
-      "caveat_short": "CO DOI workload counts (complaints received and closed) by line. WORKLOAD signal — not a regulator finding. FY 2025 reframed received counts to include inquiries; the count_type filter distinguishes. CO publishes per-company complaint indexes via a separate Oracle-backed tool not in this dataset.",
+      "caveat_short": "Colorado workload counts — complaints received and closed, by line. This is volume, not a regulator finding of wrongdoing. Starting in fiscal 2025, Colorado began lumping inquiries into the “received” total; the count_type filter splits them out. Per-company complaint indexes live in a separate Colorado tool and aren't included here.",
       "provenance_url": "co_doi/PROVENANCE.md",
       "parquet": "co_doi/output/co_workload_yearly.parquet",
       "x_field": "fiscal_year",
@@ -19,14 +21,36 @@
       "filter_field_label": "Count type",
       "filter_default": "received",
       "metrics": [
-        {"id": "count", "label": "Complaint count", "column": "count"}
+        {
+          "id": "count",
+          "label": "Complaint count",
+          "column": "count"
+        }
       ],
       "default_metric": "count",
-      "default_groups": ["property_casualty", "life_health"],
+      "default_groups": [
+        "property_casualty",
+        "life_health"
+      ],
       "group_presets": [
-        {"label": "P&C vs L&H", "groups": ["property_casualty", "life_health"]},
-        {"label": "Sub-lines", "groups": ["homeowners", "health"]},
-        {"label": "All", "all": true}
+        {
+          "label": "P&C vs L&H",
+          "groups": [
+            "property_casualty",
+            "life_health"
+          ]
+        },
+        {
+          "label": "Sub-lines",
+          "groups": [
+            "homeowners",
+            "health"
+          ]
+        },
+        {
+          "label": "All",
+          "all": true
+        }
       ]
     },
     {
@@ -34,25 +58,56 @@
       "name": "CO DOI — money recovered for consumers, by line",
       "short_name": "CO DOI recoveries",
       "category": "regulator_finding",
-      "jurisdiction": ["CO"],
+      "jurisdiction": [
+        "CO"
+      ],
       "year_field_label": "Fiscal year (FY ends Jun 30)",
       "y_axis_label": "$ recovered (CO DOI)",
-      "caveat_short": "Money recovered = $ DOI extracted from carriers and returned to consumers (reversed denials, expedited delays, statute-violation refunds). Combines multiple intervention types — directional regulator-action signal, not a per-complaint disposition. Recovery categories shift year-to-year (Marshall Fire only 2023; Other P&C only 2025).",
+      "caveat_short": "Money the Colorado regulator pried out of insurers and returned to consumers (reversed denials, payouts on stalled claims, refunds for statute violations). This is a directional regulator-action signal — not a per-complaint outcome — and the categories shift year to year (Marshall Fire only in 2023, “Other P&C” only in 2025).",
       "provenance_url": "co_doi/PROVENANCE.md",
       "parquet": "co_doi/output/co_recoveries_yearly.parquet",
       "x_field": "fiscal_year",
       "group_field": "line",
       "group_field_label": "Line",
       "metrics": [
-        {"id": "amount_usd", "label": "Amount recovered (USD)", "column": "amount_usd", "unit": "dollars"}
+        {
+          "id": "amount_usd",
+          "label": "Amount recovered (USD)",
+          "column": "amount_usd",
+          "unit": "dollars"
+        }
       ],
       "default_metric": "amount_usd",
-      "default_groups": ["total"],
+      "default_groups": [
+        "total"
+      ],
       "group_presets": [
-        {"label": "Grand total", "groups": ["total"]},
-        {"label": "P&C / L&H rollup", "groups": ["property_casualty", "life_health"]},
-        {"label": "Sub-lines", "groups": ["homeowners", "auto", "health", "life_annuity"]},
-        {"label": "All", "all": true}
+        {
+          "label": "Grand total",
+          "groups": [
+            "total"
+          ]
+        },
+        {
+          "label": "P&C / L&H rollup",
+          "groups": [
+            "property_casualty",
+            "life_health"
+          ]
+        },
+        {
+          "label": "Sub-lines",
+          "groups": [
+            "homeowners",
+            "auto",
+            "health",
+            "life_annuity"
+          ]
+        },
+        {
+          "label": "All",
+          "all": true
+        }
       ]
     }
   ]

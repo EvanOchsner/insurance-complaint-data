@@ -105,6 +105,7 @@ HTML = """<!DOCTYPE html>
   details summary { cursor: pointer; font-size: 12px; color: var(--accent); }
   .meta-block { font-size: 11px; color: var(--muted); padding: 8px; background: var(--bg); border-radius: 4px; margin-bottom: 10px; line-height: 1.45; }
   .meta-block code { background: white; padding: 1px 4px; border-radius: 2px; }
+  .intro-box { font-size: 12px; color: var(--fg); padding: 10px 12px; background: #f0f6fc; border-left: 3px solid var(--accent); border-radius: 3px; margin: 4px 0 14px; line-height: 1.5; }
 
   .preset-btn { font-size: 11px; padding: 3px 7px; border: 1px solid var(--border); background: white; border-radius: 3px; cursor: pointer; margin: 2px 2px 2px 0; }
   .preset-btn:hover { background: var(--bg); }
@@ -151,6 +152,10 @@ HTML = """<!DOCTYPE html>
   <h1>Bad faith protection ranking</h1>
   <div class="sub" id="sidebar-sub" style="font-size:11px; color:var(--muted); margin-bottom:10px;"></div>
 
+  <div class="intro-box">
+    If you believe your insurance company has acted in bad faith, what are your options? It varies a lot by state. In some states your only realistic move is a breach-of-contract lawsuit. Others let you (or require you to) get help from the state insurance department first, and several stack statutory penalties and one-way attorney's fees on top. This tool ranks how strong each state's protections are for individual home, auto, and property policyholders &mdash; and shows what's behind each ranking.
+  </div>
+
   <h2>Weight presets</h2>
   <div id="preset-buttons">
     <button class="preset-btn active" data-preset="default">Default</button>
@@ -187,7 +192,7 @@ HTML = """<!DOCTYPE html>
   <details style="margin-top:14px;">
     <summary>About this rubric</summary>
     <div class="meta-block">
-      Each factor is scored 0–10 along a small set of named levels (with brief explainers). The state ranking is the weighted average of factor scores, normalized to 0–10 — so the absolute size of weights doesn't matter, only their ratios. Re-weight any factor and edit any level value to fit your own framing. See <code>METHODOLOGY.md</code> in this folder for sources and per-state citations.
+      Each state is scored 0–10 on every factor below, with short explainers for each level so you can see the reasoning. The overall ranking is a weighted blend of those scores — only the <em>ratio</em> of weights matters, so doubling everything changes nothing. Re-weight any factor or tweak any level value to fit your own framing. Sources and per-state citations live in <code>METHODOLOGY.md</code>.
     </div>
   </details>
 </aside>
@@ -259,12 +264,12 @@ const PRESETS = {
 };
 
 const PRESET_EXPLAINERS = {
-  default:   "Strength of state-level bad faith protection for individual P&amp;C insureds. <b>Not authoritative</b> — a starting point. Researchers and advocates are invited to re-weight factors and adjust level values to reach their own conclusions.",
-  doctrine:  "Zeros out procedural and environment factors. Ranks states purely on substantive bad-faith doctrine (causes of action, damages, penalties, fee-shifting, liability standard).",
-  statutory: "Up-weights statutory PRoA, statutory penalty/multiplier, and attorney-fee shifting. Down-weights common-law-only routes. Surfaces states with sharp, codified remedies.",
-  access:    "Up-weights fee shifting, low pre-suit barriers, and administrative-remedy strength. Surfaces states where a real claimant can actually reach a remedy without an unreasonable cost barrier.",
-  uniform:   "Every factor weighted equally. Useful as a sanity check against any preset's emphasis.",
-  custom:    "Tune freely. Use the sliders below to set any weighting; click any factor to edit its level values.",
+  default:   "A general-purpose ranking of how much legal protection each state gives an individual home, auto, or property policyholder when an insurer plays dirty. <b>Treat this as a starting point, not a verdict</b> &mdash; you can re-weight any factor below to test how the picture changes.",
+  doctrine:  "Sets aside procedural hurdles and ranks states purely on the legal tools available: what you can sue for, what damages you can recover, who pays the lawyers, and how high the burden of proof sits.",
+  statutory: "Favors states whose legislatures have written sharp, specific bad-faith remedies into law &mdash; automatic penalties, multipliers on top of what you're owed, and rules that make the insurer pay your attorney. States that rely only on judge-made common law fall down the list.",
+  access:    "Favors states where an ordinary policyholder can actually use their rights without a small army of lawyers &mdash; strong fee-shifting rules, low procedural hurdles before filing suit, and a real complaint process at the state insurance department.",
+  uniform:   "Every factor weighted the same. A sanity check &mdash; if a state stays high (or low) here as well as under the named presets, the ranking isn't being driven by any one emphasis.",
+  custom:    "Build your own weighting. Use the sliders below to dial any factor up or down; click any factor name to edit how its individual levels are scored.",
 };
 
 const PRESET_TITLES = {

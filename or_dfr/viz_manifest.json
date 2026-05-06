@@ -6,36 +6,91 @@
       "name": "OR DFR — complaints by line, with confirmed outcomes",
       "short_name": "OR DFR",
       "category": "regulator_finding",
-      "jurisdiction": ["OR"],
+      "jurisdiction": [
+        "OR"
+      ],
       "year_field_label": "Calendar year",
       "y_axis_label": "Complaints (OR DFR)",
-      "caveat_short": "OR DFR's `Confirmed Complaints` is the regulator's merits-decision-against-insurer count: investigation found the insurer violated insurance code, contract terms, or industry standards. Per-line per-year aggregates summed from per-company tables. Aggregates can slightly undercount the line total when sub-$1M-premium companies are excluded.",
+      "caveat_short": "Oregon's “Confirmed Complaints” count is the regulator's finding-against-insurer figure — investigation concluded the insurer violated insurance code, the contract, or industry standards. Per-line per-year totals are summed up from per-company tables. Companies with under $1M in premium are excluded, so aggregates can slightly undercount the true line total.",
       "provenance_url": "or_dfr/PROVENANCE.md",
       "parquet": "or_dfr/output/or_complaints_yearly.parquet",
       "x_field": "year",
       "group_field": "line",
       "group_field_label": "Line",
       "metrics": [
-        {"id": "total_complaints", "label": "Total complaints", "column": "total_complaints"},
-        {"id": "total_confirmed",  "label": "Confirmed (against insurer)", "column": "total_confirmed"},
-        {"id": "n_companies",      "label": "# companies reporting", "column": "n_companies"},
-        {"id": "total_premium",    "label": "Total premium written ($)", "column": "total_premium", "unit": "dollars"}
+        {
+          "id": "total_complaints",
+          "label": "Total complaints",
+          "column": "total_complaints"
+        },
+        {
+          "id": "total_confirmed",
+          "label": "Confirmed (against insurer)",
+          "column": "total_confirmed"
+        },
+        {
+          "id": "n_companies",
+          "label": "# companies reporting",
+          "column": "n_companies"
+        },
+        {
+          "id": "total_premium",
+          "label": "Total premium written ($)",
+          "column": "total_premium",
+          "unit": "dollars"
+        }
       ],
       "default_metric": "total_complaints",
-      "default_groups": ["auto", "homeowners", "health"],
+      "default_groups": [
+        "auto",
+        "homeowners",
+        "health"
+      ],
       "group_presets": [
-        {"label": "Top 3 lines (auto/home/health)", "groups": ["auto", "homeowners", "health"]},
-        {"label": "All P&C personal lines", "groups": ["auto", "homeowners"]},
-        {"label": "All A&H lines", "groups": ["health", "annuities", "life", "long_term_care"]},
-        {"label": "All", "all": true}
+        {
+          "label": "Top 3 lines (auto/home/health)",
+          "groups": [
+            "auto",
+            "homeowners",
+            "health"
+          ]
+        },
+        {
+          "label": "All P&C personal lines",
+          "groups": [
+            "auto",
+            "homeowners"
+          ]
+        },
+        {
+          "label": "All A&H lines",
+          "groups": [
+            "health",
+            "annuities",
+            "life",
+            "long_term_care"
+          ]
+        },
+        {
+          "label": "All",
+          "all": true
+        }
       ],
       "outcome_buckets": {
-        "aggregation": {"sum_across_groups": true},
+        "aggregation": {
+          "sum_across_groups": true
+        },
         "buckets": {
-          "against_insurer": {"column": "total_confirmed", "label": "Confirmed (insurer at fault)"},
-          "mixed":           null,
-          "for_insurer":     {"derive": "total_complaints - total_confirmed", "label": "Not confirmed (insurer position upheld)"},
-          "no_decision":     null
+          "against_insurer": {
+            "column": "total_confirmed",
+            "label": "Confirmed (insurer at fault)"
+          },
+          "mixed": null,
+          "for_insurer": {
+            "derive": "total_complaints - total_confirmed",
+            "label": "Not confirmed (insurer position upheld)"
+          },
+          "no_decision": null
         }
       },
       "default_chart_mode": "two_panel"

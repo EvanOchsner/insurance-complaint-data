@@ -6,25 +6,51 @@
       "name": "ID DOI — per-company complaint index, by line",
       "short_name": "ID DOI",
       "category": "regulator_complaint_index",
-      "jurisdiction": ["ID"],
+      "jurisdiction": [
+        "ID"
+      ],
       "year_field_label": "Data year",
       "y_axis_label": "Idaho complaint index",
-      "caveat_short": "NAIC-tradition complaint index = (share of complaints) / (share of premium), normalized so 1.0 = parity. Top-20 premium writers per line; many had 0 complaints (small market), so per-slice medians are often 0. Coverage 2018–2020 only.",
+      "caveat_short": "An NAIC-style “complaint index” — a company's share of complaints divided by its share of premium, normalized so 1.0 means “complains in proportion to size.” Above 1.0 = more complaints than market share would predict. Limited to the top-20 premium writers per line, many of whom had zero complaints (small market), so per-slice medians often sit at 0. Coverage 2018–2020 only.",
       "provenance_url": "id_doi/PROVENANCE.md",
       "parquet": "id_doi/output/id_complaints_yearly.parquet",
       "x_field": "year",
       "group_field": "line",
       "group_field_label": "Line",
       "metrics": [
-        {"id": "median_index", "label": "Median complaint index", "column": "median_index"},
-        {"id": "total_complaints", "label": "Total complaints (top-20)", "column": "total_complaints"},
-        {"id": "n_companies", "label": "Number of companies in report", "column": "n_companies"},
-        {"id": "market_share_covered", "label": "Market share covered (fraction)", "column": "market_share_covered"}
+        {
+          "id": "median_index",
+          "label": "Median complaint index",
+          "column": "median_index"
+        },
+        {
+          "id": "total_complaints",
+          "label": "Total complaints (top-20)",
+          "column": "total_complaints"
+        },
+        {
+          "id": "n_companies",
+          "label": "Number of companies in report",
+          "column": "n_companies"
+        },
+        {
+          "id": "market_share_covered",
+          "label": "Market share covered (fraction)",
+          "column": "market_share_covered"
+        }
       ],
       "default_metric": "median_index",
-      "default_groups": ["auto", "homeowners", "group_health", "individual_health"],
+      "default_groups": [
+        "auto",
+        "homeowners",
+        "group_health",
+        "individual_health"
+      ],
       "group_presets": [
-        {"label": "All lines", "all": true}
+        {
+          "label": "All lines",
+          "all": true
+        }
       ]
     }
   ]
