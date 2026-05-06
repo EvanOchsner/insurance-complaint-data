@@ -5,7 +5,7 @@ Two streams from VA's State Corporation Commission, Bureau of Insurance (BOI) an
 1. **Per-line workload** — annual count of consumer complaints received, broken into Property & Casualty vs Life & Health. This is "what walked through the door," not "what the regulator decided." Same metric class as NAIC IDRR's per-state totals, but with a 2-line breakout IDRR doesn't have.
 2. **Health External Review (ER) dispositions** — for managed-care health-coverage appeals only, the regulator's reviewer adjudicates each case as Upheld / Overturned / Modified / Reversed-by-carrier / Terminated. This is the only VA-published breakdown by regulator finding, and it covers a narrow but meaningful slice of complaints. Mapped to the project's canonical 4-bucket outcome taxonomy.
 
-Virginia was the only Phase 3 candidate that passed the recon test — see [`../multi_state_acquisition_plan.md`](../multi_state_acquisition_plan.md) §7.4. PA / NJ / NC dropped (no value over IDRR or no public reports); MA deferred (mass.gov hard-blocks fetches).
+Virginia was the only state in this acquisition batch that passed the recon test. PA / NJ / NC dropped (no value over IDRR or no public reports); MA deferred (mass.gov hard-blocks fetches).
 
 ## What's in this folder
 

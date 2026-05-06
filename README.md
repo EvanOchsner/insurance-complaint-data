@@ -34,13 +34,7 @@ A growing collection of publicly available, machine-readable datasets that quant
 | [`or_dfr/`](or_dfr/README.md) | Oregon DFR Insurance Complaint Reports — per-company per-line per-year **with Confirmed Complaints** (outcome dimension). 6 personal lines × 7 years. **First state in the per-company-index batch with a true regulator-issued merits-decision count alongside per-company indices.** Originally a Phase 5 candidate; passed recon. | OR, 2019–2025 | Built 2026-05-05 |
 | [`naic_idrr/output/idrr_complaints_yearly.parquet`](naic_idrr/output/idrr_complaints_yearly.parquet) | NAIC IDRR data republished in the cross-state aggregate schema (`state, year, line, outcome_category, count, source_type, is_partial_year, notes`) for stackability with state-specific aggregate outputs. Source: same as `naic_idrr/`; territories dropped. | 50 states + DC, 1998–2022 (no 2003) | Built 2026-05-05 |
 
-Future planned additions (each will be a sibling folder):
-
-- **Phase 3 (mostly de-scoped after recon)**: PA dropped (NAIC IDRR scorecard reprint); NJ dropped (Annual Statistical Report stops at 2013); NC dropped (no public DOI annual report); MA dropped (after Claude-in-Chrome content recon 2026-05-05: report is narrative-only, no per-line / per-disposition tables). Only VA passed and is built.
-- **Index-batch continuation: BUILT.** ID, IL, CO, WI all shipped above. ID/IL are NAIC-tradition complaint-index data (same class as IN/KS); CO and WI are workload-by-line counts (same class as VA SCC and IDRR but with line-level breakouts IDRR lacks).
-- PRR states: MO published as PDFs (built 2026-05-05); MI published as HTML (built 2026-05-05); MI **outcome** data and OH per-company **and** outcome data still need PRRs — drafts ready in [`mi_difs/public_records_request/`](mi_difs/public_records_request/) and [`oh_odi/public_records_request/`](oh_odi/public_records_request/).
-
-The remaining ~30 jurisdictions are NAIC-only by design and documented in [tail_states.md](tail_states.md). See [multi_state_acquisition_plan.md](multi_state_acquisition_plan.md) for the full multi-state roadmap and Phase 3 recon details.
+The remaining ~30 jurisdictions are NAIC-only by design and documented in [tail_states.md](tail_states.md).
 
 ## Re-running anything
 

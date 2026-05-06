@@ -49,7 +49,7 @@ python3 naic_idrr/scripts/02_parse.py
 # → naic_idrr/output/naic_idrr_complaints_state_yearly.{parquet,csv}
 # → naic_idrr/output/run_log.txt (appended sanity log)
 
-# Phase 3: republish in the cross-state aggregate schema (multi_state_acquisition_plan.md §4.2)
+# Phase 3: republish in the cross-state aggregate schema
 python3 naic_idrr/scripts/03_canonicalize.py
 # → naic_idrr/output/idrr_complaints_yearly.{parquet,csv}    (50 states + DC, territories dropped)
 # → naic_idrr/output/tail_states_coverage.csv                 (per-tail-state coverage cross-walk)

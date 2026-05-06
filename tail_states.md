@@ -1,24 +1,21 @@
 # Tail states — NAIC-only coverage
 
-Phase 4 of [`multi_state_acquisition_plan.md`](multi_state_acquisition_plan.md). This document describes the 30 jurisdictions for which the project's only complaint data source is the NAIC IDRR per-state, per-year volume series — no per-line, no per-company, no outcome breakouts. Acquiring richer state-specific data for these jurisdictions was deliberately out of scope per §8 of the parent plan.
+This document describes the 30 jurisdictions for which the project's only complaint data source is the NAIC IDRR per-state, per-year volume series — no per-line, no per-company, no outcome breakouts. Acquiring richer state-specific data for these jurisdictions was deliberately out of scope.
 
 The IDRR baseline for these states lives in [`naic_idrr/output/idrr_complaints_yearly.parquet`](naic_idrr/output/idrr_complaints_yearly.parquet) (canonical aggregate schema) and the per-state coverage table in [`naic_idrr/output/tail_states_coverage.csv`](naic_idrr/output/tail_states_coverage.csv).
 
 ## What's *not* in this list
 
-Jurisdictions also currently NAIC-only but tracked elsewhere in the parent plan:
+Other jurisdictions currently NAIC-only but with state-specific work tracked in their own folders:
 
-- **PRR-blocked (Phase 2):** Missouri, Michigan, Ohio. Public-records requests queued; see §6.6 + §9.5 of the parent plan.
-- **Phase 3 dropped:** Pennsylvania, New Jersey, North Carolina. See §7.4 recon notes — PA reprints IDRR, NJ stops at 2013, NC has no public DOI annual report.
-- **Phase 3 deferred:** Massachusetts. mass.gov edge-blocks UA-based fetches; needs browser automation. See §7.4.
-
-Anyone needing "every state where IDRR is the only data" should union §6 + §7 + this list.
+- **Public-records-request (PRR) states:** Missouri, Michigan, Ohio. MO and MI shipped via published PDFs / HTML. MI outcome data and OH per-company + outcome data still need PRRs — drafts in [`mi_difs/public_records_request/`](mi_difs/public_records_request/) and [`oh_odi/public_records_request/`](oh_odi/public_records_request/).
+- **Recon-dropped:** Pennsylvania (reprints IDRR), New Jersey (stops at 2013), North Carolina (no public DOI annual report), Massachusetts (mass.gov edge-blocks fetches; report is narrative-only).
 
 ## Coverage of every tail state
 
 All 30 jurisdictions below have continuous IDRR coverage 1998–2022 (24 data years) with one project-wide gap at 2003 (parser issue documented in [`naic_idrr/PROVENANCE.md`](naic_idrr/PROVENANCE.md)). No state-specific gaps were found. Mean annual complaint counts shown for context.
 
-The five jurisdictions tagged **(Phase-5 candidate)** — LA, MN, OR, TN, VT — were called out in §8.2 as states with annual reports that may be worth pulling later. Reserved for a possible Phase 5; out of scope here.
+Five of these jurisdictions — LA, MN, OR, TN, VT — were originally flagged as having annual reports that might be worth pulling later. LA and OR have since been built out as full per-company datasets (see [`la_ldi/`](la_ldi/) and [`or_dfr/`](or_dfr/)) and dropped from this list; MN, TN, VT remain NAIC-only.
 
 | State | IDRR years | Mean annual complaints | Notes |
 |---|---|---:|---|
@@ -53,7 +50,7 @@ The five jurisdictions tagged **(Phase-5 candidate)** — LA, MN, OR, TN, VT —
 | West Virginia (WV) | 1998–2022 | 2,210 | WV OIC does not publish a public per-line complaint breakout. |
 | Wyoming (WY) | 1998–2022 | 493 | Smallest non-DC market here; no machine-readable complaint dataset. |
 
-The "Notes" column reflects the parent plan's working assumption that each tail state's regulator either does not publish a complaint breakout, publishes only narrative annual reports without a consistent per-line table, or — for the Phase-5 candidates — publishes something that may be extractable but was deferred. State-by-state web reconnaissance was not performed for this document; each note is the parent plan's stated rationale for excluding the state from Phases 1–3, not a fresh recon finding. Anyone planning Phase 5 should re-verify before scoping work.
+The "Notes" column reflects the working assumption that each tail state's regulator either does not publish a complaint breakout, publishes only narrative annual reports without a consistent per-line table, or — for the originally-flagged candidates — publishes something that may be extractable but was deferred. Except for the explicitly-dated 2026-05-05 recon entries, state-by-state web reconnaissance was not performed for this document; anyone planning to graduate one of these states off NAIC-only coverage should re-verify before scoping work.
 
 ## Reproducing this
 
