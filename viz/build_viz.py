@@ -18,6 +18,54 @@ import polars as pl
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUT_HTML = PROJECT_ROOT / "viz" / "index.html"
 
+# User-curated taxonomy. Maps each manifest entry id to one of three buckets
+# the sidebar groups by:
+#   complaints_with_outcomes — entries with a 4-bucket outcome breakdown
+#   complaint_volume         — regulator complaint counts/indexes/recoveries
+#                              (FL CRN included: regulator-mediated pre-suit)
+#   lawsuit_volume           — federal filings + WA IFCA pre-suit notices
+# Why explicit: FL CRN and WA IFCA share `category=plaintiff_allegation` but
+# split across buckets, so derivation from category alone won't work.
+PLOT_TYPE_BY_ENTRY_ID = {
+    # complaints_with_outcomes
+    "ct_cid":         "complaints_with_outcomes",
+    "tx_tdi":         "complaints_with_outcomes",
+    "or_dfr":         "complaints_with_outcomes",
+    "md_mia":         "complaints_with_outcomes",
+    "ny_dfs_auto":    "complaints_with_outcomes",
+    "ny_dfs_health":  "complaints_with_outcomes",
+    "va_scc_er":      "complaints_with_outcomes",
+    "mo_dci":         "complaints_with_outcomes",
+    # ca_cdi_top50 has outcome_buckets in its manifest, but only the
+    # against_insurer bucket is populated — there's no on-merits denominator,
+    # so the rate panel can't render. Treat it as a complaint-volume series.
+    "ca_cdi_top50":   "complaint_volume",
+    # complaint_volume
+    "id_doi":              "complaint_volume",
+    "ks_kid":              "complaint_volume",
+    "il_idoi":             "complaint_volume",
+    "in_idoi":             "complaint_volume",
+    "mi_difs_yearly":      "complaint_volume",
+    "co_doi_workload":     "complaint_volume",
+    "co_doi_recoveries":   "complaint_volume",
+    "va_scc_workload":     "complaint_volume",
+    "wa_oic_ar":           "complaint_volume",
+    "la_ldi":              "complaint_volume",
+    "fl_crn":              "complaint_volume",
+    "ca_cdi_state":        "complaint_volume",
+    "wi_oci":              "complaint_volume",
+    "naic_idrr":           "complaint_volume",
+    # (ca_cdi_top50 declared above, near outcome group, with comment)
+    # lawsuit_volume
+    "wa_ifca": "lawsuit_volume",
+    "fjc_idb": "lawsuit_volume",
+}
+
+# Entries whose `jurisdiction` is `["US"]` but whose `group_field` enumerates
+# states. State pages slice these to one state's series; the Nationwide page
+# shows them in their full national form.
+MULTI_STATE_ENTRY_IDS = {"fjc_idb", "naic_idrr"}
+
 
 def collect_manifests() -> list[Path]:
     paths = sorted(PROJECT_ROOT.glob("*/viz_manifest.json"))
@@ -146,6 +194,7 @@ def build_entry_payload(manifest_path: Path, entry: dict) -> dict:
         "name": entry["name"],
         "short_name": entry.get("short_name", entry["name"]),
         "category": entry["category"],
+        "plot_type": PLOT_TYPE_BY_ENTRY_ID.get(entry["id"], "complaint_volume"),
         "jurisdiction": entry["jurisdiction"],
         "year_field_label": entry.get("year_field_label", "Year"),
         "y_axis_label": entry.get("y_axis_label", "Value"),
@@ -286,6 +335,84 @@ def _to_jsonable(v):
         return str(v)
 
 
+def build_state_index(entries: list[dict]) -> dict:
+    """Build a map `{state_code: [plot_spec, ...]}` driving the per-state pages.
+
+    Each plot_spec is either a native entry reference, or a sliced reference to
+    a multi-state entry (FJC IDB / NAIC IDRR) that filters one state's series.
+
+    Plot specs are ordered: outcomes → volume → lawsuits, with native entries
+    before sliced multi-state ones inside each bucket.
+    """
+    PLOT_TYPE_ORDER = {
+        "complaints_with_outcomes": 0,
+        "complaint_volume": 1,
+        "lawsuit_volume": 2,
+    }
+
+    states: dict[str, list[dict]] = {}
+
+    # Collect native (single-state) entries.
+    for e in entries:
+        if e["id"] in MULTI_STATE_ENTRY_IDS:
+            continue
+        for st in e["jurisdiction"]:
+            if st == "US":
+                continue
+            states.setdefault(st, []).append({
+                "entry_id": e["id"],
+                "plot_type": e["plot_type"],
+                "slice_group": None,
+                "is_native": True,
+            })
+
+    # For each multi-state entry, find the union of state codes appearing in
+    # its data and add a sliced reference to each.
+    for e in entries:
+        if e["id"] not in MULTI_STATE_ENTRY_IDS:
+            continue
+        # Gather every group value across every filter slice.
+        codes: set[str] = set()
+        for slice_data in e["data_by_filter"].values():
+            for g in slice_data["groups"]:
+                if isinstance(g, str) and len(g) == 2 and g.isalpha():
+                    codes.add(g)
+        for st in codes:
+            states.setdefault(st, []).append({
+                "entry_id": e["id"],
+                "plot_type": e["plot_type"],
+                "slice_group": st,
+                "is_native": False,
+            })
+
+    # Sort each state's plot list by (plot_type_order, native_first, entry_id).
+    for st, specs in states.items():
+        specs.sort(key=lambda s: (
+            PLOT_TYPE_ORDER.get(s["plot_type"], 99),
+            0 if s["is_native"] else 1,
+            s["entry_id"],
+        ))
+
+    return states
+
+
+def build_nationwide_index(entries: list[dict]) -> list[dict]:
+    """The Nationwide page shows multi-state entries in their full national
+    form (no slice). Native entries don't appear there."""
+    out = []
+    for e in entries:
+        if e["id"] in MULTI_STATE_ENTRY_IDS:
+            out.append({
+                "entry_id": e["id"],
+                "plot_type": e["plot_type"],
+                "slice_group": None,
+                "is_native": False,
+            })
+    out.sort(key=lambda s: ({"complaint_volume": 1, "lawsuit_volume": 2}.get(s["plot_type"], 9),
+                            s["entry_id"]))
+    return out
+
+
 def build_payload() -> dict:
     manifest_paths = collect_manifests()
     entries: list[dict] = []
@@ -295,13 +422,18 @@ def build_payload() -> dict:
             print(f"  {mp.relative_to(PROJECT_ROOT)} :: {entry['id']}")
             payload = build_entry_payload(mp, entry)
             entries.append(payload)
+    state_index = build_state_index(entries)
+    nationwide_index = build_nationwide_index(entries)
     return {
         "schema_version": 1,
         "build_info": {
             "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "n_entries": len(entries),
+            "n_states": len(state_index),
         },
         "entries": entries,
+        "state_index": state_index,
+        "nationwide_index": nationwide_index,
     }
 
 
@@ -407,6 +539,10 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     border: 1px solid var(--border); border-radius: 6px; margin-bottom: 14px;
   }
   .row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  /* Stacked variant: group-label on top, each option on its own line. */
+  .row.stack { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .row.stack .group-label { min-width: 0; padding: 0; margin-bottom: 2px; }
+  .row.stack label { padding-left: 4px; }
   .row .group-label {
     font-size: 11px; color: var(--muted); font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.05em;
@@ -426,6 +562,44 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   }
   .quick-presets button:hover { background: #eef; }
   #plot { width: 100%; height: 600px; background: #fff; }
+  /* state-page mode: vertically stacked plots, full width */
+  #state-page { width: 100%; }
+  #state-page.hidden, #plot.hidden { display: none; }
+  #state-page .section-heading {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); font-weight: 700;
+    margin: 18px 0 8px; padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent);
+  }
+  #state-page .section-heading:first-child { margin-top: 0; }
+  #state-page .chart-heading {
+    font-size: 15px; font-weight: 600; color: var(--fg);
+    margin: 14px 0 4px;
+  }
+  #state-page .subchart-label {
+    font-size: 12px; color: var(--muted); font-style: italic;
+    margin: 12px 0 2px;
+  }
+  #state-page .state-plot { width: 100%; height: 420px; background: #fff; margin-bottom: 6px; }
+  #state-page .state-plot.tall { height: 480px; }
+  #state-page .state-plot.short { height: 320px; }
+  #state-page .empty {
+    color: var(--muted); padding: 20px; text-align: center; font-style: italic;
+  }
+  /* sidebar "By state" grid */
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .state-grid .picker-item {
+    text-align: center;
+    padding: 6px 4px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .nationwide-btn { margin-bottom: 6px; font-weight: 700 !important; }
   footer {
     margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--border);
     font-size: 12px; color: var(--muted); line-height: 1.55;
@@ -437,37 +611,34 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <body>
 <div class="layout">
   <aside class="sidebar">
-    <h2>Dataset</h2>
-    <div id="picker"></div>
+    <h2>By plot type</h2>
+    <div id="picker-types"></div>
 
-    <h2>Filters</h2>
+    <h2>By state</h2>
+    <div id="picker-states"></div>
+
+    <h2 id="filters-heading">Data viewer controls</h2>
     <div id="filters"></div>
 
-    <h2>Display</h2>
+    <h2 id="display-heading">Display</h2>
     <div id="display-controls">
-      <div class="row" id="row-chart-mode" style="margin-bottom:6px; display:none;">
-        <span class="group-label" style="min-width:80px;">Chart</span>
-        <label><input type="radio" name="chartmode" value="line"> Line</label>
-        <label><input type="radio" name="chartmode" value="stacked"> Stacked bars</label>
-        <label><input type="radio" name="chartmode" value="two_panel"> Two-panel</label>
-      </div>
       <div class="row" style="margin-bottom:6px;">
-        <label><input type="checkbox" id="opt-exclude-partial" checked> Exclude partial year</label>
+        <label id="lbl-exclude-partial"><input type="checkbox" id="opt-exclude-partial" checked> Exclude partial year</label>
         <label id="lbl-point-labels" style="display:none;"><input type="checkbox" id="opt-point-labels" checked> Per-year rate labels</label>
       </div>
-      <div class="row" style="margin-bottom:6px;">
+      <div class="row" id="row-yaxis" style="margin-bottom:6px;">
         <span class="group-label" style="min-width:50px;">Y-axis</span>
         <label><input type="radio" name="yaxis" value="linear" checked> Linear</label>
         <label><input type="radio" name="yaxis" value="log"> Log</label>
       </div>
-      <div class="row" id="row-per-series" style="margin-bottom:6px;">
-        <span class="group-label" style="min-width:80px;">Per-series</span>
-        <label><input type="checkbox" id="ovl-avg" checked> Average</label>
+      <div class="row stack" id="row-per-series" style="margin-bottom:6px;">
+        <span class="group-label">Per-series</span>
+        <label><input type="checkbox" id="ovl-avg"> Average</label>
         <label><input type="checkbox" id="ovl-ma3"> 3-yr MA</label>
         <label><input type="checkbox" id="ovl-ma5"> 5-yr MA</label>
       </div>
-      <div class="row" id="row-cross-series">
-        <span class="group-label" style="min-width:80px;">Cross-series</span>
+      <div class="row stack" id="row-cross-series">
+        <span class="group-label">Cross-series</span>
         <label><input type="checkbox" id="ovl-mean"> Mean</label>
         <label><input type="checkbox" id="ovl-sum"> Sum</label>
         <label><input type="checkbox" id="ovl-median"> Median</label>
@@ -486,6 +657,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <div id="caveat" class="caveat">…</div>
     <div class="meta" id="meta">…</div>
     <div id="plot"></div>
+    <div id="state-page" class="hidden"></div>
     <footer>
       <div id="footer-source">…</div>
       <div style="margin-top:6px;">
@@ -518,8 +690,10 @@ const PALETTE = [
 ];
 function colorFor(entry, group) {
   // Deterministic per-(entry, group) using stable index in entry's group list.
-  const filterKey = state.filter_value === null ? "__no_filter__" : String(state.filter_value);
-  const groups = entry.data_by_filter[filterKey].groups;
+  const fv = RENDER_OVERRIDE ? RENDER_OVERRIDE.filter_value : state.filter_value;
+  const filterKey = fv === null ? "__no_filter__" : String(fv);
+  const slice = entry.data_by_filter[filterKey] || entry.data_by_filter["__no_filter__"];
+  const groups = slice ? slice.groups : [];
   const idx = groups.indexOf(group);
   return PALETTE[idx >= 0 ? idx % PALETTE.length : 0];
 }
@@ -558,7 +732,7 @@ function maybeExcludePartial(years, ...arrays) {
   // Drop the single row tagged as partial_year (anywhere in the series).
   // Trailing partial year is the common case (TX 2026, FL 2026), but MD MIA's
   // partial year is the first row (FY 2008), so we can't slice; we splice.
-  const exclude = document.getElementById("opt-exclude-partial").checked;
+  const exclude = readOverlay("opt-exclude-partial");
   const entry = activeEntry();
   if (!exclude || entry.partial_year === null || entry.partial_year === undefined) {
     return [years, ...arrays];
@@ -571,17 +745,38 @@ function maybeExcludePartial(years, ...arrays) {
 
 // ----------------------- state -----------------------
 const state = {
+  view_mode: "entry",      // "entry" (single chart) or "state" (per-state page)
   active_entry_id: PAYLOAD.entries[0].id,
+  active_state_code: null, // string state code (or "Nationwide") in state mode
   // per-entry sub-state, keyed by entry id, persists when switching back
   per_entry: {},
   filter_value: null,
 };
 
+// Render-time override: lets state-page rendering temporarily swap in a
+// different entry + sub-state for a single chart's traces/layout build,
+// without disturbing the user's interactive state in entry mode. The
+// `overlays` map (id → bool) lets state-page renders force overlay
+// checkboxes off (or on) regardless of the actual DOM state.
+let RENDER_OVERRIDE = null;  // {entry, sub, filter_value, overlays?} | null
+
+function readOverlay(id) {
+  if (RENDER_OVERRIDE && RENDER_OVERRIDE.overlays && id in RENDER_OVERRIDE.overlays) {
+    return RENDER_OVERRIDE.overlays[id];
+  }
+  const el = document.getElementById(id);
+  return el ? el.checked : false;
+}
+
 function activeEntry() {
+  if (RENDER_OVERRIDE) return RENDER_OVERRIDE.entry;
   return PAYLOAD.entries.find(e => e.id === state.active_entry_id);
 }
 
 function entryState(entry_id) {
+  if (RENDER_OVERRIDE && RENDER_OVERRIDE.entry.id === entry_id) {
+    return RENDER_OVERRIDE.sub;
+  }
   if (!state.per_entry[entry_id]) {
     const e = PAYLOAD.entries.find(x => x.id === entry_id);
     state.per_entry[entry_id] = {
@@ -596,50 +791,95 @@ function entryState(entry_id) {
 }
 
 // ----------------------- picker rendering -----------------------
-const CATEGORY_LABELS = {
-  "regulator_finding": "Regulator findings",
-  "regulator_complaint_index": "Regulator complaint indexes",
-  "plaintiff_allegation": "⚠ Plaintiff allegations",
-  "federal_lawsuit": "Federal lawsuits",
+const PLOT_TYPE_LABELS = {
+  "complaints_with_outcomes": "Complaints with outcomes",
+  "complaint_volume":         "Complaint volume",
+  "lawsuit_volume":           "Lawsuit volume",
 };
+const PLOT_TYPE_ORDER = ["complaints_with_outcomes", "complaint_volume", "lawsuit_volume"];
 
 function renderPicker() {
-  const container = document.getElementById("picker");
-  container.innerHTML = "";
-  const byCategory = {};
+  // ── By plot type ─────────────────────────────────────────────────────
+  const typesEl = document.getElementById("picker-types");
+  typesEl.innerHTML = "";
+  const byType = {};
   for (const e of PAYLOAD.entries) {
-    if (!byCategory[e.category]) byCategory[e.category] = [];
-    byCategory[e.category].push(e);
+    if (!byType[e.plot_type]) byType[e.plot_type] = [];
+    byType[e.plot_type].push(e);
   }
-  for (const cat of ["regulator_finding", "regulator_complaint_index", "plaintiff_allegation", "federal_lawsuit"]) {
-    const entries = byCategory[cat];
+  for (const pt of PLOT_TYPE_ORDER) {
+    const entries = byType[pt];
     if (!entries) continue;
     const grp = document.createElement("div");
     grp.className = "picker-group";
     const lbl = document.createElement("div");
     lbl.className = "group-label";
-    lbl.textContent = CATEGORY_LABELS[cat];
+    lbl.textContent = PLOT_TYPE_LABELS[pt];
     grp.appendChild(lbl);
     for (const e of entries) {
       const btn = document.createElement("button");
       btn.className = "picker-item";
       btn.dataset.entryId = e.id;
       const warn = e.category === "plaintiff_allegation" ? "<span class='warn'>⚠</span>" : "";
-      btn.innerHTML = warn + e.short_name;
+      btn.innerHTML = warn + escapeHtml(e.short_name);
       btn.title = e.name;
       btn.addEventListener("click", () => {
+        state.view_mode = "entry";
         state.active_entry_id = e.id;
-        activateEntry();
+        state.active_state_code = null;
+        activateView();
       });
       grp.appendChild(btn);
     }
-    container.appendChild(grp);
+    typesEl.appendChild(grp);
   }
+
+  // ── By state ─────────────────────────────────────────────────────────
+  const statesEl = document.getElementById("picker-states");
+  statesEl.innerHTML = "";
+
+  // "Nationwide" pinned at the top, full-width.
+  const nb = document.createElement("button");
+  nb.className = "picker-item nationwide-btn";
+  nb.dataset.stateCode = "Nationwide";
+  nb.textContent = "Nationwide";
+  nb.title = "Federal lawsuits + NAIC IDRR national totals";
+  nb.addEventListener("click", () => {
+    state.view_mode = "state";
+    state.active_state_code = "Nationwide";
+    activateView();
+  });
+  statesEl.appendChild(nb);
+
+  // State grid — alphabetical 2-letter codes.
+  const codes = Object.keys(PAYLOAD.state_index).sort();
+  const grid = document.createElement("div");
+  grid.className = "state-grid";
+  for (const code of codes) {
+    const btn = document.createElement("button");
+    btn.className = "picker-item";
+    btn.dataset.stateCode = code;
+    btn.textContent = code;
+    btn.title = `${code}: ${PAYLOAD.state_index[code].length} plot(s)`;
+    btn.addEventListener("click", () => {
+      state.view_mode = "state";
+      state.active_state_code = code;
+      activateView();
+    });
+    grid.appendChild(btn);
+  }
+  statesEl.appendChild(grid);
 }
 
 function syncPickerActive() {
   for (const btn of document.querySelectorAll(".picker-item")) {
-    btn.classList.toggle("active", btn.dataset.entryId === state.active_entry_id);
+    if (btn.dataset.entryId !== undefined) {
+      btn.classList.toggle("active",
+        state.view_mode === "entry" && btn.dataset.entryId === state.active_entry_id);
+    } else if (btn.dataset.stateCode !== undefined) {
+      btn.classList.toggle("active",
+        state.view_mode === "state" && btn.dataset.stateCode === state.active_state_code);
+    }
   }
 }
 
@@ -745,6 +985,7 @@ function renderFilters() {
   if (entry.metrics.length > 1) {
     const wrap = document.createElement("div");
     wrap.className = "row";
+    wrap.id = "row-metric";
     wrap.style.marginTop = "6px";
     const lab = document.createElement("span");
     lab.className = "group-label";
@@ -771,7 +1012,8 @@ function renderFilters() {
 }
 
 function currentFilterKey() {
-  return state.filter_value === null ? "__no_filter__" : String(state.filter_value);
+  const fv = RENDER_OVERRIDE ? RENDER_OVERRIDE.filter_value : state.filter_value;
+  return fv === null ? "__no_filter__" : String(fv);
 }
 
 function availableGroups() {
@@ -897,12 +1139,12 @@ function buildTraces() {
   const filterKey = currentFilterKey();
   const slice = entry.data_by_filter[filterKey];
   const yearsAll = entry.years;
-  const showAvg = document.getElementById("ovl-avg").checked;
-  const showMA3 = document.getElementById("ovl-ma3").checked;
-  const showMA5 = document.getElementById("ovl-ma5").checked;
-  const showMean = document.getElementById("ovl-mean").checked;
-  const showSum = document.getElementById("ovl-sum").checked;
-  const showMedian = document.getElementById("ovl-median").checked;
+  const showAvg = readOverlay("ovl-avg");
+  const showMA3 = readOverlay("ovl-ma3");
+  const showMA5 = readOverlay("ovl-ma5");
+  const showMean = readOverlay("ovl-mean");
+  const showSum = readOverlay("ovl-sum");
+  const showMedian = readOverlay("ovl-median");
 
   const metricCol = entry.metrics.find(m => m.id === sub.metric).column;
   const data = slice.metrics_data[metricCol] || {};
@@ -931,10 +1173,11 @@ function buildTraces() {
 
     traces.push({
       x: yrs, y: vals,
-      type: "scatter", mode: "lines",
+      type: "scatter", mode: "lines+markers",
       name: label,
       legendgroup: g,
       line: { color, width: 2 },
+      marker: { color, size: 5 },
       hovertemplate: `<b>${escapeHtml(label)}</b> %{x}<br>%{y}<extra></extra>`,
     });
 
@@ -993,9 +1236,10 @@ function buildTraces() {
     const shortName = entry.national_rollup_short_label || "US total";
     traces.push({
       x: yrs, y: vals,
-      type: "scatter", mode: "lines",
+      type: "scatter", mode: "lines+markers",
       name: shortName,
       line: { color: "#111", width: 3 },
+      marker: { color: "#111", size: 6 },
       hovertemplate: `<b>${escapeHtml(shortName)}</b> (n=${allGroups.length}) %{x}<br>%{y}<extra></extra>`,
     });
   }
@@ -1082,9 +1326,13 @@ const BUCKET_STACK_ORDER = ["no_decision", "for_insurer", "mixed", "against_insu
 
 function activeChartMode() {
   const entry = activeEntry();
-  const sub = entryState(entry.id);
-  if (!entry.outcome_data_by_filter) return "line";
-  return sub.chart_mode || entry.default_chart_mode || "line";
+  // Rendering is driven purely by plot_type now. Outcome entries always
+  // render as two-panel; every other entry renders as a line chart. No user
+  // toggle.
+  if (entry.plot_type === "complaints_with_outcomes" && entry.outcome_data_by_filter) {
+    return "two_panel";
+  }
+  return "line";
 }
 
 function activeOutcomeSlice() {
@@ -1099,7 +1347,7 @@ function activeOutcomeSlice() {
 function maybeExcludePartialOutcome(slice) {
   // Drop the single partial-year row (anywhere — handles MD's leading 2008
   // and TX's trailing 2026 alike).
-  const exclude = document.getElementById("opt-exclude-partial").checked;
+  const exclude = readOverlay("opt-exclude-partial");
   const entry = activeEntry();
   if (!exclude || entry.partial_year === null || entry.partial_year === undefined) {
     return slice;
@@ -1263,9 +1511,8 @@ function buildRateTraces(opts) {
 
 function rateAnnotations(yref) {
   // Per-year `7.5% (3/40)` label just above each marker. Toggleable via
-  // #opt-point-labels.
-  const want = document.getElementById("opt-point-labels");
-  if (!want || !want.checked) return [];
+  // #opt-point-labels (entry mode); state-page render forces it on.
+  if (!readOverlay("opt-point-labels")) return [];
   const slice = maybeExcludePartialOutcome(activeOutcomeSlice());
   if (!slice) return [];
   const out = [];
@@ -1325,15 +1572,11 @@ function buildTwoPanelLayout() {
 
 // ----------------------- chart mode dispatch -----------------------
 function recompute() {
-  const mode = activeChartMode();
-  const entry = activeEntry();
+  const mode = activeChartMode();  // "two_panel" or "line"
   let traces, layout;
   const config = { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] };
 
-  if (mode === "stacked" && entry.outcome_data_by_filter) {
-    traces = buildBarTraces();
-    layout = buildBarLayout();
-  } else if (mode === "two_panel" && entry.outcome_data_by_filter) {
+  if (mode === "two_panel") {
     traces = buildBarTraces({ xaxis: "x", yaxis: "y", showLegend: true })
        .concat(buildRateTraces({ xaxis: "x2", yaxis: "y2" }));
     layout = buildTwoPanelLayout();
@@ -1344,49 +1587,317 @@ function recompute() {
   Plotly.react("plot", traces, layout, config);
 }
 
-// ----------------------- chart-mode toggle (sidebar) -----------------------
+// ----------------------- per-entry control visibility -----------------------
 function syncChartModeToggle() {
+  // Function name is historical — there's no longer a chart-mode toggle.
+  // It now just hides/shows controls in the sidebar based on plot_type and
+  // entry features.
   const entry = activeEntry();
-  const sub = entryState(entry.id);
-  const row = document.getElementById("row-chart-mode");
-  if (!entry.outcome_data_by_filter) {
-    // No outcome buckets — only line mode is possible. Hide the toggle row.
-    row.style.display = "none";
-    sub.chart_mode = "line";
-  } else {
-    row.style.display = "";
-    if (!sub.chart_mode) sub.chart_mode = entry.default_chart_mode || "two_panel";
-    for (const r of document.querySelectorAll("input[name='chartmode']")) {
-      r.checked = (r.value === sub.chart_mode);
-    }
-  }
-  // Per-year-label toggle is only meaningful in stacked / two_panel modes
-  // that show the rate line.
+  const mode = activeChartMode();  // "two_panel" or "line"
+  // Per-year rate labels only apply to two-panel rate plots.
   const ptLbl = document.getElementById("lbl-point-labels");
-  if (ptLbl) {
-    ptLbl.style.display = (entry.outcome_data_by_filter && (sub.chart_mode === "two_panel"))
-      ? "" : "none";
-  }
-  // Hide line-chart-only sidebar bits when in a bar mode.
-  const inLineMode = (sub.chart_mode || "line") === "line";
+  if (ptLbl) ptLbl.style.display = (mode === "two_panel") ? "" : "none";
+  // Per-series / cross-series / metric / y-axis controls only apply to
+  // line-chart entries.
+  const inLineMode = (mode === "line");
   const ps = document.getElementById("row-per-series");
   const cs = document.getElementById("row-cross-series");
+  // Per-series overlays are usable on any line chart (single or multi series).
   if (ps) ps.style.display = inLineMode ? "" : "none";
-  if (cs) cs.style.display = inLineMode ? "" : "none";
+  // Cross-series stats only mean something with multiple series; hide for
+  // entries that don't have a group_field at all.
+  if (cs) cs.style.display = (inLineMode && !!entry.group_field) ? "" : "none";
+  // Y-axis Linear/Log toggle only renders cleanly for line charts.
+  const ya = document.getElementById("row-yaxis");
+  if (ya) ya.style.display = inLineMode ? "" : "none";
+  // Metric radio is read by buildTraces (line mode) only; bar/two_panel modes
+  // pull values directly from outcome_buckets and ignore the metric. Hide it
+  // there to avoid the no-op-toggle confusion (e.g., MD MIA in two-panel).
+  const mr = document.getElementById("row-metric");
+  if (mr) mr.style.display = inLineMode ? "" : "none";
+  // Exclude-partial-year only does anything when the entry has a partial_year.
+  const ep = document.getElementById("lbl-exclude-partial");
+  if (ep) ep.style.display =
+    (entry.partial_year !== null && entry.partial_year !== undefined) ? "" : "none";
 }
 
-// ----------------------- entry switch -----------------------
-function activateEntry() {
-  syncPickerActive();
-  renderCaveat();
-  renderFilters();
-  syncChartModeToggle();
-  // Reset chart cleanly to avoid stale traces flashing.
-  Plotly.purge("plot");
-  recompute();
+// ----------------------- rate-only layout (state-page split) -----------------------
+function buildRateOnlyLayout() {
+  const entry = activeEntry();
+  return {
+    margin: { l: 70, r: 20, t: 30, b: 50 },
+    xaxis: { title: entry.year_field_label, tickformat: "d" },
+    yaxis: { title: "Against / on-merits", tickformat: ".0%", rangemode: "tozero" },
+    annotations: rateAnnotations("y"),
+    legend: { orientation: "v", x: 1.01, y: 1, xanchor: "left", font: { size: 11 } },
+    hovermode: "closest",
+    plot_bgcolor: "#fff",
+    paper_bgcolor: "#fff",
+    showlegend: true,
+  };
 }
+
+// ----------------------- state-page rendering -----------------------
+function ephemeralSubFor(entry, sliceGroup, isNationwide) {
+  // Build a fresh sub-state for one chart on a state page. Doesn't leak into
+  // state.per_entry — the user's interactive entry-mode state is preserved.
+  const sub = {
+    metric: entry.default_metric,
+    selected: null,
+    filter_value: entry.filter_default || null,
+    chart_mode: entry.default_chart_mode || "line",
+    show_national: false,
+  };
+
+  // Resolve default groups so we have something to render even before user
+  // touches anything.
+  if (entry.group_field) {
+    let dg = entry.default_groups;
+    if (dg && !Array.isArray(dg)) {
+      const k = sub.filter_value === null ? "__no_filter__" : String(sub.filter_value);
+      dg = dg[k] || [];
+    }
+    sub.selected = (dg || []).slice();
+  } else {
+    sub.selected = [];
+  }
+
+  if (sliceGroup) {
+    // Multi-state entry sliced to one state code: show that state's series only.
+    sub.selected = [sliceGroup];
+    sub.show_national = false;
+  } else if (isNationwide) {
+    if (entry.id === "naic_idrr") {
+      // National total line only — no per-state clutter.
+      sub.selected = [];
+      sub.show_national = true;
+    } else if (entry.id === "fjc_idb") {
+      // Show all 50+DC, no overlays. Busy but unambiguous.
+      const allGroups = (entry.data_by_filter["__no_filter__"] || {}).groups || [];
+      const TERRITORIES = new Set(["PR", "VI", "GU", "MP"]);
+      sub.selected = allGroups.filter(g => !TERRITORIES.has(g));
+    }
+  }
+  return sub;
+}
+
+function renderWithOverride(entry, sub, overlays, fn) {
+  const filterValue = sub.filter_value === undefined ? null : sub.filter_value;
+  RENDER_OVERRIDE = { entry, sub, filter_value: filterValue, overlays };
+  try { return fn(); } finally { RENDER_OVERRIDE = null; }
+}
+
+// Default overlay flags for state-page renders: keep things uncluttered.
+// Partial-year exclusion ON; per-series and cross-series overlays OFF;
+// per-year rate labels ON for readability.
+const STATE_PAGE_DEFAULT_OVERLAYS = {
+  "opt-exclude-partial": true,
+  "opt-point-labels":    true,
+  "ovl-avg":   false,
+  "ovl-ma3":   false,
+  "ovl-ma5":   false,
+  "ovl-mean":  false,
+  "ovl-sum":   false,
+  "ovl-median": false,
+};
+
+function statePageOverlays(entryId, isNationwide) {
+  const o = Object.assign({}, STATE_PAGE_DEFAULT_OVERLAYS);
+  if (isNationwide && entryId === "fjc_idb") {
+    // Show a sum line over all 50+DC for the federal nationwide view.
+    o["ovl-sum"] = true;
+  }
+  return o;
+}
+
+function renderLineChartInto(containerId, entry, sub, overlays) {
+  renderWithOverride(entry, sub, overlays, () => {
+    const traces = buildTraces();
+    const layout = buildLayout();
+    Plotly.newPlot(containerId, traces, layout,
+      { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] });
+  });
+}
+
+function renderOutcomeStackedInto(containerId, entry, sub, overlays) {
+  renderWithOverride(entry, sub, overlays, () => {
+    const traces = buildBarTraces();
+    const layout = buildBarLayout();
+    Plotly.newPlot(containerId, traces, layout,
+      { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] });
+  });
+}
+
+function renderOutcomeRateInto(containerId, entry, sub, overlays) {
+  renderWithOverride(entry, sub, overlays, () => {
+    const traces = buildRateTraces();
+    const layout = buildRateOnlyLayout();
+    Plotly.newPlot(containerId, traces, layout,
+      { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] });
+  });
+}
+
+const CAVEAT_TAG_LABELS = {
+  "regulator_finding": "Regulator finding",
+  "regulator_complaint_index": "Regulator complaint index",
+  "plaintiff_allegation": "Allegation",
+  "federal_lawsuit": "Federal lawsuit",
+};
+
+function renderStatePage(stateCode) {
+  const root = document.getElementById("state-page");
+  root.innerHTML = "";
+  const specs = stateCode === "Nationwide"
+    ? PAYLOAD.nationwide_index
+    : (PAYLOAD.state_index[stateCode] || []);
+
+  // Page title.
+  const title = document.createElement("h2");
+  title.className = "section-heading";
+  title.style.fontSize = "16px";
+  title.style.borderBottomWidth = "2px";
+  title.textContent = stateCode === "Nationwide"
+    ? "Nationwide — federal lawsuits & NAIC totals"
+    : `${stateCode} — all available plots`;
+  root.appendChild(title);
+
+  if (!specs.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = `No data available for ${stateCode}.`;
+    root.appendChild(empty);
+    return;
+  }
+
+  const sections = [
+    {key: "complaints_with_outcomes", label: "Complaints with outcomes"},
+    {key: "complaint_volume",         label: "Complaint volume"},
+    {key: "lawsuit_volume",           label: "Lawsuit volume"},
+  ];
+
+  let chartIdx = 0;
+  const isNationwide = (stateCode === "Nationwide");
+  for (const sect of sections) {
+    const sectSpecs = specs.filter(s => s.plot_type === sect.key);
+    if (!sectSpecs.length) continue;
+
+    const h = document.createElement("h3");
+    h.className = "section-heading";
+    h.textContent = sect.label;
+    root.appendChild(h);
+
+    for (const spec of sectSpecs) {
+      const entry = PAYLOAD.entries.find(e => e.id === spec.entry_id);
+      if (!entry) continue;
+      const sub = ephemeralSubFor(entry, spec.slice_group, isNationwide);
+
+      // Per-chart heading.
+      const hdr = document.createElement("div");
+      hdr.className = "chart-heading";
+      const sliceSuffix = spec.slice_group ? ` — ${spec.slice_group}` : "";
+      hdr.textContent = entry.name + sliceSuffix;
+      root.appendChild(hdr);
+
+      // Per-chart caveat banner.
+      const cav = document.createElement("div");
+      cav.className = "caveat " + entry.category;
+      const tag = CAVEAT_TAG_LABELS[entry.category] || entry.category;
+      cav.innerHTML = `<span class="caveat-tag">${escapeHtml(tag)}</span>${escapeHtml(entry.caveat_short)}`;
+      root.appendChild(cav);
+
+      const overlays = statePageOverlays(entry.id, isNationwide);
+
+      const isOutcome = !!entry.outcome_data_by_filter
+                     && spec.plot_type === "complaints_with_outcomes";
+      if (isOutcome) {
+        // 1) stacked outcome counts
+        const id1 = `sp-chart-${chartIdx++}`;
+        const d1 = document.createElement("div");
+        d1.className = "state-plot";
+        d1.id = id1;
+        root.appendChild(d1);
+        renderOutcomeStackedInto(id1, entry, sub, overlays);
+
+        // 2) against / on-merits rate line — own subtitle + own plot
+        const sub2 = document.createElement("div");
+        sub2.className = "subchart-label";
+        sub2.textContent = "Against-insurer rate (against / on-merits)";
+        root.appendChild(sub2);
+        const id2 = `sp-chart-${chartIdx++}`;
+        const d2 = document.createElement("div");
+        d2.className = "state-plot short";
+        d2.id = id2;
+        root.appendChild(d2);
+        renderOutcomeRateInto(id2, entry, sub, overlays);
+      } else {
+        const id = `sp-chart-${chartIdx++}`;
+        const d = document.createElement("div");
+        d.className = "state-plot";
+        d.id = id;
+        root.appendChild(d);
+        renderLineChartInto(id, entry, sub, overlays);
+      }
+    }
+  }
+}
+
+// ----------------------- view dispatch -----------------------
+function applyEntryModeUI() {
+  document.getElementById("plot").classList.remove("hidden");
+  document.getElementById("state-page").classList.add("hidden");
+  document.getElementById("state-page").innerHTML = "";
+  document.getElementById("caveat").style.display = "";
+  document.getElementById("meta").style.display = "";
+  // Sidebar control panels visible in entry mode.
+  for (const id of ["filters-heading", "filters", "display-heading", "display-controls"]) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "";
+  }
+}
+
+function applyStateModeUI() {
+  document.getElementById("plot").classList.add("hidden");
+  document.getElementById("state-page").classList.remove("hidden");
+  document.getElementById("caveat").style.display = "none";
+  document.getElementById("meta").style.display = "none";
+  // Hide entry-mode-only sidebar panels in state mode (state pages render
+  // with sensible defaults; per-chart filters would be confusing).
+  for (const id of ["filters-heading", "filters", "display-heading", "display-controls"]) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  }
+  Plotly.purge("plot");
+}
+
+function activateView() {
+  syncPickerActive();
+  if (state.view_mode === "state") {
+    applyStateModeUI();
+    renderStatePage(state.active_state_code);
+  } else {
+    applyEntryModeUI();
+    renderCaveat();
+    renderFilters();
+    syncChartModeToggle();
+    Plotly.purge("plot");
+    recompute();
+  }
+}
+
+// Back-compat alias for any straggler caller.
+function activateEntry() { state.view_mode = "entry"; activateView(); }
 
 // ----------------------- init -----------------------
+function onGlobalToggle() {
+  // Re-render either the entry-mode chart or the entire state page in
+  // response to a sidebar control toggle.
+  if (state.view_mode === "state") {
+    renderStatePage(state.active_state_code);
+  } else {
+    recompute();
+  }
+}
+
 function init() {
   document.getElementById("hdr-build").textContent = PAYLOAD.build_info.built_at;
   renderPicker();
@@ -1395,24 +1906,12 @@ function init() {
     "ovl-mean", "ovl-sum", "ovl-median", "opt-point-labels",
   ]) {
     const el = document.getElementById(id);
-    if (el) el.addEventListener("change", recompute);
+    if (el) el.addEventListener("change", onGlobalToggle);
   }
   for (const r of document.querySelectorAll("input[name='yaxis']")) {
-    r.addEventListener("change", recompute);
+    r.addEventListener("change", onGlobalToggle);
   }
-  for (const r of document.querySelectorAll("input[name='chartmode']")) {
-    r.addEventListener("change", () => {
-      const entry = activeEntry();
-      const sub = entryState(entry.id);
-      sub.chart_mode = r.value;
-      // Sidebar rows that depend on the mode (per-series, point labels) need
-      // to refresh visibility.
-      syncChartModeToggle();
-      Plotly.purge("plot");
-      recompute();
-    });
-  }
-  activateEntry();
+  activateView();
 }
 
 document.addEventListener("DOMContentLoaded", init);
@@ -1438,10 +1937,20 @@ def main() -> int:
             len(d["groups"]) for d in e["data_by_filter"].values()
         )
         print(
-            f"    {e['id']:24}  category={e['category']:22}  "
+            f"    {e['id']:24}  plot_type={e['plot_type']:24}  "
+            f"category={e['category']:22}  "
             f"years={e['years'][0]}-{e['years'][-1]}  "
             f"groups={ngroups_total}  filters={nfilters or '-'}"
         )
+    print(f"\n  State index: {payload['build_info']['n_states']} states")
+    for st in sorted(payload["state_index"].keys()):
+        specs = payload["state_index"][st]
+        ids = ", ".join(
+            (s["entry_id"] + ("(sliced)" if s["slice_group"] else ""))
+            for s in specs
+        )
+        print(f"    {st}: {ids}")
+    print(f"  Nationwide: {[s['entry_id'] for s in payload['nationwide_index']]}")
     return 0
 
 
