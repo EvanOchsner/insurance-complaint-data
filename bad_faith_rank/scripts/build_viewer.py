@@ -12,6 +12,7 @@ OUT = REPO / "bad_faith_rank" / "index.html"
 
 states = json.load(open(DATA / "states_with_clusters.json"))
 factors = json.load(open(DATA / "factors.json"))
+state_paths = json.load(open(DATA / "us_state_paths.json"))
 
 HTML = """<!DOCTYPE html>
 <html lang="en">
@@ -104,7 +105,6 @@ HTML = """<!DOCTYPE html>
   details summary { cursor: pointer; font-size: 12px; color: var(--accent); }
   .meta-block { font-size: 11px; color: var(--muted); padding: 8px; background: var(--bg); border-radius: 4px; margin-bottom: 10px; line-height: 1.45; }
   .meta-block code { background: white; padding: 1px 4px; border-radius: 2px; }
-  .meta-block.preset-explainer { background: #f3f7fb; border: 1px solid #d8e3ee; }
 
   .preset-btn { font-size: 11px; padding: 3px 7px; border: 1px solid var(--border); background: white; border-radius: 3px; cursor: pointer; margin: 2px 2px 2px 0; }
   .preset-btn:hover { background: var(--bg); }
@@ -127,6 +127,21 @@ HTML = """<!DOCTYPE html>
 
   .factor-cat { font-size: 10px; color: var(--muted); text-transform: uppercase; margin: 12px 0 4px; letter-spacing: 0.05em; font-weight: 600; }
   .factor-cat:first-of-type { margin-top: 6px; }
+
+  /* US map */
+  .map-wrap { position: relative; margin: 6px 0 14px; }
+  svg#us-map { width: 100%; height: auto; display: block; background: linear-gradient(180deg,#fbfcfd 0%,#f4f7fa 100%); border: 1px solid var(--border); border-radius: 6px; }
+  svg#us-map .state-path { stroke: #fff; stroke-width: 0.75; stroke-linejoin: round; cursor: pointer; transition: filter 0.08s, stroke-width 0.08s; }
+  svg#us-map .state-path:hover { stroke: #222; stroke-width: 1.4; filter: brightness(1.06); }
+  svg#us-map .state-path.selected { stroke: #111; stroke-width: 2.2; filter: drop-shadow(0 0 3px rgba(31,78,121,0.45)); }
+  svg#us-map .dc-inset rect { stroke: #fff; stroke-width: 1; cursor: pointer; transition: filter 0.08s, stroke-width 0.08s; }
+  svg#us-map .dc-inset:hover rect { stroke: #222; stroke-width: 1.6; filter: brightness(1.06); }
+  svg#us-map .dc-inset.selected rect { stroke: #111; stroke-width: 2.4; filter: drop-shadow(0 0 3px rgba(31,78,121,0.45)); }
+  svg#us-map .dc-inset text { font-size: 11px; font-weight: 700; fill: #fff; text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: rgba(0,0,0,0.35); stroke-width: 0.6; }
+  svg#us-map .dc-leader { stroke: #888; stroke-width: 0.6; stroke-dasharray: 2 2; fill: none; }
+  .map-tooltip { position: fixed; pointer-events: none; background: #222; color: #fff; padding: 5px 8px; border-radius: 4px; font-size: 11px; line-height: 1.35; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.18); opacity: 0; transition: opacity 0.08s; z-index: 50; }
+  .map-tooltip b { color: #fff; }
+  .map-tooltip.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -145,8 +160,6 @@ HTML = """<!DOCTYPE html>
     <button class="preset-btn" data-preset="uniform">Uniform</button>
     <button class="preset-btn" data-preset="custom">Custom</button>
   </div>
-
-  <div class="meta-block preset-explainer" id="preset-explainer"></div>
 
   <div class="tuning-row">
     <button id="copy-tuning-btn" title="Copy current weights and any level overrides as JSON to your clipboard">Copy tuning</button>
@@ -182,11 +195,13 @@ HTML = """<!DOCTYPE html>
 <main class="main">
   <header class="title">
     <h1 id="rank-title">Default-weighted ranking</h1>
-    <div class="sub" id="rank-sub">
-      Strength of state-level bad faith protection for individual P&amp;C insureds. <b>Not authoritative</b> — a starting point.
-      Researchers and advocates are invited to re-weight factors and adjust level values to reach their own conclusions.
-    </div>
+    <div class="sub" id="rank-sub"></div>
   </header>
+
+  <div class="map-wrap">
+    <svg id="us-map" viewBox="0 0 975 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="US map of bad faith protection scores"></svg>
+    <div class="map-tooltip" id="map-tooltip"></div>
+  </div>
 
   <div id="cluster-info"></div>
 
@@ -216,6 +231,16 @@ HTML = """<!DOCTYPE html>
 <script>
 const FACTORS = __FACTORS_JSON__;
 const DATA = __DATA_JSON__;
+const STATE_PATHS = __STATE_PATHS_JSON__;
+
+// Cluster colors mirror the --c0..--c4 CSS vars so the map and the cluster pills stay consistent.
+const CLUSTER_COLORS = {
+  S0_admin_hybrid: '#6a4c93',
+  S1_multi_tool_statutory: '#1f78b4',
+  S2_statute_constrained: '#33a02c',
+  S3_common_law_tort: '#ff7f00',
+  S4_minimal_protection: '#e31a1c',
+};
 
 // --- preset definitions -------------------------------------------------
 // Weights are floats. The score formula divides by sum(weights), so absolute
@@ -234,7 +259,7 @@ const PRESETS = {
 };
 
 const PRESET_EXPLAINERS = {
-  default:   "A starting-point weighting — frankly a SWAG, not an authoritative ranking. Heavy on doctrinal teeth (statutory PRoA, extra-contractual damages, statutory penalty/multiplier) with modest weight on procedure and recent appellate trend. For demonstration only — anyone is welcome to retune. Save and share your tuning with the <b>Copy tuning</b> button above.",
+  default:   "Strength of state-level bad faith protection for individual P&amp;C insureds. <b>Not authoritative</b> — a starting point. Researchers and advocates are invited to re-weight factors and adjust level values to reach their own conclusions.",
   doctrine:  "Zeros out procedural and environment factors. Ranks states purely on substantive bad-faith doctrine (causes of action, damages, penalties, fee-shifting, liability standard).",
   statutory: "Up-weights statutory PRoA, statutory penalty/multiplier, and attorney-fee shifting. Down-weights common-law-only routes. Surfaces states with sharp, codified remedies.",
   access:    "Up-weights fee shifting, low pre-suit barriers, and administrative-remedy strength. Surfaces states where a real claimant can actually reach a remedy without an unreasonable cost barrier.",
@@ -267,10 +292,12 @@ const factorsList = document.getElementById('factors-list');
 const rankingBody = document.getElementById('ranking-body');
 const weightSumEl = document.getElementById('weight-sum');
 const clusterInfo = document.getElementById('cluster-info');
-const presetExplainer = document.getElementById('preset-explainer');
 const rankTitle = document.getElementById('rank-title');
+const rankSub = document.getElementById('rank-sub');
 const sidebarSub = document.getElementById('sidebar-sub');
 const tuningFeedback = document.getElementById('tuning-feedback');
+const mapSvg = document.getElementById('us-map');
+const mapTooltip = document.getElementById('map-tooltip');
 
 // --- helpers ----------------------------------------------------------
 function fmtWeight(w) { return (Math.round(w * 100) / 100).toFixed(2); }
@@ -412,7 +439,7 @@ function setActivePreset(id) {
   document.querySelectorAll('.preset-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.preset === id);
   });
-  presetExplainer.innerHTML = PRESET_EXPLAINERS[id] || '';
+  rankSub.innerHTML = PRESET_EXPLAINERS[id] || '';
   rankTitle.textContent = PRESET_TITLES[id] || 'Ranking';
 }
 
@@ -474,7 +501,102 @@ function rerank() {
 
   prevRanking = Object.fromEntries(ranked.map(s => [s.state, s.rank]));
 
+  paintMap(ranked);
   if (selectedState) renderDetail(selectedState);
+}
+
+// --- map render -------------------------------------------------------
+const SVG_NS = 'http://www.w3.org/2000/svg';
+// DC inset: a labeled square placed in the bottom-right margin of the SVG, with a
+// dashed leader pointing at DC's true geographic location (~828,267 in the Albers
+// projection).  Real DC is ~3 SVG units wide on the geographic map — too small to
+// click — so the inset is the actual click target.
+const DC_INSET = { x: 870, y: 580, size: 38, geoX: 828, geoY: 268 };
+
+function buildMap() {
+  // Render the 50 states as <path> elements, then a DC inset as a labeled square.
+  const stateLookup = Object.fromEntries(DATA.states.map(s => [s.state, s]));
+
+  // 50 states (skip DC — handled separately as inset).
+  Object.entries(STATE_PATHS).forEach(([code, d]) => {
+    if (code === 'DC') return;
+    const path = document.createElementNS(SVG_NS, 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('class', 'state-path');
+    path.setAttribute('id', 'state-' + code);
+    path.dataset.state = code;
+    path.addEventListener('click', () => selectState(code));
+    attachTooltip(path, code, stateLookup);
+    mapSvg.appendChild(path);
+  });
+
+  // DC inset group (leader line + labeled square).
+  const leader = document.createElementNS(SVG_NS, 'path');
+  leader.setAttribute('class', 'dc-leader');
+  const lx1 = DC_INSET.geoX, ly1 = DC_INSET.geoY;
+  const lx2 = DC_INSET.x, ly2 = DC_INSET.y + DC_INSET.size / 2;
+  leader.setAttribute('d', `M${lx1},${ly1}L${lx2},${ly2}`);
+  mapSvg.appendChild(leader);
+
+  const dcGroup = document.createElementNS(SVG_NS, 'g');
+  dcGroup.setAttribute('class', 'dc-inset');
+  dcGroup.dataset.state = 'DC';
+  dcGroup.setAttribute('id', 'state-DC');
+  const dcRect = document.createElementNS(SVG_NS, 'rect');
+  dcRect.setAttribute('x', DC_INSET.x);
+  dcRect.setAttribute('y', DC_INSET.y);
+  dcRect.setAttribute('width', DC_INSET.size);
+  dcRect.setAttribute('height', DC_INSET.size);
+  dcRect.setAttribute('rx', 4);
+  dcGroup.appendChild(dcRect);
+  const dcLabel = document.createElementNS(SVG_NS, 'text');
+  dcLabel.setAttribute('x', DC_INSET.x + DC_INSET.size / 2);
+  dcLabel.setAttribute('y', DC_INSET.y + DC_INSET.size / 2 + 4);
+  dcLabel.textContent = 'DC';
+  dcGroup.appendChild(dcLabel);
+  dcGroup.addEventListener('click', () => selectState('DC'));
+  attachTooltip(dcGroup, 'DC', stateLookup);
+  mapSvg.appendChild(dcGroup);
+}
+
+function attachTooltip(el, code, stateLookup) {
+  el.addEventListener('mousemove', e => {
+    const s = stateLookup[code];
+    if (!s) return;
+    const score = computeScore(s);
+    const tierBand = DATA.tier_bands.find(b => score >= b.min_score) || DATA.tier_bands[DATA.tier_bands.length-1];
+    const cluster = DATA.structural_clusters.find(c => c.id === s.structural_cluster);
+    const right = colorMode === 'cluster'
+      ? '<b>' + cluster.label + '</b>'
+      : '<b>' + score.toFixed(2) + '</b> · ' + tierBand.label;
+    mapTooltip.innerHTML = '<b>' + s.state_name + '</b> &middot; ' + right;
+    mapTooltip.style.left = (e.clientX + 12) + 'px';
+    mapTooltip.style.top = (e.clientY + 12) + 'px';
+    mapTooltip.classList.add('show');
+  });
+  el.addEventListener('mouseleave', () => {
+    mapTooltip.classList.remove('show');
+  });
+}
+
+function fillForState(s, score) {
+  if (colorMode === 'cluster') return CLUSTER_COLORS[s.structural_cluster] || '#999';
+  const tierBand = DATA.tier_bands.find(b => score >= b.min_score) || DATA.tier_bands[DATA.tier_bands.length-1];
+  return tierBand.color;
+}
+
+function paintMap(ranked) {
+  const list = ranked || DATA.states.map(s => ({...s, computed_score: computeScore(s)}));
+  list.forEach(s => {
+    const color = fillForState(s, s.computed_score);
+    const el = document.getElementById('state-' + s.state);
+    if (!el) return;
+    if (s.state === 'DC') {
+      el.querySelector('rect').setAttribute('fill', color);
+    } else {
+      el.setAttribute('fill', color);
+    }
+  });
 }
 
 // --- detail render ----------------------------------------------------
@@ -482,6 +604,9 @@ function selectState(code) {
   selectedState = code;
   document.querySelectorAll('table.ranking tr').forEach(tr => {
     tr.classList.toggle('active', tr.dataset.state === code);
+  });
+  mapSvg.querySelectorAll('.state-path, .dc-inset').forEach(el => {
+    el.classList.toggle('selected', el.dataset.state === code);
   });
   renderDetail(code);
 }
@@ -540,6 +665,7 @@ document.querySelectorAll('.color-btn').forEach(btn => {
       });
       clusterInfo.innerHTML = html;
     }
+    paintMap();
   });
 });
 
@@ -638,6 +764,7 @@ document.getElementById('apply-tuning-btn').addEventListener('click', () => {
 sidebarSub.textContent = DATA.states.length + ' jurisdictions · live re-rank';
 setActivePreset('default');
 buildFactorsList();
+buildMap();
 document.querySelector('.color-btn.active').click();
 rerank();
 selectState(DATA.states[0].state);
@@ -648,5 +775,6 @@ selectState(DATA.states[0].state);
 
 html = HTML.replace("__FACTORS_JSON__", json.dumps(factors))
 html = html.replace("__DATA_JSON__", json.dumps(states))
+html = html.replace("__STATE_PATHS_JSON__", json.dumps(state_paths))
 OUT.write_text(html)
 print(f"wrote {OUT} ({len(html):,} bytes)")
