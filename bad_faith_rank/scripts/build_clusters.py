@@ -84,14 +84,30 @@ def main():
         data = json.load(fh)
 
     factors = json.load(open(DATA / "factors.json"))
+    factor_by_id = {f["id"]: f for f in factors}
     factor_ids = [f["id"] for f in factors]
     default_weights = {f["id"]: f["default_weight"] for f in factors}
 
-    # Compute default-weight score for each state, assign tier and cluster
+    def level_value(scores, fid):
+        f = factor_by_id[fid]
+        idx = scores[fid].get("level")
+        if idx is None:
+            # legacy fallback: snap raw score to nearest level value
+            raw = scores[fid]["score"]
+            best_idx, best_d = 0, abs(raw - f["levels"][0]["value"])
+            for i, lvl in enumerate(f["levels"][1:], start=1):
+                d = abs(raw - lvl["value"])
+                if d < best_d:
+                    best_d, best_idx = d, i
+            idx = best_idx
+        return f["levels"][idx]["value"]
+
+    # Compute default-weight score for each state, assign tier and cluster.
+    # Uses level-bucketed values (matching the viewer); cluster predicates still use raw scores.
     out_states = []
     for entry in data["states"]:
         scores = entry["scores"]
-        num = sum(scores[fid]["score"] * default_weights[fid] for fid in factor_ids)
+        num = sum(level_value(scores, fid) * default_weights[fid] for fid in factor_ids)
         den = sum(default_weights[fid] for fid in factor_ids)
         weighted = num / den if den > 0 else 0.0
 

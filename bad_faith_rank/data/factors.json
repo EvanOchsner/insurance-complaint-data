@@ -2,78 +2,329 @@
   {
     "id": "f1a_first_party_cause",
     "label": "First-party cause of action",
-    "default_weight": 8,
+    "default_weight": 0.08,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "None recognized",
+        "value": 0.0,
+        "explainer": "No common-law tort or statutory cause of action for first-party bad faith."
+      },
+      {
+        "name": "Narrow / statute-only, no PRoA",
+        "value": 2.5,
+        "explainer": "Limited remedy available only via statute (e.g., IL \u00a7155, NY Bi-Economy) without a freestanding tort PRoA."
+      },
+      {
+        "name": "Tort recognized, significant limits",
+        "value": 5.0,
+        "explainer": "Common-law tort exists but is narrowed by judicial doctrine, scope limits, or higher burden."
+      },
+      {
+        "name": "Tort well-established, broadly available",
+        "value": 7.5,
+        "explainer": "Tort cause of action is firmly recognized for first-party insureds with reasonable scope and damages."
+      },
+      {
+        "name": "Firm + broad damages + lenient standard",
+        "value": 10.0,
+        "explainer": "Tort firmly established with broad damages and lenient liability standard (CA Gruenberg/Egan, MT, AZ Noble)."
+      }
+    ]
   },
   {
     "id": "f1b_third_party_cause",
     "label": "Third-party / duty-to-settle cause of action",
-    "default_weight": 4,
+    "default_weight": 0.04,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "No duty-to-settle cause of action",
+        "value": 0.0,
+        "explainer": "Liability insurer is not exposed to extra-contractual liability for failure to settle within limits."
+      },
+      {
+        "name": "Limited Stowers/Crisci doctrine",
+        "value": 3.3333,
+        "explainer": "A narrow doctrinal route exists but with significant constraints on damages or standard."
+      },
+      {
+        "name": "Standard duty-to-settle doctrine",
+        "value": 6.6667,
+        "explainer": "Mainstream Stowers/Crisci-line cause of action; full excess judgment generally recoverable."
+      },
+      {
+        "name": "Strong duty-to-settle, broad damages",
+        "value": 10.0,
+        "explainer": "Robust doctrine with low burden, broad damages, and clear plaintiff path (CA Crisci, TX Stowers)."
+      }
+    ]
   },
   {
     "id": "f2_statutory_proa",
     "label": "Statutory private right of action",
-    "default_weight": 14,
+    "default_weight": 0.14,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "No statutory PRoA",
+        "value": 0.0,
+        "explainer": "Statute is regulatory-only; no private right of action under it (CA post-Moradi-Shalal, OR, MN)."
+      },
+      {
+        "name": "Limited PRoA, narrow scope",
+        "value": 2.5,
+        "explainer": "PRoA exists but tied to specific narrow conduct, or only first-party OR third-party (not both)."
+      },
+      {
+        "name": "Broad PRoA, arduous hurdles",
+        "value": 5.0,
+        "explainer": "PRoA reaches both first- and third-party but with significant procedural hurdles."
+      },
+      {
+        "name": "Broad PRoA, modest hurdles",
+        "value": 7.5,
+        "explainer": "Broadly available across both with modest cure/notice (e.g., FL \u00a7624.155 60-day CRN)."
+      },
+      {
+        "name": "Broad + low hurdles + mandatory remedies",
+        "value": 10.0,
+        "explainer": "Broadly available, low hurdles, mandatory remedies (WA IFCA, TX Ch. 541/542)."
+      }
+    ]
   },
   {
     "id": "f3_liability_standard",
     "label": "Liability standard",
-    "default_weight": 8,
+    "default_weight": 0.08,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "Actual malice / clear-and-convincing",
+        "value": 0.0,
+        "explainer": "Plaintiff must prove subjective bad intent, often by clear-and-convincing evidence."
+      },
+      {
+        "name": "Reckless or willful",
+        "value": 3.3333,
+        "explainer": "Standard requires reckless disregard or knowing wrongdoing; the practical burden is high."
+      },
+      {
+        "name": "No reasonable basis",
+        "value": 6.6667,
+        "explainer": "Plaintiff need only show insurer lacked a reasonable basis for the denial or underpayment."
+      },
+      {
+        "name": "Negligence-equivalent or strict",
+        "value": 10.0,
+        "explainer": "Negligence-like or strict-liability-like standard for certain statutory unfair claim practices."
+      }
+    ]
   },
   {
     "id": "f4_extracontractual_damages",
     "label": "Extra-contractual damages",
-    "default_weight": 12,
+    "default_weight": 0.12,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "Contract damages only",
+        "value": 0.0,
+        "explainer": "No extra-contractual damages; insured limited to policy proceeds and prejudgment interest."
+      },
+      {
+        "name": "Narrow consequentials only",
+        "value": 2.5,
+        "explainer": "Limited consequential damages in narrow circumstances; emotional distress not recoverable."
+      },
+      {
+        "name": "Standard consequentials",
+        "value": 5.0,
+        "explainer": "Consequential and emotional-distress damages available; excess-of-policy capped or unavailable."
+      },
+      {
+        "name": "Full consequentials + excess (third-party)",
+        "value": 7.5,
+        "explainer": "Broad consequential damages and full excess judgment available in third-party context."
+      },
+      {
+        "name": "Broad damages, no cap",
+        "value": 10.0,
+        "explainer": "All categories available with no statutory cap; expansive judicial doctrine."
+      }
+    ]
   },
   {
     "id": "f5_punitive_damages",
     "label": "Punitive damages",
-    "default_weight": 8,
+    "default_weight": 0.08,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "Unavailable",
+        "value": 0.0,
+        "explainer": "Punitive damages categorically unavailable in bad-faith actions."
+      },
+      {
+        "name": "Available, strict / hard caps",
+        "value": 3.3333,
+        "explainer": "Available only on clear-and-convincing 'malice' showing with low statutory cap."
+      },
+      {
+        "name": "Available, moderate caps",
+        "value": 6.6667,
+        "explainer": "Generally available on standard malice/recklessness showing; meaningful but capped (e.g., 3x compensatory)."
+      },
+      {
+        "name": "Broadly available, no cap",
+        "value": 10.0,
+        "explainer": "Available on standard showing with no statutory cap or a very high cap."
+      }
+    ]
   },
   {
     "id": "f6_statutory_penalty",
     "label": "Statutory penalty / multiplier",
-    "default_weight": 12,
+    "default_weight": 0.12,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "None",
+        "value": 0.0,
+        "explainer": "No statutory penalty, multiplier, or premium-interest provision."
+      },
+      {
+        "name": "Modest interest premium",
+        "value": 2.5,
+        "explainer": "Statute adds a modest interest premium on overdue payments."
+      },
+      {
+        "name": "Significant interest or modest %",
+        "value": 5.0,
+        "explainer": "12%+ interest or a modest percent penalty layered on the underlying claim."
+      },
+      {
+        "name": "Multiplier \u22651.5x or large %",
+        "value": 7.5,
+        "explainer": "Statutory multiplier of 1.5x+ or large percent penalty (GA 50%, TN 25%, NM treble via UPA)."
+      },
+      {
+        "name": "Treble or 2\u20133x, low friction",
+        "value": 10.0,
+        "explainer": "Treble damages (WA IFCA) or 2\u20133x multiplier with minimal procedural friction."
+      }
+    ]
   },
   {
     "id": "f7_attorney_fees",
     "label": "Attorney-fee shifting",
-    "default_weight": 10,
+    "default_weight": 0.1,
     "category": "doctrinal",
-    "inverse": false
+    "levels": [
+      {
+        "name": "No fee shifting",
+        "value": 0.0,
+        "explainer": "American rule applies; insureds pay their own fees regardless of outcome."
+      },
+      {
+        "name": "Narrow / discretionary fee shift",
+        "value": 2.5,
+        "explainer": "Fees available only in narrow circumstances or at court discretion; not routinely awarded."
+      },
+      {
+        "name": "Statutory fee shift, conditions apply",
+        "value": 5.0,
+        "explainer": "One-way fee shift to prevailing insured under specified statutory conditions."
+      },
+      {
+        "name": "Broad one-way fee shift",
+        "value": 7.5,
+        "explainer": "Fees routinely available to prevailing insured under bad-faith statute or common-law doctrine."
+      },
+      {
+        "name": "Mandatory fees + costs + multipliers",
+        "value": 10.0,
+        "explainer": "Mandatory fee award plus expert costs; some jurisdictions allow lodestar multipliers."
+      }
+    ]
   },
   {
     "id": "f8_pre_suit_barriers",
-    "label": "Pre-suit barriers (inverse: more barriers = worse)",
-    "default_weight": 6,
+    "label": "Pre-suit barriers",
+    "default_weight": 0.06,
     "category": "procedural",
-    "inverse": true
+    "levels": [
+      {
+        "name": "Heavy mandatory exhaustion + cure",
+        "value": 0.0,
+        "explainer": "Mandatory long cure period plus dual exhaustion plus strict notice (e.g., MD admin-channel hybrid)."
+      },
+      {
+        "name": "Mandatory cure period",
+        "value": 3.3333,
+        "explainer": "Mandatory 30\u201360 day cure period with formal notice/demand requirement."
+      },
+      {
+        "name": "Light notice, no cure",
+        "value": 6.6667,
+        "explainer": "Some pre-suit notice required but no mandatory cure window."
+      },
+      {
+        "name": "No pre-suit barrier",
+        "value": 10.0,
+        "explainer": "Insured may file immediately upon denial; no notice or cure required."
+      }
+    ]
   },
   {
     "id": "f9_admin_remedy",
     "label": "Administrative remedy strength",
-    "default_weight": 8,
+    "default_weight": 0.08,
     "category": "procedural",
-    "inverse": false
+    "levels": [
+      {
+        "name": "Minimal admin role",
+        "value": 0.0,
+        "explainer": "DOI does not investigate individual claim disputes or take substantive action on them."
+      },
+      {
+        "name": "Logging only, no findings",
+        "value": 3.3333,
+        "explainer": "DOI tracks complaints but does not issue substantive findings or take enforcement action on individual claims."
+      },
+      {
+        "name": "Substantive findings + fining authority",
+        "value": 6.6667,
+        "explainer": "DOI investigates claims, issues findings, and has meaningful fining authority over insurer conduct."
+      },
+      {
+        "name": "Quasi-adjudicatory channel",
+        "value": 10.0,
+        "explainer": "DOI provides a structured pre-suit or parallel quasi-adjudication channel with weighted findings (e.g., MD \u00a727-1001)."
+      }
+    ]
   },
   {
     "id": "f10_recent_appellate_trend",
     "label": "Recent appellate trend",
-    "default_weight": 10,
+    "default_weight": 0.1,
     "category": "environment",
-    "inverse": false
+    "levels": [
+      {
+        "name": "Sustained narrowing",
+        "value": 0.0,
+        "explainer": "Recent legislation or appellate decisions have narrowed insured-side remedies (FL SB 2A, LA Act 3, TX HB 1774)."
+      },
+      {
+        "name": "Stable / mixed",
+        "value": 5.0,
+        "explainer": "No clear directional trend over the last ~10 years; doctrinal status quo."
+      },
+      {
+        "name": "Sustained broadening",
+        "value": 10.0,
+        "explainer": "Recent legislation or appellate decisions have expanded insured-side remedies."
+      }
+    ]
   }
 ]
