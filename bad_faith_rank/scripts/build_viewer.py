@@ -1,4 +1,4 @@
-"""Build single-file HTML viewer with embedded data and weight sliders.
+"""Build single-file HTML viewer with embedded data, weight sliders, level editors, and tuning copy/load.
 
 Reads bad_faith_rank/data/states_with_clusters.json and factors.json,
 embeds them as JS literals into a self-contained index.html.
@@ -18,7 +18,7 @@ HTML = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>State Bad-Faith Protection Ranking</title>
+<title>State Bad Faith Protection Rankings</title>
 <style>
   :root {
     --fg: #222;
@@ -31,7 +31,7 @@ HTML = """<!DOCTYPE html>
     --c0: #6a4c93; --c1: #1f78b4; --c2: #33a02c; --c3: #ff7f00; --c4: #e31a1c;
   }
   html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--fg); background: #fff; font-size: 14px; }
-  .layout { display: grid; grid-template-columns: 320px 1fr 380px; min-height: 100vh; }
+  .layout { display: grid; grid-template-columns: 340px 1fr 380px; min-height: 100vh; }
   aside.sidebar { background: var(--bg); border-right: 1px solid var(--border); padding: 14px; overflow-y: auto; max-height: 100vh; }
   aside.detail { background: var(--bg); border-left: 1px solid var(--border); padding: 14px; overflow-y: auto; max-height: 100vh; }
   main.main { padding: 16px 22px 32px; overflow-y: auto; max-height: 100vh; }
@@ -45,12 +45,28 @@ HTML = """<!DOCTYPE html>
   .controls button { padding: 5px 10px; border: 1px solid var(--border); background: white; border-radius: 4px; cursor: pointer; font-size: 12px; }
   .controls button:hover { background: var(--bg); }
   .controls button.active { background: var(--accent); color: white; border-color: var(--accent); }
-  .slider-row { display: grid; grid-template-columns: 1fr 36px; gap: 6px; align-items: center; margin: 4px 0; }
-  .slider-row label { font-size: 12px; color: var(--fg); }
-  .slider-row .factor-label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 2px; }
-  .slider-row input[type=range] { width: 100%; }
-  .slider-row .weight-val { font-size: 12px; font-weight: 600; text-align: right; min-width: 30px; color: var(--accent); }
-  .slider-row .weight-val.zero { color: var(--muted); font-weight: 400; }
+
+  .factor-block { border-top: 1px solid var(--border); padding: 6px 0 4px; }
+  .factor-block:first-of-type { border-top: none; }
+  .factor-summary { display: grid; grid-template-columns: 16px 1fr 70px 40px; gap: 6px; align-items: center; cursor: pointer; }
+  .factor-summary .chev { color: var(--muted); font-size: 10px; transition: transform 0.1s; }
+  .factor-block.open .factor-summary .chev { transform: rotate(90deg); }
+  .factor-summary .factor-label { font-size: 12px; color: var(--fg); line-height: 1.25; }
+  .factor-summary input[type=range] { width: 100%; margin: 0; }
+  .factor-summary .weight-val { font-size: 12px; font-weight: 600; text-align: right; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .factor-summary .weight-val.zero { color: var(--muted); font-weight: 400; }
+  .factor-levels { display: none; padding: 6px 0 8px 16px; }
+  .factor-block.open .factor-levels { display: block; }
+  .level-row { display: grid; grid-template-columns: 60px 1fr; gap: 8px; align-items: start; padding: 4px 6px; border-radius: 3px; }
+  .level-row + .level-row { border-top: 1px dashed #eee; }
+  .level-row.touched { background: #fff7d6; }
+  .level-row .lv-input { width: 56px; padding: 2px 4px; font-size: 11px; font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 3px; text-align: right; }
+  .level-row .lv-name { font-size: 11px; font-weight: 600; color: var(--fg); }
+  .level-row .lv-explain { font-size: 11px; color: var(--muted); margin-top: 1px; line-height: 1.35; }
+  .level-row .lv-states { font-size: 10px; color: #888; margin-top: 2px; font-style: italic; }
+  .level-reset { font-size: 10px; color: var(--accent); cursor: pointer; margin-top: 4px; display: inline-block; }
+  .level-reset:hover { text-decoration: underline; }
+
   .weight-sum { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
   table.ranking { border-collapse: collapse; width: 100%; font-size: 13px; }
@@ -77,7 +93,7 @@ HTML = """<!DOCTYPE html>
 
   .factor-bar { background: #f0f0f0; border-radius: 3px; height: 10px; position: relative; margin: 2px 0; }
   .factor-bar .fill { background: var(--accent); height: 100%; border-radius: 3px; }
-  .factor-row { display: grid; grid-template-columns: 1fr 22px; gap: 6px; align-items: center; padding: 4px 0; border-bottom: 1px solid #eee; }
+  .factor-row { display: grid; grid-template-columns: 1fr 50px; gap: 6px; align-items: center; padding: 4px 0; border-bottom: 1px solid #eee; }
   .factor-row .lbl { font-size: 11px; color: var(--muted); }
   .factor-row .lbl b { color: var(--fg); font-weight: 600; }
   .factor-row .num { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
@@ -86,11 +102,21 @@ HTML = """<!DOCTYPE html>
 
   details { margin: 6px 0; }
   details summary { cursor: pointer; font-size: 12px; color: var(--accent); }
-  .meta-block { font-size: 11px; color: var(--muted); padding: 8px; background: var(--bg); border-radius: 4px; margin-bottom: 12px; }
+  .meta-block { font-size: 11px; color: var(--muted); padding: 8px; background: var(--bg); border-radius: 4px; margin-bottom: 10px; line-height: 1.45; }
   .meta-block code { background: white; padding: 1px 4px; border-radius: 2px; }
+  .meta-block.preset-explainer { background: #f3f7fb; border: 1px solid #d8e3ee; }
+
   .preset-btn { font-size: 11px; padding: 3px 7px; border: 1px solid var(--border); background: white; border-radius: 3px; cursor: pointer; margin: 2px 2px 2px 0; }
   .preset-btn:hover { background: var(--bg); }
   .preset-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .tuning-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tuning-row button { font-size: 11px; padding: 4px 10px; border: 1px solid var(--accent); background: white; color: var(--accent); border-radius: 3px; cursor: pointer; }
+  .tuning-row button:hover { background: var(--accent); color: white; }
+  .tuning-feedback { font-size: 11px; color: var(--muted); margin-top: 2px; min-height: 14px; }
+  .tuning-feedback.ok { color: #1a9850; }
+  .tuning-feedback.err { color: #d73027; }
+  textarea#tuning-paste { width: 100%; height: 90px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; padding: 6px; box-sizing: border-box; border: 1px solid var(--border); border-radius: 3px; }
 
   .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; margin: 6px 0 12px; }
   .legend .item { display: flex; align-items: center; gap: 4px; }
@@ -99,24 +125,41 @@ HTML = """<!DOCTYPE html>
   #cluster-info { font-size: 11px; color: var(--muted); padding: 6px 8px; background: var(--bg); border-radius: 4px; margin-bottom: 8px; min-height: 40px; }
   #cluster-info b { color: var(--fg); }
 
-  .factor-cat { font-size: 10px; color: var(--muted); text-transform: uppercase; margin-top: 8px; margin-bottom: 2px; letter-spacing: 0.05em; }
+  .factor-cat { font-size: 10px; color: var(--muted); text-transform: uppercase; margin: 12px 0 4px; letter-spacing: 0.05em; font-weight: 600; }
+  .factor-cat:first-of-type { margin-top: 6px; }
 </style>
 </head>
 <body>
 <div class="layout">
 
 <aside class="sidebar">
-  <h1>Bad-faith ranking</h1>
-  <div class="sub" style="font-size:11px; color:var(--muted); margin-bottom:10px;">51 jurisdictions · 11 factors · live re-rank</div>
+  <h1>Bad faith protection ranking</h1>
+  <div class="sub" id="sidebar-sub" style="font-size:11px; color:var(--muted); margin-bottom:10px;"></div>
 
   <h2>Weight presets</h2>
-  <div>
-    <button class="preset-btn active" data-preset="default">Default (v0.3)</button>
+  <div id="preset-buttons">
+    <button class="preset-btn active" data-preset="default">Default</button>
     <button class="preset-btn" data-preset="doctrine">Doctrine-only</button>
     <button class="preset-btn" data-preset="statutory">Statutory teeth</button>
     <button class="preset-btn" data-preset="access">Access / cost</button>
-    <button class="preset-btn" data-preset="zero">Zero all</button>
+    <button class="preset-btn" data-preset="uniform">Uniform</button>
+    <button class="preset-btn" data-preset="custom">Custom</button>
   </div>
+
+  <div class="meta-block preset-explainer" id="preset-explainer"></div>
+
+  <div class="tuning-row">
+    <button id="copy-tuning-btn" title="Copy current weights and any level overrides as JSON to your clipboard">Copy tuning</button>
+    <button id="toggle-load-btn" title="Paste a previously copied tuning JSON to restore it">Load tuning</button>
+  </div>
+  <div class="tuning-feedback" id="tuning-feedback"></div>
+  <details id="tuning-load-panel" style="margin-bottom:10px;">
+    <summary style="font-size:11px;">Paste tuning JSON</summary>
+    <textarea id="tuning-paste" placeholder='{ "preset": "custom", "weights": { ... }, "level_overrides": { ... } }'></textarea>
+    <div style="margin-top:4px;">
+      <button id="apply-tuning-btn" style="font-size:11px; padding:4px 10px; border:1px solid var(--accent); background:white; color:var(--accent); border-radius:3px; cursor:pointer;">Apply</button>
+    </div>
+  </details>
 
   <h2>Color by</h2>
   <div class="controls">
@@ -124,21 +167,25 @@ HTML = """<!DOCTYPE html>
     <button class="color-btn" data-color="cluster">Structural cluster</button>
   </div>
 
-  <h2>Factor weights <span style="font-weight:400;font-size:10px;color:var(--muted);" id="weight-sum">total: 100</span></h2>
-  <div id="sliders"></div>
+  <h2>Factor weights <span style="font-weight:400;font-size:10px;color:var(--muted);" id="weight-sum">total: 1.00</span></h2>
+  <div style="font-size:11px; color:var(--muted); margin-bottom:6px;">Click any factor to view and edit its levels.</div>
+  <div id="factors-list"></div>
 
   <details style="margin-top:14px;">
     <summary>About this rubric</summary>
     <div class="meta-block">
-      Each state is scored 0–10 on 11 factors. Weights default to v0.3 (sum 100). Weighted score = Σ(score × weight) / Σ(weight), normalized to 0–10. Factor 8 (pre-suit barriers) is scored inversely so higher = better for insureds. See <code>METHODOLOGY.md</code> in this folder for the full rubric and citations.
+      Each factor is scored 0–10 along a small set of named levels (with brief explainers). The state ranking is the weighted average of factor scores, normalized to 0–10 — so the absolute size of weights doesn't matter, only their ratios. Re-weight any factor and edit any level value to fit your own framing. See <code>METHODOLOGY.md</code> in this folder for sources and per-state citations.
     </div>
   </details>
 </aside>
 
 <main class="main">
   <header class="title">
-    <h1 id="rank-title">Default-weight ranking</h1>
-    <div class="sub" id="rank-sub">Click any state row to see per-factor breakdown · Drag sliders to re-rank live</div>
+    <h1 id="rank-title">Default-weighted ranking</h1>
+    <div class="sub" id="rank-sub">
+      Strength of state-level bad faith protection for individual P&amp;C insureds. <b>Not authoritative</b> — a starting point.
+      Researchers and advocates are invited to re-weight factors and adjust level values to reach their own conclusions.
+    </div>
   </header>
 
   <div id="cluster-info"></div>
@@ -170,76 +217,224 @@ HTML = """<!DOCTYPE html>
 const FACTORS = __FACTORS_JSON__;
 const DATA = __DATA_JSON__;
 
-// --- presets (weight overrides) ---
+// --- preset definitions -------------------------------------------------
+// Weights are floats. The score formula divides by sum(weights), so absolute
+// magnitude is cosmetic — what matters is the ratio across factors.
 const PRESETS = {
   default: Object.fromEntries(FACTORS.map(f => [f.id, f.default_weight])),
-  // doctrine-only: zeroes f8/f9/f10, redistributes none (just lowers total)
+  // doctrine-only: zero out non-doctrinal factors
   doctrine: Object.fromEntries(FACTORS.map(f => [f.id, f.category === 'doctrinal' ? f.default_weight : 0])),
-  // statutory teeth: weights f2/f6/f7 heavily, downplays common-law factors
-  statutory: { f1a_first_party_cause: 2, f1b_third_party_cause: 1, f2_statutory_proa: 25, f3_liability_standard: 4, f4_extracontractual_damages: 8, f5_punitive_damages: 4, f6_statutory_penalty: 22, f7_attorney_fees: 18, f8_pre_suit_barriers: 6, f9_admin_remedy: 5, f10_recent_appellate_trend: 5 },
-  // access / cost: prioritize fee shifting, pre-suit barriers, admin remedy
-  access: { f1a_first_party_cause: 6, f1b_third_party_cause: 3, f2_statutory_proa: 10, f3_liability_standard: 6, f4_extracontractual_damages: 8, f5_punitive_damages: 4, f6_statutory_penalty: 8, f7_attorney_fees: 22, f8_pre_suit_barriers: 14, f9_admin_remedy: 14, f10_recent_appellate_trend: 5 },
-  zero: Object.fromEntries(FACTORS.map(f => [f.id, 0])),
+  // statutory teeth: up-weight statutory PRoA, statutory penalty, attorney fees
+  statutory: { f1a_first_party_cause: 0.02, f1b_third_party_cause: 0.01, f2_statutory_proa: 0.25, f3_liability_standard: 0.04, f4_extracontractual_damages: 0.08, f5_punitive_damages: 0.04, f6_statutory_penalty: 0.22, f7_attorney_fees: 0.18, f8_pre_suit_barriers: 0.06, f9_admin_remedy: 0.05, f10_recent_appellate_trend: 0.05 },
+  // access / cost: up-weight fee shifting, low pre-suit barriers, admin remedy
+  access: { f1a_first_party_cause: 0.06, f1b_third_party_cause: 0.03, f2_statutory_proa: 0.10, f3_liability_standard: 0.06, f4_extracontractual_damages: 0.08, f5_punitive_damages: 0.04, f6_statutory_penalty: 0.08, f7_attorney_fees: 0.22, f8_pre_suit_barriers: 0.14, f9_admin_remedy: 0.14, f10_recent_appellate_trend: 0.05 },
+  // uniform: every factor weighted equally
+  uniform: Object.fromEntries(FACTORS.map(f => [f.id, 1])),
+  // custom: not a fixed dict — keep current weights when selected; built dynamically below
 };
 
+const PRESET_EXPLAINERS = {
+  default:   "A starting-point weighting — frankly a SWAG, not an authoritative ranking. Heavy on doctrinal teeth (statutory PRoA, extra-contractual damages, statutory penalty/multiplier) with modest weight on procedure and recent appellate trend. For demonstration only — anyone is welcome to retune. Save and share your tuning with the <b>Copy tuning</b> button above.",
+  doctrine:  "Zeros out procedural and environment factors. Ranks states purely on substantive bad-faith doctrine (causes of action, damages, penalties, fee-shifting, liability standard).",
+  statutory: "Up-weights statutory PRoA, statutory penalty/multiplier, and attorney-fee shifting. Down-weights common-law-only routes. Surfaces states with sharp, codified remedies.",
+  access:    "Up-weights fee shifting, low pre-suit barriers, and administrative-remedy strength. Surfaces states where a real claimant can actually reach a remedy without an unreasonable cost barrier.",
+  uniform:   "Every factor weighted equally. Useful as a sanity check against any preset's emphasis.",
+  custom:    "Tune freely. Use the sliders below to set any weighting; click any factor to edit its level values.",
+};
+
+const PRESET_TITLES = {
+  default:   "Default-weighted ranking",
+  doctrine:  "Doctrine-only ranking",
+  statutory: "Statutory-teeth-weighted ranking",
+  access:    "Access / cost-weighted ranking",
+  uniform:   "Uniformly-weighted ranking",
+  custom:    "Custom-weighted ranking",
+};
+
+// --- mutable state -----------------------------------------------------
+let activePreset = 'default';
 let weights = {...PRESETS.default};
+// levelValues[fid] = array of current numeric values, indexed by level idx.
+// Initialized from factor.levels[i].value; user edits override these.
+let levelValues = {};
+FACTORS.forEach(f => { levelValues[f.id] = f.levels.map(l => l.value); });
 let colorMode = 'tier';
 let selectedState = null;
-let prevRanking = {};   // state -> rank, used for delta indicator
+let prevRanking = {};
 
-const sliders = document.getElementById('sliders');
+// --- DOM refs ----------------------------------------------------------
+const factorsList = document.getElementById('factors-list');
 const rankingBody = document.getElementById('ranking-body');
 const weightSumEl = document.getElementById('weight-sum');
 const clusterInfo = document.getElementById('cluster-info');
+const presetExplainer = document.getElementById('preset-explainer');
+const rankTitle = document.getElementById('rank-title');
+const sidebarSub = document.getElementById('sidebar-sub');
+const tuningFeedback = document.getElementById('tuning-feedback');
 
-// --- build sliders, grouped by category ---
-function buildSliders() {
-  sliders.innerHTML = '';
-  const cats = ['doctrinal','procedural','environment'];
-  const catLabel = {doctrinal:'Doctrinal', procedural:'Procedural / Access', environment:'Environment'};
-  cats.forEach(cat => {
-    const header = document.createElement('div');
-    header.className = 'factor-cat';
-    header.textContent = catLabel[cat];
-    sliders.appendChild(header);
-    FACTORS.filter(f => f.category === cat).forEach(f => {
-      const row = document.createElement('div');
-      row.className = 'slider-row';
-      const inv = f.inverse ? ' (inverse)' : '';
-      row.innerHTML =
-        '<div>' +
-          '<span class="factor-label">' + f.label.replace(/ \\(inverse[^)]*\\)/, inv) + '</span>' +
-          '<input type="range" min="0" max="30" step="1" value="' + weights[f.id] + '" data-fid="' + f.id + '">' +
-        '</div>' +
-        '<span class="weight-val' + (weights[f.id] === 0 ? ' zero' : '') + '" id="wv-' + f.id + '">' + weights[f.id] + '</span>';
-      sliders.appendChild(row);
-      row.querySelector('input').addEventListener('input', e => {
-        weights[f.id] = parseInt(e.target.value, 10);
-        const wv = document.getElementById('wv-' + f.id);
-        wv.textContent = weights[f.id];
-        wv.classList.toggle('zero', weights[f.id] === 0);
-        rerank();
-      });
-    });
-  });
+// --- helpers ----------------------------------------------------------
+function fmtWeight(w) { return (Math.round(w * 100) / 100).toFixed(2); }
+function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function levelValue(state, factor) {
+  const idx = state.scores[factor.id].level;
+  return levelValues[factor.id][idx];
 }
 
-// --- compute weighted score ---
+function statesAtLevel(fid, levelIdx) {
+  return DATA.states.filter(s => s.scores[fid].level === levelIdx).map(s => s.state);
+}
+
 function computeScore(state) {
   let num = 0, den = 0;
   FACTORS.forEach(f => {
     const w = weights[f.id] || 0;
     if (w === 0) return;
-    num += state.scores[f.id].score * w;
+    num += levelValue(state, f) * w;
     den += w;
   });
   return den > 0 ? num / den : 0;
 }
 
-// --- render ranking ---
+function totalWeight() {
+  return FACTORS.reduce((sum, f) => sum + (weights[f.id] || 0), 0);
+}
+
+// --- factor list / sliders / level editors ----------------------------
+function buildFactorsList() {
+  factorsList.innerHTML = '';
+  const cats = ['doctrinal','procedural','environment'];
+  const catLabel = {doctrinal:'Doctrinal', procedural:'Procedural / Access', environment:'Environment'};
+  cats.forEach(cat => {
+    const facs = FACTORS.filter(f => f.category === cat);
+    if (!facs.length) return;
+    const header = document.createElement('div');
+    header.className = 'factor-cat';
+    header.textContent = catLabel[cat];
+    factorsList.appendChild(header);
+    facs.forEach(f => factorsList.appendChild(buildFactorBlock(f)));
+  });
+  weightSumEl.textContent = 'total: ' + fmtWeight(totalWeight());
+}
+
+function buildFactorBlock(f) {
+  const block = document.createElement('div');
+  block.className = 'factor-block';
+  block.dataset.fid = f.id;
+
+  const w = weights[f.id] || 0;
+  const summary = document.createElement('div');
+  summary.className = 'factor-summary';
+  summary.innerHTML =
+    '<span class="chev">▶</span>' +
+    '<span class="factor-label">' + escapeHtml(f.label) + '</span>' +
+    '<input type="range" min="0" max="1" step="0.01" value="' + w + '" data-fid="' + f.id + '">' +
+    '<span class="weight-val' + (w === 0 ? ' zero' : '') + '" id="wv-' + f.id + '">' + fmtWeight(w) + '</span>';
+  block.appendChild(summary);
+
+  const levelsDiv = document.createElement('div');
+  levelsDiv.className = 'factor-levels';
+  rebuildLevelsDiv(levelsDiv, f);
+  block.appendChild(levelsDiv);
+
+  // expand/collapse: click anywhere on the summary EXCEPT the slider toggles open state
+  summary.addEventListener('click', (ev) => {
+    if (ev.target.tagName === 'INPUT') return;
+    block.classList.toggle('open');
+  });
+
+  const slider = summary.querySelector('input[type=range]');
+  slider.addEventListener('input', e => {
+    const v = parseFloat(e.target.value);
+    weights[f.id] = v;
+    const wv = document.getElementById('wv-' + f.id);
+    wv.textContent = fmtWeight(v);
+    wv.classList.toggle('zero', v === 0);
+    weightSumEl.textContent = 'total: ' + fmtWeight(totalWeight());
+    setActivePreset('custom');
+    rerank();
+  });
+  // prevent collapse-toggle when interacting with the slider
+  slider.addEventListener('click', e => e.stopPropagation());
+
+  return block;
+}
+
+function rebuildLevelsDiv(div, f) {
+  div.innerHTML = '';
+  f.levels.forEach((lvl, i) => {
+    const row = document.createElement('div');
+    row.className = 'level-row';
+    const cur = levelValues[f.id][i];
+    const touched = cur !== lvl.value;
+    if (touched) row.classList.add('touched');
+    const at = statesAtLevel(f.id, i);
+    const stateLine = at.length
+      ? at.length + ' state' + (at.length === 1 ? '' : 's') + ': ' + at.join(', ')
+      : 'no states currently at this level';
+    row.innerHTML =
+      '<div><input type="number" class="lv-input" min="0" max="10" step="0.1" value="' + cur + '" data-fid="' + f.id + '" data-idx="' + i + '"></div>' +
+      '<div>' +
+        '<div class="lv-name">' + escapeHtml(lvl.name) + '</div>' +
+        '<div class="lv-explain">' + escapeHtml(lvl.explainer) + '</div>' +
+        '<div class="lv-states">' + escapeHtml(stateLine) + '</div>' +
+      '</div>';
+    div.appendChild(row);
+
+    const input = row.querySelector('input.lv-input');
+    input.addEventListener('input', e => {
+      const v = parseFloat(e.target.value);
+      if (Number.isNaN(v)) return;
+      levelValues[f.id][i] = v;
+      row.classList.toggle('touched', v !== lvl.value);
+      setActivePreset('custom');
+      rerank();
+    });
+    input.addEventListener('click', e => e.stopPropagation());
+  });
+
+  // Per-factor reset link
+  const reset = document.createElement('span');
+  reset.className = 'level-reset';
+  reset.textContent = '↺ Reset levels to defaults';
+  reset.addEventListener('click', e => {
+    e.stopPropagation();
+    levelValues[f.id] = f.levels.map(l => l.value);
+    rebuildLevelsDiv(div, f);
+    rerank();
+  });
+  div.appendChild(reset);
+}
+
+// --- preset switching --------------------------------------------------
+function setActivePreset(id) {
+  activePreset = id;
+  document.querySelectorAll('.preset-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.preset === id);
+  });
+  presetExplainer.innerHTML = PRESET_EXPLAINERS[id] || '';
+  rankTitle.textContent = PRESET_TITLES[id] || 'Ranking';
+}
+
+function applyPreset(id) {
+  if (id === 'custom') {
+    setActivePreset('custom');
+    return;
+  }
+  weights = {...PRESETS[id]};
+  setActivePreset(id);
+  // Rebuild factor list to refresh slider values and weight displays
+  buildFactorsList();
+  rerank();
+}
+
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
+});
+
+// --- ranking render ---------------------------------------------------
 function rerank() {
-  const totalWeight = Object.values(weights).reduce((a,b) => a+b, 0);
-  weightSumEl.textContent = 'total: ' + totalWeight;
+  weightSumEl.textContent = 'total: ' + fmtWeight(totalWeight());
 
   const ranked = DATA.states.map(s => ({...s, computed_score: computeScore(s)}));
   ranked.sort((a, b) => b.computed_score - a.computed_score);
@@ -249,7 +444,6 @@ function rerank() {
     s.rank = curRank;
   });
 
-  // build rows
   rankingBody.innerHTML = '';
   ranked.forEach(s => {
     const tr = document.createElement('tr');
@@ -278,13 +472,12 @@ function rerank() {
     rankingBody.appendChild(tr);
   });
 
-  // update prev ranking AFTER rendering
   prevRanking = Object.fromEntries(ranked.map(s => [s.state, s.rank]));
 
   if (selectedState) renderDetail(selectedState);
 }
 
-// --- render per-state detail panel ---
+// --- detail render ----------------------------------------------------
 function selectState(code) {
   selectedState = code;
   document.querySelectorAll('table.ranking tr').forEach(tr => {
@@ -310,14 +503,16 @@ function renderDetail(code) {
   FACTORS.forEach(f => {
     const fs = s.scores[f.id];
     const w = weights[f.id] || 0;
-    const fillPct = (fs.score / 10) * 100;
+    const lvl = f.levels[fs.level];
+    const lvlVal = levelValues[f.id][fs.level];
+    const fillPct = (lvlVal / 10) * 100;
     html +=
       '<div class="factor-row">' +
         '<div>' +
-          '<div class="lbl"><b>' + f.label + '</b> · weight ' + w + '</div>' +
+          '<div class="lbl"><b>' + escapeHtml(f.label) + '</b> · weight ' + fmtWeight(w) + ' · level: ' + escapeHtml(lvl.name) + '</div>' +
           '<div class="factor-bar"><div class="fill" style="width:' + fillPct + '%"></div></div>' +
         '</div>' +
-        '<div class="num">' + fs.score + '</div>' +
+        '<div class="num">' + lvlVal.toFixed(1) + '</div>' +
       '</div>' +
       '<div class="factor-detail">' + escapeHtml(fs.rationale) +
         (fs.cite ? '<div class="cite">' + escapeHtml(fs.cite) + '</div>' : '') +
@@ -326,20 +521,7 @@ function renderDetail(code) {
   document.getElementById('detail-body').innerHTML = html;
 }
 
-function escapeHtml(s) { return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-
-// --- preset buttons ---
-document.querySelectorAll('.preset-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    weights = {...PRESETS[btn.dataset.preset]};
-    buildSliders();
-    rerank();
-  });
-});
-
-// --- color-mode buttons ---
+// --- color mode buttons ----------------------------------------------
 document.querySelectorAll('.color-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
@@ -361,11 +543,104 @@ document.querySelectorAll('.color-btn').forEach(btn => {
   });
 });
 
-// init
-buildSliders();
-document.querySelector('.color-btn.active').click();   // populate cluster-info
+// --- copy / load tuning ----------------------------------------------
+function buildTuningPayload() {
+  const level_overrides = {};
+  FACTORS.forEach(f => {
+    const diffs = {};
+    f.levels.forEach((l, i) => {
+      if (levelValues[f.id][i] !== l.value) diffs[i] = levelValues[f.id][i];
+    });
+    if (Object.keys(diffs).length) level_overrides[f.id] = diffs;
+  });
+  return {
+    preset: activePreset,
+    weights: {...weights},
+    level_overrides,
+  };
+}
+
+function flashFeedback(msg, kind) {
+  tuningFeedback.textContent = msg;
+  tuningFeedback.className = 'tuning-feedback ' + (kind || '');
+  if (kind === 'ok') {
+    setTimeout(() => { tuningFeedback.textContent = ''; tuningFeedback.className = 'tuning-feedback'; }, 2500);
+  }
+}
+
+document.getElementById('copy-tuning-btn').addEventListener('click', async () => {
+  const payload = buildTuningPayload();
+  const text = JSON.stringify(payload, null, 2);
+  try {
+    await navigator.clipboard.writeText(text);
+    flashFeedback('Copied tuning JSON to clipboard.', 'ok');
+  } catch (e) {
+    // Fallback: open a new window so user can copy manually
+    const w = window.open('', '_blank');
+    if (w) {
+      w.document.title = 'Bad faith protection ranking — tuning';
+      w.document.body.innerHTML = '<pre style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;padding:12px;">' + text.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])) + '</pre>';
+      flashFeedback('Clipboard blocked — opened tuning JSON in a new window.', 'ok');
+    } else {
+      flashFeedback('Could not copy or open a window.', 'err');
+    }
+  }
+});
+
+document.getElementById('toggle-load-btn').addEventListener('click', () => {
+  const panel = document.getElementById('tuning-load-panel');
+  panel.open = !panel.open;
+  if (panel.open) document.getElementById('tuning-paste').focus();
+});
+
+document.getElementById('apply-tuning-btn').addEventListener('click', () => {
+  const text = document.getElementById('tuning-paste').value.trim();
+  if (!text) { flashFeedback('Paste tuning JSON first.', 'err'); return; }
+  let payload;
+  try {
+    payload = JSON.parse(text);
+  } catch (e) {
+    flashFeedback('Invalid JSON: ' + e.message, 'err');
+    return;
+  }
+  if (!payload || typeof payload !== 'object') { flashFeedback('Tuning JSON must be an object.', 'err'); return; }
+
+  // Apply weights
+  if (payload.weights && typeof payload.weights === 'object') {
+    FACTORS.forEach(f => {
+      if (typeof payload.weights[f.id] === 'number' && isFinite(payload.weights[f.id])) {
+        weights[f.id] = Math.max(0, Math.min(1, payload.weights[f.id]));
+      }
+    });
+  }
+  // Apply level overrides
+  FACTORS.forEach(f => { levelValues[f.id] = f.levels.map(l => l.value); });
+  if (payload.level_overrides && typeof payload.level_overrides === 'object') {
+    Object.entries(payload.level_overrides).forEach(([fid, diffs]) => {
+      const f = FACTORS.find(x => x.id === fid);
+      if (!f || !diffs || typeof diffs !== 'object') return;
+      Object.entries(diffs).forEach(([idxStr, val]) => {
+        const idx = parseInt(idxStr, 10);
+        if (Number.isInteger(idx) && idx >= 0 && idx < f.levels.length && typeof val === 'number' && isFinite(val)) {
+          levelValues[f.id][idx] = Math.max(0, Math.min(10, val));
+        }
+      });
+    });
+  }
+  const presetId = (payload.preset && PRESET_EXPLAINERS[payload.preset]) ? payload.preset : 'custom';
+  setActivePreset(presetId);
+  buildFactorsList();
+  rerank();
+  flashFeedback('Tuning applied.', 'ok');
+});
+
+// --- init -------------------------------------------------------------
+sidebarSub.textContent = DATA.states.length + ' jurisdictions · live re-rank';
+setActivePreset('default');
+buildFactorsList();
+document.querySelector('.color-btn.active').click();
 rerank();
-selectState(DATA.states[0].state);   // pick first ranked state
+selectState(DATA.states[0].state);
 </script>
 </body>
 </html>

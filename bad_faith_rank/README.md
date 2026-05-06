@@ -1,8 +1,8 @@
-# bad_faith_rank — State Bad-Faith Protection Ranking
+# bad_faith_rank — State Bad Faith Protection Rankings
 
-Composite ranking of all 50 U.S. states + DC by the strength of their insurance bad-faith protections from an insured individual's perspective. Synthesized from the UPH/Feinman *50-State Survey of Bad Faith Laws and Remedies* (Jan. 2025), NAIC MC-55, IADC and Wilson Elser 50-state surveys, the Chartwell Law map, and verified state statutes.
+Composite ranking of all 50 U.S. states + DC by the strength of their insurance bad faith protections from an insured individual's perspective. Synthesized from the UPH/Feinman *50-State Survey of Bad Faith Laws and Remedies* (Jan. 2025), NAIC MC-55, IADC and Wilson Elser 50-state surveys, the Chartwell Law map, and verified state statutes.
 
-The ranking is **explicitly weight-tunable**: 11 enumerated factors, each scored 0–10 per state, combined as a weighted average. The interactive viewer lets a user re-tune any weight live and see the ranking update.
+> ⚠️ **Not authoritative.** The default weighting is a SWAG (scientific wild-ass guess), not a settled finding. The rubric is an explicitly weight-tunable framework: each factor is scored 0–10 along named levels, combined as a weighted average. The interactive viewer lets researchers and advocates re-weight any factor live, edit individual level values, and copy their tuning as JSON to share or reload. v0.4 introduced float weights in [0,1] and per-factor named levels with editable values.
 
 ## Quick start
 
@@ -17,12 +17,12 @@ Or, in this repo's harness, the dev server is already configured: open `index.ht
 
 | File | What |
 |---|---|
-| [`index.html`](index.html) | **Interactive viewer.** Single-file HTML. Three-panel layout: weight sliders + presets + color-mode toggle (left); ranking table with tier and structural-cluster pills (center); per-state factor breakdown with rationales and citations (right). All data embedded — no network or build step. |
-| [`METHODOLOGY.md`](METHODOLOGY.md) | Full rubric: 11 factors, anchored scoring rules, default weights and rationale, source list, score-band tier definitions, structural cluster definitions, limitations. |
-| [`data/states_factor_scores.json`](data/states_factor_scores.json) | Per-state per-factor scores with rationales and citations. **The primary data artifact** — re-usable in other tools. |
-| [`data/factors.json`](data/factors.json) | Factor metadata: id, label, default weight, category. |
+| [`index.html`](index.html) | **Interactive viewer.** Single-file HTML. Three-panel layout: weight sliders + presets + per-factor level editors + tuning copy/load (left); ranking table with tier and structural-cluster pills (center); per-state factor breakdown with rationales and citations (right). All data embedded — no network or build step. |
+| [`METHODOLOGY.md`](METHODOLOGY.md) | Full rubric: factor list, anchored scoring rules, level definitions, default weights, source list, score-band tier definitions, structural cluster definitions, limitations. |
+| [`data/states_factor_scores.json`](data/states_factor_scores.json) | Per-state per-factor scores with level indices, rationales, and citations. **The primary data artifact** — re-usable in other tools. |
+| [`data/factors.json`](data/factors.json) | Factor metadata: id, label, default float weight in [0,1], category, levels (with name, value, explainer). |
 | [`data/states_with_clusters.json`](data/states_with_clusters.json) | Enriched per-state data with computed default score, tier, and structural cluster. Embedded into `index.html`. |
-| [`data/states_ranked_default.csv`](data/states_ranked_default.csv) | Default-weight ranking as CSV (rank, state, name, score, all 11 factor scores). |
+| [`data/states_ranked_default.csv`](data/states_ranked_default.csv) | Default-weight ranking as CSV (rank, state, name, score, level-bucketed value per factor). |
 | [`scripts/build_ranking.py`](scripts/build_ranking.py) | Merge per-batch scoring JSON into unified per-state scores; compute default-weight ranking. |
 | [`scripts/build_clusters.py`](scripts/build_clusters.py) | Assign score-band tiers and structural clusters from factor profiles. |
 | [`scripts/build_viewer.py`](scripts/build_viewer.py) | Inject data into HTML template; produce single-file `index.html`. |
@@ -33,70 +33,72 @@ Source extracts and intermediate working files are in [`.tmp/bad_faith_ranking/`
 
 | Rank | State | Score | Tier | Structural cluster |
 |---:|---|---:|---|---|
-| 1 | WA Washington | 7.96 | T1 | Multi-Tool Statutory |
-| 2 | PA Pennsylvania | 7.78 | T1 | Multi-Tool Statutory |
-| 3 | MA Massachusetts | 7.60 | T1 | Multi-Tool Statutory |
-| 4 | CO Colorado | 7.34 | T1 | Multi-Tool Statutory |
-| 5 | NM New Mexico | 7.16 | T1 | Multi-Tool Statutory |
-| 6 | TX Texas | 7.12 | T1 | Multi-Tool Statutory |
-| 7 | MT Montana | 6.32 | T2 | Statute-Constrained |
-| 7 | RI Rhode Island | 6.32 | T2 | Statute-Constrained |
-| 9 | KY Kentucky | 6.18 | T2 | Statute-Constrained |
-| 10 | CA California | 5.82 | T3 | Common-Law Tort |
-| 10 | MO Missouri | 5.82 | T3 | Statute-Constrained |
-| 12 | NV Nevada | 5.80 | T3 | Statute-Constrained |
-| 13 | NC North Carolina | 5.58 | T3 | Statute-Constrained |
-| 14 | CT Connecticut | 5.56 | T3 | Statute-Constrained |
-| 15 | WI Wisconsin | 5.52 | T3 | Common-Law Tort |
-| 16 | SC South Carolina | 5.44 | T3 | Common-Law Tort |
-| 17 | NJ New Jersey | 5.28 | T3 | Statute-Constrained |
-| 18 | TN Tennessee | 5.26 | T3 | Statute-Constrained |
-| 19 | FL Florida | 5.24 | T3 | Statute-Constrained |
-| 20 | AK Alaska | 5.20 | T3 | Common-Law Tort |
-| 21 | WV West Virginia | 5.18 | T3 | Statute-Constrained |
-| 22 | LA Louisiana | 5.14 | T3 | Statute-Constrained |
-| 23 | MD Maryland | 5.06 | T3 | **Mandatory Admin-Channel Hybrid** |
-| 24 | HI Hawaii | 5.04 | T3 | Common-Law Tort |
-| 25 | AZ Arizona | 4.92 | T4 | Common-Law Tort |
-| 26 | GA Georgia | 4.88 | T4 | Statute-Constrained |
-| 27 | ID Idaho | 4.86 | T4 | Common-Law Tort |
-| 28 | OK Oklahoma | 4.84 | T4 | Common-Law Tort |
-| 29 | IL Illinois | 4.82 | T4 | Statute-Constrained |
-| 30 | IA Iowa | 4.76 | T4 | Common-Law Tort |
-| 30 | ND North Dakota | 4.76 | T4 | Common-Law Tort |
-| 32 | AR Arkansas | 4.74 | T4 | Statute-Constrained |
-| 33 | SD South Dakota | 4.66 | T4 | Common-Law Tort |
-| 34 | ME Maine | 4.54 | T4 | Statute-Constrained |
-| 35 | DE Delaware | 4.52 | T4 | Common-Law Tort |
-| 36 | VT Vermont | 4.44 | T4 | Common-Law Tort |
-| 36 | WY Wyoming | 4.44 | T4 | Common-Law Tort |
-| 38 | OH Ohio | 4.40 | T4 | Common-Law Tort |
-| 39 | KS Kansas | 4.30 | T4 | Minimal Protection |
-| 40 | MN Minnesota | 4.20 | T4 | Statute-Constrained |
-| 41 | OR Oregon | 4.14 | T4 | Common-Law Tort |
-| 42 | NE Nebraska | 3.98 | T5 | Common-Law Tort |
-| 43 | IN Indiana | 3.96 | T5 | Common-Law Tort |
-| 44 | UT Utah | 3.86 | T5 | Minimal Protection |
-| 45 | VA Virginia | 3.82 | T5 | Minimal Protection |
-| 46 | AL Alabama | 3.52 | T5 | Common-Law Tort |
-| 47 | MS Mississippi | 3.48 | T5 | Common-Law Tort |
-| 48 | NH New Hampshire | 3.38 | T5 | Minimal Protection |
-| 49 | NY New York | 3.22 | T5 | Minimal Protection |
-| 50 | MI Michigan | 3.14 | T5 | Minimal Protection |
-| 51 | DC District of Columbia | 2.24 | T5 | Minimal Protection |
+| 1 | WA Washington | 8.37 | T1 | Multi-Tool Statutory Regime |
+| 2 | MA Massachusetts | 7.87 | T1 | Multi-Tool Statutory Regime |
+| 3 | PA Pennsylvania | 7.77 | T1 | Multi-Tool Statutory Regime |
+| 4 | TX Texas | 7.62 | T1 | Multi-Tool Statutory Regime |
+| 5 | NM New Mexico | 7.42 | T1 | Multi-Tool Statutory Regime |
+| 6 | CO Colorado | 7.37 | T1 | Multi-Tool Statutory Regime |
+| 7 | MT Montana | 7.05 | T1 | Statutory Path, Constrained |
+| 8 | RI Rhode Island | 6.87 | T2 | Statutory Path, Constrained |
+| 9 | KY Kentucky | 6.57 | T2 | Statutory Path, Constrained |
+| 10 | MO Missouri | 6.32 | T2 | Statutory Path, Constrained |
+| 11 | WV West Virginia | 6.18 | T2 | Statutory Path, Constrained |
+| 12 | CT Connecticut | 6.10 | T2 | Statutory Path, Constrained |
+| 13 | NV Nevada | 6.07 | T2 | Statutory Path, Constrained |
+| 14 | CA California | 5.90 | T3 | Common-Law Tort Driven |
+| 15 | NC North Carolina | 5.80 | T3 | Statutory Path, Constrained |
+| 16 | LA Louisiana | 5.62 | T3 | Statutory Path, Constrained |
+| 16 | WI Wisconsin | 5.62 | T3 | Common-Law Tort Driven |
+| 18 | TN Tennessee | 5.60 | T3 | Statutory Path, Constrained |
+| 19 | SC South Carolina | 5.42 | T3 | Statutory Path, Constrained |
+| 20 | GA Georgia | 5.35 | T3 | Statutory Path, Constrained |
+| 21 | ID Idaho | 5.32 | T3 | Common-Law Tort Driven |
+| 22 | AK Alaska | 5.27 | T3 | Common-Law Tort Driven |
+| 22 | HI Hawaii | 5.27 | T3 | Common-Law Tort Driven |
+| 22 | IA Iowa | 5.27 | T3 | Common-Law Tort Driven |
+| 25 | AZ Arizona | 5.22 | T3 | Common-Law Tort Driven |
+| 26 | FL Florida | 5.15 | T3 | Statutory Path, Constrained |
+| 26 | MD Maryland | 5.15 | T3 | **Mandatory Admin-Channel Hybrid** |
+| 28 | AR Arkansas | 5.13 | T3 | Statutory Path, Constrained |
+| 29 | OH Ohio | 4.97 | T4 | Common-Law Tort Driven |
+| 29 | OK Oklahoma | 4.97 | T4 | Common-Law Tort Driven |
+| 31 | ND North Dakota | 4.95 | T4 | Common-Law Tort Driven |
+| 32 | IL Illinois | 4.90 | T4 | Statutory Path, Constrained |
+| 32 | NJ New Jersey | 4.90 | T4 | Statutory Path, Constrained |
+| 34 | DE Delaware | 4.77 | T4 | Common-Law Tort Driven |
+| 35 | VT Vermont | 4.72 | T4 | Common-Law Tort Driven |
+| 36 | SD South Dakota | 4.70 | T4 | Common-Law Tort Driven |
+| 37 | KS Kansas | 4.60 | T4 | Minimal Protection |
+| 38 | ME Maine | 4.57 | T4 | Statutory Path, Constrained |
+| 39 | WY Wyoming | 4.50 | T4 | Common-Law Tort Driven |
+| 40 | MN Minnesota | 4.45 | T4 | Statutory Path, Constrained |
+| 41 | IN Indiana | 4.32 | T4 | Common-Law Tort Driven |
+| 42 | UT Utah | 4.00 | T4 | Minimal Protection |
+| 43 | VA Virginia | 3.92 | T5 | Minimal Protection |
+| 44 | OR Oregon | 3.88 | T5 | Common-Law Tort Driven |
+| 45 | NE Nebraska | 3.87 | T5 | Common-Law Tort Driven |
+| 46 | NH New Hampshire | 3.83 | T5 | Minimal Protection |
+| 47 | AL Alabama | 3.73 | T5 | Common-Law Tort Driven |
+| 48 | MS Mississippi | 3.67 | T5 | Common-Law Tort Driven |
+| 49 | MI Michigan | 3.27 | T5 | Minimal Protection |
+| 50 | NY New York | 3.23 | T5 | Minimal Protection |
+| 51 | DC District of Columbia | 2.32 | T5 | Minimal Protection |
 
 ## How the ranking changes with weights
 
-The interactive viewer ships with four weight presets that produce notably different rankings, illustrating the rubric's sensitivity to choice of weights:
+The interactive viewer ships with six presets, each with a brief explainer in the sidebar:
 
-| Preset | Reweighting | Effect on top of ranking |
-|---|---|---|
-| **Default (v0.3)** | Doctrinal-heavy; balanced statutory + common-law | WA, PA, MA, CO, NM, TX |
-| **Doctrine-only** | F8/F9/F10 zeroed | WA (8.71), MA (8.42), PA (8.13), TX (7.71), NM (7.53) |
-| **Statutory teeth** | F2 → 25, F6 → 22, F7 → 18; common-law factors down-weighted | WA & MA tied (8.63), PA (8.42), TX (7.79), NM (7.57); CA falls sharply |
-| **Access / cost** | F7 → 22, F8 → 14, F9 → 14 (fee shifting + barriers + admin remedy) | WA (8.10), PA (7.97), MA (7.54), CO (7.38), NM (7.21) |
+| Preset | What it emphasizes |
+|---|---|
+| **Default** | Doctrinal-heavy; balanced statutory + common-law. SWAG starting point. |
+| **Doctrine-only** | Procedural and environment factors zeroed; ranks states purely on substantive doctrine. |
+| **Statutory teeth** | Up-weights statutory PRoA, statutory penalty/multiplier, attorney-fee shifting. Surfaces sharp codified-remedy regimes. |
+| **Access / cost** | Up-weights fee shifting, low pre-suit barriers, administrative-remedy strength. Surfaces states where a real claimant can actually reach a remedy. |
+| **Uniform** | Every factor weighted equally — sanity check against any preset's emphasis. |
+| **Custom** | Tune freely. Sliders + per-factor level-value editors. Copy/paste tuning JSON to save and share. |
 
-Drag any individual slider to test the contribution of a single factor.
+Click any factor in the weights list to expand its named levels and edit individual level values. Drag any slider to retune weights. Use **Copy tuning** to save your weighting and level overrides as JSON, and **Load tuning** to paste a saved JSON back in.
 
 ## Five clusters at a glance
 
@@ -110,9 +112,10 @@ Drag any individual slider to test the contribution of a single factor.
 
 ## Limitations
 
+- **Not authoritative.** The default weighting is a SWAG. The whole point of the viewer is that *you* should retune it.
 - Source dependence on Feinman 2025; recent statutory changes (FL SB 2A 2022, LA Act 3 2024) reflected, but legislative tracking needs ongoing maintenance.
 - Scope: P&C, individual insureds. Health/life/WC excluded.
-- Per-factor scores are integers 0–10; ties at the weighted average are real.
+- Per-factor scores are bucketed to a small number of named levels (3–5 per factor) with uniform spacing on 0–10; ties at the weighted average are real and expected.
 - See [`METHODOLOGY.md`](METHODOLOGY.md) for the full discussion.
 
 ## Sources (top-level)

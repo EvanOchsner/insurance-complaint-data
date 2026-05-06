@@ -1,10 +1,15 @@
-# Bad-Faith Protection Ranking — Methodology
+# Bad Faith Protection Ranking — Methodology
 
-**Version 0.3** · 2026-05-04 · 51 jurisdictions (50 states + DC) · 11 weighted factors
+**Version 0.4** · 2026-05-06 · 51 jurisdictions (50 states + DC)
+
+> ⚠️ **Not an authoritative ranking.** The default weighting is a SWAG, not a settled scientific finding.
+> The viewer is a tool for researchers and advocates to re-weight factors and adjust per-factor level values
+> to reach their own conclusions, then copy and share the resulting tuning. v0.4 introduces named per-factor
+> *levels* (with editable values) and float weights in [0,1].
 
 ## Scope
 
-This ranking measures the strength of state-level **bad-faith protections from the perspective of an insured individual**. Specifically:
+This ranking measures the strength of state-level **bad faith protections from the perspective of an insured individual**. Specifically:
 
 - **First-party** bad-faith claims (insured vs. own insurer over the insured's own loss).
 - **Third-party / duty-to-settle** claims (the insured's *liability* insurer fails to settle within policy limits, exposing its own insured to an excess judgment — *Stowers* / *Crisci* doctrine).
@@ -56,7 +61,7 @@ Each factor is scored **0–10** for each state with anchored scoring rules. **H
 
 | # | Factor | Weight | What it measures |
 |---|---|---:|---|
-| 8 | Pre-suit barriers (inverse) | 6 | Notice, demand, cure-period, exhaustion requirements that gate filing. **Scored inversely**: more barriers = lower score (worse for insureds). |
+| 8 | Pre-suit barriers | 6 | Notice, demand, cure-period, exhaustion requirements that gate filing. (Convention is uniform across factors: 10 = strongest consumer protection. F8 levels go from "heavy mandatory exhaustion + cure" at 0 to "no pre-suit barrier" at 10.) |
 | 9 | Administrative remedy strength | 8 | Whether the state DOI investigates individual claim disputes with substantive findings, has fining authority, and (rarely) provides a structured pre-suit/parallel quasi-adjudication channel |
 
 ### Environment factor (10 of 100 default weight)
@@ -88,7 +93,17 @@ Each factor uses a 5-anchor scale (0, 3, 5, 7, 10) with intermediate values 1, 2
 
 **F6 (Statutory penalty/multiplier):** 0 = none · 3 = modest interest premium · 5 = significant interest (12%+) or modest percent penalty · 7 = multiplier ≥ 1.5x or large percent penalty (GA §33-4-6 50%, TN §56-7-105 25%, NM §59A-16-30 treble via UPA) · 10 = treble (WA IFCA), or 2–3x with low procedural friction.
 
-**F8 (Pre-suit barriers, inverse):** 0 = mandatory long-cure + dual exhaustion + strict notice · 3 = mandatory cure period (30–60 days) with narrow notice · 5 = pre-suit notice required, modest cure · 7 = light notice, no cure · 10 = no pre-suit barrier.
+**F8 (Pre-suit barriers):** 0 = mandatory long-cure + dual exhaustion + strict notice · 3 = mandatory cure period (30–60 days) with narrow notice · 5 = pre-suit notice required, modest cure · 7 = light notice, no cure · 10 = no pre-suit barrier. (Same convention as every other factor: 10 = strongest consumer protection.)
+
+### v0.4 — Per-factor levels with editable values
+
+Each factor declares a small number of named levels (3–5) uniformly spaced on the 0–10 range. Each level has a name and a 1-sentence explainer. Per-state scores are snapped to the nearest level at build time; the viewer ranks states using the level value rather than the raw score. This achieves three goals:
+
+1. **Consistency across factors.** Spacing is uniform within each factor, so a "level 1 of 4" carries the same numeric weight regardless of factor.
+2. **Auditability.** Users can see exactly which states sit at each level, with named labels and explainers, instead of trying to interpret bare integers.
+3. **Tunability.** The viewer lets users edit any level's numeric value; rankings update live for every state at that level.
+
+Re-bucketing was a pure rounding step: each per-state raw score is replaced by its nearest level value. Most movement is small. The default ranking under v0.4 is in [`data/states_ranked_default.csv`](data/states_ranked_default.csv).
 
 ## Sources of per-state scores
 
