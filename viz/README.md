@@ -37,6 +37,7 @@ The regulator concluded the insurer acted improperly. Comparable across these da
 | **NY DFS Health** | NY DFS Consumer Guide to Health Insurers — per-plan, 2015–2024, by HMO / EPO-PPO / Commercial. |
 | **TX TDI** | TX Department of Insurance closed complaints — 2012–2026, with TDI's own `Confirmed`/`Not Confirmed` finding. |
 | **WA OIC AR** | WA Office of the Insurance Commissioner Annual Report — annual workload counts, 2020–2024. |
+| **7-state merits rate** | Cross-state comparison: against-insurer share of on-merits decisions over time, for the seven states that publish a merits-decision denominator (CT, MD, MO, NY [Auto + Health = 2 lines], OR, TX, VA). Synthesized by summing each state's outcome buckets to a state-year total. Methodologies aren't identical — NY Auto is a 2-yr rolling window, VA SCC ER is health external review only — so this is a *trend* comparison, not a leaderboard. Surfaces in the picker only (not on per-state pages). |
 
 ### Regulator complaint indexes (tan banner)
 

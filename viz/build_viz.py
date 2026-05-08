@@ -36,6 +36,7 @@ PLOT_TYPE_BY_ENTRY_ID = {
     "ny_dfs_health":  "complaints_with_outcomes",
     "va_scc_er":      "complaints_with_outcomes",
     "mo_dci":         "complaints_with_outcomes",
+    "cross_state_merits_rate": "complaints_with_outcomes",
     # ca_cdi_top50 has outcome_buckets in its manifest, but only the
     # against_insurer bucket is populated — there's no on-merits denominator,
     # so the rate panel can't render. Treat it as a complaint-volume series.
@@ -335,6 +336,186 @@ def _to_jsonable(v):
         return str(v)
 
 
+# Cross-state merits-rate synthetic entry. One trace per state of
+# `against_insurer / on_merits` over time, sourced from the 8 per-state entries
+# that publish a merits denominator. NY contributes two lines (Auto + Health).
+CROSS_STATE_MERITS_SOURCES = [
+    # (source_entry_id, state_label, state_partial_year_or_None, line_caveat_or_None)
+    ("ct_cid",        "CT",         2026, None),
+    ("md_mia",        "MD",         2008, None),
+    ("mo_dci",        "MO",         None, None),
+    ("ny_dfs_auto",   "NY Auto",    None,
+        "2-yr rolling complaint ratio — denominator semantics differ from the others."),
+    ("ny_dfs_health", "NY Health",  None, None),
+    ("or_dfr",        "OR",         None, None),
+    ("tx_tdi",        "TX",         2026, None),
+    ("va_scc_er",     "VA",         None,
+        "Health external review only — narrower denominator than the other states."),
+]
+
+
+def _sum_state_buckets(entry_payload: dict) -> dict:
+    """Collapse a per-state entry's `outcome_data_by_filter` to one timeseries
+    per bucket (against, mixed, for_insurer), summed across every filter slice.
+    Returns {year: int -> {"against": int|None, "mixed": int|None, "for": int|None}}.
+    Null + null = null; any non-null contribution turns the year non-null.
+    """
+    odbf = entry_payload.get("outcome_data_by_filter") or {}
+    by_year: dict[int, dict] = {}
+    for slice_data in odbf.values():
+        years = slice_data.get("years") or []
+        buckets = slice_data.get("buckets") or {}
+        for i, y in enumerate(years):
+            row = by_year.setdefault(int(y), {"against": None, "mixed": None, "for": None})
+            for src_key, dst_key in (
+                ("against_insurer", "against"),
+                ("mixed",           "mixed"),
+                ("for_insurer",     "for"),
+            ):
+                v = (buckets.get(src_key) or [None] * len(years))[i]
+                if v is None:
+                    continue
+                row[dst_key] = (row[dst_key] or 0) + int(v)
+    return by_year
+
+
+def build_cross_state_merits_entry(entries: list[dict]) -> dict:
+    """Build a synthetic 'cross-state merits rate' entry from already-built
+    per-state entry payloads. One line per state (NY split Auto + Health),
+    metric is `against_insurer / on_merits` per (state, year).
+    """
+    by_id = {e["id"]: e for e in entries}
+
+    state_data: dict[str, dict[int, dict]] = {}   # state_label -> {year -> {against, mixed, for}}
+    state_caveats: dict[str, str] = {}
+    partial_year_by_group: dict[str, int] = {}
+    for src_id, label, partial_year, line_caveat in CROSS_STATE_MERITS_SOURCES:
+        if src_id not in by_id:
+            print(f"  WARN: cross-state source {src_id} not found; skipping line")
+            continue
+        state_data[label] = _sum_state_buckets(by_id[src_id])
+        if line_caveat:
+            state_caveats[label] = line_caveat
+        if partial_year is not None:
+            partial_year_by_group[label] = partial_year
+
+    # Universe of years across all contributing states.
+    all_years: set[int] = set()
+    for years_dict in state_data.values():
+        all_years.update(years_dict.keys())
+    years_sorted = sorted(all_years)
+
+    # Per-state aligned arrays: against_count, on_merits, against_rate.
+    rate_by_group: dict[str, list] = {}
+    against_by_group: dict[str, list] = {}
+    on_merits_by_group: dict[str, list] = {}
+    for label, by_year in state_data.items():
+        rates: list = []
+        agains: list = []
+        oms: list = []
+        for y in years_sorted:
+            row = by_year.get(y)
+            if row is None:
+                rates.append(None); agains.append(None); oms.append(None)
+                continue
+            a, m, f = row["against"], row["mixed"], row["for"]
+            # on_merits = against + mixed + for (null only if all three are null).
+            if a is None and m is None and f is None:
+                om = None
+            else:
+                om = (a or 0) + (m or 0) + (f or 0)
+            agains.append(a)
+            oms.append(om)
+            if a is None or om is None or om == 0:
+                rates.append(None)
+            else:
+                rates.append(a / om)
+        rate_by_group[label] = rates
+        against_by_group[label] = agains
+        on_merits_by_group[label] = oms
+
+    groups = list(state_data.keys())  # preserves CROSS_STATE_MERITS_SOURCES order
+
+    caveat = (
+        "Cross-state comparison of the share of merits-decided complaints that "
+        "the regulator concluded against the insurer. Methodologies are NOT "
+        "identical: NY Auto is a 2-year rolling window, VA SCC ER is health "
+        "external review only (~54% baseline against rate is structurally "
+        "high), CT/TX/OR include all lines summed, MD is statewide. Use this "
+        "to compare *trends*, not absolute levels. Rate = against_insurer / "
+        "(against + mixed + for_insurer); excludes 'no merits decision' rows."
+    )
+
+    return {
+        "id": "cross_state_merits_rate",
+        "name": "Against-insurer rate — 7-state comparison",
+        "short_name": "merits rate across state",
+        "category": "regulator_finding",
+        "plot_type": PLOT_TYPE_BY_ENTRY_ID["cross_state_merits_rate"],
+        "jurisdiction": ["CT", "MD", "MO", "NY", "OR", "TX", "VA"],
+        "year_field_label": "Year",
+        "y_axis_label": "Against-insurer share of merits decisions",
+        "caveat_short": caveat,
+        "provenance_url": "viz/README.md",
+        "x_field": "year",
+        "group_field": "state",
+        "group_field_label": "State",
+        "filter_field": None,
+        "filter_field_label": None,
+        "filter_default": None,
+        "filter_values": [],
+        "metrics": [
+            {
+                "id": "against_rate",
+                "label": "Against / on-merits rate",
+                "column": "against_rate",
+                "format": "percent",
+                "hover_pair": ["against_count", "on_merits"],
+            },
+            {
+                "id": "against_count",
+                "label": "Against-insurer count",
+                "column": "against_count",
+            },
+            {
+                "id": "on_merits",
+                "label": "On-merits decisions (denominator)",
+                "column": "on_merits",
+            },
+        ],
+        "default_metric": "against_rate",
+        "default_groups": groups,
+        "group_presets": [],
+        "partial_year": None,
+        "partial_year_note": None,
+        "partial_year_by_group": partial_year_by_group,
+        "line_caveats": state_caveats,
+        "years": years_sorted,
+        "data_by_filter": {
+            "__no_filter__": {
+                "groups": groups,
+                "metrics_data": {
+                    "against_rate":  rate_by_group,
+                    "against_count": against_by_group,
+                    "on_merits":     on_merits_by_group,
+                },
+            }
+        },
+        "outcome_data_by_filter": None,   # signals: line chart, no two-panel
+        "outcome_buckets_meta": None,
+        "default_chart_mode": "line",
+        "notes": None,
+        "national_rollup": False,
+        "national_rollup_label": "National total",
+        "national_rollup_short_label": "US total",
+        "national_rollup_per_state_label": "Per-state",
+        "source_manifest": "viz/build_viz.py (synthetic cross-state)",
+        "surface_on_state_pages": False,
+        "surface_on_nationwide": True,
+        "group_select_style": "hidden",
+    }
+
+
 def build_state_index(entries: list[dict]) -> dict:
     """Build a map `{state_code: [plot_spec, ...]}` driving the per-state pages.
 
@@ -355,6 +536,8 @@ def build_state_index(entries: list[dict]) -> dict:
     # Collect native (single-state) entries.
     for e in entries:
         if e["id"] in MULTI_STATE_ENTRY_IDS:
+            continue
+        if not e.get("surface_on_state_pages", True):
             continue
         for st in e["jurisdiction"]:
             if st == "US":
@@ -398,17 +581,20 @@ def build_state_index(entries: list[dict]) -> dict:
 
 def build_nationwide_index(entries: list[dict]) -> list[dict]:
     """The Nationwide page shows multi-state entries in their full national
-    form (no slice). Native entries don't appear there."""
+    form (no slice). Native entries don't appear there, except those that
+    explicitly opt in via `surface_on_nationwide`."""
     out = []
     for e in entries:
-        if e["id"] in MULTI_STATE_ENTRY_IDS:
+        if e["id"] in MULTI_STATE_ENTRY_IDS or e.get("surface_on_nationwide"):
             out.append({
                 "entry_id": e["id"],
                 "plot_type": e["plot_type"],
                 "slice_group": None,
                 "is_native": False,
             })
-    out.sort(key=lambda s: ({"complaint_volume": 1, "lawsuit_volume": 2}.get(s["plot_type"], 9),
+    out.sort(key=lambda s: ({"complaints_with_outcomes": 0,
+                             "complaint_volume": 1,
+                             "lawsuit_volume": 2}.get(s["plot_type"], 9),
                             s["entry_id"]))
     return out
 
@@ -422,6 +608,11 @@ def build_payload() -> dict:
             print(f"  {mp.relative_to(PROJECT_ROOT)} :: {entry['id']}")
             payload = build_entry_payload(mp, entry)
             entries.append(payload)
+    # Synthetic cross-state merits-rate entry, composed from the per-state
+    # entries above. Append at the end so it can read their already-built
+    # outcome data.
+    print(f"  [synthetic] :: cross_state_merits_rate")
+    entries.append(build_cross_state_merits_entry(entries))
     state_index = build_state_index(entries)
     nationwide_index = build_nationwide_index(entries)
     return {
@@ -747,6 +938,18 @@ function maybeExcludePartial(years, ...arrays) {
   return [drop(years), ...arrays.map(drop)];
 }
 
+function maskPartialYearForGroup(years, vals, group) {
+  // For entries that declare per-state partial years (cross-state aggregates),
+  // null out a single state's partial-year value when the toggle is on. Other
+  // states' values for that year are preserved (they aren't partial there).
+  const exclude = readOverlay("opt-exclude-partial");
+  const entry = activeEntry();
+  if (!exclude || !entry.partial_year_by_group) return vals;
+  const py = entry.partial_year_by_group[group];
+  if (py === null || py === undefined) return vals;
+  return vals.map((v, i) => (years[i] === py ? null : v));
+}
+
 // ----------------------- state -----------------------
 const state = {
   view_mode: "entry",      // "entry" (single chart) or "state" (per-state page)
@@ -975,14 +1178,22 @@ function renderFilters() {
       wrap.appendChild(presetsRow);
     }
 
-    const sel = document.createElement("select");
-    sel.id = "group-select";
-    sel.multiple = true;
-    sel.size = 8;
-    wrap.appendChild(sel);
-
-    filtersEl.appendChild(wrap);
-    renderGroupSelect();
+    if (entry.group_select_style === "hidden") {
+      // No group-selector UI: all groups always selected. Users use the
+      // Plotly legend's click-to-toggle if they want to hide individual
+      // traces. Skip rendering the wrap so the section is empty (sub-state
+      // defaults are still resolved below in renderGroupSelect).
+      const sub = entryState(entry.id);
+      if (!sub.selected) sub.selected = defaultSelectedGroups();
+    } else {
+      const sel = document.createElement("select");
+      sel.id = "group-select";
+      sel.multiple = true;
+      sel.size = 8;
+      wrap.appendChild(sel);
+      filtersEl.appendChild(wrap);
+      renderGroupSelect();
+    }
   }
 
   // 3) Metric selector.
@@ -1150,8 +1361,17 @@ function buildTraces() {
   const showSum = readOverlay("ovl-sum");
   const showMedian = readOverlay("ovl-median");
 
-  const metricCol = entry.metrics.find(m => m.id === sub.metric).column;
+  const metricDef = entry.metrics.find(m => m.id === sub.metric);
+  const metricCol = metricDef.column;
   const data = slice.metrics_data[metricCol] || {};
+  const isPercent = metricDef.format === "percent";
+  // hover_pair lets the percent hover ALSO show "(numerator/denominator)" by
+  // pulling two companion-metric arrays. Used by the cross-state merits-rate
+  // entry to surface "(against_count / on_merits)" alongside the rate.
+  const hoverPair = metricDef.hover_pair || null;
+  const hoverPairData = hoverPair
+    ? [slice.metrics_data[hoverPair[0]] || {}, slice.metrics_data[hoverPair[1]] || {}]
+    : null;
 
   let selected;
   if (entry.group_field) {
@@ -1171,19 +1391,46 @@ function buildTraces() {
 
   for (const g of selected) {
     const color = entry.group_field ? colorFor(entry, g) : "#1f4e79";
-    const counts = data[g] || [];
+    let counts = data[g] || [];
+    // Per-group partial-year mask runs first (cross-state entries use this);
+    // entry-level partial-year drop runs second for entries that use the
+    // global flag.
+    counts = maskPartialYearForGroup(yearsAll, counts, g);
     const [yrs, vals] = maybeExcludePartial(yearsAll, counts);
     const label = entry.group_field ? g : entry.metrics.find(m => m.id === sub.metric).label;
 
-    traces.push({
+    let hoverTpl, customdata;
+    if (isPercent && hoverPairData) {
+      const num = hoverPairData[0][g] || [];
+      const den = hoverPairData[1][g] || [];
+      // Align customdata with the partial-year-filtered yrs.
+      const numAligned = yrs.map(y => {
+        const i = yearsAll.indexOf(y);
+        return i >= 0 ? num[i] : null;
+      });
+      const denAligned = yrs.map(y => {
+        const i = yearsAll.indexOf(y);
+        return i >= 0 ? den[i] : null;
+      });
+      customdata = numAligned.map((n, i) => [n, denAligned[i]]);
+      hoverTpl = `<b>${escapeHtml(label)}</b> %{x}<br>%{y:.2%} (%{customdata[0]}/%{customdata[1]})<extra></extra>`;
+    } else if (isPercent) {
+      hoverTpl = `<b>${escapeHtml(label)}</b> %{x}<br>%{y:.2%}<extra></extra>`;
+    } else {
+      hoverTpl = `<b>${escapeHtml(label)}</b> %{x}<br>%{y}<extra></extra>`;
+    }
+
+    const trace = {
       x: yrs, y: vals,
       type: "scatter", mode: "lines+markers",
       name: label,
       legendgroup: g,
       line: { color, width: 2 },
       marker: { color, size: 5 },
-      hovertemplate: `<b>${escapeHtml(label)}</b> %{x}<br>%{y}<extra></extra>`,
-    });
+      hovertemplate: hoverTpl,
+    };
+    if (customdata) trace.customdata = customdata;
+    traces.push(trace);
 
     if (showAvg) {
       const m = seriesMean(vals);
@@ -1200,6 +1447,7 @@ function buildTraces() {
         });
       }
     }
+    const maFmt = isPercent ? ".2%" : ".2f";
     if (showMA3) {
       traces.push({
         x: yrs, y: trailingMA(vals, 3),
@@ -1208,7 +1456,7 @@ function buildTraces() {
         showlegend: false,
         line: { color, width: 1.5, dash: "dot" },
         opacity: 0.6,
-        hovertemplate: `<b>${escapeHtml(label)} 3yr MA</b> %{x}<br>%{y:.2f}<extra></extra>`,
+        hovertemplate: `<b>${escapeHtml(label)} 3yr MA</b> %{x}<br>%{y:${maFmt}}<extra></extra>`,
       });
     }
     if (showMA5) {
@@ -1219,7 +1467,7 @@ function buildTraces() {
         showlegend: false,
         line: { color, width: 1.5, dash: "dashdot" },
         opacity: 0.6,
-        hovertemplate: `<b>${escapeHtml(label)} 5yr MA</b> %{x}<br>%{y:.2f}<extra></extra>`,
+        hovertemplate: `<b>${escapeHtml(label)} 5yr MA</b> %{x}<br>%{y:${maFmt}}<extra></extra>`,
       });
     }
   }
@@ -1250,7 +1498,10 @@ function buildTraces() {
 
   // Cross-series overlays.
   if (selected.length > 1 && (showMean || showSum || showMedian)) {
-    const fullArrays = selected.map(g => data[g] || []);
+    // Apply per-group partial-year masking before the cross-series rollup,
+    // so a state's partial year doesn't drag down the cross-state mean.
+    const fullArrays = selected.map(g =>
+      maskPartialYearForGroup(yearsAll, data[g] || [], g));
     const [yrs, ...arrays] = maybeExcludePartial(yearsAll, ...fullArrays);
     const meanVals = [], sumVals = [], medVals = [];
     for (let i = 0; i < yrs.length; i++) {
@@ -1264,23 +1515,27 @@ function buildTraces() {
         medVals.push(median(col));
       }
     }
+    const meanFmt = isPercent ? ".2%" : ".2f";
+    const sumFmt  = isPercent ? ".2%" : "";  // sum of percents is rarely useful
     if (showMean) traces.push({
       x: yrs, y: meanVals, type: "scatter", mode: "lines",
       name: `Mean of selected (n=${selected.length})`,
       line: { color: "#444", width: 2.5, dash: "dash" },
-      hovertemplate: `<b>Mean of selected</b> %{x}<br>%{y:.2f}<extra></extra>`,
+      hovertemplate: `<b>Mean of selected</b> %{x}<br>%{y:${meanFmt}}<extra></extra>`,
     });
     if (showSum) traces.push({
       x: yrs, y: sumVals, type: "scatter", mode: "lines",
       name: `Sum of selected (n=${selected.length})`,
       line: { color: "#444", width: 2.5, dash: "dot" },
-      hovertemplate: `<b>Sum of selected</b> %{x}<br>%{y}<extra></extra>`,
+      hovertemplate: sumFmt
+        ? `<b>Sum of selected</b> %{x}<br>%{y:${sumFmt}}<extra></extra>`
+        : `<b>Sum of selected</b> %{x}<br>%{y}<extra></extra>`,
     });
     if (showMedian) traces.push({
       x: yrs, y: medVals, type: "scatter", mode: "lines",
       name: `Median of selected (n=${selected.length})`,
       line: { color: "#444", width: 2.5, dash: "dashdot" },
-      hovertemplate: `<b>Median of selected</b> %{x}<br>%{y:.2f}<extra></extra>`,
+      hovertemplate: `<b>Median of selected</b> %{x}<br>%{y:${meanFmt}}<extra></extra>`,
     });
   }
 
@@ -1291,15 +1546,19 @@ function buildLayout() {
   const entry = activeEntry();
   const sub = entryState(entry.id);
   const yScale = document.querySelector("input[name='yaxis']:checked").value;
-  const metricLabel = entry.metrics.find(m => m.id === sub.metric).label;
+  const metricDef = entry.metrics.find(m => m.id === sub.metric);
+  const yaxis = {
+    title: metricDef.label,
+    type: yScale,
+    rangemode: yScale === "log" ? "normal" : "tozero",
+  };
+  if (metricDef.format === "percent") {
+    yaxis.tickformat = ".0%";
+  }
   return {
     margin: { l: 70, r: 20, t: 10, b: 50 },
     xaxis: { title: entry.year_field_label, tickformat: "d" },
-    yaxis: {
-      title: metricLabel,
-      type: yScale,
-      rangemode: yScale === "log" ? "normal" : "tozero",
-    },
+    yaxis,
     legend: { orientation: "v", x: 1.01, y: 1, xanchor: "left", font: { size: 11 } },
     hovermode: "closest",
     plot_bgcolor: "#fff",
@@ -1619,10 +1878,13 @@ function syncChartModeToggle() {
   // there to avoid the no-op-toggle confusion (e.g., MD MIA in two-panel).
   const mr = document.getElementById("row-metric");
   if (mr) mr.style.display = inLineMode ? "" : "none";
-  // Exclude-partial-year only does anything when the entry has a partial_year.
+  // Exclude-partial-year only does anything when the entry has a partial_year
+  // (single-row drop) or a partial_year_by_group map (per-state masking).
   const ep = document.getElementById("lbl-exclude-partial");
-  if (ep) ep.style.display =
-    (entry.partial_year !== null && entry.partial_year !== undefined) ? "" : "none";
+  const hasGlobalPartial = entry.partial_year !== null && entry.partial_year !== undefined;
+  const hasPerGroupPartial = entry.partial_year_by_group
+    && Object.values(entry.partial_year_by_group).some(v => v !== null && v !== undefined);
+  if (ep) ep.style.display = (hasGlobalPartial || hasPerGroupPartial) ? "" : "none";
 }
 
 // ----------------------- rate-only layout (state-page split) -----------------------
